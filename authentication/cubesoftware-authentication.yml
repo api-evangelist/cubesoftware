@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/cubesoftware-openapi-original.yml
+docs: https://api.cubesoftware.com/.well-known/oauth-authorization-server
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  pkce: S256
+  refresh_token: true
+  token_endpoint_auth: client_secret_basic
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://portal.cubesoftware.com/o/authorize/
+    tokenUrl: https://api.cubesoftware.com/o/token/
+    scopes: [read, write, introspection]
+  introspection_endpoint: https://api.cubesoftware.com/o/introspect/
+  code_challenge_methods_supported: [S256]
+  grant_types_supported: [authorization_code, refresh_token]
+  token_endpoint_auth_methods_supported: [client_secret_basic]
+  description: Standard Cube OAuth 2.0 flow
+  sources:
+  - openapi/cubesoftware-openapi-original.yml
+  - well-known/cubesoftware-oauth-authorization-server.json
+notes: >-
+  Nearly every operation additionally requires an X-Company-ID header to scope the
+  request to a specific Cube company/workspace (see conventions/).
