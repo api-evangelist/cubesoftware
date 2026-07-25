@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Cube API
+  version: 1.0.0
+extends: openapi/cubesoftware-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-trust-center: https://security.cubesoftware.com/
+    x-apievangelist-certifications:
+    - SOC 2 Type II
+    - GDPR
+- target: $.info
+  update:
+    x-apievangelist-conventions: conventions/cubesoftware-conventions.yml
+    x-apievangelist-company-header: X-Company-ID required on most operations

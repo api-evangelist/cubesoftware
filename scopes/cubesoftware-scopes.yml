@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/cubesoftware-openapi-original.yml
+docs: https://api.cubesoftware.com/.well-known/oauth-authorization-server
+schemes:
+- name: OAuth2
+  source: openapi/cubesoftware-openapi-original.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://portal.cubesoftware.com/o/authorize/
+    tokenUrl: https://api.cubesoftware.com/o/token/
+  description: Standard Cube OAuth 2.0 flow (authorization code + PKCE S256, refresh_token supported)
+scopes:
+- scope: read
+  description: Read access to Cube data and resources.
+  flows: [authorizationCode]
+  sources: [well-known/cubesoftware-oauth-authorization-server.json]
+- scope: write
+  description: Write/modify access to Cube data and resources.
+  flows: [authorizationCode]
+  sources: [well-known/cubesoftware-oauth-authorization-server.json]
+- scope: introspection
+  description: Permission to call the OAuth token introspection endpoint.
+  flows: [authorizationCode]
+  sources: [well-known/cubesoftware-oauth-authorization-server.json]
+notes: >-
+  The published OpenAPI declares an OAuth2 authorizationCode scheme with an empty
+  scopes map; the coarse scopes (read, write, introspection) are advertised by the
+  provider's /.well-known/oauth-authorization-server document.

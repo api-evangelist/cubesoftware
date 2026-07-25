@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source:
+- openapi/cubesoftware-openapi-original.yml
+- https://security.cubesoftware.com/
+- https://api.cubesoftware.com/.well-known/oauth-authorization-server
+standards:
+- id: oauth2
+  conforms: true
+  evidence: openapi securitySchemes declares oauth2 authorizationCode flow
+- id: oauth2-pkce
+  conforms: true
+  evidence: .well-known/oauth-authorization-server advertises code_challenge_methods_supported=S256
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 JSON metadata
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: introspection_endpoint published at https://api.cubesoftware.com/o/introspect/
+- id: oidc
+  conforms: false
+  evidence: no /.well-known/openid-configuration (404)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error responses use a plain JSON message body, not application/problem+json
+- id: json-api
+  conforms: false
+- id: soc2-type-ii
+  conforms: true
+  evidence: Cube Trust Center + developer center state SOC 2 Type II
+- id: gdpr
+  conforms: true
+  evidence: developer center + trust center state GDPR compliance
+- id: fhir-r4
+  conforms: false
+- id: scim2
+  conforms: false
+- id: fapi
+  conforms: false

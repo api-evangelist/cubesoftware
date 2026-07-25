@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source:
+- openapi/cubesoftware-openapi-original.yml
+- https://status.cubesoftware.com
+- https://www.cubesoftware.com/product-updates
+versioning:
+  scheme: single-version
+  current: '1.0'
+  in_path: false
+  docs: https://api.cubesoftware.com/docs/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation/Sunset policy was found; no operations are flagged deprecated in the OpenAPI.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.cubesoftware.com
+product_updates: https://www.cubesoftware.com/product-updates
+deprecated_operations: []

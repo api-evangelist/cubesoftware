@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/ on Cube hosts
+hosts:
+- host: https://api.cubesoftware.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: cubesoftware-oauth-authorization-server.json
+    note: RFC 8414 OAuth 2.0 Authorization Server Metadata (scopes read/write/introspection, PKCE S256)
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://portal.cubesoftware.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://security.cubesoftware.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: >-
+      Returns the Vanta Trust Center SPA (HTML), not an RFC 9116 security.txt
+      document; not captured as a SecurityTxt artifact.
+- host: https://www.cubesoftware.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

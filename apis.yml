@@ -1,25 +1,733 @@
 aid: cubesoftware
-name: Cubesoftware
-description: Cubesoftware is a company surfaced as a portfolio company of mayfield and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+name: Cube
+description: >-
+  Cube is an AI-powered financial planning and analysis (FP&A) platform for finance teams.
+  It connects a company's source systems and spreadsheets into a single financial data model,
+  letting teams budget, forecast, run scenario and what-if analysis, and report from the comfort
+  of Excel and Google Sheets. The Cube API (OAuth 2.0, 296 operations across data tables,
+  dimensions, formulas, exports, and company administration) exposes the same functionality that
+  powers Cube's universal spreadsheet add-ons and integrations, so teams can push and pull their
+  financial data programmatically. Cube is SOC 2 Type II certified and GDPR-compliant, built on AWS.
 url: https://raw.githubusercontent.com/api-evangelist/cubesoftware/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://8159624.fs1.hubspotusercontent-na1.net/hubfs/8159624/Cube%20website%20-%202024/Logos/cube-logo-navy.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - mayfield
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- FP&A
+- Financial Planning
+- Finance
+- Budgeting
+- Forecasting
+- Analytics
+- Spreadsheets
+- SaaS
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: cubesoftware:cubesoftware-agents-api
+  name: Cube Agents API
+  description: The Agents API from Cube — 7 operation(s) for agents.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-agents-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-attributes-api
+  name: Cube Attributes API
+  description: >-
+    Attributes are additional metadata that can be applied to values in the cube. They
+                show up as additional columns in drilldowns, for instance.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-attributes-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-audit-trail-api
+  name: Cube Audit Trail API
+  description: The audit trail tracks the changes of values within the cube and helps with governance.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Audit Trail
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-audit-trail-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-auth-api
+  name: Cube Auth API
+  description: The Auth API from Cube — 3 operation(s) for auth.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-auth-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-authentication-api
+  name: Cube Authentication API
+  description: >-
+    The Cube API supports user authentication via OAuth2 using the OAuth2 Authorization Code Flow.
+                To authenticate via OAuth2, an application must first be registered.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-authentication-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-canvases-api
+  name: Cube Canvases API
+  description: The Canvases API from Cube — 10 operation(s) for canvases.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Canvases
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-canvases-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-chatmessages-api
+  name: Cube ChatMessages API
+  description: The ChatMessages API from Cube — 2 operation(s) for chatmessages.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - ChatMessages
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-chatmessages-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-chatsessions-api
+  name: Cube ChatSessions API
+  description: The ChatSessions API from Cube — 2 operation(s) for chatsessions.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - ChatSessions
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-chatsessions-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-chatsettings-api
+  name: Cube ChatSettings API
+  description: The ChatSettings API from Cube — 1 operation(s) for chatsettings.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - ChatSettings
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-chatsettings-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-comments-api
+  name: Cube Comments API
+  description: The Comments API from Cube — 2 operation(s) for comments.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-comments-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-companies-api
+  name: Cube Companies API
+  description: >-
+    A user in Cube belongs to one or more companies. Companies are how various teams of
+                employees manage their data (dimensions, etc) and permissions (users, etc).
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-companies-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-company-groups-api
+  name: Cube Company Groups API
+  description: The Company Groups API from Cube — 4 operation(s) for company groups.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Company Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-company-groups-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-compliance-api
+  name: Cube compliance API
+  description: The compliance API from Cube — 1 operation(s) for compliance.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-compliance-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-connections-api
+  name: Cube Connections API
+  description: >-
+    Connections to external source systems allow Cube to automatically import source
+                dimensions and transaction data.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-connections-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-contenttype-api
+  name: Cube ContentType API
+  description: The ContentType API from Cube — 2 operation(s) for contenttype.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - ContentType
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-contenttype-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-cube-api
+  name: Cube cube API
+  description: The cube API from Cube — 2 operation(s) for cube.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - cube
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-cube-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-cube-data-api
+  name: Cube Cube Data API
+  description: The data stored in a cube for a company, organized by their dimensions.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Cube Data
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-cube-data-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-cube-value-range-api
+  name: Cube Cube Value Range API
+  description: The Cube Value Range API from Cube — 4 operation(s) for cube value range.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Cube Value Range
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-cube-value-range-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-currencies-api
+  name: Cube Currencies API
+  description: The Currencies API from Cube — 13 operation(s) for currencies.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Currencies
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-currencies-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-dashboard-api
+  name: Cube Dashboard API
+  description: Access the underlying Dashboards of Cube
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-dashboard-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-data-table-uploads-api
+  name: Cube Data Table Uploads API
+  description: >-
+    Cube often uses uploads as a way to load in transaction data for a given data table
+                or connection. You can use the API to create new uploads, send files, and track the status
+    of an
+                upload.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Data Table Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-data-table-uploads-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-data-tables-api
+  name: Cube Data Tables API
+  description: >-
+    Data Tables are a generic way to organize the source dimensions, mappings, uploads,
+                and imports from an outside source into Cube (e.g. ERP connections, imported flat files,
+    spreadsheet
+                updates, employee rosters, etc).
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Data Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-data-tables-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-dimensions-api
+  name: Cube Dimensions API
+  description: >-
+    Dimensions store the organizational hierarchy for a company and outline how their data is
+                structured. All companies have top level dimensions called Account, Scenario, Department,
+    and Time. They also
+                can have additional custom top level dimensions (i.e. Product, Entity).
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Dimensions
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-dimensions-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-drilldown-api
+  name: Cube Drilldown API
+  description: The Drilldown API from Cube — 1 operation(s) for drilldown.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Drilldown
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-drilldown-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-erp-api
+  name: Cube ERP API
+  description: The ERP API from Cube — 4 operation(s) for erp.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - ERP
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-erp-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-events-api
+  name: Cube Events API
+  description: This endpoint can be used to track generic events completed by users.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-events-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-formulas-api
+  name: Cube Formulas API
+  description: >-
+    Cube uses formulas to calculate values for a dimension, based on other dimensions.
+                Examples: - Gross Margin = "Revenue" - "Cost of Goods Sold" - Net Income = "Gross Margin"
+    - "Expense"
+                You can use formula endpoints in the API to access formulas for dimensions in your company.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Formulas
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-formulas-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-integrations-api
+  name: Cube Integrations API
+  description: The Integrations API from Cube — 7 operation(s) for integrations.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-integrations-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-invitations-api
+  name: Cube Invitations API
+  description: The Invitations API from Cube — 3 operation(s) for invitations.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Invitations
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-invitations-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-library-api
+  name: Cube Library API
+  description: The Library API from Cube — 12 operation(s) for library.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Library
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-library-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-notifications-api
+  name: Cube Notifications API
+  description: The Notifications API from Cube — 2 operation(s) for notifications.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-permissions-api
+  name: Cube Permissions API
+  description: The Permissions API from Cube — 2 operation(s) for permissions.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-permissions-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-permissionsets-api
+  name: Cube permissionsets API
+  description: The permissionsets API from Cube — 2 operation(s) for permissionsets.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - permissionsets
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-permissionsets-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-planmodesessions-api
+  name: Cube PlanModeSessions API
+  description: The PlanModeSessions API from Cube — 1 operation(s) for planmodesessions.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - PlanModeSessions
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-planmodesessions-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-planning-table-api
+  name: Cube Planning Table API
+  description: The Planning Table API from Cube — 4 operation(s) for planning table.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Planning Table
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-planning-table-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-scenarios-api
+  name: Cube Scenarios API
+  description: The Scenarios API from Cube — 1 operation(s) for scenarios.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Scenarios
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-scenarios-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-tags-api
+  name: Cube Tags API
+  description: Alternative hierarchies & grouping of dimensions in Cube
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-tags-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-taskflow-api
+  name: Cube Taskflow API
+  description: The Taskflow API from Cube — 11 operation(s) for taskflow.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Taskflow
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-taskflow-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-team-api
+  name: Cube Team API
+  description: The Team API from Cube — 1 operation(s) for team.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Team
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-team-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-user-api
+  name: Cube User API
+  description: User endpoints allow for various functionality tied to users.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-user-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-usercompanies-api
+  name: Cube UserCompanies API
+  description: The UserCompanies API from Cube — 3 operation(s) for usercompanies.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - UserCompanies
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-usercompanies-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+- aid: cubesoftware:cubesoftware-workflow-api
+  name: Cube Workflow API
+  description: The Workflow API from Cube — 5 operation(s) for workflow.
+  humanURL: https://api.cubesoftware.com/docs/
+  baseURL: https://api.cubesoftware.com
+  tags:
+  - Workflow
+  properties:
+  - type: OpenAPI
+    url: openapi/cubesoftware-workflow-api-openapi.yml
+  - type: APIReference
+    url: https://api.cubesoftware.com/docs/
+  - type: Documentation
+    url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
 common:
+# --- identity / link properties ---
 - type: Website
   url: https://cubesoftware.com
+- type: DeveloperPortal
+  url: https://www.cubesoftware.com/developer-center
+- type: Documentation
+  url: https://help.cubesoftware.com/hc/en-us
+- type: APIReference
+  url: https://api.cubesoftware.com/docs/
+- type: GettingStarted
+  url: https://www.cubesoftware.com/developer-center
+- type: Support
+  url: https://help.cubesoftware.com/hc/en-us
+- type: Blog
+  url: https://www.cubesoftware.com/blog
+- type: BlogRSS
+  url: https://www.cubesoftware.com/blog/rss.xml
+- type: Pricing
+  url: https://www.cubesoftware.com/pricing
+- type: SignUp
+  url: https://www.cubesoftware.com/book-a-demo
+- type: Login
+  url: https://portal.cubesoftware.com/account/login/
+- type: TermsOfService
+  url: https://www.cubesoftware.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.cubesoftware.com/privacy-policy
+- type: Integrations
+  url: https://www.cubesoftware.com/integrations
+- type: ChangeLog
+  url: https://www.cubesoftware.com/product-updates
+- type: StatusPage
+  url: https://status.cubesoftware.com
+- type: Compliance
+  url: https://security.cubesoftware.com/
+# --- artifacts ---
+- type: Authentication
+  url: authentication/cubesoftware-authentication.yml
+- type: OAuthScopes
+  url: scopes/cubesoftware-scopes.yml
+- type: WellKnown
+  url: well-known/cubesoftware-well-known.yml
+- type: MCPServer
+  url: mcp/cubesoftware-mcp.yml
+- type: LLMsTxt
+  url: llms/cubesoftware-llms.txt
+- type: Overlay
+  url: overlays/cubesoftware-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/cubesoftware-conformance.yml
+- type: ErrorCatalog
+  url: errors/cubesoftware-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/cubesoftware-lifecycle.yml
+- type: Conventions
+  url: conventions/cubesoftware-conventions.yml
+- type: DataModel
+  url: data-model/cubesoftware-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/cubesoftware-agentic-access.yml
+- type: TrustCenter
+  url: security/cubesoftware-trust-center.yml
+- type: DomainSecurity
+  url: security/cubesoftware-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

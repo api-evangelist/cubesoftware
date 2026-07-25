@@ -1,0 +1,62 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/cubesoftware-openapi-original.yml
+format: custom
+envelope:
+  media_type: application/json
+  shape: JSON body with a descriptive message; no application/problem+json media type is declared
+note: Cube returns conventional HTTP status codes with a human-readable message body. No RFC 9457 problem+json
+  envelope is declared in the OpenAPI.
+problems:
+- status: 400
+  title: Bad Request
+  occurrences: 44
+  examples:
+  - operation: POST /action-items
+    detail: Invalid input - action item name must be unique or exceeds max length
+  - operation: PATCH /action-items/{id}
+    detail: Invalid input - action item name must be unique, exceeds max length, or position is invalid
+  - operation: GET /agents/chat/sessions
+    detail: Invalid pagination parameters
+- status: 401
+  title: Unauthorized
+  occurrences: 28
+  examples:
+  - operation: GET /action-items
+    detail: Unauthorized - authentication credentials not provided or invalid
+  - operation: GET /agents/chat/sessions
+    detail: Unauthorized
+  - operation: POST /auth/embed-token/exchange
+    detail: Invalid or expired embed token
+- status: 403
+  title: Forbidden
+  occurrences: 38
+  examples:
+  - operation: GET /action-items
+    detail: Forbidden - insufficient permissions
+  - operation: GET /agents/chat/sessions
+    detail: Permission denied
+  - operation: POST /agents/widget-builder
+    detail: Forbidden - Chat session does not belong to user
+- status: 404
+  title: Not Found
+  occurrences: 31
+  examples:
+  - operation: GET /action-items/{id}
+    detail: Action item not found or not owned by user
+  - operation: POST /canvases/widgets/{id}/render
+    detail: Widget not found
+  - operation: POST /company/workflow-executions/{workflow_execution_id}/cancel
+    detail: Workflow does not exist.
+- status: 409
+  title: Conflict
+  occurrences: 1
+  examples:
+  - operation: DELETE /dimensions/tld/{id}
+    detail: Preflight failed — cube has active work (publish lock, import blocks, or maintenance lock).
+- status: 500
+  title: Internal Server Error
+  occurrences: 1
+  examples:
+  - operation: POST /canvases/widgets/{id}/render
+    detail: Error generating screenshot

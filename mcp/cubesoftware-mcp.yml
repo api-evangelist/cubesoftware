@@ -1,0 +1,1496 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+note: No official Cube MCP server was found. Candidate tool list derived one-per-operation from the OpenAPI;
+  not a published server.
+server:
+  name: cubesoftware
+  transport: http
+tool_count: 296
+tools:
+- name: action_items_list
+  description: List action items
+  method: GET
+  path: /action-items
+  source_operation: openapi/cubesoftware-openapi-original.yml#action_items_list
+- name: action_items_create
+  description: Create an action item
+  method: POST
+  path: /action-items
+  source_operation: openapi/cubesoftware-openapi-original.yml#action_items_create
+- name: action_items_retrieve
+  description: Retrieve an action item
+  method: GET
+  path: /action-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#action_items_retrieve
+- name: action_items_partial_update
+  description: Update an action item
+  method: PATCH
+  path: /action-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#action_items_partial_update
+- name: action_items_destroy
+  description: Delete an action item
+  method: DELETE
+  path: /action-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#action_items_destroy
+- name: agents_categories_list
+  description: List agent categories.
+  method: GET
+  path: /agents/categories
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_categories_list
+- name: agents_categories_retrieve
+  description: Retrieve a single agent category by slug.
+  method: GET
+  path: /agents/categories/{slug}
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_categories_retrieve
+- name: agents_chat_messages_retrieve
+  description: List Chat Messages
+  method: GET
+  path: /agents/chat/messages
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_messages_retrieve
+- name: agents_chat_messages_create
+  description: Create Chat Message
+  method: POST
+  path: /agents/chat/messages
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_messages_create
+- name: agents_chat_messages_retrieve_2
+  description: Retrieve Chat Message
+  method: GET
+  path: /agents/chat/messages/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_messages_retrieve_2
+- name: agents_chat_sessions_list
+  description: List Chat Sessions
+  method: GET
+  path: /agents/chat/sessions
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_sessions_list
+- name: agents_chat_sessions_create
+  description: Create Chat Session
+  method: POST
+  path: /agents/chat/sessions
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_sessions_create
+- name: agents_chat_sessions_retrieve
+  description: Retrieve Chat Session
+  method: GET
+  path: /agents/chat/sessions/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_chat_sessions_retrieve
+- name: agents_credits_usage_list
+  description: List credit usage by user
+  method: GET
+  path: /agents/credits/usage
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_credits_usage_list
+- name: agents_credits_usage_retrieve
+  description: Get credit usage for a user
+  method: GET
+  path: /agents/credits/usage/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_credits_usage_retrieve
+- name: agents_credits_usage_me_retrieve
+  description: Own credit usage
+  method: GET
+  path: /agents/credits/usage/me
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_credits_usage_me_retrieve
+- name: agents_credits_usage_summary_retrieve
+  description: Credit usage summary
+  method: GET
+  path: /agents/credits/usage/summary
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_credits_usage_summary_retrieve
+- name: agents_planner_plan_mode_sessions_list
+  description: List Plan Mode Sessions
+  method: GET
+  path: /agents/planner/plan-mode-sessions
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_planner_plan_mode_sessions_list
+- name: agents_settings_retrieve
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /agents/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_settings_retrieve
+- name: agents_settings_update
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: PUT
+  path: /agents/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_settings_update
+- name: agents_settings_partial_update
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: PATCH
+  path: /agents/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_settings_partial_update
+- name: agents_widget_builder_create
+  description: Build Widget with AI
+  method: POST
+  path: /agents/widget-builder
+  source_operation: openapi/cubesoftware-openapi-original.yml#agents_widget_builder_create
+- name: attributes_retrieve
+  description: Get Company's Attributes
+  method: GET
+  path: /attributes
+  source_operation: openapi/cubesoftware-openapi-original.yml#attributes_retrieve
+- name: attributes_create
+  description: Manage Company Attributes
+  method: POST
+  path: /attributes
+  source_operation: openapi/cubesoftware-openapi-original.yml#attributes_create
+- name: auth_access_token_create
+  description: Get an Access Token
+  method: POST
+  path: /auth/access_token
+  source_operation: openapi/cubesoftware-openapi-original.yml#auth_access_token_create
+- name: auth_devices_list
+  description: List enabled MFA devices
+  method: GET
+  path: /auth/devices
+  source_operation: openapi/cubesoftware-openapi-original.yml#auth_devices_list
+- name: auth_embed_token_create
+  description: Create an embed token
+  method: POST
+  path: /auth/embed-token
+  source_operation: openapi/cubesoftware-openapi-original.yml#auth_embed_token_create
+- name: auth_embed_token_exchange_create
+  description: Exchange an embed token for an OAuth2 access token
+  method: POST
+  path: /auth/embed-token/exchange
+  source_operation: openapi/cubesoftware-openapi-original.yml#auth_embed_token_exchange_create
+- name: auth_permissions_retrieve
+  description: Retrieve a Permission Group
+  method: GET
+  path: /auth/permissions/{group_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#auth_permissions_retrieve
+- name: canvases_list
+  description: List all canvases.
+  method: GET
+  path: /canvases
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_list
+- name: canvases_create
+  description: Create a new canvas.
+  method: POST
+  path: /canvases
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_create
+- name: canvases_tabs_create
+  description: Create a new canvas tab.
+  method: POST
+  path: /canvases/{canvas_pk}/tabs
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_tabs_create
+- name: canvases_tabs_partial_update
+  description: Update specific fields of a canvas tab.
+  method: PATCH
+  path: /canvases/{canvas_pk}/tabs/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_tabs_partial_update
+- name: canvases_tabs_destroy
+  description: Delete a canvas tab.
+  method: DELETE
+  path: /canvases/{canvas_pk}/tabs/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_tabs_destroy
+- name: canvases_tabs_layout_update
+  description: Associate widgets with a canvas tab.
+  method: PUT
+  path: /canvases/{canvas_pk}/tabs/{id}/layout
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_tabs_layout_update
+- name: canvases_retrieve
+  description: Retrieve a specific canvas
+  method: GET
+  path: /canvases/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_retrieve
+- name: canvases_partial_update
+  description: Partially update a canvas by ID.
+  method: PATCH
+  path: /canvases/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_partial_update
+- name: canvases_destroy
+  description: Delete a canvas.
+  method: DELETE
+  path: /canvases/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_destroy
+- name: canvases_duplicate_create
+  description: Duplicate a canvas.
+  method: POST
+  path: /canvases/{id}/duplicate
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_duplicate_create
+- name: canvases_like_create
+  description: Like a canvas
+  method: POST
+  path: /canvases/{id}/like
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_like_create
+- name: canvases_like_destroy
+  description: Undo a canvas like.
+  method: DELETE
+  path: /canvases/{id}/like
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_like_destroy
+- name: canvases_widgets_list
+  description: List all widgets.
+  method: GET
+  path: /canvases/widgets
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_list
+- name: canvases_widgets_create
+  description: Create a new widget.
+  method: POST
+  path: /canvases/widgets
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_create
+- name: canvases_widgets_retrieve
+  description: Retrieve details of a specific widget.
+  method: GET
+  path: /canvases/widgets/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_retrieve
+- name: canvases_widgets_partial_update
+  description: Update specific fields of a widget.
+  method: PATCH
+  path: /canvases/widgets/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_partial_update
+- name: canvases_widgets_destroy
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: DELETE
+  path: /canvases/widgets/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_destroy
+- name: canvases_widgets_render_create
+  description: Generate a screenshot of a widget component.
+  method: POST
+  path: /canvases/widgets/{id}/render
+  source_operation: openapi/cubesoftware-openapi-original.yml#canvases_widgets_render_create
+- name: comments_list
+  description: List comments
+  method: GET
+  path: /comments/{target_app}/{target_model}
+  source_operation: openapi/cubesoftware-openapi-original.yml#comments_list
+- name: comments_create
+  description: Create comment
+  method: POST
+  path: /comments/{target_app}/{target_model}
+  source_operation: openapi/cubesoftware-openapi-original.yml#comments_create
+- name: comments_retrieve
+  description: Retrieve comment
+  method: GET
+  path: /comments/{target_app}/{target_model}/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#comments_retrieve
+- name: comments_partial_update
+  description: Update comment
+  method: PATCH
+  path: /comments/{target_app}/{target_model}/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#comments_partial_update
+- name: comments_destroy
+  description: Destroy comment
+  method: DELETE
+  path: /comments/{target_app}/{target_model}/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#comments_destroy
+- name: company_groups_list
+  description: List a company's groups
+  method: GET
+  path: /company/groups
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_list
+- name: company_groups_create
+  description: Create a group
+  method: POST
+  path: /company/groups
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_create
+- name: company_groups_subcube_access_rules_list
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /company/groups/{company_group_pk}/subcube-access-rules
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_list
+- name: company_groups_subcube_access_rules_create
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: POST
+  path: /company/groups/{company_group_pk}/subcube-access-rules
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_create
+- name: company_groups_subcube_access_rules_retrieve
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /company/groups/{company_group_pk}/subcube-access-rules/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_retrieve
+- name: company_groups_subcube_access_rules_update
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: PUT
+  path: /company/groups/{company_group_pk}/subcube-access-rules/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_update
+- name: company_groups_subcube_access_rules_partial_update
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: PATCH
+  path: /company/groups/{company_group_pk}/subcube-access-rules/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_partial_update
+- name: company_groups_subcube_access_rules_destroy
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: DELETE
+  path: /company/groups/{company_group_pk}/subcube-access-rules/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_subcube_access_rules_destroy
+- name: company_groups_retrieve
+  description: Retrieve a group for the company by its group ID
+  method: GET
+  path: /company/groups/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_retrieve
+- name: company_groups_update
+  description: Update a group
+  method: PUT
+  path: /company/groups/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_update
+- name: company_groups_partial_update
+  description: Update a subset of a group's fields
+  method: PATCH
+  path: /company/groups/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_partial_update
+- name: company_groups_destroy
+  description: Delete a group
+  method: DELETE
+  path: /company/groups/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_groups_destroy
+- name: company_integrations_list
+  description: List all company integrations
+  method: GET
+  path: /company/integrations
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_integrations_list
+- name: company_integrations_create
+  description: Add a new integration to a company
+  method: POST
+  path: /company/integrations
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_integrations_create
+- name: company_integrations_retrieve
+  description: Retrieve a company integration by ID
+  method: GET
+  path: /company/integrations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_integrations_retrieve
+- name: company_integrations_partial_update
+  description: Update a companies integration settings
+  method: PATCH
+  path: /company/integrations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_integrations_partial_update
+- name: company_integrations_destroy
+  description: Remove an integration from a company
+  method: DELETE
+  path: /company/integrations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_integrations_destroy
+- name: company_invitations_list
+  description: List invitations
+  method: GET
+  path: /company/invitations
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_list
+- name: company_invitations_create
+  description: Create a new invitation
+  method: POST
+  path: /company/invitations
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_create
+- name: company_invitations_retrieve
+  description: Retrieve an invitation
+  method: GET
+  path: /company/invitations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_retrieve
+- name: company_invitations_update
+  description: Update an invitation
+  method: PUT
+  path: /company/invitations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_update
+- name: company_invitations_partial_update
+  description: Partially update an invitation
+  method: PATCH
+  path: /company/invitations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_partial_update
+- name: company_invitations_destroy
+  description: Deletes a invitation completely
+  method: DELETE
+  path: /company/invitations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_destroy
+- name: company_invitations_resend_update
+  description: Resend an invitation
+  method: PUT
+  path: /company/invitations/{id}/resend
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_invitations_resend_update
+- name: company_settings_retrieve
+  description: Get Company Settings
+  method: GET
+  path: /company/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_settings_retrieve
+- name: company_settings_create
+  description: Update Company Settings
+  method: POST
+  path: /company/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_settings_create
+- name: company_team_list
+  description: Get all company team members
+  method: GET
+  path: /company/team
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_team_list
+- name: company_team_devices_list
+  description: List MFA devices for all team members
+  method: GET
+  path: /company/team/devices
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_team_devices_list
+- name: company_users_list
+  description: List User Company relationships
+  method: GET
+  path: /company/users
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_list
+- name: company_users_retrieve
+  description: Retrieve a user for a company
+  method: GET
+  path: /company/users/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_retrieve
+- name: company_users_update
+  description: Update a user company
+  method: PUT
+  path: /company/users/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_update
+- name: company_users_partial_update
+  description: Partially update a user company
+  method: PATCH
+  path: /company/users/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_partial_update
+- name: company_users_destroy
+  description: Mark a user company as deactivated
+  method: DELETE
+  path: /company/users/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_destroy
+- name: company_users_me_retrieve
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /company/users/me
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_users_me_retrieve
+- name: company_workflow_executions_list
+  description: List workflow executions.
+  method: GET
+  path: /company/workflow-executions
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_workflow_executions_list
+- name: company_workflow_executions_cancel_create
+  description: Will cancel a currently in-progress workflow.
+  method: POST
+  path: /company/workflow-executions/{workflow_execution_id}/cancel
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_workflow_executions_cancel_create
+- name: company_workflow_executions_clear_create
+  description: Will mark a workflow as deleted.
+  method: POST
+  path: /company/workflow-executions/{workflow_execution_id}/clear
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_workflow_executions_clear_create
+- name: company_workflow_types_list
+  description: List registered workflow types (read-only catalog).
+  method: GET
+  path: /company/workflow-types
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_workflow_types_list
+- name: company_workflow_types_retrieve
+  description: Get resolved workflow shape for a registered type (read-only catalog).
+  method: GET
+  path: /company/workflow-types/{type_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#company_workflow_types_retrieve
+- name: compliance_customer_event_create
+  description: compliance_customer_event_create
+  method: POST
+  path: /compliance/customer-event
+  source_operation: openapi/cubesoftware-openapi-original.yml#compliance_customer_event_create
+- name: connection_deactivate_create
+  description: Deactivate a connection
+  method: POST
+  path: /connection/{connection_id}/deactivate
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_deactivate_create
+- name: connection_import_settings_retrieve
+  description: Get Import Settings for Connection
+  method: GET
+  path: /connection/{connection_id}/import/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_import_settings_retrieve
+- name: connection_resync_create
+  description: Resync a Connection
+  method: POST
+  path: /connection/{connection_id}/resync
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_resync_create
+- name: connection_salesforce_soql_retrieve
+  description: Salesforce SOQL
+  method: GET
+  path: /connection/{connection_id}/salesforce/soql
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_salesforce_soql_retrieve
+- name: connection_source_file_storage_retrieve
+  description: Get Source Files
+  method: GET
+  path: /connection/{connection_id}/source-file-storage
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_source_file_storage_retrieve
+- name: connection_source_file_storage_partial_update
+  description: Edit Source File
+  method: PATCH
+  path: /connection/{connection_id}/source-file-storage
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_source_file_storage_partial_update
+- name: connection_source_file_storage_delete_create
+  description: Delete Batch of Source Files
+  method: POST
+  path: /connection/{connection_id}/source-file-storage/delete
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_source_file_storage_delete_create
+- name: connection_source_file_storage_download_create
+  description: Generate Download URL for Source File
+  method: POST
+  path: /connection/{connection_id}/source-file-storage/download
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_source_file_storage_download_create
+- name: connection_source_file_storage_upload_urls_create
+  description: Generate Upload URLs for Source Files
+  method: POST
+  path: /connection/{connection_id}/source-file-storage/upload-urls
+  source_operation: openapi/cubesoftware-openapi-original.yml#connection_source_file_storage_upload_urls_create
+- name: retrieve
+  description: Get all Connections
+  method: GET
+  path: /connections
+  source_operation: openapi/cubesoftware-openapi-original.yml#retrieve
+- name: retrieve_2
+  description: Get a Connection
+  method: GET
+  path: /connections/{connection_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#retrieve_2
+- name: ImportDataCreate
+  description: Start a Data Import
+  method: POST
+  path: /connections/{connection_id}/imports
+  source_operation: openapi/cubesoftware-openapi-original.yml#ImportDataCreate
+- name: ImportDataCancel
+  description: Cancel a Data Import
+  method: PUT
+  path: /connections/{connection_id}/imports/{import_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#ImportDataCancel
+- name: content_types_list
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /content-types
+  source_operation: openapi/cubesoftware-openapi-original.yml#content_types_list
+- name: content_types_retrieve
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /content-types/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#content_types_retrieve
+- name: cube_list
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: GET
+  path: /cube
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_list
+- name: cube_create
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: POST
+  path: /cube
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_create
+- name: cube_retrieve
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: GET
+  path: /cube/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_retrieve
+- name: cube_update
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: PUT
+  path: /cube/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_update
+- name: cube_partial_update
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: PATCH
+  path: /cube/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_partial_update
+- name: cube_destroy
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: DELETE
+  path: /cube/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_destroy
+- name: cube_analyze_create
+  description: Analyze Matrix For Dimensions
+  method: POST
+  path: /cube/analyze
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_analyze_create
+- name: cube_drilldown_retrieve
+  description: Drilldown
+  method: GET
+  path: /cube/drilldown
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_drilldown_retrieve
+- name: cube_export_list
+  description: List all exports
+  method: GET
+  path: /cube/export
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_list
+- name: cube_export_create
+  description: Begin an export
+  method: POST
+  path: /cube/export
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_create
+- name: cube_export_notification_stale_data_retrieve
+  description: Get stale data notification details
+  method: GET
+  path: /cube/export/notification/stale-data
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_notification_stale_data_retrieve
+- name: cube_export_notification_stale_data_update
+  description: Set stale data notification details
+  method: PUT
+  path: /cube/export/notification/stale-data
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_notification_stale_data_update
+- name: cube_export_schedule_list
+  description: Retrieve a BI data export schedule
+  method: GET
+  path: /cube/export/schedule
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_schedule_list
+- name: cube_export_schedule_create
+  description: Create a BI data export schedule
+  method: POST
+  path: /cube/export/schedule
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_schedule_create
+- name: cube_export_schedule_partial_update
+  description: Update a BI data export schedule
+  method: PATCH
+  path: /cube/export/schedule/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_schedule_partial_update
+- name: cube_export_schedule_destroy
+  description: Delete a BI data export schedule
+  method: DELETE
+  path: /cube/export/schedule/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_export_schedule_destroy
+- name: cube_pivot_create
+  description: Get Cube Values
+  method: POST
+  path: /cube/pivot
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_pivot_create
+- name: cube_pivot_sources_create
+  description: Get Cube Value Sources
+  method: POST
+  path: /cube/pivot/sources
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_pivot_sources_create
+- name: cube_update_create
+  description: Update Cube Values
+  method: POST
+  path: /cube/update
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_update_create
+- name: cube_update_batch_create
+  description: Update Cube Values (batch)
+  method: POST
+  path: /cube/update_batch
+  source_operation: openapi/cubesoftware-openapi-original.yml#cube_update_batch_create
+- name: currencies_company_list
+  description: List a company's enabled currencies
+  method: GET
+  path: /currencies/company
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_company_list
+- name: currencies_company_bulk_update_update
+  description: Bulk update the company's currencies
+  method: PUT
+  path: /currencies/company/bulk_update
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_company_bulk_update_update
+- name: currencies_rates_list
+  description: List currency conversion rates
+  method: GET
+  path: /currencies/rates
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_list
+- name: currencies_rates_create
+  description: Create a currency conversion rates
+  method: POST
+  path: /currencies/rates
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_create
+- name: currencies_rates_retrieve
+  description: Retrieve a currency conversion rate by ID
+  method: GET
+  path: /currencies/rates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_retrieve
+- name: currencies_rates_update
+  description: Completely update a currency conversion rate by ID
+  method: PUT
+  path: /currencies/rates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_update
+- name: currencies_rates_partial_update
+  description: Update specific fields within a currency conversion rate by ID
+  method: PATCH
+  path: /currencies/rates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_partial_update
+- name: currencies_rates_destroy
+  description: Delete a currency conversion rate by ID
+  method: DELETE
+  path: /currencies/rates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_destroy
+- name: currencies_rates_lock_partial_update
+  description: Lock's a ConversionRate from being editable.
+  method: PATCH
+  path: /currencies/rates/{id}/lock
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_lock_partial_update
+- name: currencies_rates_unlock_partial_update
+  description: UnLock's a ConversionRate from being not editable.
+  method: PATCH
+  path: /currencies/rates/{id}/unlock
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_unlock_partial_update
+- name: currencies_rates_bulk_update_update
+  description: Bulk Update Currency Conversion Rates
+  method: PUT
+  path: /currencies/rates/bulk_update
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_bulk_update_update
+- name: currencies_rates_dimension_mappings_list
+  description: List all dimension conversion rate mappings
+  method: GET
+  path: /currencies/rates/dimension-mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_dimension_mappings_list
+- name: currencies_rates_dimension_mappings_create
+  description: Create dimension conversion rate mapping
+  method: POST
+  path: /currencies/rates/dimension-mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_dimension_mappings_create
+- name: currencies_rates_dimension_mappings_update
+  description: Update dimension conversion rate mapping
+  method: PUT
+  path: /currencies/rates/dimension-mappings/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_dimension_mappings_update
+- name: currencies_rates_dimension_mappings_destroy
+  description: Delete a Dimension Conversion Rate Mapping
+  method: DELETE
+  path: /currencies/rates/dimension-mappings/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_dimension_mappings_destroy
+- name: currencies_rates_export_retrieve
+  description: Export Currency Conversion Rates
+  method: GET
+  path: /currencies/rates/export
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_export_retrieve
+- name: currencies_rates_types_list
+  description: Lists exchange rate types that exist for a given company
+  method: GET
+  path: /currencies/rates/types
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_rates_types_list
+- name: currencies_system_currencies_list
+  description: View Supported Currencies
+  method: GET
+  path: /currencies/system-currencies
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_list
+- name: currencies_system_currencies_create
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: POST
+  path: /currencies/system-currencies
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_create
+- name: currencies_system_currencies_retrieve
+  description: Retrieve A Currency
+  method: GET
+  path: /currencies/system-currencies/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_retrieve
+- name: currencies_system_currencies_update
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: PUT
+  path: /currencies/system-currencies/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_update
+- name: currencies_system_currencies_partial_update
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: PATCH
+  path: /currencies/system-currencies/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_partial_update
+- name: currencies_system_currencies_destroy
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: DELETE
+  path: /currencies/system-currencies/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#currencies_system_currencies_destroy
+- name: dashboard_list
+  description: List all dashboards
+  method: GET
+  path: /dashboard
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_list
+- name: dashboard_create
+  description: Create a dashboard
+  method: POST
+  path: /dashboard
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_create
+- name: dashboard_embed_retrieve
+  description: Retrieve Embedded URL for the requested Cube Dashboard
+  method: GET
+  path: /dashboard/{dashboard_id}/embed
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_embed_retrieve
+- name: dashboard_retrieve
+  description: Retrieve a dashboard by ID
+  method: GET
+  path: /dashboard/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_retrieve
+- name: dashboard_partial_update
+  description: Update a dashboard by ID
+  method: PATCH
+  path: /dashboard/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_partial_update
+- name: dashboard_destroy
+  description: dashboard_destroy
+  method: DELETE
+  path: /dashboard/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_destroy
+- name: dashboard_default_partial_update
+  description: Set the default dashboard
+  method: PATCH
+  path: /dashboard/{id}/default
+  source_operation: openapi/cubesoftware-openapi-original.yml#dashboard_default_partial_update
+- name: list
+  description: Retrieve Company Data Tables
+  method: GET
+  path: /data-tables
+  source_operation: openapi/cubesoftware-openapi-original.yml#list
+- name: retrieve_3
+  description: Retrieve a Data Table
+  method: GET
+  path: /data-tables/{data_table_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#retrieve_3
+- name: data_tables_create
+  description: Update a Data Table
+  method: POST
+  path: /data-tables/{data_table_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_create
+- name: data_tables_partial_update
+  description: This class exists to have a standard rate limit across all authenticated API end
+  method: PATCH
+  path: /data-tables/{data_table_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_partial_update
+- name: data_tables_dimensions_retrieve
+  description: Retrieve Data Table Dimensions
+  method: GET
+  path: /data-tables/{data_table_id}/dimensions
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_dimensions_retrieve
+- name: data_tables_dimensions_create
+  description: Update Data Table Dimensions
+  method: POST
+  path: /data-tables/{data_table_id}/dimensions
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_dimensions_create
+- name: data_tables_dimensions_mappings_rules_list
+  description: Retrieve AutoMappingRules for a Data Table
+  method: GET
+  path: /data-tables/{data_table_id}/dimensions/mappings/rules
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_dimensions_mappings_rules_list
+- name: data_tables_dimensions_mappings_rules_create
+  description: Create and Modify AutoMappingRules for a Data Table
+  method: POST
+  path: /data-tables/{data_table_id}/dimensions/mappings/rules
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_dimensions_mappings_rules_create
+- name: data_tables_mappings_retrieve
+  description: Retrieve Mappings for a Data Table
+  method: GET
+  path: /data-tables/{data_table_id}/mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_mappings_retrieve
+- name: data_tables_mappings_create
+  description: Update Mappings for a Data Table
+  method: POST
+  path: /data-tables/{data_table_id}/mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_mappings_create
+- name: data_tables_schedule_import_create
+  description: Schedule and Update a Data Table Import
+  method: POST
+  path: /data-tables/{data_table_id}/schedule-import
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_schedule_import_create
+- name: data_tables_schedule_import_destroy
+  description: Delete the Schedule for a Data Table Import
+  method: DELETE
+  path: /data-tables/{data_table_id}/schedule-import
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_schedule_import_destroy
+- name: data_tables_transaction_events_list
+  description: List transaction events
+  method: GET
+  path: /data-tables/{data_table_id}/transaction-events
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_transaction_events_list
+- name: data_tables_transactions_uploads_download_retrieve
+  description: Queue transaction download
+  method: GET
+  path: /data-tables/{data_table_id}/transactions/uploads/{upload_id}/download
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_transactions_uploads_download_retrieve
+- name: data_tables_transactions_uploads_complete_create
+  description: Complete transaction file upload and trigger import workflow
+  method: POST
+  path: /data-tables/{data_table_id}/transactions/uploads/complete
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_transactions_uploads_complete_create
+- name: data_tables_transactions_uploads_presign_create
+  description: Generate presigned S3 URL for transaction file upload
+  method: POST
+  path: /data-tables/{data_table_id}/transactions/uploads/presign
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_transactions_uploads_presign_create
+- name: data_tables_upload_retrieve
+  description: Retrieve a Data Table Upload
+  method: GET
+  path: /data-tables/{data_table_id}/upload
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_upload_retrieve
+- name: data_tables_upload_create
+  description: Create a Data Table Upload
+  method: POST
+  path: /data-tables/{data_table_id}/upload
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_upload_create
+- name: data_tables_upload_update
+  description: Modify a Data Table Upload
+  method: PUT
+  path: /data-tables/{data_table_id}/upload/{data_table_upload_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_upload_update
+- name: data_tables_upload_import_create
+  description: Start Importing Uploaded Data
+  method: POST
+  path: /data-tables/{data_table_id}/upload/{data_table_upload_id}/import
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_upload_import_create
+- name: data_tables_upload_part_create
+  description: Upload Part of Data Table Upload
+  method: POST
+  path: /data-tables/{data_table_id}/upload/{data_table_upload_id}/part
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_upload_part_create
+- name: data_tables_scheduled_imports_retrieve
+  description: Retrieve Scheduled Data Table Imports
+  method: GET
+  path: /data-tables/scheduled-imports
+  source_operation: openapi/cubesoftware-openapi-original.yml#data_tables_scheduled_imports_retrieve
+- name: DimensionList
+  description: Get All Dimensions
+  method: GET
+  path: /dimensions
+  source_operation: openapi/cubesoftware-openapi-original.yml#DimensionList
+- name: DimensionCreate
+  description: Create a Dimension
+  method: POST
+  path: /dimensions
+  source_operation: openapi/cubesoftware-openapi-original.yml#DimensionCreate
+- name: DimensionRetrieve
+  description: Get Dimension by ID
+  method: GET
+  path: /dimensions/{dimension_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#DimensionRetrieve
+- name: DimensionUpdate
+  description: Update Dimension By ID
+  method: POST
+  path: /dimensions/{dimension_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#DimensionUpdate
+- name: dimensions_duplicate_create
+  description: Duplicate a Dimension
+  method: POST
+  path: /dimensions/{dimension_id}/duplicate
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_duplicate_create
+- name: dimensions_formulas_retrieve
+  description: Formulas by Dimension
+  method: GET
+  path: /dimensions/{dimension_id}/formulas
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_formulas_retrieve
+- name: dimensions_mappings_retrieve_2
+  description: Get Dimension Mappings for Source Data Tables
+  method: GET
+  path: /dimensions/{dimension_id}/mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_mappings_retrieve_2
+- name: dimensions_options_retrieve
+  description: Get Dimension Options
+  method: GET
+  path: /dimensions/{dimension_id}/options
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_options_retrieve
+- name: dimensions_status_create
+  description: Enable or Disable a Dimension
+  method: POST
+  path: /dimensions/{dimension_id}/status
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_status_create
+- name: dimensions_bulk_create
+  description: Bulk Update Dimensions
+  method: POST
+  path: /dimensions/bulk
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_bulk_create
+- name: dimensions_deepest_retrieve
+  description: Get Deepest Dimensions
+  method: GET
+  path: /dimensions/deepest
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_deepest_retrieve
+- name: dimensions_download_list
+  description: Download Dimensions Excel File
+  method: GET
+  path: /dimensions/download
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_download_list
+- name: dimensions_mappings_retrieve
+  description: Get all Dimension Mappings for Source Data Tables
+  method: GET
+  path: /dimensions/mappings
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_mappings_retrieve
+- name: dimensions_merge_retrieve
+  description: List previous merge scenarios
+  method: GET
+  path: /dimensions/merge
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_merge_retrieve
+- name: dimensions_merge_create
+  description: Merge one or more Scenario to a destination Scenario based on Time dimensions
+  method: POST
+  path: /dimensions/merge
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_merge_create
+- name: dimensions_order_create
+  description: Reorder Dimensions
+  method: POST
+  path: /dimensions/order
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_order_create
+- name: dimensions_scenarios_forecast_create
+  description: Generate a time series forecast of a Scenario
+  method: POST
+  path: /dimensions/scenarios/forecast
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_scenarios_forecast_create
+- name: dimensions_scenarios_variance_analysis_create
+  description: This class exists to have a standard rate limit across all authenticated API end
+  method: POST
+  path: /dimensions/scenarios/variance-analysis
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_scenarios_variance_analysis_create
+- name: dimensions_scenarios_variance_analysis_summary_create
+  description: This class exists to have a standard rate limit across all authenticated API end
+  method: POST
+  path: /dimensions/scenarios/variance-analysis/summary
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_scenarios_variance_analysis_summary_create
+- name: dimensions_time_create
+  description: Create Time Dimensions
+  method: POST
+  path: /dimensions/time
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_time_create
+- name: dimensions_time_translate_create
+  description: Translate Relative Dates
+  method: POST
+  path: /dimensions/time/translate
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_time_translate_create
+- name: dimensions_tld_update
+  description: Rename a custom cube TLD
+  method: PUT
+  path: /dimensions/tld/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_tld_update
+- name: dimensions_tld_destroy
+  description: Delete a custom cube TLD
+  method: DELETE
+  path: /dimensions/tld/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_tld_destroy
+- name: dimensions_tree_retrieve
+  description: Get Dimensions Tree
+  method: GET
+  path: /dimensions/tree
+  source_operation: openapi/cubesoftware-openapi-original.yml#dimensions_tree_retrieve
+- name: folders_list
+  description: List folders
+  method: GET
+  path: /folders
+  source_operation: openapi/cubesoftware-openapi-original.yml#folders_list
+- name: folders_create
+  description: Create a folder
+  method: POST
+  path: /folders
+  source_operation: openapi/cubesoftware-openapi-original.yml#folders_create
+- name: folders_retrieve
+  description: Retrieve a folder
+  method: GET
+  path: /folders/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#folders_retrieve
+- name: folders_partial_update
+  description: Update a folder
+  method: PATCH
+  path: /folders/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#folders_partial_update
+- name: folders_destroy
+  description: Delete a folder
+  method: DELETE
+  path: /folders/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#folders_destroy
+- name: formulas_retrieve
+  description: Retrieve Formulas
+  method: GET
+  path: /formulas
+  source_operation: openapi/cubesoftware-openapi-original.yml#formulas_retrieve
+- name: formulas_recalculate_create
+  description: Recalculate Formula
+  method: POST
+  path: /formulas/{formula_id}/recalculate
+  source_operation: openapi/cubesoftware-openapi-original.yml#formulas_recalculate_create
+- name: governance_audit_trail_list
+  description: Audit Trail Events
+  method: GET
+  path: /governance/audit-trail
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_audit_trail_list
+- name: governance_audit_trail_groups_retrieve
+  description: Audit trail event groups
+  method: GET
+  path: /governance/audit-trail/groups
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_audit_trail_groups_retrieve
+- name: governance_audit_trail_types_retrieve
+  description: Audit Trail Event Types
+  method: GET
+  path: /governance/audit-trail/types
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_audit_trail_types_retrieve
+- name: governance_change_retrieve
+  description: Retrieve an Audit Trail Event
+  method: GET
+  path: /governance/change/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_change_retrieve
+- name: governance_change_revert_create
+  description: Reverts an Audit Trail Event
+  method: POST
+  path: /governance/change/{id}/revert
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_change_revert_create
+- name: governance_change_values_retrieve
+  description: List Audit Trail Event Changed Values
+  method: GET
+  path: /governance/change/{id}/values
+  source_operation: openapi/cubesoftware-openapi-original.yml#governance_change_values_retrieve
+- name: ImportGetList
+  description: Get Import History
+  method: GET
+  path: /imports
+  source_operation: openapi/cubesoftware-openapi-original.yml#ImportGetList
+- name: integrations_list
+  description: List all integrations
+  method: GET
+  path: /integrations
+  source_operation: openapi/cubesoftware-openapi-original.yml#integrations_list
+- name: integrations_retrieve
+  description: Retrieve an integration by ID
+  method: GET
+  path: /integrations/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#integrations_retrieve
+- name: integrations_merge_link_complete_create
+  description: 'Shared setup for Merge Link endpoints: permission check, integration validation.'
+  method: POST
+  path: /integrations/merge/link-complete
+  source_operation: openapi/cubesoftware-openapi-original.yml#integrations_merge_link_complete_create
+- name: integrations_merge_link_token_create
+  description: 'Shared setup for Merge Link endpoints: permission check, integration validation.'
+  method: POST
+  path: /integrations/merge/link-token
+  source_operation: openapi/cubesoftware-openapi-original.yml#integrations_merge_link_token_create
+- name: integrations_merge_webhook_create
+  description: 'Handle an inbound Merge webhook POST.
+
+
+    Validates the payload, deduplicates by si'
+  method: POST
+  path: /integrations/merge/webhook
+  source_operation: openapi/cubesoftware-openapi-original.yml#integrations_merge_webhook_create
+- name: library_list
+  description: 'Read-only unified listing of Library entries: folders, templates, and files. Eac'
+  method: GET
+  path: /library
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_list
+- name: library_items_list
+  description: List library items
+  method: GET
+  path: /library-items
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_items_list
+- name: library_items_create
+  description: Create a library item
+  method: POST
+  path: /library-items
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_items_create
+- name: library_items_retrieve
+  description: Retrieve a library item
+  method: GET
+  path: /library-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_items_retrieve
+- name: library_items_partial_update
+  description: Update a library item
+  method: PATCH
+  path: /library-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_items_partial_update
+- name: library_items_destroy
+  description: Delete a library item
+  method: DELETE
+  path: /library-items/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_items_destroy
+- name: library_owners_list
+  description: Distinct creators of Library entries visible to the requester. Backs the Library
+  method: GET
+  path: /library/owners
+  source_operation: openapi/cubesoftware-openapi-original.yml#library_owners_list
+- name: notification_schedules_retrieve
+  description: Retrieve notification schedule for a target
+  method: GET
+  path: /notification-schedules/{target_app}/{target_model}/{target_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#notification_schedules_retrieve
+- name: notification_schedules_update
+  description: Replace notification schedule config for a target
+  method: PUT
+  path: /notification-schedules/{target_app}/{target_model}/{target_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#notification_schedules_update
+- name: notification_subscriptions_retrieve
+  description: Retrieve notification subscriptions for a target
+  method: GET
+  path: /notification-subscriptions/{target_app}/{target_model}/{target_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#notification_subscriptions_retrieve
+- name: notification_subscriptions_update
+  description: Replace notification subscriptions for a target
+  method: PUT
+  path: /notification-subscriptions/{target_app}/{target_model}/{target_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#notification_subscriptions_update
+- name: permissions_list
+  description: List Permissions
+  method: GET
+  path: /permissions
+  source_operation: openapi/cubesoftware-openapi-original.yml#permissions_list
+- name: permissions_retrieve
+  description: Get a Permission by ID
+  method: GET
+  path: /permissions/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#permissions_retrieve
+- name: permissionsets_list
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /permissionsets
+  source_operation: openapi/cubesoftware-openapi-original.yml#permissionsets_list
+- name: permissionsets_retrieve
+  description: Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).
+  method: GET
+  path: /permissionsets/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#permissionsets_retrieve
+- name: processes_list
+  description: List workflows
+  method: GET
+  path: /processes
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_list
+- name: processes_create
+  description: Create a workflow
+  method: POST
+  path: /processes
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_create
+- name: processes_retrieve
+  description: Retrieve a workflow
+  method: GET
+  path: /processes/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_retrieve
+- name: processes_partial_update
+  description: Update a workflow (PATCH)
+  method: PATCH
+  path: /processes/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_partial_update
+- name: processes_destroy
+  description: Delete a workflow
+  method: DELETE
+  path: /processes/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_destroy
+- name: processes_duplicate_create
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: POST
+  path: /processes/{id}/duplicate
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_duplicate_create
+- name: processes_remind_now_create
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: POST
+  path: /processes/{id}/remind-now
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_remind_now_create
+- name: processes_tasks_remind_create
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: POST
+  path: /processes/{id}/tasks/{task_id}/remind
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_tasks_remind_create
+- name: processes_tasks_export_retrieve
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: GET
+  path: /processes/{id}/tasks/export
+  source_operation: openapi/cubesoftware-openapi-original.yml#processes_tasks_export_retrieve
+- name: ranges_list
+  description: List all cube value ranges
+  method: GET
+  path: /ranges
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_list
+- name: ranges_create
+  description: Create a cube value range
+  method: POST
+  path: /ranges
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_create
+- name: ranges_retrieve
+  description: Retrieve a cube value range (A1 notation headers)
+  method: GET
+  path: /ranges/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_retrieve
+- name: ranges_update
+  description: Update a cube value range
+  method: PUT
+  path: /ranges/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_update
+- name: ranges_partial_update
+  description: Partially update a cube value range
+  method: PATCH
+  path: /ranges/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_partial_update
+- name: ranges_destroy
+  description: Delete a cube value range
+  method: DELETE
+  path: /ranges/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_destroy
+- name: ranges_a1_retrieve
+  description: Retrieve a cube value range with A1 headers
+  method: GET
+  path: /ranges/{id}/a1
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_a1_retrieve
+- name: ranges_dimensions_retrieve
+  description: Retrieve a cube value range with structured headers
+  method: GET
+  path: /ranges/{id}/dimensions
+  source_operation: openapi/cubesoftware-openapi-original.yml#ranges_dimensions_retrieve
+- name: tables_list
+  description: List all planning tables
+  method: GET
+  path: /tables
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_list
+- name: tables_create
+  description: Create a planning table
+  method: POST
+  path: /tables
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_create
+- name: tables_retrieve
+  description: Retrieve a planning table
+  method: GET
+  path: /tables/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_retrieve
+- name: tables_partial_update
+  description: Update a planning table
+  method: PATCH
+  path: /tables/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_partial_update
+- name: tables_destroy
+  description: Delete a planning table
+  method: DELETE
+  path: /tables/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_destroy
+- name: tables_datasets_list
+  description: Get planning table datasets
+  method: GET
+  path: /tables/{table_pk}/datasets
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_datasets_list
+- name: tables_datasets_update
+  description: 'Table-anchored nested resource for a Planning Table''s datasets.
+
+
+    A dataset is ne'
+  method: PUT
+  path: /tables/{table_pk}/datasets
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_datasets_update
+- name: tables_compute_calculated_columns_create
+  description: Compute calculated columns
+  method: POST
+  path: /tables/compute-calculated-columns
+  source_operation: openapi/cubesoftware-openapi-original.yml#tables_compute_calculated_columns_create
+- name: TagList
+  description: Get All Tags
+  method: GET
+  path: /tags
+  source_operation: openapi/cubesoftware-openapi-original.yml#TagList
+- name: TagCreate
+  description: Create a New Tag
+  method: POST
+  path: /tags
+  source_operation: openapi/cubesoftware-openapi-original.yml#TagCreate
+- name: TagRetrieve
+  description: Get a Specific Tag
+  method: GET
+  path: /tags/{tag_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#TagRetrieve
+- name: TagUpdate
+  description: Update a Specific Tag
+  method: POST
+  path: /tags/{tag_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#TagUpdate
+- name: tags_recalculate_create
+  description: Recalculate a Specific Tag
+  method: POST
+  path: /tags/{tag_id}/recalculate
+  source_operation: openapi/cubesoftware-openapi-original.yml#tags_recalculate_create
+- name: tasks_list
+  description: List workflows tasks
+  method: GET
+  path: /tasks
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_list
+- name: tasks_create
+  description: Create a task
+  method: POST
+  path: /tasks
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_create
+- name: tasks_retrieve
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: GET
+  path: /tasks/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_retrieve
+- name: tasks_update
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: PUT
+  path: /tasks/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_update
+- name: tasks_partial_update
+  description: Update a task
+  method: PATCH
+  path: /tasks/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_partial_update
+- name: tasks_destroy
+  description: This is a shortcut class that will include all 6 resourceful actions part of the
+  method: DELETE
+  path: /tasks/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_destroy
+- name: tasks_bulk_create
+  description: Bulk create and update Tasks
+  method: POST
+  path: /tasks/bulk
+  source_operation: openapi/cubesoftware-openapi-original.yml#tasks_bulk_create
+- name: templates_list
+  description: List all templates.
+  method: GET
+  path: /templates
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_list
+- name: templates_create
+  description: Create a template.
+  method: POST
+  path: /templates
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_create
+- name: templates_retrieve
+  description: Retrieve a specific template.
+  method: GET
+  path: /templates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_retrieve
+- name: templates_update
+  description: Update a template.
+  method: PUT
+  path: /templates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_update
+- name: templates_partial_update
+  description: Partially update a template.
+  method: PATCH
+  path: /templates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_partial_update
+- name: templates_destroy
+  description: Delete a template.
+  method: DELETE
+  path: /templates/{id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_destroy
+- name: templates_images_presign_create
+  description: Request a URL to upload a template image.
+  method: POST
+  path: /templates/{id}/images/presign
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_images_presign_create
+- name: templates_data_update_create
+  description: Atomic Template Update
+  method: POST
+  path: /templates/data/update
+  source_operation: openapi/cubesoftware-openapi-original.yml#templates_data_update_create
+- name: FolderList
+  description: Get All Template Folders
+  method: GET
+  path: /templates/folders
+  source_operation: openapi/cubesoftware-openapi-original.yml#FolderList
+- name: FolderCreate
+  description: Create a New Template Folder
+  method: POST
+  path: /templates/folders
+  source_operation: openapi/cubesoftware-openapi-original.yml#FolderCreate
+- name: FolderRetrieve
+  description: Get a Specific Template Folder
+  method: GET
+  path: /templates/folders/{folder_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#FolderRetrieve
+- name: FolderUpdate
+  description: Update a Specific Template Folder
+  method: POST
+  path: /templates/folders/{folder_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#FolderUpdate
+- name: FolderUpdateDelete
+  description: Delete a Specific Template Folder
+  method: DELETE
+  path: /templates/folders/{folder_id}
+  source_operation: openapi/cubesoftware-openapi-original.yml#FolderUpdateDelete
+- name: user_retrieve
+  description: Will return user information.
+  method: GET
+  path: /user
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_retrieve
+- name: user_companies_retrieve
+  description: Get User's Companies
+  method: GET
+  path: /user/companies
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_companies_retrieve
+- name: user_company_settings_retrieve
+  description: Get User Company Settings
+  method: GET
+  path: /user/company/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_company_settings_retrieve
+- name: user_company_settings_create
+  description: Update User Company Settings
+  method: POST
+  path: /user/company/settings
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_company_settings_create
+- name: user_event_create
+  description: Events
+  method: POST
+  path: /user/event
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_event_create
+- name: user_password_forgot_create
+  description: Initiates the forgot password process.
+  method: POST
+  path: /user/password/forgot
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_password_forgot_create
+- name: user_settings_spreadsheets_retrieve
+  description: Get Spreadsheet Settings
+  method: GET
+  path: /user/settings/spreadsheets
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_settings_spreadsheets_retrieve
+- name: user_settings_spreadsheets_update_create
+  description: Update Spreadsheet Settings
+  method: POST
+  path: /user/settings/spreadsheets/update
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_settings_spreadsheets_update_create
+- name: user_user_companies_retrieve
+  description: Get User's Companies with Permissions
+  method: GET
+  path: /user/user_companies
+  source_operation: openapi/cubesoftware-openapi-original.yml#user_user_companies_retrieve

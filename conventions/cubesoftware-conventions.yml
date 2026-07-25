@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/cubesoftware-openapi-original.yml
+docs: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
+summary: >-
+  Cross-cutting request/response semantics for the Cube API, derived from the published
+  OpenAPI and the developer center. Cube is a Django-style REST API secured with OAuth 2.0;
+  almost every request is scoped to a company/workspace via the X-Company-ID header.
+authentication:
+  style: oauth2
+  flow: authorizationCode
+  pkce: S256
+  refresh_token: true
+  detail: authentication/cubesoftware-authentication.yml
+request_scoping:
+  header: X-Company-ID
+  required: true
+  applies_to: 226 of 296 operations
+  description: >-
+    Selects which Cube company/workspace the request operates on. A user's companies
+    are listed via GET /user/companies (user_companies_retrieve).
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header or parameter is declared in the OpenAPI and none is
+    documented; writes are not advertised as idempotent.
+pagination:
+  style: page-number
+  params:
+  - name: page
+    in: query
+  - name: limit
+    in: query
+  - name: offset
+    in: query
+  note: List endpoints accept page/limit (and occasionally offset) query parameters.
+versioning:
+  scheme: single-version
+  current: '1.0'
+  in_path: false
+  note: Server is https://api.cubesoftware.com with no version path segment; spec info.version is "1.0.0 (1.0)".
+error_envelope:
+  media_type: application/json
+  format: custom
+  detail: errors/cubesoftware-problem-types.yml
+  note: Conventional HTTP status codes with a human-readable message body; no RFC 9457 problem+json.
+rate_limit_signaling:
+  documented: false
+  note: No rate-limit headers or policy are declared in the OpenAPI.
+cross_links:
+  authentication: authentication/cubesoftware-authentication.yml
+  scopes: scopes/cubesoftware-scopes.yml
+  errors: errors/cubesoftware-problem-types.yml
+  lifecycle: lifecycle/cubesoftware-lifecycle.yml

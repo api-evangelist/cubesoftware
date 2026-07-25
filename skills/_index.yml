@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/cubesoftware-openapi-original.yml
+skills:
+- file: cubesoftware-export-cube-data.md
+  name: Export Cube data
+  api: openapi/cubesoftware-openapi-original.yml
+  operations: [cube_export_create, cube_export_list, cube_export_schedule_create, cube_export_schedule_list]
+- file: cubesoftware-upload-to-data-table.md
+  name: Upload data into a Cube data table
+  api: openapi/cubesoftware-openapi-original.yml
+  operations: [retrieve_3, data_tables_upload_create, data_tables_upload_part_create, data_tables_upload_import_create]
+- file: cubesoftware-manage-dimensions.md
+  name: Manage Cube dimensions
+  api: openapi/cubesoftware-openapi-original.yml
+  operations: [DimensionList, DimensionCreate, DimensionRetrieve, DimensionUpdate, dimensions_status_create]
