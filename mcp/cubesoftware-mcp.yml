@@ -1494,3 +1494,9 @@ tools:
   method: GET
   path: /user/user_companies
   source_operation: openapi/cubesoftware-openapi-original.yml#user_user_companies_retrieve
+deployment:
+  mode: none
+  verified: derived
+  tools: 296
+  checked: '2026-08-12'
+  source: catalog MCP census

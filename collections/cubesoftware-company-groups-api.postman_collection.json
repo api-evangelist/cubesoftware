@@ -1,0 +1,2057 @@
+{
+  "item": [
+    {
+      "id": "c3e8f95a-baa0-4c5c-a704-bfff624c9f27",
+      "name": "Company Groups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90955595-0a02-4d9b-8f9d-ea5d45efc1b0",
+          "name": "List a company's groups",
+          "request": {
+            "name": "List a company's groups",
+            "description": {
+              "content": "Lists all of the groups for the current user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e584e29e-1852-442d-aa96-7a940a5dd601",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": \"ba150d8e-a536-3af2-1300-0f7d534880bc\",\n    \"created_at\": \"1994-04-28T17:55:34.754Z\",\n    \"editable\": false,\n    \"id\": 5379,\n    \"name\": \"string\",\n    \"resolved_permissions\": [\n      8967,\n      821\n    ],\n    \"resolved_permissionsets\": [\n      2110,\n      9841\n    ],\n    \"type\": \"feature\",\n    \"active\": false,\n    \"user_companies\": \"string\",\n    \"user_invitations\": \"string\",\n    \"created_by\": 5746,\n    \"permissions\": \"string\",\n    \"permissionsets\": \"string\",\n    \"subcube_access_rules\": [\n      {\n        \"company\": \"d0c8a411-937a-1702-4d76-fc1ed7f4d808\",\n        \"company_group\": 9101,\n        \"created_at\": \"1964-12-07T05:06:20.238Z\",\n        \"created_by\": 5050,\n        \"id\": 8792,\n        \"modified_at\": \"2025-08-03T21:45:11.937Z\",\n        \"dimensions\": \"string\",\n        \"write_access\": true,\n        \"modified_by\": 5654\n      },\n      {\n        \"company\": \"70f43ca6-858a-04fb-a4a7-49f14792d5f7\",\n        \"company_group\": 4014,\n        \"created_at\": \"1986-09-15T04:58:35.857Z\",\n        \"created_by\": 6019,\n        \"id\": 4732,\n        \"modified_at\": \"2005-01-02T11:25:59.579Z\",\n        \"dimensions\": \"string\",\n        \"write_access\": true,\n        \"modified_by\": 8283\n      }\n    ]\n  },\n  {\n    \"company\": \"c88cf632-20bd-90a6-5f78-00ac6dc8972f\",\n    \"created_at\": \"1992-04-12T16:36:19.136Z\",\n    \"editable\": false,\n    \"id\": 8590,\n    \"name\": \"string\",\n    \"resolved_permissions\": [\n      7763,\n      6433\n    ],\n    \"resolved_permissionsets\": [\n      4862,\n      205\n    ],\n    \"type\": \"feature\",\n    \"active\": false,\n    \"user_companies\": \"string\",\n    \"user_invitations\": \"string\",\n    \"created_by\": 2262,\n    \"permissions\": \"string\",\n    \"permissionsets\": \"string\",\n    \"subcube_access_rules\": [\n      {\n        \"company\": \"2a605f48-f98f-0c12-c08e-f19121d10f7b\",\n        \"company_group\": 6711,\n        \"created_at\": \"2020-03-01T14:16:04.969Z\",\n        \"created_by\": 944,\n        \"id\": 4308,\n        \"modified_at\": \"2017-11-07T20:09:37.529Z\",\n        \"dimensions\": \"string\",\n        \"write_access\": false,\n        \"modified_by\": 682\n      },\n      {\n        \"company\": \"a185a32f-a671-ad87-0fb5-c69eda19208e\",\n        \"company_group\": 4837,\n        \"created_at\": \"2003-11-16T21:56:58.900Z\",\n        \"created_by\": 4926,\n        \"id\": 3952,\n        \"modified_at\": \"1967-08-09T18:42:06.743Z\",\n        \"dimensions\": \"string\",\n        \"write_access\": false,\n        \"modified_by\": 2126\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27b0fba7-4ac2-427e-9f95-8c79c4c55bcd",
+          "name": "Create a group",
+          "request": {
+            "name": "Create a group",
+            "description": {
+              "content": "Create a new group for the current user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "feature"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_companies",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_invitations",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissionsets",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "900d9e20-a16a-480a-98d2-f0ec57bb9778",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "company",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "type",
+                      "value": "feature"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_companies",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_invitations",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissionsets",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"id\": 840,\n  \"type\": \"feature\",\n  \"active\": \"<boolean>\",\n  \"user_companies\": \"<string>\",\n  \"user_invitations\": \"<string>\",\n  \"created_by\": \"<integer>\",\n  \"created_at\": \"1981-08-29T20:14:22.852Z\",\n  \"permissions\": \"<string>\",\n  \"permissionsets\": \"<string>\",\n  \"subcube_access_rules\": [\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 9910,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"2012-12-21T20:15:42.578Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1956-08-16T12:26:01.924Z\"\n    },\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 3897,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"1978-10-16T15:52:49.587Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1966-09-24T02:43:06.162Z\"\n    }\n  ],\n  \"resolved_permissions\": [\n    4490,\n    3760\n  ],\n  \"resolved_permissionsets\": [\n    6451,\n    2111\n  ],\n  \"editable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a60d5681-abce-4129-b5b6-cf877d4fb2f7",
+          "name": "company groups subcube access rules list",
+          "request": {
+            "name": "company groups subcube access rules list",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d06688c7-0858-4a1e-b83c-b6bcedc0f623",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": \"<uuid>\",\n    \"company_group\": \"<integer>\",\n    \"created_by\": \"<integer>\",\n    \"id\": 7703,\n    \"dimensions\": \"<string>\",\n    \"write_access\": \"<boolean>\",\n    \"created_at\": \"1954-10-23T20:38:03.331Z\",\n    \"modified_by\": \"<integer>\",\n    \"modified_at\": \"2021-03-05T05:30:31.822Z\"\n  },\n  {\n    \"company\": \"<uuid>\",\n    \"company_group\": \"<integer>\",\n    \"created_by\": \"<integer>\",\n    \"id\": 4806,\n    \"dimensions\": \"<string>\",\n    \"write_access\": \"<boolean>\",\n    \"created_at\": \"1963-09-12T09:05:12.127Z\",\n    \"modified_by\": \"<integer>\",\n    \"modified_at\": \"1988-02-22T06:19:19.156Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f62a6175-3e03-4a70-a8a1-7e81f6d1150e",
+          "name": "company groups subcube access rules create",
+          "request": {
+            "name": "company groups subcube access rules create",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "company_group",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_access",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_by",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4151fbf-4263-4408-9b75-91bbe1beacfb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "company",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "company_group",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dimensions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_access",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "modified_by",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"company_group\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"id\": 8943,\n  \"dimensions\": \"<string>\",\n  \"write_access\": \"<boolean>\",\n  \"created_at\": \"2012-07-12T06:32:25.611Z\",\n  \"modified_by\": \"<integer>\",\n  \"modified_at\": \"1966-12-06T01:30:03.824Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d756c760-95c0-4e33-9b6c-1d87ca75aea3",
+          "name": "company groups subcube access rules retrieve",
+          "request": {
+            "name": "company groups subcube access rules retrieve",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "25541cc4-e7d1-4f13-bda9-e361dbdee070",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"company_group\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"id\": 8943,\n  \"dimensions\": \"<string>\",\n  \"write_access\": \"<boolean>\",\n  \"created_at\": \"2012-07-12T06:32:25.611Z\",\n  \"modified_by\": \"<integer>\",\n  \"modified_at\": \"1966-12-06T01:30:03.824Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e843573b-9a0f-4df8-abbf-4452c639a92d",
+          "name": "company groups subcube access rules update",
+          "request": {
+            "name": "company groups subcube access rules update",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "company_group",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_access",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_by",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36a198ea-5224-4407-9ce5-4b3a82664e46",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "company",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "company_group",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dimensions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_access",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "modified_by",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"company_group\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"id\": 8943,\n  \"dimensions\": \"<string>\",\n  \"write_access\": \"<boolean>\",\n  \"created_at\": \"2012-07-12T06:32:25.611Z\",\n  \"modified_by\": \"<integer>\",\n  \"modified_at\": \"1966-12-06T01:30:03.824Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8cd4302-61ba-474c-b3a1-cb65019afdb6",
+          "name": "company groups subcube access rules partial update",
+          "request": {
+            "name": "company groups subcube access rules partial update",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_group",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_access",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_by",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b65657a2-a0ff-456f-be29-73221d021f13",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "company",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company_group",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dimensions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_access",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "modified_by",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"company_group\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"id\": 8943,\n  \"dimensions\": \"<string>\",\n  \"write_access\": \"<boolean>\",\n  \"created_at\": \"2012-07-12T06:32:25.611Z\",\n  \"modified_by\": \"<integer>\",\n  \"modified_at\": \"1966-12-06T01:30:03.824Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c98dc465-aad3-469b-b400-2805ce1dcced",
+          "name": "company groups subcube access rules destroy",
+          "request": {
+            "name": "company groups subcube access rules destroy",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":company_group_pk",
+                "subcube-access-rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "company_group_pk",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7459afa-b2b1-47d3-947d-767c127e3b7f",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":company_group_pk",
+                    "subcube-access-rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "company_group_pk",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fafe4eda-e7b7-45c5-89af-42fb686e7a8d",
+          "name": "company groups retrieve",
+          "request": {
+            "name": "company groups retrieve",
+            "description": {
+              "content": "Retrieve a group for the company by its group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d2dbff3e-dd00-4732-a85b-bea59cfd75fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"id\": 840,\n  \"type\": \"feature\",\n  \"active\": \"<boolean>\",\n  \"user_companies\": \"<string>\",\n  \"user_invitations\": \"<string>\",\n  \"created_by\": \"<integer>\",\n  \"created_at\": \"1981-08-29T20:14:22.852Z\",\n  \"permissions\": \"<string>\",\n  \"permissionsets\": \"<string>\",\n  \"subcube_access_rules\": [\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 9910,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"2012-12-21T20:15:42.578Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1956-08-16T12:26:01.924Z\"\n    },\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 3897,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"1978-10-16T15:52:49.587Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1966-09-24T02:43:06.162Z\"\n    }\n  ],\n  \"resolved_permissions\": [\n    4490,\n    3760\n  ],\n  \"resolved_permissionsets\": [\n    6451,\n    2111\n  ],\n  \"editable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eceba51f-18ad-4752-b1b8-8f735d601f71",
+          "name": "Update a group",
+          "request": {
+            "name": "Update a group",
+            "description": {
+              "content": "Update a group for the current user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "user_invitations",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_companies",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissionsets",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "859b335c-5ff6-4e71-bc4d-b0b52dcc5703",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_invitations",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_companies",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissionsets",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "active",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"id\": 840,\n  \"type\": \"feature\",\n  \"active\": \"<boolean>\",\n  \"user_companies\": \"<string>\",\n  \"user_invitations\": \"<string>\",\n  \"created_by\": \"<integer>\",\n  \"created_at\": \"1981-08-29T20:14:22.852Z\",\n  \"permissions\": \"<string>\",\n  \"permissionsets\": \"<string>\",\n  \"subcube_access_rules\": [\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 9910,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"2012-12-21T20:15:42.578Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1956-08-16T12:26:01.924Z\"\n    },\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 3897,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"1978-10-16T15:52:49.587Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1966-09-24T02:43:06.162Z\"\n    }\n  ],\n  \"resolved_permissions\": [\n    4490,\n    3760\n  ],\n  \"resolved_permissionsets\": [\n    6451,\n    2111\n  ],\n  \"editable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20827d6c-845f-451c-8978-1c7ef481e4d1",
+          "name": "Update a subset of a group's fields",
+          "request": {
+            "name": "Update a subset of a group's fields",
+            "description": {
+              "content": "Update a group for the current user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user_invitations",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_companies",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permissionsets",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "subcube_access_rules",
+                  "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8babf80b-2aaa-476d-ba21-2b870f0c10c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "user_invitations",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_companies",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissions",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "permissionsets",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "subcube_access_rules",
+                      "value": "{\"company\":\"<uuid>\",\"company_group\":\"<integer>\",\"created_by\":\"<integer>\",\"dimensions\":\"<string>\",\"write_access\":\"<boolean>\",\"modified_by\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "active",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"id\": 840,\n  \"type\": \"feature\",\n  \"active\": \"<boolean>\",\n  \"user_companies\": \"<string>\",\n  \"user_invitations\": \"<string>\",\n  \"created_by\": \"<integer>\",\n  \"created_at\": \"1981-08-29T20:14:22.852Z\",\n  \"permissions\": \"<string>\",\n  \"permissionsets\": \"<string>\",\n  \"subcube_access_rules\": [\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 9910,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"2012-12-21T20:15:42.578Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1956-08-16T12:26:01.924Z\"\n    },\n    {\n      \"company\": \"<uuid>\",\n      \"company_group\": \"<integer>\",\n      \"created_by\": \"<integer>\",\n      \"id\": 3897,\n      \"dimensions\": \"<string>\",\n      \"write_access\": \"<boolean>\",\n      \"created_at\": \"1978-10-16T15:52:49.587Z\",\n      \"modified_by\": \"<integer>\",\n      \"modified_at\": \"1966-09-24T02:43:06.162Z\"\n    }\n  ],\n  \"resolved_permissions\": [\n    4490,\n    3760\n  ],\n  \"resolved_permissionsets\": [\n    6451,\n    2111\n  ],\n  \"editable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f02abe1-c5c7-42c6-b45d-aad6163c0142",
+          "name": "Delete a group",
+          "request": {
+            "name": "Delete a group",
+            "description": {
+              "content": "Delete a group for the current user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd3abb4e-222c-47a8-baeb-94ea12651227",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2ae599b8-c70f-4e0f-afac-cb3fb7d4b5df",
+    "name": "Cube Agents Company Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

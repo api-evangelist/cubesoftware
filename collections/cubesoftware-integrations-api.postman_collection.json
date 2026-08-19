@@ -1,0 +1,1231 @@
+{
+  "item": [
+    {
+      "id": "c2bec6c5-bbb6-4214-ba07-500b9ff94fa3",
+      "name": "Integrations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b90b17a3-a6ab-45f5-bcdc-0c52eb40ab46",
+          "name": "List all company integrations",
+          "request": {
+            "name": "List all company integrations",
+            "description": {
+              "content": "List all company integrations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d85caca-f85c-41ab-a4fc-d4e8eeb03e91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company\": {\n      \"created_at\": \"2024-06-23T11:41:17.442Z\",\n      \"id\": \"aba4a3e4-00f1-7f3d-3aa3-1995f2fa6de5\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"salesforce_id\": \"string\",\n      \"time_type\": \"STANDARD\"\n    },\n    \"id\": \"cdbbc5a9-ce19-df83-ea09-00b128e3b418\",\n    \"integration\": {\n      \"category\": \"HRIS\",\n      \"id\": 1155,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"NETSUITE\"\n    },\n    \"settings\": \"\"\n  },\n  {\n    \"company\": {\n      \"created_at\": \"1973-10-09T16:27:06.871Z\",\n      \"id\": \"2679d813-c707-21f5-b74c-60fe156e433d\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"salesforce_id\": \"string\",\n      \"time_type\": \"CUSTOM\"\n    },\n    \"id\": \"e434bac1-3eb9-3428-4ba2-a584845489a6\",\n    \"integration\": {\n      \"category\": \"HRIS\",\n      \"id\": 4849,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"GOOGLE\"\n    },\n    \"settings\": \"\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b68ddd3-66a3-4f04-9985-643f74fd8e35",
+          "name": "Add a new integration to a company",
+          "request": {
+            "name": "Add a new integration to a company",
+            "description": {
+              "content": "Add a new integration to a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "integration_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "settings",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9064f6c-eba7-43c3-b563-fec7f1b98e40",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "integration_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "settings",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"14d42b0b-bd4c-783c-dd08-6c4f592ebf4f\",\n  \"integration\": {\n    \"category\": \"UAP\",\n    \"id\": 8857,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"SALESFORCE\"\n  },\n  \"company\": {\n    \"created_at\": \"2020-08-29T14:00:00.443Z\",\n    \"id\": \"bfe6345d-3155-8222-f209-71dce7fdaaed\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"salesforce_id\": \"string\",\n    \"time_type\": \"CUSTOM\"\n  },\n  \"settings\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "356a2bd4-7cf5-4447-8251-319aed132b6e",
+          "name": "Retrieve a company integration by ID",
+          "request": {
+            "name": "Retrieve a company integration by ID",
+            "description": {
+              "content": "Retrieve a company integration by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "integrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6226fa25-3688-4cf2-878f-07cba6f6998f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"14d42b0b-bd4c-783c-dd08-6c4f592ebf4f\",\n  \"integration\": {\n    \"category\": \"UAP\",\n    \"id\": 8857,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"SALESFORCE\"\n  },\n  \"company\": {\n    \"created_at\": \"2020-08-29T14:00:00.443Z\",\n    \"id\": \"bfe6345d-3155-8222-f209-71dce7fdaaed\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"salesforce_id\": \"string\",\n    \"time_type\": \"CUSTOM\"\n  },\n  \"settings\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dec1891c-e2ab-4d8d-8b22-333fccd83d0d",
+          "name": "Update a companies integration settings",
+          "request": {
+            "name": "Update a companies integration settings",
+            "description": {
+              "content": "Update a companies integration settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "integrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "integration_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "settings",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "68358d91-71eb-438f-bf2e-e8983f1a9d61",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "integration_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "settings",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"14d42b0b-bd4c-783c-dd08-6c4f592ebf4f\",\n  \"integration\": {\n    \"category\": \"UAP\",\n    \"id\": 8857,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"SALESFORCE\"\n  },\n  \"company\": {\n    \"created_at\": \"2020-08-29T14:00:00.443Z\",\n    \"id\": \"bfe6345d-3155-8222-f209-71dce7fdaaed\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"salesforce_id\": \"string\",\n    \"time_type\": \"CUSTOM\"\n  },\n  \"settings\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8ff73fc-52d3-4197-ae5a-073fec24822e",
+          "name": "Remove an integration from a company",
+          "request": {
+            "name": "Remove an integration from a company",
+            "description": {
+              "content": "Remove an integration from a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "integrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6de11433-2a48-4431-8c67-a476061bf745",
+              "name": "Deleted the requested object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"14d42b0b-bd4c-783c-dd08-6c4f592ebf4f\",\n  \"integration\": {\n    \"category\": \"UAP\",\n    \"id\": 8857,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"SALESFORCE\"\n  },\n  \"company\": {\n    \"created_at\": \"2020-08-29T14:00:00.443Z\",\n    \"id\": \"bfe6345d-3155-8222-f209-71dce7fdaaed\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"salesforce_id\": \"string\",\n    \"time_type\": \"CUSTOM\"\n  },\n  \"settings\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b82f493-cbe7-4b88-91de-a30e0c2dc923",
+              "name": "Not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d977fd6-f35e-479d-9917-45eb16b9899e",
+          "name": "List all integrations",
+          "request": {
+            "name": "List all integrations",
+            "description": {
+              "content": "List all integrations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89fa28fb-cd79-45b9-a694-f6adc5af75aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"category\": \"HRIS\",\n    \"id\": 8574,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"QUICKBOOKS\"\n  },\n  {\n    \"category\": \"UAP\",\n    \"id\": 951,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"NETSUITE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "860d48eb-744c-4f6e-a7b7-0be325c7d7de",
+          "name": "Retrieve an integration by ID",
+          "request": {
+            "name": "Retrieve an integration by ID",
+            "description": {
+              "content": "Retrieve an integration by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this integration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39b6370b-e539-4b6e-a76a-62ee5893f05b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this integration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"category\": \"HRIS\",\n  \"id\": 5160,\n  \"logo_url\": \"string\",\n  \"name\": \"string\",\n  \"source\": \"XERO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29ce406d-2273-4161-b11b-a093ffe9578e",
+          "name": "integrations merge link complete create",
+          "request": {
+            "name": "integrations merge link complete create",
+            "description": {
+              "content": "Shared setup for Merge Link endpoints: permission check, integration validation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                "merge",
+                "link-complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76eb09b5-6979-48c6-b03b-c9841fc142b1",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    "merge",
+                    "link-complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fd947e8-4db3-4de9-b9f9-12c28a83871f",
+          "name": "integrations merge link token create",
+          "request": {
+            "name": "integrations merge link token create",
+            "description": {
+              "content": "Shared setup for Merge Link endpoints: permission check, integration validation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                "merge",
+                "link-token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0830d595-8542-499d-ab7e-2188118e9e48",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    "merge",
+                    "link-token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb9c57d8-12d4-433e-a19b-62f393647cb4",
+          "name": "integrations merge webhook create",
+          "request": {
+            "name": "integrations merge webhook create",
+            "description": {
+              "content": "Handle an inbound Merge webhook POST.\n\nValidates the payload, deduplicates by signature, resolves the\nconnection, checks sync-status safety from the webhook payload, and\ndispatches a transaction refresh task when all preconditions pass.\n\nArgs:\n    request: DRF request with HMAC-verified request.auth signature.\n\nReturns:\n    JsonResponse with status indicating the outcome: duplicate,\n    ignored, skipped, or accepted (HTTP 202).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                "merge",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "ae191eef-e5dd-4fc1-9461-c0ea795f0535",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    "merge",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dbf7c93b-f03a-44b0-acc0-8efecd35eb5f",
+    "name": "Cube Agents Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

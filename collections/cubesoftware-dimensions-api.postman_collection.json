@@ -1,0 +1,4066 @@
+{
+  "item": [
+    {
+      "id": "e4e5da16-c2c3-4a21-933c-cfdef20d45de",
+      "name": "Dimensions",
+      "description": {
+        "content": "Dimensions store the organizational hierarchy for a company and outline how their data is\n            structured. All companies have top level dimensions called Account, Scenario, Department, and Time. They also\n            can have additional custom top level dimensions (i.e. Product, Entity).\n        ",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54763cda-2a49-4a51-a0cd-d8a30eef4552",
+          "name": "Get All Dimensions",
+          "request": {
+            "name": "Get All Dimensions",
+            "description": {
+              "content": "This endpoint lists all dimensions accessible to the user in a flat list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "can_be_mapped",
+                  "value": "<boolean>",
+                  "description": "Limit to dimensions that can be mapped to source systems."
+                },
+                {
+                  "disabled": false,
+                  "key": "inactive",
+                  "value": "<boolean>",
+                  "description": "Include inactive dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tags",
+                  "value": "<boolean>",
+                  "description": "Include TAG-type dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>",
+                  "description": "Limit to dimensions under this top-level dimension."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3f9b9c49-b7ad-490e-a115-770880ba75d7",
+              "name": "The list of dimensions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_be_mapped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "inactive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_tags",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"active\": false,\n  \"children_ids\": [\n    3604,\n    4231\n  ],\n  \"created_at\": \"2013-09-16T13:46:11.222Z\",\n  \"currency_id\": 7659,\n  \"data_table_id\": \"10cf3cbe-f230-e222-3319-36dc5e9d9668\",\n  \"formula\": \"string\",\n  \"formulas\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"id\": 7873,\n  \"name\": \"string\",\n  \"parent_id\": 8017,\n  \"tag_member_ids\": [\n    1778,\n    8514\n  ],\n  \"write_block_reason\": \"string\",\n  \"status\": \"CLEARING_VALUES\",\n  \"type\": \"FORMULA\",\n  \"rollup_type\": \"SUM\",\n  \"write_protection\": \"BLOCK\",\n  \"position\": 6189069064422685000,\n  \"special_case_id\": \"string\",\n  \"date\": \"2002-12-20\",\n  \"has_children\": true,\n  \"metadata\": \"string\",\n  \"number\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf1d574e-a6ab-47d7-90c8-d2facd544052",
+          "name": "Create a Dimension",
+          "request": {
+            "name": "Create a Dimension",
+            "description": {
+              "content": "This endpoint creates a dimension.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "can_be_mapped",
+                  "value": "<boolean>",
+                  "description": "Limit to dimensions that can be mapped to source systems."
+                },
+                {
+                  "disabled": false,
+                  "key": "inactive",
+                  "value": "<boolean>",
+                  "description": "Include inactive dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tags",
+                  "value": "<boolean>",
+                  "description": "Include TAG-type dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>",
+                  "description": "Limit to dimensions under this top-level dimension."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "62fbf3d8-1202-423b-a6c1-50a8cfc1ce07",
+              "name": "The list of dimensions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_be_mapped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "inactive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_tags",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "parent_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "write_protection",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"active\": false,\n  \"children_ids\": [\n    1814,\n    6009\n  ],\n  \"created_at\": \"1971-10-13T04:22:12.113Z\",\n  \"currency_id\": 5861,\n  \"data_table_id\": \"c67dbc98-cb6d-3097-f91d-740817fcd287\",\n  \"formula\": \"string\",\n  \"formulas\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"id\": 1486,\n  \"name\": \"string\",\n  \"parent_id\": 7497,\n  \"tag_member_ids\": [\n    9364,\n    2050\n  ],\n  \"write_block_reason\": \"string\",\n  \"status\": \"DISABLED\",\n  \"type\": \"FORMULA\",\n  \"rollup_type\": \"BEGINNING_BALANCE\",\n  \"write_protection\": \"<string>\",\n  \"position\": 5392225498381386000,\n  \"special_case_id\": \"string\",\n  \"date\": \"2007-09-09\",\n  \"has_children\": true,\n  \"metadata\": \"string\",\n  \"number\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1530a6f-9043-4630-8980-8706d067527f",
+          "name": "Get Dimension by ID",
+          "request": {
+            "name": "Get Dimension by ID",
+            "description": {
+              "content": "Get a single dimension by it's ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13087af5-9387-4bcb-b4d1-8a70b93b4349",
+              "name": "The requested dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"active\": false,\n  \"formula\": \"string\",\n  \"id\": 1591,\n  \"name\": \"string\",\n  \"parent_id\": 1788,\n  \"write_block_reason\": \"string\",\n  \"status\": \"ENABLED\",\n  \"type\": \"FORMULA\",\n  \"rollup_type\": \"SUM\",\n  \"write_protection\": \"<string>\",\n  \"position\": 5001220889721348000,\n  \"special_case_id\": \"string\",\n  \"date\": \"1979-08-13\",\n  \"has_children\": false,\n  \"metadata\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a6455db-5bf2-4ad7-be96-c7eadfa99951",
+          "name": "Update Dimension By ID",
+          "request": {
+            "name": "Update Dimension By ID",
+            "description": {
+              "content": "Update individual fields of a dimension model.\n        NOTE: A dimension can NOT be enabled and disabled via this endpoint. Instead see the Dimension Status endpoint.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "special_case_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_children",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e288de9-073d-4794-b0ac-787fc260ccf0",
+              "name": "The requested dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rollup_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_protection",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "position",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "special_case_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "has_children",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": 5407,\n  \"parent_id\": 6079,\n  \"active\": true,\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rollup_type\": \"<string>\",\n  \"formula\": \"string\",\n  \"write_protection\": \"<string>\",\n  \"position\": \"<long>\",\n  \"special_case_id\": \"<string>\",\n  \"date\": \"<date>\",\n  \"has_children\": \"<boolean>\",\n  \"write_block_reason\": \"string\",\n  \"metadata\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9d67614-a57c-463a-a758-0214fc276629",
+          "name": "Duplicate a Dimension",
+          "request": {
+            "name": "Duplicate a Dimension",
+            "description": {
+              "content": "This endpoint duplicates a dimension. Note that this is only possible for Scenario Dimensions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id",
+                "duplicate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc10a893-e48a-4a72-9b1c-e1aa6f9bf327",
+              "name": "Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a506a6b-6222-42b1-9131-98875a978c6f",
+          "name": "Get Dimension Mappings for Source Data Tables",
+          "request": {
+            "name": "Get Dimension Mappings for Source Data Tables",
+            "description": {
+              "content": "Get the mappings for a given dimension ID to data tables",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8d2212b-1068-4ffb-8c5c-b70e5a265aac",
+              "name": "Dimension Mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf46d92e-2e07-48a1-8c6e-3c608992fbff",
+          "name": "Get Dimension Options",
+          "request": {
+            "name": "Get Dimension Options",
+            "description": {
+              "content": "List the options for acceptable changes to a given dimension, such as possible parents, write\n        protection options, and rollup type options. For new dimensions, passing 0 as the ID gets default options.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20541981-3612-46b6-803b-18aaf3377391",
+              "name": "Dimension Options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"formulas\": {\n    \"key_0\": {}\n  },\n  \"parent_options\": \"string\",\n  \"rollup_types\": \"string\",\n  \"tags\": \"string\",\n  \"write_protections\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cab8035-4b5f-4ab2-96ff-0fba02cb972f",
+          "name": "Enable or Disable a Dimension",
+          "request": {
+            "name": "Enable or Disable a Dimension",
+            "description": {
+              "content": "You can use this endpoint to disable or re-enable a dimension",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "disable",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "753561a6-edf9-4132-9c6a-e211afe54238",
+              "name": "The modified dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "disable",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"parent_id\": 11,\n  \"name\": \"2026\",\n  \"active\": true,\n  \"status\": \"ENABLED\",\n  \"type\": \"BASIC\",\n  \"rollup_type\": null,\n  \"formula\": null,\n  \"write_protection\": \"NONE\",\n  \"position\": 2026,\n  \"special_case_id\": null,\n  \"date\": \"2026-07-19\",\n  \"has_children\": true,\n  \"write_block_reason\": \"Dimension with name \\\"2026\\\" is a parent dimension and cannot be written to\",\n  \"metadata\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7004d5c-5d1b-410f-b111-29c079b90faa",
+          "name": "Bulk Update Dimensions",
+          "request": {
+            "name": "Bulk Update Dimensions",
+            "description": {
+              "content": "This endpoint bulk updates dimensions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "batch_id",
+                  "value": "<string>",
+                  "description": "(Required) The batch ID for the bulk update operation"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>",
+                  "description": "(Required) The top-level dimension ID to update dimensions under"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "029a4b4f-c7ab-4772-9937-31d59b45428e",
+              "name": "Bulk update request accepted and queued for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The batch ID for the bulk update operation",
+                        "type": "text/plain"
+                      },
+                      "key": "batch_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The top-level dimension ID to update dimensions under",
+                        "type": "text/plain"
+                      },
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"message\": \"Bulk update request accepted and queued for processing\"\n  },\n  \"metadata\": {\n    \"status\": 200,\n    \"error\": false,\n    \"message\": null,\n    \"code\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f078f413-8461-4b7d-8367-8c653aee084c",
+              "name": "Invalid request - validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The batch ID for the bulk update operation",
+                        "type": "text/plain"
+                      },
+                      "key": "batch_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The top-level dimension ID to update dimensions under",
+                        "type": "text/plain"
+                      },
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63cbb899-3500-4351-b16f-c2339939ea09",
+              "name": "Permission denied - user not allowed to modify dimensions under this TLD",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The batch ID for the bulk update operation",
+                        "type": "text/plain"
+                      },
+                      "key": "batch_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The top-level dimension ID to update dimensions under",
+                        "type": "text/plain"
+                      },
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbcef469-adee-47cc-8706-4a921a5a6085",
+              "name": "Top-level dimension not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The batch ID for the bulk update operation",
+                        "type": "text/plain"
+                      },
+                      "key": "batch_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The top-level dimension ID to update dimensions under",
+                        "type": "text/plain"
+                      },
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f537bd0b-0701-4647-ba85-a7cf67949266",
+          "name": "Get Deepest Dimensions",
+          "request": {
+            "name": "Get Deepest Dimensions",
+            "description": {
+              "content": "This endpoint retrieves all the deepest level dimensions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "deepest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "277d4e59-ccc6-4a4c-8fc8-1e924aeef4c6",
+              "name": "The Dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "deepest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"id\": 7042,\n    \"parent_id\": 7039,\n    \"active\": false,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"metadata\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"id\": 665,\n    \"parent_id\": 6869,\n    \"active\": true,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"metadata\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "352d980e-deca-4db1-96a3-8a2b0dd12d47",
+          "name": "Download Dimensions Excel File",
+          "request": {
+            "name": "Download Dimensions Excel File",
+            "description": {
+              "content": "Download an Excel file containing dimension data for the specified TLD IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "enable_reparenting",
+                  "value": "<string>",
+                  "description": "Whether to enable reparenting functionality"
+                },
+                {
+                  "disabled": false,
+                  "key": "for_upload",
+                  "value": "<string>",
+                  "description": "Whether to include the updated name column for upload"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of TLD IDs to include in the export"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64a896eb-8df5-4d4f-885d-2a33dd078214",
+              "name": "Excel file download",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable_reparenting",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "for_upload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tld_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2280770-f8c4-49ff-8046-84a2f58487bf",
+              "name": "Invalid TLD IDs provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable_reparenting",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "for_upload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tld_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a8ac116-845f-40a2-8ac6-7f357a6483b3",
+              "name": "Permission denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "enable_reparenting",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "for_upload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tld_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c777f6b-39a8-459e-9fb6-f05ae1b45024",
+          "name": "Get all Dimension Mappings for Source Data Tables",
+          "request": {
+            "name": "Get all Dimension Mappings for Source Data Tables",
+            "description": {
+              "content": "Get the mappings for all dimensions to data tables",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cbce6b6e-3cf8-4c9b-8926-164c8c44c8bb",
+              "name": "Dimension Mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15ecae6c-85db-4a6d-a0cc-cbebebad3637",
+          "name": "List previous merge scenarios",
+          "request": {
+            "name": "List previous merge scenarios",
+            "description": {
+              "content": "List previous merge scenarios. You can filter this list by destination dimension ID and/or\n        merge request status\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "destination_dimension",
+                  "value": "<integer>",
+                  "description": "The dimension ID of the destination dimension to filter on."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "The limit for the paginated response."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of results to skip from 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "",
+                  "description": "The status of the merge request you'd like to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eabe8a14-d65c-46a6-bbee-f47b4c39254e",
+              "name": "The merge scenario was triggered and a message was sent in the metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination_dimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58e4837a-9073-44da-ab2a-aae050a9b05d",
+          "name": "Merge one or more Scenario to a destination Scenario based on Time dimensions",
+          "request": {
+            "name": "Merge one or more Scenario to a destination Scenario based on Time dimensions",
+            "description": {
+              "content": "Create a request to merge data from one or more source Scenario dimensions in to a destination\n        Scenario. This can be limited by time periods based on Time dimensions. If successful, a background worker\n        will start to move the data and the caller will be emailed with the results.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from_scenario_requests",
+                  "value": "{\"from_dimension_request\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "from_scenario_requests",
+                  "value": "{\"from_dimension_request\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c5c3d9c-c567-4ccb-8af9-2f0104eb8be6",
+              "name": "The merge scenario was triggered and a message was sent in the metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from_scenario_requests",
+                      "value": "{\"from_dimension_request\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from_scenario_requests",
+                      "value": "{\"from_dimension_request\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9083bd1-4b7c-4fba-bb51-dac3a14f4472",
+              "name": "The merge scenario was not triggered and an error message is included in the metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from_scenario_requests",
+                      "value": "{\"from_dimension_request\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from_scenario_requests",
+                      "value": "{\"from_dimension_request\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1272acc8-ff9c-49d5-b771-cc8af00cb061",
+          "name": "Reorder Dimensions",
+          "request": {
+            "name": "Reorder Dimensions",
+            "description": {
+              "content": "Re-orders dimensions when showing in a list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            }
+          },
+          "response": [
+            {
+              "id": "7c46f894-abbd-4509-9a15-2492540de05c",
+              "name": "Hierarchy of dimensions in new order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73729c95-1ec3-4a8c-b68c-8ad880904024",
+          "name": "Generate a time series forecast of a Scenario",
+          "request": {
+            "name": "Generate a time series forecast of a Scenario",
+            "description": {
+              "content": "Generate a time series forecast of a Scenario",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "scenarios",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "55dc592e-be0d-40a9-aae0-75fbd31eddbf",
+              "name": "Acknowledgement of the request (generation of the forecast will be backgrounded)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "scenarios",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_2",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "960c4341-8119-4c9c-b27d-2b14e797556e",
+          "name": "Create Time Dimensions",
+          "request": {
+            "name": "Create Time Dimensions",
+            "description": {
+              "content": "This endpoint creates dimensions for an entire year. Alternatively, it can create a\n        \"Cube Opening Balance\" dimension\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            }
+          },
+          "response": [
+            {
+              "id": "c176f7fc-4a9e-47df-8138-cba30771cfd0",
+              "name": "The dimension(s) that were created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": 5407,\n  \"parent_id\": 6079,\n  \"active\": true,\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rollup_type\": \"<string>\",\n  \"formula\": \"string\",\n  \"write_protection\": \"<string>\",\n  \"position\": \"<long>\",\n  \"special_case_id\": \"<string>\",\n  \"date\": \"<date>\",\n  \"has_children\": \"<boolean>\",\n  \"write_block_reason\": \"string\",\n  \"metadata\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98fa0146-6494-437f-94fc-ed46f2a4eed3",
+          "name": "Translate Relative Dates",
+          "request": {
+            "name": "Translate Relative Dates",
+            "description": {
+              "content": "Translates relative date phrases (like \"Last Month\", \"Last 3 Months\") to their corresponding time dimension names and IDs based on the context (row, column, or filter). For row/column context, multi-period phrases expand to individual dimensions. For filter context, multi-period phrases return a single aggregated dimension.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "time",
+                "translate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "translations",
+                  "value": "{\"context\":\"<string>\",\"phrase\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "translations",
+                  "value": "{\"context\":\"<string>\",\"phrase\":\"<string>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22641b56-bf6f-42b2-9d00-039b63696e82",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "time",
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "translations",
+                      "value": "{\"context\":\"<string>\",\"phrase\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "translations",
+                      "value": "{\"context\":\"<string>\",\"phrase\":\"<string>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"translations\": [\n    {\n      \"phrase\": \"Last Month\",\n      \"context\": \"row\",\n      \"dimensions\": [\n        {\n          \"name\": \"Feb-26\",\n          \"id\": 458,\n          \"is_aggregation\": false\n        }\n      ]\n    },\n    {\n      \"phrase\": \"Last 3 Months\",\n      \"context\": \"filter\",\n      \"dimensions\": [\n        {\n          \"name\": \"Feb-26 T3M\",\n          \"id\": 458,\n          \"is_aggregation\": true\n        }\n      ]\n    },\n    {\n      \"phrase\": \"Last 3 Months\",\n      \"context\": \"row\",\n      \"dimensions\": [\n        {\n          \"name\": \"Dec-25\",\n          \"id\": 333,\n          \"is_aggregation\": false\n        },\n        {\n          \"name\": \"Jan-26\",\n          \"id\": 444,\n          \"is_aggregation\": false\n        },\n        {\n          \"name\": \"Feb-26\",\n          \"id\": 458,\n          \"is_aggregation\": false\n        }\n      ]\n    },\n    {\n      \"phrase\": \"Last 2 Quarters\",\n      \"context\": \"filter\",\n      \"dimensions\": [\n        {\n          \"name\": \"Q1-26 T2Q\",\n          \"id\": 120,\n          \"is_aggregation\": true\n        }\n      ]\n    },\n    {\n      \"phrase\": \"Last 2 Years\",\n      \"context\": \"row\",\n      \"dimensions\": [\n        {\n          \"name\": \"2025\",\n          \"id\": 100,\n          \"is_aggregation\": false\n        },\n        {\n          \"name\": \"2026\",\n          \"id\": 101,\n          \"is_aggregation\": false\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5404efb6-cc07-423e-ae29-9bcc9ef40373",
+          "name": "Rename a custom cube TLD",
+          "request": {
+            "name": "Rename a custom cube TLD",
+            "description": {
+              "content": "API for managing custom cube top-level dimensions (TLDs).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "tld",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73b90f69-37f9-4522-9f8d-3b7259848ffe",
+              "name": "TLD renamed; response contains the updated dimension.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": 1217,\n  \"active\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ffce4a3-6885-4cff-a36c-988b2635714d",
+              "name": "Invalid request — e.g. default TLD rename, validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cee814d-dc4a-40ce-94a9-119d6b316f35",
+              "name": "Permission denied — user cannot manage this dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3730f22a-541b-4b08-9e11-18266fcb3304",
+              "name": "Dimension not found or not a cube TLD",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1126720a-a087-4c1d-927f-35477fe5a5f1",
+          "name": "Delete a custom cube TLD",
+          "request": {
+            "name": "Delete a custom cube TLD",
+            "description": {
+              "content": "API for managing custom cube top-level dimensions (TLDs).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "tld",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cc8f5ab7-068d-4568-8269-82ddc95fac48",
+              "name": "TLD deletion accepted and queued; response `data` is a snapshot of the TLD before deletion. An email is sent when deletion completes (or fails).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"2026\",\n    \"active\": true\n  },\n  \"metadata\": {\n    \"status\": 202,\n    \"error\": false,\n    \"message\": null,\n    \"code\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f7d2ef7-5221-409a-bfe6-b9cab1c3f16d",
+              "name": "Invalid request — e.g. default TLD, multi-currency entity TLD, non-TLD, source-dimension TLD, or active ERP dimension mappings still reference this TLD subtree.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f98cecf-e8b1-4a0b-b0fc-40c9b8e28a5f",
+              "name": "Permission denied — user cannot manage dimensions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9caa58d-7b1b-4344-83a9-cc764c4e36fa",
+              "name": "Dimension not found or not a cube TLD (e.g. source-data-table root)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e646fd6-70f3-4f6d-8191-140482e0f048",
+              "name": "Preflight failed — cube has active work (publish lock, import blocks, or maintenance lock).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tld",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"code\": \"string\",\n    \"error\": true,\n    \"message\": \"string\",\n    \"status\": 6567\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40f70eb9-a175-4337-901d-243b5081804f",
+          "name": "Get Dimensions Tree",
+          "request": {
+            "name": "Get Dimensions Tree",
+            "description": {
+              "content": "This endpoint retrieves the company's dimensions structured in their hierarchy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "tree"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "can_be_mapped",
+                  "value": "false",
+                  "description": "The result will be limited to dimensions that can be mapped to source systems."
+                },
+                {
+                  "disabled": false,
+                  "key": "inactive",
+                  "value": "false",
+                  "description": "The result will also include inactive dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_operations",
+                  "value": "false",
+                  "description": "The result will include data about which operations are allowed against a given dimension (i.e. disable_block_reason, enable_block_reason)."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tag_members",
+                  "value": "false",
+                  "description": "The result will also include tag members."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tags",
+                  "value": "false",
+                  "description": "The result will also include tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>",
+                  "description": "The result will be limited to dimensions under this top-level dimension"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32f54480-8077-450d-aab7-7d9d74e03e65",
+              "name": "The Dimension",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "tree"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "can_be_mapped",
+                      "value": "false"
+                    },
+                    {
+                      "key": "inactive",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_operations",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_tag_members",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_tags",
+                      "value": "false"
+                    },
+                    {
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"id\": 7042,\n    \"parent_id\": 7039,\n    \"active\": false,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"metadata\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"id\": 665,\n    \"parent_id\": 6869,\n    \"active\": true,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"metadata\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fae7dad-3c3f-46b0-b3e6-71ef0c8662d8",
+          "name": "dimensions scenarios variance analysis summary create",
+          "request": {
+            "name": "dimensions scenarios variance analysis summary create",
+            "description": {
+              "content": "This class exists to have a standard rate limit across all authenticated API endpoints",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                "scenarios",
+                "variance-analysis",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a9b7389-c1ca-40b9-9f53-47631f43a7a9",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    "scenarios",
+                    "variance-analysis",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8f1d1032-e2d0-43cd-b216-cc547d58c447",
+    "name": "Cube Agents Dimensions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

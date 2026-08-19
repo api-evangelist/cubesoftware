@@ -1,0 +1,758 @@
+{
+  "item": [
+    {
+      "id": "d8bdfba8-3c0a-47e8-a6ee-e84c0a033970",
+      "name": "UserCompanies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac84ed85-64b2-4b3a-9b40-033de3fcfeda",
+          "name": "List User Company relationships",
+          "request": {
+            "name": "List User Company relationships",
+            "description": {
+              "content": "Load all users for a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1a6fb273-77d0-4692-872f-d889c8944fe9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8271,\n    \"last_active_at\": \"1980-11-18T23:15:12.358Z\",\n    \"permission_group\": 6959,\n    \"user\": {\n      \"created_at\": \"1983-12-10T03:57:21.927Z\",\n      \"email\": \"LWzrx@BLuXnfEWLBCAYiczt.kyp\",\n      \"id\": 4999,\n      \"is_cube_staff\": true,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"EMPLOYEE\",\n      \"timezone\": \"Israel\"\n    }\n  },\n  {\n    \"id\": 6392,\n    \"last_active_at\": \"2009-02-10T23:35:03.630Z\",\n    \"permission_group\": 7527,\n    \"user\": {\n      \"created_at\": \"1995-02-25T14:54:24.356Z\",\n      \"email\": \"T3rujkMmqSPyp@WXgjfCtVqDegSGvtbEqN.lb\",\n      \"id\": 6199,\n      \"is_cube_staff\": false,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Australia/North\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8df75a22-e3b3-4382-9fc9-ec6c093ccd9a",
+          "name": "Retrieve a user for a company",
+          "request": {
+            "name": "Retrieve a user for a company",
+            "description": {
+              "content": "Retrieves a user company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18f2ea6f-4e4a-4bf2-918a-94a5449d9f32",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2188,\n  \"last_active_at\": \"1988-01-30T22:50:33.051Z\",\n  \"permission_group\": 3438,\n  \"user\": {\n    \"created_at\": \"1948-05-06T00:54:19.303Z\",\n    \"email\": \"Babx6HHNOOU3vVc@skOGOgIjUAJQuZQdvEyPIkoqxveqYMVB.gnce\",\n    \"id\": 7892,\n    \"is_cube_staff\": false,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Pacific/Apia\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4b55bc4-cbaa-410b-9f4d-b932d2b5d707",
+          "name": "Update a user company",
+          "request": {
+            "name": "Update a user company",
+            "description": {
+              "content": "Update a user company by sending all editable field data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "permission_group",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ea6482d3-cb52-400e-bf88-901f997a6e0d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "permission_group",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permission_group\": \"<integer>\",\n  \"id\": 4261,\n  \"user\": {\n    \"created_at\": \"1995-04-14T23:24:54.340Z\",\n    \"email\": \"i7gvcmGq@HPpfrmTHRTampFJDdXMxQNRhkpETZKGaK.xny\",\n    \"id\": 4929,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"PARTNER\",\n    \"timezone\": \"Antarctica/Rothera\"\n  },\n  \"last_active_at\": \"2025-12-23T04:28:09.535Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bad4c5c-1b4d-4609-a213-bfef94b9e9c4",
+          "name": "Partially update a user company",
+          "request": {
+            "name": "Partially update a user company",
+            "description": {
+              "content": "Update one or more editable fields for a user company relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "permission_group",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "deactivated_at",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_groups",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_groups",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f5b3ad1e-6050-45c2-b50c-3c755ed7c348",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "permission_group",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "deactivated_at",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company_groups",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "company_groups",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permission_group\": \"<integer>\",\n  \"id\": 4261,\n  \"user\": {\n    \"created_at\": \"1995-04-14T23:24:54.340Z\",\n    \"email\": \"i7gvcmGq@HPpfrmTHRTampFJDdXMxQNRhkpETZKGaK.xny\",\n    \"id\": 4929,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"PARTNER\",\n    \"timezone\": \"Antarctica/Rothera\"\n  },\n  \"last_active_at\": \"2025-12-23T04:28:09.535Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6be8a3ec-8a63-4e65-8b82-d2c9a092ddf8",
+          "name": "Mark a user company as deactivated",
+          "request": {
+            "name": "Mark a user company as deactivated",
+            "description": {
+              "content": "Prevents a user from accessing data for the company.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d29900a7-3e61-4cbd-b787-5138cbca360d",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65d74676-9c54-412b-8de6-504cefeb3cfa",
+          "name": "company users me retrieve",
+          "request": {
+            "name": "company users me retrieve",
+            "description": {
+              "content": "Default authenticated ViewSet with standard rate limit (DEFAULT_API_RATE_LIMIT).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company",
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9982c6b-4139-474e-be24-b90315af34d2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permission_group\": \"<integer>\",\n  \"id\": 4261,\n  \"user\": {\n    \"created_at\": \"1995-04-14T23:24:54.340Z\",\n    \"email\": \"i7gvcmGq@HPpfrmTHRTampFJDdXMxQNRhkpETZKGaK.xny\",\n    \"id\": 4929,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"PARTNER\",\n    \"timezone\": \"Antarctica/Rothera\"\n  },\n  \"last_active_at\": \"2025-12-23T04:28:09.535Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "db76ea3e-fb9f-4618-8c8d-8e2a2460ff2b",
+    "name": "Cube Agents UserCompanies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

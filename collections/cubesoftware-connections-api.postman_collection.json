@@ -1,0 +1,3208 @@
+{
+  "item": [
+    {
+      "id": "5bd8c52f-666b-4efc-810a-ab5d463cbb61",
+      "name": "Connections",
+      "description": {
+        "content": "Connections to external source systems allow Cube to automatically import source\n            dimensions and transaction data.\n        ",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0c88be7-be18-449e-9db1-af55f23f5841",
+          "name": "Deactivate a connection",
+          "request": {
+            "name": "Deactivate a connection",
+            "description": {
+              "content": "Mark the connection as inactive. This will remove this connection from the UI. No data tied to this connection will be affected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_3",
+                  "value": "{}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78814e44-6f34-4985-8150-ef6f4fd2667a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"id\": \"508aea7f-c0a9-e7f6-d070-48e5bb7def01\",\n  \"active\": true,\n  \"type\": \"string\",\n  \"friendly_source\": \"string\",\n  \"integration\": {\n    \"category\": \"GL\",\n    \"id\": 1991,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"OKTA\"\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94c6ac63-cefb-437e-807c-4eecb618f9b0",
+              "name": "Bad Request - Failed to disconnect from external provider",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e208fd51-e714-420d-aff8-31a5bb6444be",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b115f9e-322a-470f-9ffb-994c9674d65c",
+              "name": "Forbidden - User does not have permission to modify this connection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d572226-b4fb-4182-9161-ff8324b4862a",
+              "name": "Connection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14385bcc-4d28-49fb-82a1-7079e3d12a34",
+          "name": "Get Import Settings for Connection",
+          "request": {
+            "name": "Get Import Settings for Connection",
+            "description": {
+              "content": "Get the default settings and required information for starting an import for a given connection.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "import",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The ID of a connection"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bb57591-bed4-47f3-9e79-ad56405afb19",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "import",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The ID of a connection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_reason\": \"string\",\n  \"defaults\": [],\n  \"num_unmapped\": 2506,\n  \"scenarios\": {\n    \"key_0\": {}\n  },\n  \"tlds_needed\": {\n    \"key_0\": {}\n  },\n  \"transactions\": {\n    \"file_imports\": {\n      \"last_deleted\": \"1998-07-18T14:17:40.558Z\",\n      \"last_updated\": \"1974-11-19T03:31:38.595Z\"\n    },\n    \"num_transactions\": 694\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c83fd961-9a41-4953-bdf0-13493dcaa3e0",
+          "name": "Resync a Connection",
+          "request": {
+            "name": "Resync a Connection",
+            "description": {
+              "content": "Use this endpoint to resync dimensions from a source connection.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "resync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "end_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "Optional time dimension ID for the end of the date range to sync (for supported Integrations)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "Optional time dimension ID for the beginning of the date range to sync (for supported Integrations)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The ID of a connection"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "start_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "The time dimension ID for the beginning of the date range to sync (for supported Integrations)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "The time dimension ID for the end of the date range to sync (for supported Integrations)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4226ede8-0d46-4a7d-afb0-95f9ddf53053",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "resync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "end_time_dimension_id",
+                      "value": "2"
+                    },
+                    {
+                      "key": "start_time_dimension_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The ID of a connection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The time dimension ID for the beginning of the date range to sync (for supported Integrations).",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The time dimension ID for the end of the date range to sync (for supported Integrations).",
+                        "type": "text/plain"
+                      },
+                      "key": "end_time_dimension_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"audit_log_event_id\": \"9681d882-15e7-4521-4fc0-d913de9487c6\",\n  \"auth_redirect_url\": \"http://k.ruguBl8\",\n  \"num_unmapped\": 423\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b8114e3-ce37-45bc-91f6-3e10375cdec1",
+          "name": "Salesforce SOQL",
+          "request": {
+            "name": "Salesforce SOQL",
+            "description": {
+              "content": "Make a query against Salesforce and return the results\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "salesforce",
+                "soql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "options_only",
+                  "value": "<boolean>",
+                  "description": "Whether the request is for field options (for mapping dimensions)\n                 or for all the data in tabular format"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The Salesforce SoQL to execute"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The ID of a connection"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d38d7bfb-c2dc-4b9f-bf7c-150fd7d03eb4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "salesforce",
+                    "soql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "options_only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The ID of a connection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"option_response\": [],\n  \"response\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47b10bd6-ac40-47f8-8acd-494c6ccfbf9a",
+          "name": "Get Source Files",
+          "request": {
+            "name": "Get Source Files",
+            "description": {
+              "content": "This endpoint retrieves all managed source files and folders for a connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "source-file-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The UUID of the ERP connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d3ee237-1f99-45c5-8ad4-813bfc6cce20",
+              "name": "List of source files and folders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  [\n    {\n      \"id\": \"001\",\n      \"name\": \"root\",\n      \"type\": \"folder\",\n      \"size\": 0,\n      \"modified_at\": null,\n      \"relative_path\": \"\",\n      \"parent_id\": null\n    },\n    {\n      \"id\": \"002\",\n      \"name\": \"file1.txt\",\n      \"type\": \"file\",\n      \"size\": 1024,\n      \"modified_at\": \"2026-07-19T00:28:00.988078Z\",\n      \"relative_path\": \"file1.txt\",\n      \"parent_id\": \"001\"\n    },\n    {\n      \"id\": \"003\",\n      \"name\": \"folder 1\",\n      \"type\": \"folder\",\n      \"size\": 0,\n      \"modified_at\": null,\n      \"relative_path\": \"\",\n      \"parent_id\": \"001\"\n    },\n    {\n      \"id\": \"004\",\n      \"name\": \"file2.txt\",\n      \"type\": \"file\",\n      \"size\": 2048,\n      \"modified_at\": \"2026-07-19T00:28:00.988129Z\",\n      \"relative_path\": \"folder 1/file2.txt\",\n      \"parent_id\": \"003\"\n    }\n  ]\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd0a495b-abb6-4c9f-ba91-5dcc495a6148",
+              "name": "Connection does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6b41caa-5c35-4088-a654-64017d1c6833",
+          "name": "Edit Source File",
+          "request": {
+            "name": "Edit Source File",
+            "description": {
+              "content": "This endpoint edits a source file in a connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "source-file-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The UUID of the ERP connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "current_relative_path",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "new_relative_path",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08d91448-3cdf-4d25-b9fb-bfa5528862a8",
+              "name": "File edited successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "current_relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "new_relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"002\",\n  \"name\": \"new-file-name.txt\",\n  \"type\": \"file\",\n  \"size\": 1024,\n  \"modified_at\": \"2026-07-19T00:28:00.988851Z\",\n  \"relative_path\": \"new-folder/new-file-name.txt\",\n  \"parent_id\": \"001\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93cc1525-291f-4415-be7b-9c6f8f0214ef",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "current_relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "new_relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c064f20-ded6-41d1-ae65-9de76b59926e",
+              "name": "File or connection does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "current_relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "new_relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72b14744-26fb-4d83-8f12-35cf454dc1b4",
+          "name": "Delete Batch of Source Files",
+          "request": {
+            "name": "Delete Batch of Source Files",
+            "description": {
+              "content": "This endpoint deletes a batch of source files for a connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "source-file-storage",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The UUID of the ERP connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "relative_paths",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "relative_paths",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a9e1279-5262-4a6c-9e02-f7c2291d2305",
+              "name": "Files deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa1e451c-96d0-4b21-8be7-38e61794ab1b",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ebbee87b-cce4-4d20-ba70-407ad40cab55",
+              "name": "Connection does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_paths",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39826288-006d-4065-a754-f38207475d58",
+          "name": "Generate Download URL for Source File",
+          "request": {
+            "name": "Generate Download URL for Source File",
+            "description": {
+              "content": "This endpoint generates a download URL for a source file in a connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "source-file-storage",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The UUID of the ERP connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "relative_path",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "187ee5b9-17b1-4314-ad99-b2fac718faf9",
+              "name": "Download URL generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"download_url\": \"https://example.com/signed-url\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ee88ba6-ad6b-4fd0-821b-c9673692899b",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c2c84b1-184c-4d50-89e2-1627f03ab629",
+              "name": "Connection does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34d5526d-5fef-40e5-85ac-8c98c4f04eae",
+          "name": "Generate Upload URLs for Source Files",
+          "request": {
+            "name": "Generate Upload URLs for Source Files",
+            "description": {
+              "content": "This endpoint generates upload URLs for source files in a connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connection",
+                ":connection_id",
+                "source-file-storage",
+                "upload-urls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The UUID of the ERP connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "content_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "relative_path",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "content_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "relative_path",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b7f293d-ea37-41f3-8d8a-1f0e03f64166",
+              "name": "Upload URLs generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "upload-urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"upload_urls\": [\n    \"https://example.com/signed-url-1\",\n    \"https://example.com/signed-url-2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db6bc654-36e7-4f51-860e-03e6988602c2",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "upload-urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d7aa0a8-82f2-4ce4-b2f3-0772885018eb",
+              "name": "Connection does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connection",
+                    ":connection_id",
+                    "source-file-storage",
+                    "upload-urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The UUID of the ERP connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "relative_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf8d5a20-136a-45a3-a679-d56785c908f8",
+          "name": "Get all Connections",
+          "request": {
+            "name": "Get all Connections",
+            "description": {
+              "content": "Get all connections for a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44c7737b-3190-4cbd-9d36-37872b7b8008",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"id\": \"508aea7f-c0a9-e7f6-d070-48e5bb7def01\",\n  \"active\": true,\n  \"type\": \"string\",\n  \"friendly_source\": \"string\",\n  \"integration\": {\n    \"category\": \"GL\",\n    \"id\": 1991,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"OKTA\"\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45520bb3-332d-476a-bceb-ed041ca948a0",
+          "name": "Get a Connection",
+          "request": {
+            "name": "Get a Connection",
+            "description": {
+              "content": "Get a single connection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections",
+                ":connection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) The ID of a connection"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "868c7c4e-687d-4dd5-a142-c5e7f1e87050",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) The ID of a connection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"id\": \"508aea7f-c0a9-e7f6-d070-48e5bb7def01\",\n  \"active\": true,\n  \"type\": \"string\",\n  \"friendly_source\": \"string\",\n  \"integration\": {\n    \"category\": \"GL\",\n    \"id\": 1991,\n    \"logo_url\": \"string\",\n    \"name\": \"string\",\n    \"source\": \"OKTA\"\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "358a9e65-0a81-47f4-96df-7227bca55ec7",
+          "name": "Start a Data Import",
+          "request": {
+            "name": "Start a Data Import",
+            "description": {
+              "content": "This endpoint will start a data import with the given connection. The request requires a connection ID and dimension IDs necessary to start an import.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections",
+                ":connection_id",
+                "imports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "other",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "other",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "scenario",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{\"end\":\"<integer>\",\"start\":\"<integer>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "715a26cf-9385-49e8-a3a8-1de10f1e34ba",
+              "name": "The import was queued and a message was sent in the metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connection_id",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "other",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "other",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "scenario",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{\"end\":\"<integer>\",\"start\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{\"end\":\"<integer>\",\"start\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2022-05-21T15:18:46.868Z\",\n  \"data_table\": {\n    \"active\": false,\n    \"connection\": {\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"id\": \"3d0bb2a7-9987-ca87-0b70-ab2d7eb2b01f\",\n      \"active\": true,\n      \"type\": \"string\",\n      \"friendly_source\": \"string\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": 9251,\n        \"logo_url\": \"string\",\n        \"name\": \"string\",\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"created_at\": \"2008-08-09T23:55:38.267Z\",\n    \"id\": \"80f15eb5-30dd-219d-23f5-259386e71179\",\n    \"last_import\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"name\": \"string\",\n    \"settings\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"type\": \"AD_HOC\",\n    \"type_friendly\": \"string\",\n    \"description\": \"string\"\n  },\n  \"end_time_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 8748,\n    \"name\": \"string\",\n    \"parent_id\": 2050,\n    \"write_block_reason\": \"string\",\n    \"status\": \"DISABLING_VALUES\",\n    \"type\": \"BASIC\",\n    \"rollup_type\": \"BALANCE\",\n    \"write_protection\": \"BLOCK\",\n    \"position\": 7807228686315071000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1992-08-18\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"id\": 468,\n  \"olap_cube_change\": {\n    \"batch_id\": \"string\",\n    \"created_at\": \"1962-03-05T07:40:25.981Z\",\n    \"created_by\": {\n      \"created_at\": \"1967-06-18T22:40:29.330Z\",\n      \"email\": \"BV8FhkiiCnbwfr@epGLkDUgOX.ojz\",\n      \"id\": 3881,\n      \"is_cube_staff\": false,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Asia/Karachi\"\n    },\n    \"friendly_type\": \"string\",\n    \"id\": 5262,\n    \"url\": \"string\",\n    \"user\": {\n      \"created_at\": \"1985-04-28T01:30:33.890Z\",\n      \"email\": \"elKPNp@eYgOzdhzVuivHFFdwDushcgSMkQF.bq\",\n      \"id\": 3635,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"EMPLOYEE\",\n      \"timezone\": \"America/Chicago\"\n    },\n    \"message\": \"string\",\n    \"metadata\": {},\n    \"type\": \"DATA_IMPORT\",\n    \"num_changes\": 901756034,\n    \"status\": \"FAILED\"\n  },\n  \"scenario_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 2838,\n    \"name\": \"string\",\n    \"parent_id\": 3836,\n    \"write_block_reason\": \"string\",\n    \"status\": \"ENABLED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"BEGINNING_BALANCE\",\n    \"write_protection\": \"NONE\",\n    \"position\": 6113910001093591000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1984-11-25\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"source_import_type\": \"USER\",\n  \"start_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 8145,\n    \"name\": \"string\",\n    \"parent_id\": 385,\n    \"write_block_reason\": \"string\",\n    \"status\": \"DISABLING_VALUES\",\n    \"type\": \"TAG\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"NONE\",\n    \"position\": 5924452596694270000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1963-01-27\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"status\": \"CANCELLED\",\n  \"user\": {\n    \"created_at\": \"1993-06-22T20:30:37.345Z\",\n    \"email\": \"DyPNrpzMFQdmsGu@VkPdRdumporx.rdv\",\n    \"id\": 6962,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Africa/Malabo\"\n  },\n  \"completed_at\": \"1983-11-03T10:09:29.482Z\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bdcbc0f-3585-4c8d-9dcc-8479d0bc5835",
+          "name": "Cancel a Data Import",
+          "request": {
+            "name": "Cancel a Data Import",
+            "description": {
+              "content": "Cancel an active data import by providing the import ID and connection ID. This action immediately stops the import process and sends a cancellation email to the user who initiated the import. Accessible only to Finance and Admin users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections",
+                ":connection_id",
+                "imports",
+                ":import_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "import_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Set the version of API the request is for",
+                "key": "HTTP_ACCEPT",
+                "value": "application/json; version=1.1"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; version=1.0"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status_message",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fff3f206-1127-46e9-a2ba-0955955ad911",
+              "name": "Attempt to cancel an active import.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connection_id",
+                    "imports",
+                    ":import_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "import_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Set the version of API the request is for",
+                    "key": "HTTP_ACCEPT",
+                    "value": "application/json; version=1.1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; version=1.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status_message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; version=1.0"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2017-06-27T09:26:04.358Z\",\n  \"data_table\": {\n    \"active\": true,\n    \"connection\": {\n      \"settings\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"3d88b196-3faa-e4ee-28ee-6506fae74250\",\n      \"active\": false,\n      \"type\": \"string\",\n      \"friendly_source\": \"string\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": 1586,\n        \"logo_url\": \"string\",\n        \"name\": \"string\",\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"created_at\": \"1974-12-20T04:41:29.783Z\",\n    \"id\": \"6ba89c01-e806-de97-2fb5-25dd49f53fb5\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"mapping_data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"name\": \"string\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"source_type\": \"string\",\n    \"type\": \"EMPLOYEE_ROSTER\",\n    \"type_friendly\": \"string\",\n    \"description\": \"string\"\n  },\n  \"end_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 9271,\n    \"name\": \"string\",\n    \"parent_id\": 6209,\n    \"write_block_reason\": \"string\",\n    \"status\": \"ENABLED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"BLOCK\",\n    \"position\": 3833424673920106500,\n    \"special_case_id\": \"string\",\n    \"date\": \"1991-08-24\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"id\": 3254,\n  \"olap_cube_change\": {\n    \"batch_id\": \"string\",\n    \"created_at\": \"2002-01-06T19:54:25.448Z\",\n    \"created_by\": {\n      \"created_at\": \"1973-04-09T03:25:17.807Z\",\n      \"email\": \"ZjOa1mul@hNIMCEVkKmGffsIgLGQBeQhxD.ebo\",\n      \"id\": 251,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"America/Marigot\"\n    },\n    \"friendly_type\": \"string\",\n    \"id\": 9625,\n    \"url\": \"string\",\n    \"user\": {\n      \"created_at\": \"1992-12-15T10:31:46.973Z\",\n      \"email\": \"Ans42lcoxc2Y@aKcaMvTOpygQHdBtbSEHAGdAMBhXVPOv.wxfw\",\n      \"id\": 7423,\n      \"is_cube_staff\": true,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Etc/GMT-10\"\n    },\n    \"message\": \"string\",\n    \"metadata\": {},\n    \"type\": \"FORMULA\",\n    \"num_changes\": 472428314,\n    \"status\": \"COMPLETED\"\n  },\n  \"scenario_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 7760,\n    \"name\": \"string\",\n    \"parent_id\": 1536,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"BEGINNING_BALANCE\",\n    \"write_protection\": \"AI\",\n    \"position\": 5275222171685921000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1954-03-17\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"source_import_type\": \"USER\",\n  \"start_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 7377,\n    \"name\": \"string\",\n    \"parent_id\": 7316,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"ACTUALS\",\n    \"position\": 5955821782358442000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1997-08-26\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"status\": \"<string>\",\n  \"user\": {\n    \"created_at\": \"1957-02-21T11:26:33.338Z\",\n    \"email\": \"SAao@aJzJkjFomelPsIrQkCbZudemTJNps.vpoa\",\n    \"id\": 4305,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Europe/Ljubljana\"\n  },\n  \"completed_at\": \"1948-08-05T11:13:39.966Z\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5dc4624-9045-4b41-9862-db1951a223de",
+              "name": "Indicates a race condition has occurred and the cancellation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connection_id",
+                    "imports",
+                    ":import_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "import_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Set the version of API the request is for",
+                    "key": "HTTP_ACCEPT",
+                    "value": "application/json; version=1.1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; version=1.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status_message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; version=1.0"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2017-06-27T09:26:04.358Z\",\n  \"data_table\": {\n    \"active\": true,\n    \"connection\": {\n      \"settings\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"3d88b196-3faa-e4ee-28ee-6506fae74250\",\n      \"active\": false,\n      \"type\": \"string\",\n      \"friendly_source\": \"string\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": 1586,\n        \"logo_url\": \"string\",\n        \"name\": \"string\",\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"created_at\": \"1974-12-20T04:41:29.783Z\",\n    \"id\": \"6ba89c01-e806-de97-2fb5-25dd49f53fb5\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"mapping_data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"name\": \"string\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"source_type\": \"string\",\n    \"type\": \"EMPLOYEE_ROSTER\",\n    \"type_friendly\": \"string\",\n    \"description\": \"string\"\n  },\n  \"end_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 9271,\n    \"name\": \"string\",\n    \"parent_id\": 6209,\n    \"write_block_reason\": \"string\",\n    \"status\": \"ENABLED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"BLOCK\",\n    \"position\": 3833424673920106500,\n    \"special_case_id\": \"string\",\n    \"date\": \"1991-08-24\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"id\": 3254,\n  \"olap_cube_change\": {\n    \"batch_id\": \"string\",\n    \"created_at\": \"2002-01-06T19:54:25.448Z\",\n    \"created_by\": {\n      \"created_at\": \"1973-04-09T03:25:17.807Z\",\n      \"email\": \"ZjOa1mul@hNIMCEVkKmGffsIgLGQBeQhxD.ebo\",\n      \"id\": 251,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"America/Marigot\"\n    },\n    \"friendly_type\": \"string\",\n    \"id\": 9625,\n    \"url\": \"string\",\n    \"user\": {\n      \"created_at\": \"1992-12-15T10:31:46.973Z\",\n      \"email\": \"Ans42lcoxc2Y@aKcaMvTOpygQHdBtbSEHAGdAMBhXVPOv.wxfw\",\n      \"id\": 7423,\n      \"is_cube_staff\": true,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Etc/GMT-10\"\n    },\n    \"message\": \"string\",\n    \"metadata\": {},\n    \"type\": \"FORMULA\",\n    \"num_changes\": 472428314,\n    \"status\": \"COMPLETED\"\n  },\n  \"scenario_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 7760,\n    \"name\": \"string\",\n    \"parent_id\": 1536,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"BEGINNING_BALANCE\",\n    \"write_protection\": \"AI\",\n    \"position\": 5275222171685921000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1954-03-17\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"source_import_type\": \"USER\",\n  \"start_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 7377,\n    \"name\": \"string\",\n    \"parent_id\": 7316,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"ACTUALS\",\n    \"position\": 5955821782358442000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1997-08-26\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"status\": \"<string>\",\n  \"user\": {\n    \"created_at\": \"1957-02-21T11:26:33.338Z\",\n    \"email\": \"SAao@aJzJkjFomelPsIrQkCbZudemTJNps.vpoa\",\n    \"id\": 4305,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Europe/Ljubljana\"\n  },\n  \"completed_at\": \"1948-08-05T11:13:39.966Z\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "186cf8b5-92d4-40bf-bfb0-929ed12df438",
+              "name": "User is not at least a finance user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections",
+                    ":connection_id",
+                    "imports",
+                    ":import_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "import_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Set the version of API the request is for",
+                    "key": "HTTP_ACCEPT",
+                    "value": "application/json; version=1.1"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; version=1.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status_message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; version=1.0"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2017-06-27T09:26:04.358Z\",\n  \"data_table\": {\n    \"active\": true,\n    \"connection\": {\n      \"settings\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"3d88b196-3faa-e4ee-28ee-6506fae74250\",\n      \"active\": false,\n      \"type\": \"string\",\n      \"friendly_source\": \"string\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": 1586,\n        \"logo_url\": \"string\",\n        \"name\": \"string\",\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"created_at\": \"1974-12-20T04:41:29.783Z\",\n    \"id\": \"6ba89c01-e806-de97-2fb5-25dd49f53fb5\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"mapping_data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"name\": \"string\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"source_type\": \"string\",\n    \"type\": \"EMPLOYEE_ROSTER\",\n    \"type_friendly\": \"string\",\n    \"description\": \"string\"\n  },\n  \"end_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 9271,\n    \"name\": \"string\",\n    \"parent_id\": 6209,\n    \"write_block_reason\": \"string\",\n    \"status\": \"ENABLED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"BLOCK\",\n    \"position\": 3833424673920106500,\n    \"special_case_id\": \"string\",\n    \"date\": \"1991-08-24\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"id\": 3254,\n  \"olap_cube_change\": {\n    \"batch_id\": \"string\",\n    \"created_at\": \"2002-01-06T19:54:25.448Z\",\n    \"created_by\": {\n      \"created_at\": \"1973-04-09T03:25:17.807Z\",\n      \"email\": \"ZjOa1mul@hNIMCEVkKmGffsIgLGQBeQhxD.ebo\",\n      \"id\": 251,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"America/Marigot\"\n    },\n    \"friendly_type\": \"string\",\n    \"id\": 9625,\n    \"url\": \"string\",\n    \"user\": {\n      \"created_at\": \"1992-12-15T10:31:46.973Z\",\n      \"email\": \"Ans42lcoxc2Y@aKcaMvTOpygQHdBtbSEHAGdAMBhXVPOv.wxfw\",\n      \"id\": 7423,\n      \"is_cube_staff\": true,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Etc/GMT-10\"\n    },\n    \"message\": \"string\",\n    \"metadata\": {},\n    \"type\": \"FORMULA\",\n    \"num_changes\": 472428314,\n    \"status\": \"COMPLETED\"\n  },\n  \"scenario_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 7760,\n    \"name\": \"string\",\n    \"parent_id\": 1536,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"BEGINNING_BALANCE\",\n    \"write_protection\": \"AI\",\n    \"position\": 5275222171685921000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1954-03-17\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"source_import_type\": \"USER\",\n  \"start_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 7377,\n    \"name\": \"string\",\n    \"parent_id\": 7316,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"ACTUALS\",\n    \"position\": 5955821782358442000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1997-08-26\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"status\": \"<string>\",\n  \"user\": {\n    \"created_at\": \"1957-02-21T11:26:33.338Z\",\n    \"email\": \"SAao@aJzJkjFomelPsIrQkCbZudemTJNps.vpoa\",\n    \"id\": 4305,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Europe/Ljubljana\"\n  },\n  \"completed_at\": \"1948-08-05T11:13:39.966Z\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f820299-2aad-4528-a35d-de05115821b7",
+          "name": "Get Import History",
+          "request": {
+            "name": "Get Import History",
+            "description": {
+              "content": "List all of a company's source data imports ordered by most recent to least.\n        Optionally filtered by a data table id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "imports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data_table_id",
+                  "value": "<uuid>",
+                  "description": "Filter imports related to a specific data table"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcce9cfd-9da4-4260-86fb-8d65dd46dde3",
+              "name": "The import history list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data_table_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2017-06-27T09:26:04.358Z\",\n  \"data_table\": {\n    \"active\": true,\n    \"connection\": {\n      \"settings\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"3d88b196-3faa-e4ee-28ee-6506fae74250\",\n      \"active\": false,\n      \"type\": \"string\",\n      \"friendly_source\": \"string\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": 1586,\n        \"logo_url\": \"string\",\n        \"name\": \"string\",\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    \"created_at\": \"1974-12-20T04:41:29.783Z\",\n    \"id\": \"6ba89c01-e806-de97-2fb5-25dd49f53fb5\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"mapping_data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"name\": \"string\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"source_type\": \"string\",\n    \"type\": \"EMPLOYEE_ROSTER\",\n    \"type_friendly\": \"string\",\n    \"description\": \"string\"\n  },\n  \"end_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 9271,\n    \"name\": \"string\",\n    \"parent_id\": 6209,\n    \"write_block_reason\": \"string\",\n    \"status\": \"ENABLED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"BLOCK\",\n    \"position\": 3833424673920106500,\n    \"special_case_id\": \"string\",\n    \"date\": \"1991-08-24\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"id\": 3254,\n  \"olap_cube_change\": {\n    \"batch_id\": \"string\",\n    \"created_at\": \"2002-01-06T19:54:25.448Z\",\n    \"created_by\": {\n      \"created_at\": \"1973-04-09T03:25:17.807Z\",\n      \"email\": \"ZjOa1mul@hNIMCEVkKmGffsIgLGQBeQhxD.ebo\",\n      \"id\": 251,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"America/Marigot\"\n    },\n    \"friendly_type\": \"string\",\n    \"id\": 9625,\n    \"url\": \"string\",\n    \"user\": {\n      \"created_at\": \"1992-12-15T10:31:46.973Z\",\n      \"email\": \"Ans42lcoxc2Y@aKcaMvTOpygQHdBtbSEHAGdAMBhXVPOv.wxfw\",\n      \"id\": 7423,\n      \"is_cube_staff\": true,\n      \"is_staff\": false,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Etc/GMT-10\"\n    },\n    \"message\": \"string\",\n    \"metadata\": {},\n    \"type\": \"FORMULA\",\n    \"num_changes\": 472428314,\n    \"status\": \"COMPLETED\"\n  },\n  \"scenario_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 7760,\n    \"name\": \"string\",\n    \"parent_id\": 1536,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"BEGINNING_BALANCE\",\n    \"write_protection\": \"AI\",\n    \"position\": 5275222171685921000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1954-03-17\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"source_import_type\": \"USER\",\n  \"start_time_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 7377,\n    \"name\": \"string\",\n    \"parent_id\": 7316,\n    \"write_block_reason\": \"string\",\n    \"status\": \"VALUES_CLEARED\",\n    \"type\": \"FORMULA\",\n    \"rollup_type\": \"SUM\",\n    \"write_protection\": \"ACTUALS\",\n    \"position\": 5955821782358442000,\n    \"special_case_id\": \"string\",\n    \"date\": \"1997-08-26\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"status\": \"<string>\",\n  \"user\": {\n    \"created_at\": \"1957-02-21T11:26:33.338Z\",\n    \"email\": \"SAao@aJzJkjFomelPsIrQkCbZudemTJNps.vpoa\",\n    \"id\": 4305,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Europe/Ljubljana\"\n  },\n  \"completed_at\": \"1948-08-05T11:13:39.966Z\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "525b08d6-80dc-4cfd-b351-1b0bc57042d1",
+    "name": "Cube Agents Connections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

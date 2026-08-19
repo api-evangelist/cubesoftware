@@ -1,0 +1,402 @@
+{
+  "item": [
+    {
+      "id": "d5b9f8f0-19de-411c-b7dc-8d9de278d84b",
+      "name": "Formulas",
+      "description": {
+        "content": "Cube uses formulas to calculate values for a dimension, based on other dimensions.\n            Examples: - Gross Margin = \"Revenue\" - \"Cost of Goods Sold\" - Net Income = \"Gross Margin\" - \"Expense\"\n            You can use formula endpoints in the API to access formulas for dimensions in your company.\n        ",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81413ada-4366-4291-8ada-adfef6273882",
+          "name": "Formulas by Dimension",
+          "request": {
+            "name": "Formulas by Dimension",
+            "description": {
+              "content": "This endpoint returns formula information for a given dimension ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dimensions",
+                ":dimension_id",
+                "formulas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dimension_id",
+                  "description": "(Required) The ID of the dimension"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "265da3af-5d3e-461f-ab40-e1bc1158431c",
+              "name": "The Formula Mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dimensions",
+                    ":dimension_id",
+                    "formulas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dimension_id",
+                      "description": "(Required) The ID of the dimension"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"formula\": \"string\",\n  \"formula_str\": \"string\",\n  \"id\": 2322,\n  \"modified_by\": {\n    \"created_at\": \"2001-11-26T10:52:07.863Z\",\n    \"email\": \"pwBHWBCNkoWkU@A.bxkz\",\n    \"id\": 5812,\n    \"is_cube_staff\": true,\n    \"is_staff\": false,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"PARTNER\",\n    \"timezone\": \"America/Dawson\"\n  },\n  \"scenario_dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 9699,\n    \"name\": \"string\",\n    \"parent_id\": 5062,\n    \"write_block_reason\": \"string\",\n    \"status\": \"DISABLING_VALUES\",\n    \"type\": \"TAG\",\n    \"rollup_type\": \"BALANCE\",\n    \"write_protection\": \"AI\",\n    \"position\": -4334052612411158500,\n    \"special_case_id\": \"string\",\n    \"date\": \"1954-08-08\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"rollup_logic\": \"ROLLUP_THEN_APPLY_FORMULA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6643176-3436-42ec-ac52-25217fd4a7af",
+          "name": "Retrieve Formulas",
+          "request": {
+            "name": "Retrieve Formulas",
+            "description": {
+              "content": "Retrieve all formulas belonging to a user's company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "formulas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recalculating",
+                  "value": "false",
+                  "description": "Only include recalculating formulas"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3c696ce-bc04-476c-853f-cc13724861aa",
+              "name": "The listing of formulas",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formulas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recalculating",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85974be8-1686-4058-bba1-bc8cfbc6d3aa",
+          "name": "Recalculate Formula",
+          "request": {
+            "name": "Recalculate Formula",
+            "description": {
+              "content": "Recalculate a formula by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "formulas",
+                ":formula_id",
+                "recalculate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "formula_id",
+                  "description": "(Required) ID of the formula to recalculate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64bbc80b-d098-4d59-a016-2319434e80fa",
+              "name": "The response message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "formulas",
+                    ":formula_id",
+                    "recalculate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "formula_id",
+                      "description": "(Required) ID of the formula to recalculate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d0a6897c-4be6-4cc3-9f04-a92548d27d8c",
+    "name": "Cube Agents Formulas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

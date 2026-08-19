@@ -1,0 +1,1023 @@
+{
+  "item": [
+    {
+      "id": "ad75f4ed-79ab-469d-8e8a-18463cfd80d9",
+      "name": "Agents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86ae79d8-63ef-4853-9acc-1fc7b3bc661c",
+          "name": "List agent categories.",
+          "request": {
+            "name": "List agent categories.",
+            "description": {
+              "content": "Returns agent categories with nested prompts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "53ba271c-7d1e-42d1-848b-cc401280c833",
+              "name": "Agent categories with nested prompts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6936,\n    \"name\": \"string\",\n    \"prompts\": [\n      {\n        \"id\": 1348,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"sort_order\": 3526,\n        \"prompt\": \"string\"\n      },\n      {\n        \"id\": 606,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"sort_order\": 60805,\n        \"prompt\": \"string\"\n      }\n    ],\n    \"slug\": \"string\",\n    \"sort_order\": 12049\n  },\n  {\n    \"id\": 2793,\n    \"name\": \"string\",\n    \"prompts\": [\n      {\n        \"id\": 1999,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"sort_order\": 31885,\n        \"prompt\": \"string\"\n      },\n      {\n        \"id\": 8929,\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"sort_order\": 7845,\n        \"prompt\": \"string\"\n      }\n    ],\n    \"slug\": \"string\",\n    \"sort_order\": 42854\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d36617f-1075-41c5-b2a8-9b4f8cf6c8c3",
+          "name": "Retrieve a single agent category by slug.",
+          "request": {
+            "name": "Retrieve a single agent category by slug.",
+            "description": {
+              "content": "Returns a single agent category with nested prompts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "categories",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52d7682e-724f-4551-8b88-26f05c4f2295",
+              "name": "A single agent category with nested prompts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "categories",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7963,\n  \"name\": \"string\",\n  \"prompts\": [\n    {\n      \"id\": 1895,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"sort_order\": 51033,\n      \"prompt\": \"string\"\n    },\n    {\n      \"id\": 495,\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"sort_order\": 59451,\n      \"prompt\": \"string\"\n    }\n  ],\n  \"slug\": \"string\",\n  \"sort_order\": 28198\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c01b3ae-4d82-47ec-b50f-e28570ec9cd1",
+          "name": "List credit usage by user",
+          "request": {
+            "name": "List credit usage by user",
+            "description": {
+              "content": "Returns paginated per-user credit usage for the current billing period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "credits",
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63d79603-3a2d-4223-a26a-0e414dd6d014",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "credits",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"ask\": 824,\n      \"build\": 342,\n      \"mcp\": 3786,\n      \"total\": 3011,\n      \"user_company\": {\n        \"id\": 8246,\n        \"last_active_at\": \"2012-02-12T06:37:56.663Z\",\n        \"permission_group\": 3844,\n        \"user\": {\n          \"created_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"is_cube_staff\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"is_staff\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"first_name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"last_name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationship_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"ask\": 2376,\n      \"build\": 9591,\n      \"mcp\": 5881,\n      \"total\": 6526,\n      \"user_company\": {\n        \"id\": 5876,\n        \"last_active_at\": \"1949-02-05T23:44:47.891Z\",\n        \"permission_group\": 2875,\n        \"user\": {\n          \"created_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"is_cube_staff\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"is_staff\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"first_name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"last_name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationship_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab1e4c89-f8e9-4f6a-8cf2-09f98cc36c4e",
+          "name": "Get credit usage for a user",
+          "request": {
+            "name": "Get credit usage for a user",
+            "description": {
+              "content": "Returns credit usage for a specific user company in the current billing period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "credits",
+                "usage",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d3846de-2268-4611-a0a1-de57f5c3a61e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "credits",
+                    "usage",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ask\": 543,\n  \"build\": 8546,\n  \"mcp\": 9694,\n  \"total\": 4842,\n  \"user_company\": {\n    \"id\": 9828,\n    \"last_active_at\": \"1953-03-08T17:24:37.879Z\",\n    \"permission_group\": 1073,\n    \"user\": {\n      \"created_at\": \"2015-01-16T08:16:55.426Z\",\n      \"email\": \"dllgrfaeUM@NydHXqMevuUNArsMzaTjZSZYneZUk.vthf\",\n      \"id\": 4930,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Cuba\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc12de0f-0eb7-4591-bad7-f61b9e9e2113",
+          "name": "Own credit usage",
+          "request": {
+            "name": "Own credit usage",
+            "description": {
+              "content": "Returns credit usage for the current user company for the billing period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "credits",
+                "usage",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "85582e08-f106-411c-a9bb-7a5c83f222fc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "credits",
+                    "usage",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ask\": 543,\n  \"build\": 8546,\n  \"mcp\": 9694,\n  \"total\": 4842,\n  \"user_company\": {\n    \"id\": 9828,\n    \"last_active_at\": \"1953-03-08T17:24:37.879Z\",\n    \"permission_group\": 1073,\n    \"user\": {\n      \"created_at\": \"2015-01-16T08:16:55.426Z\",\n      \"email\": \"dllgrfaeUM@NydHXqMevuUNArsMzaTjZSZYneZUk.vthf\",\n      \"id\": 4930,\n      \"is_cube_staff\": false,\n      \"is_staff\": true,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"relationship_type\": \"PARTNER\",\n      \"timezone\": \"Cuba\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbeea5cc-ade5-4ec5-b304-778bde6f1df2",
+          "name": "Credit usage summary",
+          "request": {
+            "name": "Credit usage summary",
+            "description": {
+              "content": "Returns the current credit allocation and usage broken down by Ask, Build, and MCP tiers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "credits",
+                "usage",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aa1e423d-5b87-4199-b98f-74646bc74ac7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "credits",
+                    "usage",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allocation\": {\n    \"period_end\": \"1973-02-22\",\n    \"period_start\": \"1977-09-14\",\n    \"total_credits\": 5384,\n    \"annual_credits\": -858362527,\n    \"purchased_credits\": 1500785072\n  },\n  \"usage\": {\n    \"by_tier\": {\n      \"ask\": 1419,\n      \"build\": 1783,\n      \"mcp\": 9387\n    },\n    \"remaining\": 7218,\n    \"total_used\": 4851\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5220bb3-f4c4-48d9-ac25-3bc842d1a122",
+          "name": "Build Widget with AI",
+          "request": {
+            "name": "Build Widget with AI",
+            "description": {
+              "content": "Build a widget definition using AI based on a natural language prompt. The widget is created in memory and returned without being saved to the database. The prompt and agent response are saved as ChatMessages in the specified session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                "widget-builder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "chat_session_id",
+                  "value": "<string>",
+                  "description": "(Required) The chat session ID to use for conversation context"
+                },
+                {
+                  "disabled": false,
+                  "key": "prompt",
+                  "value": "<string>",
+                  "description": "(Required) The user prompt describing the widget to build"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1649b41c-051b-44b1-a4a8-e3bc758139e7",
+              "name": "Successfully built widget",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "widget-builder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The chat session ID to use for conversation context",
+                        "type": "text/plain"
+                      },
+                      "key": "chat_session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user prompt describing the widget to build",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"widget\": {},\n  \"message\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "474b715c-d15d-4965-bf14-d81cab10cec2",
+              "name": "Bad Request - Invalid prompt or chat_session_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "widget-builder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The chat session ID to use for conversation context",
+                        "type": "text/plain"
+                      },
+                      "key": "chat_session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user prompt describing the widget to build",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b59eb86-14ab-4ecd-83ef-7d34241d56e5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "widget-builder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The chat session ID to use for conversation context",
+                        "type": "text/plain"
+                      },
+                      "key": "chat_session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user prompt describing the widget to build",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a186be03-1772-4a82-ad5b-421d22b3720c",
+              "name": "Forbidden - Chat session does not belong to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    "widget-builder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The chat session ID to use for conversation context",
+                        "type": "text/plain"
+                      },
+                      "key": "chat_session_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user prompt describing the widget to build",
+                        "type": "text/plain"
+                      },
+                      "key": "prompt",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0422eafa-8cdd-42ca-a12e-ecd4f75819b3",
+    "name": "Cube Agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

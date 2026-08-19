@@ -1,0 +1,3111 @@
+{
+  "item": [
+    {
+      "id": "fc919298-3ca1-4c8e-aa84-9b797fd733ee",
+      "name": "Data Tables",
+      "description": {
+        "content": "Data Tables are a generic way to organize the source dimensions, mappings, uploads,\n            and imports from an outside source into Cube (e.g. ERP connections, imported flat files, spreadsheet\n            updates, employee rosters, etc).\n        ",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "703a41ab-4247-47ae-8cd1-7660b9408c9e",
+          "name": "Retrieve Company Data Tables",
+          "request": {
+            "name": "Retrieve Company Data Tables",
+            "description": {
+              "content": "List all data tables for a company.\n\nData Tables are a generic way to organize the source dimensions, mappings, uploads, and imports\nfrom an outside source into Cube (source system connections, imported flat files and employee rosters, etc).\n        \n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bcd112e-3d45-4277-ae1e-7f64bc012804",
+              "name": "The data table object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"active\": true,\n  \"connection\": {\n    \"active\": false,\n    \"friendly_source\": \"string\",\n    \"id\": \"a8a492b7-bf0e-62f7-11d5-612b32d5b5c2\",\n    \"integration\": {\n      \"category\": \"UAP\",\n      \"id\": 6430,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"BOOMI\"\n    },\n    \"metadata\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"settings\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"type\": \"string\"\n  },\n  \"created_at\": \"1983-02-15T04:19:36.670Z\",\n  \"id\": \"6b7cbf06-c0f9-bb6e-b543-27eaa8387d33\",\n  \"last_import\": {\n    \"key_0\": {}\n  },\n  \"last_successful_import\": {\n    \"key_0\": {}\n  },\n  \"mapping_data\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"name\": \"string\",\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"source_type\": \"string\",\n  \"type\": \"GENERIC\",\n  \"type_friendly\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f90de067-46ba-4406-83d4-8a6deb3f12d1",
+          "name": "Retrieve a Data Table",
+          "request": {
+            "name": "Retrieve a Data Table",
+            "description": {
+              "content": "Retrieve a single data table for a company.\n\nData Tables are a generic way to organize the source dimensions, mappings, uploads, and imports\nfrom an outside source into Cube (source system connections, imported flat files and employee rosters, etc).\n        \n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) The ID of the data table"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df01c06d-694c-43c9-9e55-032fed2b4c7d",
+              "name": "The data table object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) The ID of the data table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"active\": true,\n  \"connection\": {\n    \"active\": false,\n    \"friendly_source\": \"string\",\n    \"id\": \"a8a492b7-bf0e-62f7-11d5-612b32d5b5c2\",\n    \"integration\": {\n      \"category\": \"UAP\",\n      \"id\": 6430,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"BOOMI\"\n    },\n    \"metadata\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"settings\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"type\": \"string\"\n  },\n  \"created_at\": \"1983-02-15T04:19:36.670Z\",\n  \"id\": \"6b7cbf06-c0f9-bb6e-b543-27eaa8387d33\",\n  \"last_import\": {\n    \"key_0\": {}\n  },\n  \"last_successful_import\": {\n    \"key_0\": {}\n  },\n  \"mapping_data\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"name\": \"string\",\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"source_type\": \"string\",\n  \"type\": \"GENERIC\",\n  \"type_friendly\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0111ef3b-eeb1-47e0-982b-f5f6fd1e1ffe",
+          "name": "Update a Data Table",
+          "request": {
+            "name": "Update a Data Table",
+            "description": {
+              "content": "Allows updating a data table. This currently supports modifying\n        settings for data tables tied to Salesforce connections and name, description fields for all data tables.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2000fd9-5019-4640-af69-9bedcec7f047",
+              "name": "The data table object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"id\": \"471b2868-17a4-7f05-2194-5bc04c45eb76\",\n  \"active\": false,\n  \"created_at\": \"2015-03-05T04:29:09.906Z\",\n  \"connection\": {\n    \"active\": true,\n    \"friendly_source\": \"string\",\n    \"id\": \"b9f2af7b-4b48-6c2b-6d39-8c9b1547ec21\",\n    \"integration\": {\n      \"category\": \"OTHER\",\n      \"id\": 7049,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"GOOGLE\"\n    },\n    \"metadata\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"type\": \"string\"\n  },\n  \"type\": \"ERP_CONNECTION\",\n  \"type_friendly\": \"string\",\n  \"last_import\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"last_successful_import\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"source_type\": \"string\",\n  \"mapping_data\": {\n    \"key_0\": {}\n  },\n  \"description\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d181c315-b2b8-4ba2-86bc-c546b53d0d10",
+          "name": "data tables partial update",
+          "request": {
+            "name": "data tables partial update",
+            "description": {
+              "content": "This class exists to have a standard rate limit across all authenticated API endpoints",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59d1f981-0f6e-4264-bff4-7d2316fbda32",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"id\": \"471b2868-17a4-7f05-2194-5bc04c45eb76\",\n  \"active\": false,\n  \"created_at\": \"2015-03-05T04:29:09.906Z\",\n  \"connection\": {\n    \"active\": true,\n    \"friendly_source\": \"string\",\n    \"id\": \"b9f2af7b-4b48-6c2b-6d39-8c9b1547ec21\",\n    \"integration\": {\n      \"category\": \"OTHER\",\n      \"id\": 7049,\n      \"logo_url\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"GOOGLE\"\n    },\n    \"metadata\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"type\": \"string\"\n  },\n  \"type\": \"ERP_CONNECTION\",\n  \"type_friendly\": \"string\",\n  \"last_import\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"last_successful_import\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"source_type\": \"string\",\n  \"mapping_data\": {\n    \"key_0\": {}\n  },\n  \"description\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbe844d6-5556-4f92-a2ff-025c8d57c04d",
+          "name": "Retrieve Data Table Dimensions",
+          "request": {
+            "name": "Retrieve Data Table Dimensions",
+            "description": {
+              "content": "Lists all of the dimensions associated with a given data table",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "dimensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "only_tlds",
+                  "value": "<boolean>",
+                  "description": "Whether to only return Top-Level Dimensions"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_tree",
+                  "value": "<boolean>",
+                  "description": "Whether the dimension tree needs to be ordered"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>",
+                  "description": "The ID of the Top-Level Dimension restricting this request"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a58a865-a5aa-488d-8789-c77afd2672a4",
+              "name": "The listing of dimensions in tree form",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "dimensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "only_tlds",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "order_tree",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a06c28f7-4335-4abf-a3ad-1b9fcb879a68",
+          "name": "Update Data Table Dimensions",
+          "request": {
+            "name": "Update Data Table Dimensions",
+            "description": {
+              "content": "Creates and modifies dimensions tied to a data table",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "dimensions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "flat",
+                  "value": "false",
+                  "description": "Whether or not the POSTed body contains a nested or flat dimensional structure"
+                },
+                {
+                  "disabled": false,
+                  "key": "full_list",
+                  "value": "true",
+                  "description": "Whether or not the full list is provided, if set to True any dimensions not in this list will be marked as disabled"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_name",
+                  "value": "<string>",
+                  "description": "A TLD name to associate all the provided dimensions with"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "data_table_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "special_case_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_children",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data_table_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "special_case_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_children",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f209e3c-69c2-432a-b2c2-0f8d3e6770ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "dimensions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "key": "full_list",
+                      "value": "true"
+                    },
+                    {
+                      "key": "tld_name",
+                      "value": "Customer"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "data_table_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rollup_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_protection",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "position",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "special_case_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "has_children",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "data_table_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rollup_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_protection",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "position",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "special_case_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "has_children",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data_table_id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"id\": 4718,\n    \"parent_id\": 8388,\n    \"currency_id\": 9156,\n    \"active\": false,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"number\": \"<string>\",\n    \"created_at\": \"1966-04-08T08:48:14.214Z\",\n    \"children\": {},\n    \"description\": \"<string>\",\n    \"requires_mapping\": true,\n    \"can_be_sign_flipped\": false\n  },\n  {\n    \"data_table_id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"id\": 2457,\n    \"parent_id\": 3608,\n    \"currency_id\": 7865,\n    \"active\": false,\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"formula\": \"string\",\n    \"write_protection\": \"<string>\",\n    \"position\": \"<long>\",\n    \"special_case_id\": \"<string>\",\n    \"date\": \"<date>\",\n    \"has_children\": \"<boolean>\",\n    \"write_block_reason\": \"string\",\n    \"number\": \"<string>\",\n    \"created_at\": \"1978-10-23T03:05:09.627Z\",\n    \"children\": {},\n    \"description\": \"<string>\",\n    \"requires_mapping\": false,\n    \"can_be_sign_flipped\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fca7b48-d837-4617-bf71-138ccd806617",
+          "name": "Retrieve AutoMappingRules for a Data Table",
+          "request": {
+            "name": "Retrieve AutoMappingRules for a Data Table",
+            "description": {
+              "content": "Lists all of the auto mapping rules from a data table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "dimensions",
+                "mappings",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) The ID of the data table the auto-mapping rules belong to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78e6205c-c1ec-4d58-8ab4-95919dd238bf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "dimensions",
+                    "mappings",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) The ID of the data table the auto-mapping rules belong to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data_table_id\": \"cc872dec-3150-5e7d-8b29-ef687317f624\",\n    \"id\": 7707,\n    \"rule\": \"ONE_TO_ONE\",\n    \"tld_id\": 5039,\n    \"dimension_id\": 3470\n  },\n  {\n    \"data_table_id\": \"eff52c3e-e01b-e680-407d-6deb4766e60e\",\n    \"id\": 8025,\n    \"rule\": \"MANY_TO_ONE\",\n    \"tld_id\": 1704,\n    \"dimension_id\": 3071\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd1cad67-8571-485f-95a4-d73696246096",
+          "name": "Create and Modify AutoMappingRules for a Data Table",
+          "request": {
+            "name": "Create and Modify AutoMappingRules for a Data Table",
+            "description": {
+              "content": "Create and modify auto mapping rules for a data table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "dimensions",
+                "mappings",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) The ID of the data table the auto-mapping rules belong to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "rule",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dimension_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rule",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dimension_id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5014800-ab74-410b-a0d2-f71898566388",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "dimensions",
+                    "mappings",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) The ID of the data table the auto-mapping rules belong to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "rule",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rule",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "tld_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dimension_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data_table_id\": \"4c922259-3a77-bab2-5eec-7a630004eeb6\",\n    \"id\": 7420,\n    \"rule\": \"<string>\",\n    \"tld_id\": 1106,\n    \"dimension_id\": 3910\n  },\n  {\n    \"data_table_id\": \"667e9a44-f7c4-13e4-d814-f896885ad0f8\",\n    \"id\": 48,\n    \"rule\": \"<string>\",\n    \"tld_id\": 4275,\n    \"dimension_id\": 4494\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "075efc58-9985-43c2-b62c-0b0aee2787bd",
+          "name": "Retrieve Mappings for a Data Table",
+          "request": {
+            "name": "Retrieve Mappings for a Data Table",
+            "description": {
+              "content": "Lists all of the dimension mappings from a data table's dimensions to a\ncompany's dimensions in Cube. These mappings are used when running an import against source data.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source_tld_id",
+                  "value": "<integer>",
+                  "description": "The ID of the Top-Level Source Dimension restricting this request"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) The ID of the data table the mappings are for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "403b6757-1b58-4367-9f7a-a666e5ef0688",
+              "name": "The mappings for the data table",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source_tld_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) The ID of the data table the mappings are for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1980-01-24T20:04:37.432Z\",\n  \"modified_at\": \"2012-02-17T15:34:38.272Z\",\n  \"modified_by\": {\n    \"created_at\": \"2006-05-06T23:54:53.323Z\",\n    \"email\": \"HlxcNqmth4or@WsvcHvZRXiPzUrpBvXwiAfQFRilxw.so\",\n    \"id\": 317,\n    \"is_cube_staff\": true,\n    \"is_staff\": true,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"relationship_type\": \"EMPLOYEE\",\n    \"timezone\": \"Etc/GMT+12\"\n  },\n  \"source_dimension\": {\n    \"active\": true,\n    \"formula\": \"string\",\n    \"id\": 695,\n    \"name\": \"string\",\n    \"parent_id\": 7217,\n    \"tld\": {\n      \"active\": true,\n      \"formula\": \"string\",\n      \"id\": 106,\n      \"name\": \"string\",\n      \"parent_id\": 3751,\n      \"write_block_reason\": \"string\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"rollup_type\": \"<string>\",\n      \"write_protection\": \"<string>\",\n      \"position\": 104026435441987580,\n      \"special_case_id\": \"string\",\n      \"date\": \"1988-12-09\",\n      \"has_children\": true,\n      \"metadata\": \"string\"\n    },\n    \"write_block_reason\": \"string\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"write_protection\": \"<string>\",\n    \"position\": 1032354538999773200,\n    \"special_case_id\": \"string\",\n    \"date\": \"1990-12-06\",\n    \"has_children\": false,\n    \"metadata\": \"string\"\n  },\n  \"dimension\": {\n    \"active\": false,\n    \"formula\": \"string\",\n    \"id\": 5795,\n    \"name\": \"string\",\n    \"parent_id\": 303,\n    \"tld\": {\n      \"active\": true,\n      \"formula\": \"string\",\n      \"id\": 5145,\n      \"name\": \"string\",\n      \"parent_id\": 5276,\n      \"write_block_reason\": \"string\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"rollup_type\": \"<string>\",\n      \"write_protection\": \"<string>\",\n      \"position\": -5674834187766723000,\n      \"special_case_id\": \"string\",\n      \"date\": \"1970-03-12\",\n      \"has_children\": false,\n      \"metadata\": \"string\"\n    },\n    \"write_block_reason\": \"string\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"rollup_type\": \"<string>\",\n    \"write_protection\": \"<string>\",\n    \"position\": -6064132036336466000,\n    \"special_case_id\": \"string\",\n    \"date\": \"2012-04-02\",\n    \"has_children\": true,\n    \"metadata\": \"string\"\n  },\n  \"automapped\": true,\n  \"sign_flip\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c8894e1-b8b4-44b6-94b0-f1c5a0d04021",
+          "name": "Update Mappings for a Data Table",
+          "request": {
+            "name": "Update Mappings for a Data Table",
+            "description": {
+              "content": "Lists all of the dimension mappings from a data table's dimensions to a\ncompany's dimensions in Cube. These mappings are used when running an import against source data.\n        ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) The ID of the data table the mappings are for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "relationship_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "tld",
+                  "value": "{\"name\":\"<string>\",\"status\":\"<string>\",\"type\":\"<string>\",\"rollup_type\":\"<string>\",\"write_protection\":\"<string>\",\"position\":\"<long>\",\"special_case_id\":\"<string>\",\"date\":\"<date>\",\"has_children\":\"<boolean>\",\"metadata\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<long>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "special_case_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "has_children",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tld",
+                  "value": "{\"name\":\"<string>\",\"status\":\"<string>\",\"type\":\"<string>\",\"rollup_type\":\"<string>\",\"write_protection\":\"<string>\",\"position\":\"<long>\",\"special_case_id\":\"<string>\",\"date\":\"<date>\",\"has_children\":\"<boolean>\",\"metadata\":\"<string>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "write_protection",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "special_case_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_children",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "automapped",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sign_flip",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b76889e-a927-4d3f-86b0-5a5e63595993",
+              "name": "The results from updating the mappings for the data table. Mapping updates are\n    handled in a partial manner meaning successful mapping changes will be updated accordingly and failed ones\n    will report back why they failed. Furthermore, altered vs deleted mappings will also be shown in the response.\n\n    Mappings can either be done in realtime or backgrounded depending on how much data needs to be moved for the mapping update.\n\n    `errors` - A list of error strings for any mappings that failed.\n\n    `altered` - A list of any mappings that were altered with this update.\n\n    `code` - Will be `MAPPING_BACKGROUNDED` or `MAPPING_COMPLETED` depending on if the update is being handled via a background worker task.\n            ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) The ID of the data table the mappings are for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "relationship_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "tld",
+                      "value": "{\"name\":\"<string>\",\"status\":\"<string>\",\"type\":\"<string>\",\"rollup_type\":\"<string>\",\"write_protection\":\"<string>\",\"position\":\"<long>\",\"special_case_id\":\"<string>\",\"date\":\"<date>\",\"has_children\":\"<boolean>\",\"metadata\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "rollup_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "write_protection",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "position",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "special_case_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "has_children",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "tld",
+                      "value": "{\"name\":\"<string>\",\"status\":\"<string>\",\"type\":\"<string>\",\"rollup_type\":\"<string>\",\"write_protection\":\"<string>\",\"position\":\"<long>\",\"special_case_id\":\"<string>\",\"date\":\"<date>\",\"has_children\":\"<boolean>\",\"metadata\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rollup_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "write_protection",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "position",
+                      "value": "<long>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "special_case_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "has_children",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "automapped",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sign_flip",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1976-04-24T11:54:48.280Z\",\n  \"dimension_id\": 1142,\n  \"modified_at\": \"1961-02-10T00:06:01.228Z\",\n  \"source_dimension_id\": 507,\n  \"automapped\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e02ccb3f-0fbb-40ad-a871-c11cb0c8d1a8",
+          "name": "Schedule and Update a Data Table Import",
+          "request": {
+            "name": "Schedule and Update a Data Table Import",
+            "description": {
+              "content": "Schedule and Update a data table import.  A single endpoint that either creates a scheduled data import if one doesn’t already exist, OR updates an existing scheduled data import.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "schedule-import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "day_of_week",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "hour_of_day",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "schedule_cadence",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_dimension_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a90bd38-054a-4dd0-b1c1-c4082a1b42e1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "day_of_week",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "end_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "hour_of_day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "schedule_cadence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2010-01-04T12:39:53.874Z\",\n  \"created_by\": 6570,\n  \"hour_of_day\": 7,\n  \"modified_at\": \"2018-09-23T07:54:38.505Z\",\n  \"source_data_table\": {\n    \"name\": \"<string>\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"id\": \"1b780aef-d241-9aef-7671-9f2ff299fd1c\",\n    \"active\": true,\n    \"created_at\": \"2011-08-13T16:28:42.248Z\",\n    \"connection\": {\n      \"active\": false,\n      \"friendly_source\": \"string\",\n      \"id\": \"d5b00158-3f3c-8572-1e46-ce9962293c5b\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo_url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"type\": \"string\"\n    },\n    \"type\": \"HRIS\",\n    \"type_friendly\": \"string\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"description\": \"<string>\"\n  },\n  \"tld_default_dimensions\": {\n    \"key_0\": 6136\n  },\n  \"schedule_cadence\": \"DAILY\",\n  \"day_of_week\": \"FRIDAY\",\n  \"start_time_dimension\": 8665,\n  \"end_time_dimension\": 8459,\n  \"num_prior_time\": 1715844353,\n  \"prior_time_unit\": \"MONTH\",\n  \"modified_by\": 226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "354e9184-53d4-4df1-923f-5c82095210ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "day_of_week",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "end_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "hour_of_day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "schedule_cadence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"metadata\": {\n    \"status\": 400,\n    \"error\": true,\n    \"message\": \"Field \\\"schedule_cadence\\\" must be a string and be one of the following values: WEEKLY,DAILY\",\n    \"code\": \"FIELD_VALIDATION_ERROR\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f1fba3d-62d6-4816-8b5a-6151f3dab250",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "day_of_week",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "end_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "hour_of_day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "schedule_cadence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"metadata\": {\n    \"status\": 403,\n    \"error\": true,\n    \"message\": \"Permission denied\",\n    \"code\": \"PERMISSION_DENIED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57293ea2-556a-4fca-8787-764abded4cf8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "day_of_week",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "end_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "hour_of_day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "schedule_cadence",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "start_time_dimension_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"metadata\": {\n    \"status\": 404,\n    \"error\": true,\n    \"message\": \"Data table with ID c4cf3e59-9b4c-4cbf-b627-2feaf9fa7ddf does not exist.\",\n    \"code\": \"DATA_TABLE_DOES_NOT_EXIST\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "937e90b9-0a45-4c6b-ad47-3b5d52563da4",
+          "name": "Delete the Schedule for a Data Table Import",
+          "request": {
+            "name": "Delete the Schedule for a Data Table Import",
+            "description": {
+              "content": "Deletes an import schedule for a given data table",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                ":data_table_id",
+                "schedule-import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "data_table_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7dbd2cfd-f19a-44dc-82a0-59ab65600ca8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2010-01-04T12:39:53.874Z\",\n  \"created_by\": 6570,\n  \"hour_of_day\": 7,\n  \"modified_at\": \"2018-09-23T07:54:38.505Z\",\n  \"source_data_table\": {\n    \"name\": \"<string>\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"id\": \"1b780aef-d241-9aef-7671-9f2ff299fd1c\",\n    \"active\": true,\n    \"created_at\": \"2011-08-13T16:28:42.248Z\",\n    \"connection\": {\n      \"active\": false,\n      \"friendly_source\": \"string\",\n      \"id\": \"d5b00158-3f3c-8572-1e46-ce9962293c5b\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo_url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"type\": \"string\"\n    },\n    \"type\": \"HRIS\",\n    \"type_friendly\": \"string\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"description\": \"<string>\"\n  },\n  \"tld_default_dimensions\": {\n    \"key_0\": 6136\n  },\n  \"schedule_cadence\": \"DAILY\",\n  \"day_of_week\": \"FRIDAY\",\n  \"start_time_dimension\": 8665,\n  \"end_time_dimension\": 8459,\n  \"num_prior_time\": 1715844353,\n  \"prior_time_unit\": \"MONTH\",\n  \"modified_by\": 226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f00dc88e-3883-4fc9-8acf-2a61383e502d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    ":data_table_id",
+                    "schedule-import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "data_table_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2010-01-04T12:39:53.874Z\",\n  \"created_by\": 6570,\n  \"hour_of_day\": 7,\n  \"modified_at\": \"2018-09-23T07:54:38.505Z\",\n  \"source_data_table\": {\n    \"name\": \"<string>\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"id\": \"1b780aef-d241-9aef-7671-9f2ff299fd1c\",\n    \"active\": true,\n    \"created_at\": \"2011-08-13T16:28:42.248Z\",\n    \"connection\": {\n      \"active\": false,\n      \"friendly_source\": \"string\",\n      \"id\": \"d5b00158-3f3c-8572-1e46-ce9962293c5b\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo_url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"type\": \"string\"\n    },\n    \"type\": \"HRIS\",\n    \"type_friendly\": \"string\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"description\": \"<string>\"\n  },\n  \"tld_default_dimensions\": {\n    \"key_0\": 6136\n  },\n  \"schedule_cadence\": \"DAILY\",\n  \"day_of_week\": \"FRIDAY\",\n  \"start_time_dimension\": 8665,\n  \"end_time_dimension\": 8459,\n  \"num_prior_time\": 1715844353,\n  \"prior_time_unit\": \"MONTH\",\n  \"modified_by\": 226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d991c2c5-1da6-40dd-ab98-c35ed7ad8f35",
+          "name": "Retrieve Scheduled Data Table Imports",
+          "request": {
+            "name": "Retrieve Scheduled Data Table Imports",
+            "description": {
+              "content": "List all scheduled data table imports for a company. The response can also be filtered by data_table_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data-tables",
+                "scheduled-imports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data_table_id",
+                  "value": "<uuid>",
+                  "description": "Filter imports related to a specific data table"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Associates request with company",
+                "key": "X-Company-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.cubesoftware.com/o/token/"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://portal.cubesoftware.com/o/authorize/"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e69083d-b8a6-4211-9e8b-38bcd361b7e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    "scheduled-imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data_table_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2010-01-04T12:39:53.874Z\",\n  \"created_by\": 6570,\n  \"hour_of_day\": 7,\n  \"modified_at\": \"2018-09-23T07:54:38.505Z\",\n  \"source_data_table\": {\n    \"name\": \"<string>\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"id\": \"1b780aef-d241-9aef-7671-9f2ff299fd1c\",\n    \"active\": true,\n    \"created_at\": \"2011-08-13T16:28:42.248Z\",\n    \"connection\": {\n      \"active\": false,\n      \"friendly_source\": \"string\",\n      \"id\": \"d5b00158-3f3c-8572-1e46-ce9962293c5b\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo_url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"type\": \"string\"\n    },\n    \"type\": \"HRIS\",\n    \"type_friendly\": \"string\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"description\": \"<string>\"\n  },\n  \"tld_default_dimensions\": {\n    \"key_0\": 6136\n  },\n  \"schedule_cadence\": \"DAILY\",\n  \"day_of_week\": \"FRIDAY\",\n  \"start_time_dimension\": 8665,\n  \"end_time_dimension\": 8459,\n  \"num_prior_time\": 1715844353,\n  \"prior_time_unit\": \"MONTH\",\n  \"modified_by\": 226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c4cc19a-9def-4494-b2ea-dc7199646908",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data-tables",
+                    "scheduled-imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data_table_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Associates request with company",
+                    "key": "X-Company-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2010-01-04T12:39:53.874Z\",\n  \"created_by\": 6570,\n  \"hour_of_day\": 7,\n  \"modified_at\": \"2018-09-23T07:54:38.505Z\",\n  \"source_data_table\": {\n    \"name\": \"<string>\",\n    \"settings\": {\n      \"key_0\": {}\n    },\n    \"id\": \"1b780aef-d241-9aef-7671-9f2ff299fd1c\",\n    \"active\": true,\n    \"created_at\": \"2011-08-13T16:28:42.248Z\",\n    \"connection\": {\n      \"active\": false,\n      \"friendly_source\": \"string\",\n      \"id\": \"d5b00158-3f3c-8572-1e46-ce9962293c5b\",\n      \"integration\": {\n        \"category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"logo_url\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"source\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"settings\": {\n        \"key_0\": {}\n      },\n      \"type\": \"string\"\n    },\n    \"type\": \"HRIS\",\n    \"type_friendly\": \"string\",\n    \"last_import\": {\n      \"key_0\": {}\n    },\n    \"last_successful_import\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"source_type\": \"string\",\n    \"mapping_data\": {\n      \"key_0\": {}\n    },\n    \"description\": \"<string>\"\n  },\n  \"tld_default_dimensions\": {\n    \"key_0\": 6136\n  },\n  \"schedule_cadence\": \"DAILY\",\n  \"day_of_week\": \"FRIDAY\",\n  \"start_time_dimension\": 8665,\n  \"end_time_dimension\": 8459,\n  \"num_prior_time\": 1715844353,\n  \"prior_time_unit\": \"MONTH\",\n  \"modified_by\": 226\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cubesoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dea5c3f2-dfa7-455a-a9b2-f97e2a0aa6f0",
+    "name": "Cube Agents Data Tables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n",
+      "type": "text/plain"
+    }
+  }
+}
