@@ -1,0 +1,53 @@
+slug: cubesoftware
+provider: Cube
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Planning Table
+  spec_file: cubesoftware-planning-table-api-openapi.yml
+  capability_id: BC-230
+  capability_id_l1: BC-230
+  capability_name: Financial Planning & Analysis
+  confidence: 0.75
+  evidence: GET /tables  tables_list  List all planning tables; POST /tables  Create a planning table;
+    Compute calculated columns
+  reason: CRUD over financial planning tables and their datasets is core FP&A planning; which sub-capability
+    (budget vs forecast) is not specified.
+- tag: Dashboard
+  spec_file: cubesoftware-dashboard-api-openapi.yml
+  capability_id: BC-230.30
+  capability_id_l1: BC-230
+  capability_name: Management Reporting
+  confidence: 0.7
+  evidence: '"List all dashboards", "Retrieve Embedded URL for the requested Cube Dashboard", "Set the
+    default dashboard"'
+  reason: Dashboards in an FP&A platform are the management reporting surface (KPIs, periodic reporting),
+    matching BC-230.30; an Analytics & BI reading is possible, hence 0.7 rather than higher.
+- tag: Scenarios
+  spec_file: cubesoftware-scenarios-api-openapi.yml
+  capability_id: BC-230.40
+  capability_id_l1: BC-230
+  capability_name: Performance Analysis Management
+  confidence: 0.7
+  evidence: POST /dimensions/scenarios/variance-analysis  dimensions_scenarios_variance_analysis_create
+  reason: Scenario variance analysis is FP&A performance/variance analysis; only one operation so confidence
+    is moderate.
+- tag: permissionsets
+  spec_file: cubesoftware-permissionsets-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'GET /permissionsets  permissionsets_list; schemas: PermissionSet, OperationTypesEnum'
+  reason: Read-only listing of permission sets with operation types is access-control administration,
+    mapping to Identity & Access Management. Confidence moderate as it is thin, admin-config surface.

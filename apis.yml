@@ -698,6 +698,9 @@ apis:
   - type: Documentation
     url: https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations
 common:
+  - type: CapabilityMap
+    url: capabilities/cubesoftware-capability-edges.yml
+    name: Cube Business Capability Map
 # --- identity / link properties ---
 - type: Website
   url: https://cubesoftware.com
