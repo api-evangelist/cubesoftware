@@ -559,7 +559,7 @@ apis:
   humanURL: https://api.cubesoftware.com/docs/
   baseURL: https://api.cubesoftware.com
   tags:
-  - permissionsets
+  - PermissionSets
   tags_raw:
   - permissionsets
   properties:
