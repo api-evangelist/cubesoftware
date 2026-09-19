@@ -312,6 +312,8 @@ apis:
   humanURL: https://api.cubesoftware.com/docs/
   baseURL: https://api.cubesoftware.com
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -658,6 +660,8 @@ apis:
   humanURL: https://api.cubesoftware.com/docs/
   baseURL: https://api.cubesoftware.com
   tags:
+  - ChatSessions
+  tags_raw:
   - Chat Sessions
   properties:
   - type: OpenAPI
@@ -672,6 +676,8 @@ apis:
   humanURL: https://api.cubesoftware.com/docs/
   baseURL: https://api.cubesoftware.com
   tags:
+  - ContentType
+  tags_raw:
   - Content Type
   properties:
   - type: OpenAPI
@@ -686,6 +692,8 @@ apis:
   humanURL: https://api.cubesoftware.com/docs/
   baseURL: https://api.cubesoftware.com
   tags:
+  - PermissionSets
+  tags_raw:
   - Permission Sets
   properties:
   - type: OpenAPI
