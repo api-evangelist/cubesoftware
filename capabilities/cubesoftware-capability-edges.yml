@@ -43,7 +43,8 @@ edges:
   reason: Scenario variance analysis is FP&A performance/variance analysis; only one operation so confidence
     is moderate.
 - tag: permissionsets
-  spec_file: cubesoftware-permissionsets-api-openapi.yml
+  spec_file: cubesoftware-permission-sets-api-openapi.yml
+  reanchored_from: cubesoftware-permissionsets-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
