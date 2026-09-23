@@ -1,15 +1,21 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Cube Agents Dimensions API
+  title: Cube Dimensions API
   version: 1.0.0 (1.0)
-  description: "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n"
+  description: '#### General Description
+
+    An API to access underlying Cube functionality.'
   termsOfService: https://www.cubesoftware.com/terms-of-service
 servers:
 - url: https://api.cubesoftware.com
   description: Production API URL
 tags:
 - name: Dimensions
-  description: "Dimensions store the organizational hierarchy for a company and outline how their data is\n            structured. All companies have top level dimensions called Account, Scenario, Department, and Time. They also\n            can have additional custom top level dimensions (i.e. Product, Entity).\n        "
+  description: 'Dimensions store the organizational hierarchy for a company and outline how their data is
+
+    structured. All companies have top level dimensions called Account, Scenario, Department, and Time. They also
+
+    can have additional custom top level dimensions (i.e. Product, Entity).'
 paths:
   /dimensions:
     get:
@@ -159,7 +165,9 @@ paths:
           description: The requested dimension
     post:
       operationId: DimensionUpdate
-      description: "Update individual fields of a dimension model.\n        NOTE: A dimension can NOT be enabled and disabled via this endpoint. Instead see the Dimension Status endpoint.\n        "
+      description: 'Update individual fields of a dimension model.
+
+        NOTE: A dimension can NOT be enabled and disabled via this endpoint. Instead see the Dimension Status endpoint.'
       summary: Update Dimension By ID
       parameters:
       - in: header
@@ -304,7 +312,9 @@ paths:
   /dimensions/{dimension_id}/options:
     get:
       operationId: dimensions_options_retrieve
-      description: "List the options for acceptable changes to a given dimension, such as possible parents, write\n        protection options, and rollup type options. For new dimensions, passing 0 as the ID gets default options.\n        "
+      description: 'List the options for acceptable changes to a given dimension, such as possible parents, write
+
+        protection options, and rollup type options. For new dimensions, passing 0 as the ID gets default options.'
       summary: Get Dimension Options
       parameters:
       - in: header
@@ -590,7 +600,9 @@ paths:
   /dimensions/merge:
     get:
       operationId: dimensions_merge_retrieve
-      description: "List previous merge scenarios. You can filter this list by destination dimension ID and/or\n        merge request status\n        "
+      description: 'List previous merge scenarios. You can filter this list by destination dimension ID and/or
+
+        merge request status'
       summary: List previous merge scenarios
       parameters:
       - in: header
@@ -641,7 +653,11 @@ paths:
           description: The merge scenario was triggered and a message was sent in the metadata.
     post:
       operationId: dimensions_merge_create
-      description: "Create a request to merge data from one or more source Scenario dimensions in to a destination\n        Scenario. This can be limited by time periods based on Time dimensions. If successful, a background worker\n        will start to move the data and the caller will be emailed with the results.\n        "
+      description: 'Create a request to merge data from one or more source Scenario dimensions in to a destination
+
+        Scenario. This can be limited by time periods based on Time dimensions. If successful, a background worker
+
+        will start to move the data and the caller will be emailed with the results.'
       summary: Merge one or more Scenario to a destination Scenario based on Time dimensions
       parameters:
       - in: header
@@ -745,7 +761,6 @@ paths:
   /dimensions/scenarios/forecast:
     post:
       operationId: dimensions_scenarios_forecast_create
-      description: Generate a time series forecast of a Scenario
       summary: Generate a time series forecast of a Scenario
       parameters:
       - in: header
@@ -794,7 +809,9 @@ paths:
   /dimensions/time:
     post:
       operationId: dimensions_time_create
-      description: "This endpoint creates dimensions for an entire year. Alternatively, it can create a\n        \"Cube Opening Balance\" dimension\n        "
+      description: 'This endpoint creates dimensions for an entire year. Alternatively, it can create a
+
+        "Cube Opening Balance" dimension'
       summary: Create Time Dimensions
       parameters:
       - in: header
@@ -1133,8 +1150,43 @@ paths:
       responses:
         '200':
           description: No response body
+      summary: Dimensions scenarios variance analysis summary create
+      x-summary-source: derived
 components:
   schemas:
+    DimensionListApiDocAttributes_2:
+      type: object
+      properties:
+        name:
+          type: string
+        parent_id:
+          type: integer
+        parent_name:
+          type: string
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+      required:
+      - name
+      - parent_id
+      - parent_name
+      - write_protection
+    DimensionDuplicateApiDocAttributes_1:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    TranslationItem:
+      type: object
+      properties:
+        phrase:
+          type: string
+        context:
+          $ref: '#/components/schemas/ContextEnum'
+      required:
+      - context
+      - phrase
     RollupTypeEnum:
       enum:
       - SUM
@@ -1149,106 +1201,14 @@ components:
         * `BALANCE` - Ending Balance
 
         * `BEGINNING_BALANCE` - Beginning Balance'
-    error_response_serializer:
+    DimensionTimeApiDocAttributes_1:
       type: object
       properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          $ref: '#/components/schemas/metadata_serializer'
-      required:
-      - data
-      - metadata
-    DimensionDuplicateApiDocAttributes_1:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    dimension_options_serializer:
-      type: object
-      properties:
-        tags:
-          type: string
-        parent_options:
-          type: string
-        rollup_types:
-          type: string
-        write_protections:
-          type: string
-        formulas:
-          type: object
-          additionalProperties: {}
-      required:
-      - formulas
-      - parent_options
-      - rollup_types
-      - tags
-      - write_protections
-    TimeTranslateResponse:
-      type: object
-      properties:
-        translations:
+        years:
           type: array
-          items:
-            $ref: '#/components/schemas/TranslationResult'
+          items: {}
       required:
-      - translations
-    NullEnum:
-      enum:
-      - null
-    DimensionInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        id:
-          type: integer
-          nullable: true
-        is_aggregation:
-          type: boolean
-      required:
-      - id
-      - is_aggregation
-      - name
-    ContextEnum:
-      enum:
-      - row
-      - column
-      - filter
-      type: string
-      description: '* `row` - row
-
-        * `column` - column
-
-        * `filter` - filter'
-    TopLevelDimension:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-      required:
-      - active
-      - id
-      - name
-    TimeTranslateRequest:
-      type: object
-      properties:
-        translations:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranslationItem'
-      required:
-      - translations
+      - years
     MergeScenarioRequest:
       type: object
       properties:
@@ -1259,8 +1219,9 @@ components:
           type: integer
           readOnly: true
         created_by:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         created_at:
           type: string
           format: date-time
@@ -1271,42 +1232,6 @@ components:
       - created_at
       - id
       - to_scenario_dimension_id
-    MetadataMessage:
-      type: object
-      description: 'This helps with some weird behavior in the API docs when an object isn''t actually returned in the response.
-
-        Using this makes the response example in the API docs look slightly better tho still technically not fully accurate.'
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
-      required:
-      - data
-      - metadata
-    duplicate_message_serializer_message_serializer:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
     data:
       type: object
       properties:
@@ -1319,6 +1244,40 @@ components:
       required:
       - data
       - metadata
+    DimensionInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type:
+          - integer
+          - 'null'
+        is_aggregation:
+          type: boolean
+      required:
+      - id
+      - is_aggregation
+      - name
+    BlankEnum:
+      enum:
+      - ''
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
     DimensionList:
       type: object
       properties:
@@ -1326,8 +1285,9 @@ components:
           type: integer
           readOnly: true
         parent_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           readOnly: true
         name:
           type: string
@@ -1340,7 +1300,6 @@ components:
         type:
           $ref: '#/components/schemas/Type95aEnum'
         rollup_type:
-          nullable: true
           oneOf:
           - $ref: '#/components/schemas/RollupTypeEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -1356,13 +1315,15 @@ components:
           minimum: -9223372036854775808
           format: int64
         special_case_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 100
         date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date
-          nullable: true
         has_children:
           type: boolean
         write_block_reason:
@@ -1370,27 +1331,32 @@ components:
           description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
           readOnly: true
         metadata:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         currency_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           readOnly: true
         data_table_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         number:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 150
         created_at:
           type: string
           format: date-time
           readOnly: true
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         formulas:
           type: array
           items:
@@ -1420,18 +1386,6 @@ components:
       - parent_id
       - tag_member_ids
       - write_block_reason
-    MergeScenarioApi:
-      type: object
-      properties:
-        to_scenario_request:
-          $ref: '#/components/schemas/MergeScenarioRequest'
-        from_scenario_requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/MergeScenarioFromScenarios'
-      required:
-      - from_scenario_requests
-      - to_scenario_request
     BulkDimensionUpdateRequest:
       type: object
       properties:
@@ -1444,13 +1398,16 @@ components:
       required:
       - batch_id
       - tld_id
-    DimensionStatusApiDocAttributes_1:
+    duplicate_message_serializer_message_serializer:
       type: object
       properties:
-        disable:
-          type: boolean
+        message:
+          type: string
       required:
-      - disable
+      - message
+    NullEnum:
+      enum:
+      - null
     MergeScenarioRequestStatusEnum:
       enum:
       - BACKLOG
@@ -1465,6 +1422,133 @@ components:
         * `FAILED` - Merge Scenario has failed
 
         * `SUCCESS` - Merge Scenario has succeeded'
+    TopLevelDimension:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+      required:
+      - active
+      - id
+      - name
+    Status2c8Enum:
+      enum:
+      - ENABLED
+      - DISABLING_VALUES
+      - CLEARING_VALUES
+      - VALUES_CLEARED
+      - DISABLED
+      type: string
+      description: '* `ENABLED` - Enabled
+
+        * `DISABLING_VALUES` - Disabling Values
+
+        * `CLEARING_VALUES` - Clearing Values
+
+        * `VALUES_CLEARED` - Values Cleared
+
+        * `DISABLED` - Disabled'
+    dimension_options_serializer:
+      type: object
+      properties:
+        tags:
+          type: string
+        parent_options:
+          type: string
+        rollup_types:
+          type: string
+        write_protections:
+          type: string
+        formulas:
+          type: object
+          additionalProperties: {}
+      required:
+      - formulas
+      - parent_options
+      - rollup_types
+      - tags
+      - write_protections
+    Dimension:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/Status2c8Enum'
+        type:
+          $ref: '#/components/schemas/Type95aEnum'
+        rollup_type:
+          oneOf:
+          - $ref: '#/components/schemas/RollupTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        formula:
+          type: string
+          readOnly: true
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+        position:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        special_case_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        date:
+          type:
+          - string
+          - 'null'
+          format: date
+        has_children:
+          type: boolean
+        write_block_reason:
+          type: string
+          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
+          readOnly: true
+        metadata:
+          type:
+          - string
+          - 'null'
+      required:
+      - active
+      - formula
+      - id
+      - name
+      - parent_id
+      - write_block_reason
+    error_response_serializer:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          $ref: '#/components/schemas/metadata_serializer'
+      required:
+      - data
+      - metadata
     Type95aEnum:
       enum:
       - BASIC
@@ -1476,6 +1560,37 @@ components:
         * `FORMULA` - Formula
 
         * `TAG` - Tag'
+    TimeTranslateResponse:
+      type: object
+      properties:
+        translations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranslationResult'
+      required:
+      - translations
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
+    DimensionOrderApiDocAttributes_1:
+      type: object
+      properties:
+        order:
+          type: array
+          items: {}
+      required:
+      - order
     MergeScenarioFromScenarios:
       type: object
       properties:
@@ -1495,6 +1610,53 @@ components:
       - from_dimension_id
       - from_dimension_request
       - start_time_dimension_id
+    TimeTranslateRequest:
+      type: object
+      properties:
+        translations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranslationItem'
+      required:
+      - translations
+    ContextEnum:
+      enum:
+      - row
+      - column
+      - filter
+      type: string
+      description: '* `row` - row
+
+        * `column` - column
+
+        * `filter` - filter'
+    MergeScenarioApi:
+      type: object
+      properties:
+        to_scenario_request:
+          $ref: '#/components/schemas/MergeScenarioRequest'
+        from_scenario_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/MergeScenarioFromScenarios'
+      required:
+      - from_scenario_requests
+      - to_scenario_request
+    MetadataMessage:
+      type: object
+      description: 'This helps with some weird behavior in the API docs when an object isn''t actually returned in the response.
+
+        Using this makes the response example in the API docs look slightly better tho still technically not fully accurate.'
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+      required:
+      - data
+      - metadata
     TranslationResult:
       type: object
       properties:
@@ -1510,144 +1672,13 @@ components:
       - context
       - dimensions
       - phrase
-    DimensionOrderApiDocAttributes_1:
+    DimensionStatusApiDocAttributes_1:
       type: object
       properties:
-        order:
-          type: array
-          items: {}
-      required:
-      - order
-    DimensionTimeApiDocAttributes_1:
-      type: object
-      properties:
-        years:
-          type: array
-          items: {}
-      required:
-      - years
-    TranslationItem:
-      type: object
-      properties:
-        phrase:
-          type: string
-        context:
-          $ref: '#/components/schemas/ContextEnum'
-      required:
-      - context
-      - phrase
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
+        disable:
           type: boolean
-        message:
-          type: string
-        code:
-          type: string
       required:
-      - code
-      - error
-      - message
-      - status
-    BlankEnum:
-      enum:
-      - ''
-    Status2c8Enum:
-      enum:
-      - ENABLED
-      - DISABLING_VALUES
-      - CLEARING_VALUES
-      - VALUES_CLEARED
-      - DISABLED
-      type: string
-      description: '* `ENABLED` - Enabled
-
-        * `DISABLING_VALUES` - Disabling Values
-
-        * `CLEARING_VALUES` - Clearing Values
-
-        * `VALUES_CLEARED` - Values Cleared
-
-        * `DISABLED` - Disabled'
-    Dimension:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        parent_id:
-          type: integer
-          nullable: true
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/Status2c8Enum'
-        type:
-          $ref: '#/components/schemas/Type95aEnum'
-        rollup_type:
-          nullable: true
-          oneOf:
-          - $ref: '#/components/schemas/RollupTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        formula:
-          type: string
-          readOnly: true
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-        position:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        special_case_id:
-          type: string
-          nullable: true
-          maxLength: 100
-        date:
-          type: string
-          format: date
-          nullable: true
-        has_children:
-          type: boolean
-        write_block_reason:
-          type: string
-          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
-          readOnly: true
-        metadata:
-          type: string
-          nullable: true
-      required:
-      - active
-      - formula
-      - id
-      - name
-      - parent_id
-      - write_block_reason
-    DimensionListApiDocAttributes_2:
-      type: object
-      properties:
-        name:
-          type: string
-        parent_id:
-          type: integer
-        parent_name:
-          type: string
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-      required:
-      - name
-      - parent_id
-      - parent_name
-      - write_protection
+      - disable
   securitySchemes:
     OAuth2:
       type: oauth2

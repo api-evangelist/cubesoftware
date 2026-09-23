@@ -1,8 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Cube Agents API
   version: 1.0.0 (1.0)
-  description: "#### General Description\nAn API to access underlying Cube functionality. These endpoints are the same endpoints\nthat support Cube's universal add-ons and a plethora of integrations meaning you'll be able to interact with your\nCube data in many powerful ways. Visit the API section of Cube's [Help Center](https://help.cubesoftware.com/hc/en-us/sections/18205290556180-Custom-Integrations)\nfor more usage guides on how you can use this API to integrate with Cube to accomplish various tasks!\n\n#### Versioning\nAll requests to the API require a version to be configured via an `Accept` Header. The value of this Header should look like this:\n```\nAccept: application/json; version=1.0\n```\nNote that the version number may differ depending on which version of the endpoint is needed.\n\n#### Response Structure\nThe general response structure of Cube's API endpoints will contain a `\"data\"` and `\"metadata\"` root level key:\n```json\n{\n    \"data\": { ... object data or list of objects ... },\n    \"metadata\": {\n        \"status\": 200,\n        \"message\": \"Potential message with additional context\",\n        \"error\": false,\n        \"code\": \"\"\n    }\n}\n```\n\n#### Rate Limiting\nAll endpoints have a rate limit configured, most of them default to 5/s.\nWhen the rate limit is encountered, a 429 HTTP code will be returned.\n\n#### Error Handling\nIn the event an error occurs, the response will typically look like this:\n```json\n{\n    \"data\": {},\n    \"metadata\": {\n        \"status\": 400,\n        \"message\": \"Some error message\",\n        \"error\": true,\n        \"code\": \"SOME_ERROR_CODE\"\n    }\n}\n```\n"
+  description: '#### General Description
+
+    An API to access underlying Cube functionality.'
   termsOfService: https://www.cubesoftware.com/terms-of-service
 servers:
 - url: https://api.cubesoftware.com
@@ -14,7 +16,7 @@ paths:
     get:
       operationId: agents_categories_list
       description: Returns agent categories with nested prompts.
-      summary: List agent categories.
+      summary: List agent categories
       parameters:
       - in: header
         name: X-Company-ID
@@ -39,7 +41,7 @@ paths:
     get:
       operationId: agents_categories_retrieve
       description: Returns a single agent category with nested prompts.
-      summary: Retrieve a single agent category by slug.
+      summary: Retrieve a single agent category by slug
       parameters:
       - in: header
         name: X-Company-ID
@@ -190,6 +192,83 @@ paths:
           description: Forbidden - Chat session does not belong to user
 components:
   schemas:
+    UserCompany:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        permission_group:
+          type: integer
+        last_active_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - last_active_at
+      - permission_group
+      - user
+    CreditUsageByTier:
+      type: object
+      properties:
+        ask:
+          type: integer
+        build:
+          type: integer
+        mcp:
+          type: integer
+      required:
+      - ask
+      - build
+      - mcp
+    CreditAllocationSummary:
+      type: object
+      properties:
+        annual_credits:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        purchased_credits:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        total_credits:
+          type: integer
+          readOnly: true
+        period_start:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
+      required:
+      - period_end
+      - period_start
+      - total_credits
+    WidgetBuilderRequest:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        prompt:
+          type: string
+          description: The user prompt describing the widget to build
+        chat_session_id:
+          type: string
+          description: The chat session ID to use for conversation context
+      required:
+      - chat_session_id
+      - prompt
+    NullEnum:
+      enum:
+      - null
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -1993,30 +2072,76 @@ components:
       required:
       - allocation
       - usage
-    CreditAllocationSummary:
+    CreditUsageSummaryData:
       type: object
       properties:
-        annual_credits:
+        total_used:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        purchased_credits:
+        remaining:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        total_credits:
-          type: integer
-          readOnly: true
-        period_start:
-          type: string
-          format: date
-        period_end:
-          type: string
-          format: date
+        by_tier:
+          $ref: '#/components/schemas/CreditUsageByTier'
       required:
-      - period_end
-      - period_start
-      - total_credits
+      - by_tier
+      - remaining
+      - total_used
+    PaginatedCreditUsageByUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditUsageByUser'
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    BlankEnum:
+      enum:
+      - ''
+    CreditUsageByUser:
+      type: object
+      properties:
+        user_company:
+          allOf:
+          - $ref: '#/components/schemas/UserCompany'
+          readOnly: true
+        ask:
+          type: integer
+        build:
+          type: integer
+        mcp:
+          type: integer
+        total:
+          type: integer
+      required:
+      - ask
+      - build
+      - mcp
+      - total
+      - user_company
     AgentPrompt:
       type: object
       properties:
@@ -2039,55 +2164,6 @@ components:
       - id
       - name
       - slug
-    PaginatedCreditUsageByUserList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditUsageByUser'
-    WidgetBuilderRequest:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        prompt:
-          type: string
-          description: The user prompt describing the widget to build
-        chat_session_id:
-          type: string
-          description: The chat session ID to use for conversation context
-      required:
-      - chat_session_id
-      - prompt
-    CreditUsageSummaryData:
-      type: object
-      properties:
-        total_used:
-          type: integer
-        remaining:
-          type: integer
-        by_tier:
-          $ref: '#/components/schemas/CreditUsageByTier'
-      required:
-      - by_tier
-      - remaining
-      - total_used
     AgentCategory:
       type: object
       properties:
@@ -2114,25 +2190,6 @@ components:
       - name
       - prompts
       - slug
-    BlankEnum:
-      enum:
-      - ''
-    NullEnum:
-      enum:
-      - null
-    CreditUsageByTier:
-      type: object
-      properties:
-        ask:
-          type: integer
-        build:
-          type: integer
-        mcp:
-          type: integer
-      required:
-      - ask
-      - build
-      - mcp
     User:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -2163,7 +2220,6 @@ components:
           type: boolean
           readOnly: true
         relationship_type:
-          nullable: true
           oneOf:
           - $ref: '#/components/schemas/RelationshipTypeEnum'
           - $ref: '#/components/schemas/BlankEnum'
@@ -2176,59 +2232,6 @@ components:
       - id
       - is_cube_staff
       - is_staff
-    UserCompany:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        permission_group:
-          type: integer
-        last_active_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - id
-      - last_active_at
-      - permission_group
-      - user
-    CreditUsageByUser:
-      type: object
-      properties:
-        user_company:
-          allOf:
-          - $ref: '#/components/schemas/UserCompany'
-          readOnly: true
-        ask:
-          type: integer
-        build:
-          type: integer
-        mcp:
-          type: integer
-        total:
-          type: integer
-      required:
-      - ask
-      - build
-      - mcp
-      - total
-      - user_company
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
   securitySchemes:
     OAuth2:
       type: oauth2
