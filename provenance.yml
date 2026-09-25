@@ -49,17 +49,17 @@ artifacts:
     method: derived
     evidence: openapi/cubesoftware-canvases-api
   collections/cubesoftware-chatmessages-api.opencollection.json:
-    method: derived
-    evidence: openapi/cubesoftware-chatmessages-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-chatmessages-api.postman_collection.json:
-    method: derived
-    evidence: openapi/cubesoftware-chatmessages-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-chatsessions-api.opencollection.json:
-    method: derived
-    evidence: openapi/cubesoftware-chatsessions-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-chatsessions-api.postman_collection.json:
-    method: derived
-    evidence: openapi/cubesoftware-chatsessions-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-chatsettings-api.opencollection.json:
     method: derived
     evidence: openapi/cubesoftware-chatsettings-api
@@ -97,11 +97,11 @@ artifacts:
     method: derived
     evidence: openapi/cubesoftware-connections-api
   collections/cubesoftware-contenttype-api.opencollection.json:
-    method: derived
-    evidence: openapi/cubesoftware-contenttype-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-contenttype-api.postman_collection.json:
-    method: derived
-    evidence: openapi/cubesoftware-contenttype-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-cube-api.opencollection.json:
     method: derived
     evidence: openapi/cubesoftware-cube-api
@@ -205,11 +205,11 @@ artifacts:
     method: derived
     evidence: openapi/cubesoftware-permissions-api
   collections/cubesoftware-permissionsets-api.opencollection.json:
-    method: derived
-    evidence: openapi/cubesoftware-permissionsets-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-permissionsets-api.postman_collection.json:
-    method: derived
-    evidence: openapi/cubesoftware-permissionsets-api
+    method: unknown
+    evidence: no authorship recorded
   collections/cubesoftware-planmodesessions-api.opencollection.json:
     method: derived
     evidence: openapi/cubesoftware-planmodesessions-api
@@ -276,55 +276,10 @@ artifacts:
   errors/cubesoftware-problem-types.yml:
     method: derived
     evidence: declared in the artifact
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -408,6 +363,123 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/cubesoftware-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -419,7 +491,8 @@ artifacts:
     evidence: declared in the artifact
   openapi/_original/cubesoftware-openapi-original.yml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
   openapi/cubesoftware-agents-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -438,10 +511,10 @@ artifacts:
   openapi/cubesoftware-canvases-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/cubesoftware-chatmessages-api-openapi.yml:
+  openapi/cubesoftware-chat-messages-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/cubesoftware-chatsessions-api-openapi.yml:
+  openapi/cubesoftware-chat-sessions-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/cubesoftware-chatsettings-api-openapi.yml:
@@ -462,7 +535,7 @@ artifacts:
   openapi/cubesoftware-connections-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/cubesoftware-contenttype-api-openapi.yml:
+  openapi/cubesoftware-content-type-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/cubesoftware-cube-api-openapi.yml:
@@ -513,10 +586,10 @@ artifacts:
   openapi/cubesoftware-notifications-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/cubesoftware-permissions-api-openapi.yml:
+  openapi/cubesoftware-permission-sets-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/cubesoftware-permissionsets-api-openapi.yml:
+  openapi/cubesoftware-permissions-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/cubesoftware-planmodesessions-api-openapi.yml:
@@ -549,6 +622,9 @@ artifacts:
   overlays/cubesoftware-openapi-overlay.yaml:
     method: unknown
     evidence: no authorship recorded
+  plans/cubesoftware-plans-pricing.yml:
+    method: searched
+    evidence: declared in the artifact
   scopes/cubesoftware-scopes.yml:
     method: searched
     evidence: declared in the artifact
