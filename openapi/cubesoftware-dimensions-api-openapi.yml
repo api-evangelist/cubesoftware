@@ -1154,130 +1154,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DimensionListApiDocAttributes_2:
-      type: object
-      properties:
-        name:
-          type: string
-        parent_id:
-          type: integer
-        parent_name:
-          type: string
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-      required:
-      - name
-      - parent_id
-      - parent_name
-      - write_protection
-    DimensionDuplicateApiDocAttributes_1:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    TranslationItem:
-      type: object
-      properties:
-        phrase:
-          type: string
-        context:
-          $ref: '#/components/schemas/ContextEnum'
-      required:
-      - context
-      - phrase
-    RollupTypeEnum:
-      enum:
-      - SUM
-      - AVERAGE
-      - BALANCE
-      - BEGINNING_BALANCE
-      type: string
-      description: '* `SUM` - Sum
-
-        * `AVERAGE` - Average
-
-        * `BALANCE` - Ending Balance
-
-        * `BEGINNING_BALANCE` - Beginning Balance'
-    DimensionTimeApiDocAttributes_1:
-      type: object
-      properties:
-        years:
-          type: array
-          items: {}
-      required:
-      - years
-    MergeScenarioRequest:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        to_scenario_dimension_id:
-          type: integer
-          readOnly: true
-        created_by:
-          type:
-          - integer
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/MergeScenarioRequestStatusEnum'
-      required:
-      - created_at
-      - id
-      - to_scenario_dimension_id
-    data:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
-      required:
-      - data
-      - metadata
-    DimensionInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        id:
-          type:
-          - integer
-          - 'null'
-        is_aggregation:
-          type: boolean
-      required:
-      - id
-      - is_aggregation
-      - name
-    BlankEnum:
-      enum:
-      - ''
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
     DimensionList:
       type: object
       properties:
@@ -1386,75 +1262,21 @@ components:
       - parent_id
       - tag_member_ids
       - write_block_reason
-    BulkDimensionUpdateRequest:
+    DimensionInfo:
       type: object
       properties:
-        batch_id:
-          type: string
-          description: The batch ID for the bulk update operation
-        tld_id:
-          type: integer
-          description: The top-level dimension ID to update dimensions under
-      required:
-      - batch_id
-      - tld_id
-    duplicate_message_serializer_message_serializer:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    NullEnum:
-      enum:
-      - null
-    MergeScenarioRequestStatusEnum:
-      enum:
-      - BACKLOG
-      - IN_PROGRESS
-      - FAILED
-      - SUCCESS
-      type: string
-      description: '* `BACKLOG` - Merge Scenario hasn''t started
-
-        * `IN_PROGRESS` - Merge Scenario in progress
-
-        * `FAILED` - Merge Scenario has failed
-
-        * `SUCCESS` - Merge Scenario has succeeded'
-    TopLevelDimension:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
         name:
           type: string
-          maxLength: 255
-        active:
+        id:
+          type:
+          - integer
+          - 'null'
+        is_aggregation:
           type: boolean
-          readOnly: true
       required:
-      - active
       - id
+      - is_aggregation
       - name
-    Status2c8Enum:
-      enum:
-      - ENABLED
-      - DISABLING_VALUES
-      - CLEARING_VALUES
-      - VALUES_CLEARED
-      - DISABLED
-      type: string
-      description: '* `ENABLED` - Enabled
-
-        * `DISABLING_VALUES` - Disabling Values
-
-        * `CLEARING_VALUES` - Clearing Values
-
-        * `VALUES_CLEARED` - Values Cleared
-
-        * `DISABLED` - Disabled'
     dimension_options_serializer:
       type: object
       properties:
@@ -1475,6 +1297,325 @@ components:
       - rollup_types
       - tags
       - write_protections
+    TimeTranslateResponse:
+      type: object
+      properties:
+        translations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranslationResult'
+      required:
+      - translations
+    duplicate_message_serializer_message_serializer:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    MergeScenarioRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        to_scenario_dimension_id:
+          type: integer
+          readOnly: true
+        created_by:
+          type:
+          - integer
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/MergeScenarioRequestStatusEnum'
+      required:
+      - created_at
+      - id
+      - to_scenario_dimension_id
+    data:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+      required:
+      - data
+      - metadata
+    NullEnum:
+      enum:
+      - null
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
+    MergeScenarioRequestStatusEnum:
+      enum:
+      - BACKLOG
+      - IN_PROGRESS
+      - FAILED
+      - SUCCESS
+      type: string
+      description: '* `BACKLOG` - Merge Scenario hasn''t started
+
+        * `IN_PROGRESS` - Merge Scenario in progress
+
+        * `FAILED` - Merge Scenario has failed
+
+        * `SUCCESS` - Merge Scenario has succeeded'
+    DimensionDuplicateApiDocAttributes_1:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    Type95aEnum:
+      enum:
+      - BASIC
+      - FORMULA
+      - TAG
+      type: string
+      description: '* `BASIC` - Basic
+
+        * `FORMULA` - Formula
+
+        * `TAG` - Tag'
+    DimensionStatusApiDocAttributes_1:
+      type: object
+      properties:
+        disable:
+          type: boolean
+      required:
+      - disable
+    TopLevelDimension:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+      required:
+      - active
+      - id
+      - name
+    TranslationItem:
+      type: object
+      properties:
+        phrase:
+          type: string
+        context:
+          $ref: '#/components/schemas/ContextEnum'
+      required:
+      - context
+      - phrase
+    BulkDimensionUpdateRequest:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          description: The batch ID for the bulk update operation
+        tld_id:
+          type: integer
+          description: The top-level dimension ID to update dimensions under
+      required:
+      - batch_id
+      - tld_id
+    RollupTypeEnum:
+      enum:
+      - SUM
+      - AVERAGE
+      - BALANCE
+      - BEGINNING_BALANCE
+      type: string
+      description: '* `SUM` - Sum
+
+        * `AVERAGE` - Average
+
+        * `BALANCE` - Ending Balance
+
+        * `BEGINNING_BALANCE` - Beginning Balance'
+    MetadataMessage:
+      type: object
+      description: 'This helps with some weird behavior in the API docs when an object isn''t actually returned in the response.
+
+        Using this makes the response example in the API docs look slightly better tho still technically not fully accurate.'
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+      required:
+      - data
+      - metadata
+    DimensionOrderApiDocAttributes_1:
+      type: object
+      properties:
+        order:
+          type: array
+          items: {}
+      required:
+      - order
+    DimensionListApiDocAttributes_2:
+      type: object
+      properties:
+        name:
+          type: string
+        parent_id:
+          type: integer
+        parent_name:
+          type: string
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+      required:
+      - name
+      - parent_id
+      - parent_name
+      - write_protection
+    ContextEnum:
+      enum:
+      - row
+      - column
+      - filter
+      type: string
+      description: '* `row` - row
+
+        * `column` - column
+
+        * `filter` - filter'
+    MergeScenarioApi:
+      type: object
+      properties:
+        to_scenario_request:
+          $ref: '#/components/schemas/MergeScenarioRequest'
+        from_scenario_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/MergeScenarioFromScenarios'
+      required:
+      - from_scenario_requests
+      - to_scenario_request
+    MergeScenarioFromScenarios:
+      type: object
+      properties:
+        from_dimension_id:
+          type: integer
+          readOnly: true
+        start_time_dimension_id:
+          type: integer
+          readOnly: true
+        end_time_dimension_id:
+          type: integer
+          readOnly: true
+        from_dimension_request:
+          type: integer
+      required:
+      - end_time_dimension_id
+      - from_dimension_id
+      - from_dimension_request
+      - start_time_dimension_id
+    BlankEnum:
+      enum:
+      - ''
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
+    Status2c8Enum:
+      enum:
+      - ENABLED
+      - DISABLING_VALUES
+      - CLEARING_VALUES
+      - VALUES_CLEARED
+      - DISABLED
+      type: string
+      description: '* `ENABLED` - Enabled
+
+        * `DISABLING_VALUES` - Disabling Values
+
+        * `CLEARING_VALUES` - Clearing Values
+
+        * `VALUES_CLEARED` - Values Cleared
+
+        * `DISABLED` - Disabled'
+    error_response_serializer:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          $ref: '#/components/schemas/metadata_serializer'
+      required:
+      - data
+      - metadata
+    TranslationResult:
+      type: object
+      properties:
+        phrase:
+          type: string
+        context:
+          type: string
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionInfo'
+      required:
+      - context
+      - dimensions
+      - phrase
+    DimensionTimeApiDocAttributes_1:
+      type: object
+      properties:
+        years:
+          type: array
+          items: {}
+      required:
+      - years
+    TimeTranslateRequest:
+      type: object
+      properties:
+        translations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranslationItem'
+      required:
+      - translations
     Dimension:
       type: object
       properties:
@@ -1538,147 +1679,6 @@ components:
       - name
       - parent_id
       - write_block_reason
-    error_response_serializer:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          $ref: '#/components/schemas/metadata_serializer'
-      required:
-      - data
-      - metadata
-    Type95aEnum:
-      enum:
-      - BASIC
-      - FORMULA
-      - TAG
-      type: string
-      description: '* `BASIC` - Basic
-
-        * `FORMULA` - Formula
-
-        * `TAG` - Tag'
-    TimeTranslateResponse:
-      type: object
-      properties:
-        translations:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranslationResult'
-      required:
-      - translations
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
-    DimensionOrderApiDocAttributes_1:
-      type: object
-      properties:
-        order:
-          type: array
-          items: {}
-      required:
-      - order
-    MergeScenarioFromScenarios:
-      type: object
-      properties:
-        from_dimension_id:
-          type: integer
-          readOnly: true
-        start_time_dimension_id:
-          type: integer
-          readOnly: true
-        end_time_dimension_id:
-          type: integer
-          readOnly: true
-        from_dimension_request:
-          type: integer
-      required:
-      - end_time_dimension_id
-      - from_dimension_id
-      - from_dimension_request
-      - start_time_dimension_id
-    TimeTranslateRequest:
-      type: object
-      properties:
-        translations:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranslationItem'
-      required:
-      - translations
-    ContextEnum:
-      enum:
-      - row
-      - column
-      - filter
-      type: string
-      description: '* `row` - row
-
-        * `column` - column
-
-        * `filter` - filter'
-    MergeScenarioApi:
-      type: object
-      properties:
-        to_scenario_request:
-          $ref: '#/components/schemas/MergeScenarioRequest'
-        from_scenario_requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/MergeScenarioFromScenarios'
-      required:
-      - from_scenario_requests
-      - to_scenario_request
-    MetadataMessage:
-      type: object
-      description: 'This helps with some weird behavior in the API docs when an object isn''t actually returned in the response.
-
-        Using this makes the response example in the API docs look slightly better tho still technically not fully accurate.'
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
-      required:
-      - data
-      - metadata
-    TranslationResult:
-      type: object
-      properties:
-        phrase:
-          type: string
-        context:
-          type: string
-        dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DimensionInfo'
-      required:
-      - context
-      - dimensions
-      - phrase
-    DimensionStatusApiDocAttributes_1:
-      type: object
-      properties:
-        disable:
-          type: boolean
-      required:
-      - disable
   securitySchemes:
     OAuth2:
       type: oauth2

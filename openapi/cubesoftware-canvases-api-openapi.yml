@@ -788,97 +788,17 @@ paths:
           description: Error generating screenshot
 components:
   schemas:
-    Source251Enum:
+    SharingScheme2f1Enum:
       enum:
-      - WORKSPACE
-      - DECKS
-      - MCP
-      - PLAN_MODE
+      - ALL
+      - MANAGERS
+      - SPECIFIC
       type: string
-      description: '* `WORKSPACE` - Workspace
+      description: '* `ALL` - All Team Members
 
-        * `DECKS` - Decks
+        * `MANAGERS` - Managers Only
 
-        * `MCP` - MCP
-
-        * `PLAN_MODE` - Plan Mode'
-    WidgetDataSource:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        widget_id:
-          type: string
-          format: uuid
-          readOnly: true
-        settings: {}
-        type:
-          type: string
-          writeOnly: true
-        object_id:
-          type: string
-          maxLength: 36
-      required:
-      - id
-      - object_id
-      - type
-      - widget_id
-    CanvasListSchema:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 50
-        filters: {}
-        default_currency_id:
-          type:
-          - integer
-          - 'null'
-        is_liked:
-          type: boolean
-          readOnly: true
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        description:
-          type:
-          - string
-          - 'null'
-        sharing_scheme:
-          $ref: '#/components/schemas/SharingScheme2f1Enum'
-        source:
-          $ref: '#/components/schemas/Source251Enum'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - created_by
-      - id
-      - is_liked
-      - name
-    WidgetRenderFilter:
-      type: object
-      properties:
-        tld_id:
-          type: integer
-          description: Top-level dimension ID
-        value:
-          type: string
-          description: Dimension member ID to filter by
-      required:
-      - tld_id
-      - value
-    BlankEnum:
-      enum:
-      - ''
+        * `SPECIFIC` - Specific Users'
     User:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -921,22 +841,20 @@ components:
       - id
       - is_cube_staff
       - is_staff
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
+    Source251Enum:
+      enum:
+      - WORKSPACE
+      - DECKS
+      - MCP
+      - PLAN_MODE
+      type: string
+      description: '* `WORKSPACE` - Workspace
+
+        * `DECKS` - Decks
+
+        * `MCP` - MCP
+
+        * `PLAN_MODE` - Plan Mode'
     PatchedWidget:
       type: object
       description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
@@ -957,7 +875,167 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WidgetDataSource'
-    PatchedCanvas:
+    PatchedCanvasTab:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        canvas_id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        position:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        layout:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasTabWidget'
+    WidgetRenderFilter:
+      type: object
+      properties:
+        tld_id:
+          type: integer
+          description: Top-level dimension ID
+        value:
+          type: string
+          description: Dimension member ID to filter by
+      required:
+      - tld_id
+      - value
+    NullEnum:
+      enum:
+      - null
+    CanvasListSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        filters: {}
+        default_currency_id:
+          type:
+          - integer
+          - 'null'
+        is_liked:
+          type: boolean
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type:
+          - string
+          - 'null'
+        sharing_scheme:
+          $ref: '#/components/schemas/SharingScheme2f1Enum'
+        source:
+          $ref: '#/components/schemas/Source251Enum'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by
+      - id
+      - is_liked
+      - name
+    WidgetRenderRequest:
+      type: object
+      properties:
+        width:
+          type: integer
+          description: Viewport width in pixels
+        height:
+          type: integer
+          description: Viewport height in pixels
+        enable_branding:
+          type: boolean
+          description: Whether to show branding overlay on the widget
+        enable_filters:
+          type: boolean
+          description: Whether to show filters overlay on the widget
+        enable_timestamp:
+          type: boolean
+          description: Whether to show timestamp overlay on the widget
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/WidgetRenderFilter'
+          description: Dimension filters to apply at render time
+    CanvasTab:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        position:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        layout:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasTabWidget'
+      required:
+      - id
+      - name
+    VisualTypeEnum:
+      enum:
+      - TEXT
+      - DATA_TABLE
+      - LINE
+      - BAR
+      - ROW
+      - COMBO
+      - PIE
+      - DONUT
+      - METRIC
+      - TREND
+      - WATERFALL
+      type: string
+      description: '* `TEXT` - Text
+
+        * `DATA_TABLE` - Data Table
+
+        * `LINE` - Line Chart
+
+        * `BAR` - Bar Chart
+
+        * `ROW` - Row Chart
+
+        * `COMBO` - Combo Chart
+
+        * `PIE` - Pie Chart
+
+        * `DONUT` - Donut Chart
+
+        * `METRIC` - Metric
+
+        * `TREND` - Trend
+
+        * `WATERFALL` - Waterfall Chart'
+    Canvas:
       type: object
       description: Mixin to delegate create and update operations to a service class.
       properties:
@@ -1002,9 +1080,12 @@ components:
           type: string
           format: date-time
           readOnly: true
-    NullEnum:
-      enum:
-      - null
+      required:
+      - created_at
+      - created_by
+      - id
+      - is_liked
+      - name
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2806,6 +2887,69 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
+    WidgetTypeEnum:
+      enum:
+      - RANGE
+      - TEMPLATE
+      - TEXT
+      type: string
+      description: '* `RANGE` - Range
+
+        * `TEMPLATE` - Template
+
+        * `TEXT` - Text'
+    WidgetDataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        widget_id:
+          type: string
+          format: uuid
+          readOnly: true
+        settings: {}
+        type:
+          type: string
+          writeOnly: true
+        object_id:
+          type: string
+          maxLength: 36
+      required:
+      - id
+      - object_id
+      - type
+      - widget_id
+    BlankEnum:
+      enum:
+      - ''
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
+    error_response_serializer:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          $ref: '#/components/schemas/metadata_serializer'
+      required:
+      - data
+      - metadata
     CanvasTabWidget:
       type: object
       properties:
@@ -2836,41 +2980,6 @@ components:
       - layout_x
       - layout_y
       - widget
-    VisualTypeEnum:
-      enum:
-      - TEXT
-      - DATA_TABLE
-      - LINE
-      - BAR
-      - ROW
-      - COMBO
-      - PIE
-      - DONUT
-      - METRIC
-      - TREND
-      - WATERFALL
-      type: string
-      description: '* `TEXT` - Text
-
-        * `DATA_TABLE` - Data Table
-
-        * `LINE` - Line Chart
-
-        * `BAR` - Bar Chart
-
-        * `ROW` - Row Chart
-
-        * `COMBO` - Combo Chart
-
-        * `PIE` - Pie Chart
-
-        * `DONUT` - Donut Chart
-
-        * `METRIC` - Metric
-
-        * `TREND` - Trend
-
-        * `WATERFALL` - Waterfall Chart'
     Widget:
       type: object
       description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
@@ -2896,29 +3005,7 @@ components:
       - name
       - type
       - visual_type
-    error_response_serializer:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          $ref: '#/components/schemas/metadata_serializer'
-      required:
-      - data
-      - metadata
-    WidgetTypeEnum:
-      enum:
-      - RANGE
-      - TEMPLATE
-      - TEXT
-      type: string
-      description: '* `RANGE` - Range
-
-        * `TEMPLATE` - Template
-
-        * `TEXT` - Text'
-    Canvas:
+    PatchedCanvas:
       type: object
       description: Mixin to delegate create and update operations to a service class.
       properties:
@@ -2963,93 +3050,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-      required:
-      - created_at
-      - created_by
-      - id
-      - is_liked
-      - name
-    WidgetRenderRequest:
-      type: object
-      properties:
-        width:
-          type: integer
-          description: Viewport width in pixels
-        height:
-          type: integer
-          description: Viewport height in pixels
-        enable_branding:
-          type: boolean
-          description: Whether to show branding overlay on the widget
-        enable_filters:
-          type: boolean
-          description: Whether to show filters overlay on the widget
-        enable_timestamp:
-          type: boolean
-          description: Whether to show timestamp overlay on the widget
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/WidgetRenderFilter'
-          description: Dimension filters to apply at render time
-    SharingScheme2f1Enum:
-      enum:
-      - ALL
-      - MANAGERS
-      - SPECIFIC
-      type: string
-      description: '* `ALL` - All Team Members
-
-        * `MANAGERS` - Managers Only
-
-        * `SPECIFIC` - Specific Users'
-    PatchedCanvasTab:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        canvas_id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        position:
-          type: integer
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        layout:
-          type: array
-          items:
-            $ref: '#/components/schemas/CanvasTabWidget'
-    CanvasTab:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        position:
-          type: integer
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        layout:
-          type: array
-          items:
-            $ref: '#/components/schemas/CanvasTabWidget'
-      required:
-      - id
-      - name
   securitySchemes:
     OAuth2:
       type: oauth2

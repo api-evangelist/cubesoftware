@@ -304,20 +304,6 @@ components:
       - id
       - name
       - slug
-    TimeTypeEnum:
-      enum:
-      - STANDARD
-      - HALF_YEAR
-      - CUSTOM
-      type: string
-      description: '* `STANDARD` - Standard
-
-        * `HALF_YEAR` - Half Year
-
-        * `CUSTOM` - Custom'
-    NullEnum:
-      enum:
-      - null
     UserCompanySettingsRequest:
       type: object
       properties:
@@ -326,6 +312,51 @@ components:
           format: date-time
       required:
       - add_on_data_status_last_viewed_at
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    NullEnum:
+      enum:
+      - null
     AuthGroupPermissions:
       type: object
       properties:
@@ -345,6 +376,39 @@ components:
           type: string
       required:
       - message
+    ForgotPasswordOpenApiDocAttributes_1:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    Message_Response:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    UserCompanyViewResponse:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        permission_group:
+          $ref: '#/components/schemas/AuthGroupPermissions'
+      required:
+      - company
+      - permission_group
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2138,6 +2202,38 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    UserCompanySettingsResponse:
+      type: object
+      properties:
+        add_on_data_status_last_viewed_at:
+          type: string
+          format: date-time
+        drilldown_suppress_zeros:
+          type: boolean
+      required:
+      - add_on_data_status_last_viewed_at
+      - drilldown_suppress_zeros
+    BlankEnum:
+      enum:
+      - ''
+    TimeTypeEnum:
+      enum:
+      - STANDARD
+      - HALF_YEAR
+      - CUSTOM
+      type: string
+      description: '* `STANDARD` - Standard
+
+        * `HALF_YEAR` - Half Year
+
+        * `CUSTOM` - Custom'
+    UserSpreadsheetUpdateRequest:
+      type: object
+      properties:
+        show_excel_warning:
+          type: boolean
+      required:
+      - show_excel_warning
     UserSpreadsheetSettingsResponse:
       type: object
       properties:
@@ -2150,102 +2246,6 @@ components:
       required:
       - dimensions
       - user
-    Message_Response:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    UserCompanySettingsResponse:
-      type: object
-      properties:
-        add_on_data_status_last_viewed_at:
-          type: string
-          format: date-time
-        drilldown_suppress_zeros:
-          type: boolean
-      required:
-      - add_on_data_status_last_viewed_at
-      - drilldown_suppress_zeros
-    UserSpreadsheetUpdateRequest:
-      type: object
-      properties:
-        show_excel_warning:
-          type: boolean
-      required:
-      - show_excel_warning
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
-    BlankEnum:
-      enum:
-      - ''
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    ForgotPasswordOpenApiDocAttributes_1:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-      required:
-      - email
-    UserCompanyViewResponse:
-      type: object
-      properties:
-        company:
-          $ref: '#/components/schemas/Company'
-        permission_group:
-          $ref: '#/components/schemas/AuthGroupPermissions'
-      required:
-      - company
-      - permission_group
   securitySchemes:
     OAuth2:
       type: oauth2

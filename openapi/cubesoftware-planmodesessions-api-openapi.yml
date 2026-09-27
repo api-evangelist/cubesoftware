@@ -39,20 +39,6 @@ paths:
           description: Plan mode sessions for the current user company
 components:
   schemas:
-    RecommendationTypeEnum:
-      enum:
-      - RISK
-      - OPPORTUNITY
-      - DATA_GAP
-      - INFO
-      type: string
-      description: '* `RISK` - Risk
-
-        * `OPPORTUNITY` - Opportunity
-
-        * `DATA_GAP` - Data gap
-
-        * `INFO` - Info'
     PlanModeRecommendation:
       type: object
       properties:
@@ -79,36 +65,20 @@ components:
       - description
       - id
       - recommendation_type
-    PlanModeKeyAssumption:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        value:
-          type: string
-          readOnly: true
-        source:
-          allOf:
-          - $ref: '#/components/schemas/PlanModeKeyAssumptionSourceEnum'
-          readOnly: true
-        display_order:
-          type: integer
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - display_order
-      - id
-      - name
-      - source
-      - value
+    RecommendationTypeEnum:
+      enum:
+      - RISK
+      - OPPORTUNITY
+      - DATA_GAP
+      - INFO
+      type: string
+      description: '* `RISK` - Risk
+
+        * `OPPORTUNITY` - Opportunity
+
+        * `DATA_GAP` - Data gap
+
+        * `INFO` - Info'
     PlanModeKeyAssumptionSourceEnum:
       enum:
       - USER
@@ -165,6 +135,36 @@ components:
       - parent_scenario
       - recommendations
       - updates_canvas
+    PlanModeKeyAssumption:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+        source:
+          allOf:
+          - $ref: '#/components/schemas/PlanModeKeyAssumptionSourceEnum'
+          readOnly: true
+        display_order:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - display_order
+      - id
+      - name
+      - source
+      - value
   securitySchemes:
     OAuth2:
       type: oauth2

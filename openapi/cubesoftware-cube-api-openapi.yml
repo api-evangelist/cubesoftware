@@ -303,58 +303,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PatchedCubeDataRequest:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        matrix:
-          $ref: '#/components/schemas/Matrix'
-        message:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: {}
-          default: {}
-        currency:
-          $ref: '#/components/schemas/Currency'
-        background:
-          type: boolean
-          default: false
-        addon:
-          type: string
-          readOnly: true
-    Currency:
-      type: object
-      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
-      properties:
-        code:
-          type: string
-          maxLength: 10
-      required:
-      - code
-    CubeDataRequest:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        matrix:
-          $ref: '#/components/schemas/Matrix'
-        message:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: {}
-          default: {}
-        currency:
-          $ref: '#/components/schemas/Currency'
-        background:
-          type: boolean
-          default: false
-        addon:
-          type: string
-          readOnly: true
-      required:
-      - addon
-      - matrix
     Matrix:
       type: object
       properties:
@@ -378,6 +326,58 @@ components:
       required:
       - data
       - filters
+    Currency:
+      type: object
+      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
+      properties:
+        code:
+          type: string
+          maxLength: 10
+      required:
+      - code
+    PatchedCubeDataRequest:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        matrix:
+          $ref: '#/components/schemas/Matrix'
+        message:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: {}
+          default: {}
+        currency:
+          $ref: '#/components/schemas/Currency'
+        background:
+          type: boolean
+          default: false
+        addon:
+          type: string
+          readOnly: true
+    CubeDataRequest:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        matrix:
+          $ref: '#/components/schemas/Matrix'
+        message:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: {}
+          default: {}
+        currency:
+          $ref: '#/components/schemas/Currency'
+        background:
+          type: boolean
+          default: false
+        addon:
+          type: string
+          readOnly: true
+      required:
+      - addon
+      - matrix
   securitySchemes:
     OAuth2:
       type: oauth2

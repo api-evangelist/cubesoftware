@@ -2794,100 +2794,58 @@ paths:
           description: No response body
 components:
   schemas:
-    NamespaceEnum:
-      enum:
-      - LIBRARY
-      type: string
-      description: '* `LIBRARY` - Library'
-    TemplatePlanningTableDataset:
+    LibraryItem:
       type: object
-      description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
+      description: Mixin to delegate create and update operations to a service class.
       properties:
         id:
-          type: integer
-        address:
           type: string
-        planning_table_id:
-          type: integer
+          format: uuid
           readOnly: true
-        scenario_id:
-          type: integer
-          readOnly: true
-        planning_table_schema:
-          readOnly: true
-      required:
-      - address
-      - id
-      - planning_table_id
-      - planning_table_schema
-      - scenario_id
-    FolderUpdateResponse:
-      type: object
-      properties:
-        id:
-          type: integer
         name:
           type: string
+          maxLength: 255
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          maxLength: 255
+        file:
+          type:
+          - string
+          - 'null'
+          format: uri
+        folder_id:
+          type:
+          - integer
+          - 'null'
+        sharing_scheme:
+          type: string
+          default: MANAGERS
+        shared_with:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+        created_by:
+          type: integer
+          readOnly: true
+        company_id:
+          type: string
+          format: uuid
+          readOnly: true
         created_at:
           type: string
           format: date-time
-        created_by:
-          $ref: '#/components/schemas/User'
-        modified_at:
-          type: string
-          format: date-time
-        template_count:
-          type: integer
+          readOnly: true
       required:
+      - company_id
       - created_at
       - created_by
       - id
-      - modified_at
       - name
-      - template_count
-    BlankEnum:
-      enum:
-      - ''
-    FolderGetResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        created_by:
-          $ref: '#/components/schemas/User'
-        modified_at:
-          type: string
-          format: date-time
-        template_count:
-          type: integer
-      required:
-      - created_at
-      - created_by
-      - id
-      - modified_at
-      - name
-      - template_count
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
     User:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -2930,89 +2888,53 @@ components:
       - id
       - is_cube_staff
       - is_staff
-    PatchedFolder:
+    TemplatePlanningTableDataset:
       type: object
-      description: Mixin to delegate create and update operations to a service class.
+      description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
       properties:
         id:
           type: integer
+        address:
+          type: string
+        planning_table_id:
+          type: integer
           readOnly: true
+        scenario_id:
+          type: integer
+          readOnly: true
+        planning_table_schema:
+          readOnly: true
+      required:
+      - address
+      - id
+      - planning_table_id
+      - planning_table_schema
+      - scenario_id
+    FolderGetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
         name:
           type: string
-          maxLength: 255
-        company_id:
-          type: string
-          format: uuid
-          readOnly: true
-        namespace:
-          allOf:
-          - $ref: '#/components/schemas/NamespaceEnum'
-          default: LIBRARY
-        parent_id:
-          type:
-          - integer
-          - 'null'
-        sharing_scheme:
-          type: string
-          default: MANAGERS
-        shared_with:
-          type: array
-          items:
-            type:
-            - string
-            - 'null'
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
         created_at:
           type: string
           format: date-time
-          readOnly: true
+        created_by:
+          $ref: '#/components/schemas/User'
         modified_at:
           type: string
           format: date-time
-          readOnly: true
-        item_count:
+        template_count:
           type: integer
-          readOnly: true
-    RangeTypeEnum:
-      enum:
-      - PIVOT
-      - DRILLDOWN
-      type: string
-      description: '* `PIVOT` - Pivot
-
-        * `DRILLDOWN` - Drilldown'
-    PaginatedUserList:
-      type: object
       required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-    NullEnum:
-      enum:
-      - null
-    Template:
+      - created_at
+      - created_by
+      - id
+      - modified_at
+      - name
+      - template_count
+    PatchedTemplate:
       type: object
       description: Mixin to delegate create and update operations to a service class.
       properties:
@@ -3077,15 +2999,246 @@ components:
           - string
           - 'null'
           readOnly: true
+    CurrencyNested:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        code:
+          type: string
+          maxLength: 10
       required:
-      - address
-      - content
+      - code
+      - id
+      - name
+    A1CubeValueRange:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        headers:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        data:
+          writeOnly: true
+        filters: {}
+        range_type:
+          $ref: '#/components/schemas/RangeTypeEnum'
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        fetch_enabled:
+          type: boolean
+        publish_enabled:
+          type: boolean
+        row_discovery_enabled:
+          type: boolean
+        currency:
+          $ref: '#/components/schemas/CurrencyNested'
+        exclude_zeros:
+          type: boolean
+        suppressed_row_dimensions: {}
+        created_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        collapse_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_all_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        tags: {}
+        discovered_row_headers:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        delete:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        insert:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              additionalProperties: {}
+          readOnly: true
+      required:
+      - created_by_id
+      - delete
+      - discovered_row_headers
+      - filters
+      - headers
+      - id
+      - insert
+    FoldersGetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          $ref: '#/components/schemas/User'
+        modified_at:
+          type: string
+          format: date-time
+        template_count:
+          type: integer
+      required:
       - created_at
       - created_by
       - id
-      - last_opened_at
       - modified_at
       - name
+      - template_count
+    FolderUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    FolderCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    NullEnum:
+      enum:
+      - null
+    NamespaceEnum:
+      enum:
+      - LIBRARY
+      type: string
+      description: '* `LIBRARY` - Library'
+    RangeTypeEnum:
+      enum:
+      - PIVOT
+      - DRILLDOWN
+      type: string
+      description: '* `PIVOT` - Pivot
+
+        * `DRILLDOWN` - Drilldown'
+    TemplatePresignImageUploadRequest:
+      type: object
+      properties:
+        file_name:
+          type: string
+        file_type:
+          type: string
+      required:
+      - file_name
+      - file_type
+    FolderCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          $ref: '#/components/schemas/User'
+        modified_at:
+          type: string
+          format: date-time
+        template_count:
+          type: integer
+      required:
+      - created_at
+      - created_by
+      - id
+      - modified_at
+      - name
+      - template_count
+    PatchedLibraryItem:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          maxLength: 255
+        file:
+          type:
+          - string
+          - 'null'
+          format: uri
+        folder_id:
+          type:
+          - integer
+          - 'null'
+        sharing_scheme:
+          type: string
+          default: MANAGERS
+        shared_with:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+        created_by:
+          type: integer
+          readOnly: true
+        company_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -4887,13 +5040,25 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
-    FolderCreateRequest:
+    BlankEnum:
+      enum:
+      - ''
+    metadata_serializer:
       type: object
       properties:
-        name:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
           type: string
       required:
-      - name
+      - code
+      - error
+      - message
+      - status
     TemplateCubeValueRange:
       type: object
       description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
@@ -4919,7 +5084,7 @@ components:
       - filters
       - headers
       - id
-    FolderCreateResponse:
+    FolderUpdateResponse:
       type: object
       properties:
         id:
@@ -4943,16 +5108,6 @@ components:
       - modified_at
       - name
       - template_count
-    TemplatePresignImageUploadRequest:
-      type: object
-      properties:
-        file_name:
-          type: string
-        file_type:
-          type: string
-      required:
-      - file_name
-      - file_type
     error_response_serializer:
       type: object
       properties:
@@ -4964,7 +5119,78 @@ components:
       required:
       - data
       - metadata
-    PatchedTemplate:
+    PaginatedUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    PatchedFolder:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        company_id:
+          type: string
+          format: uuid
+          readOnly: true
+        namespace:
+          allOf:
+          - $ref: '#/components/schemas/NamespaceEnum'
+          default: LIBRARY
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        sharing_scheme:
+          type: string
+          default: MANAGERS
+        shared_with:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        item_count:
+          type: integer
+          readOnly: true
+    Template:
       type: object
       description: Mixin to delegate create and update operations to a service class.
       properties:
@@ -5029,148 +5255,14 @@ components:
           - string
           - 'null'
           readOnly: true
-    PatchedLibraryItem:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        url:
-          type:
-          - string
-          - 'null'
-          format: uri
-          maxLength: 255
-        file:
-          type:
-          - string
-          - 'null'
-          format: uri
-        folder_id:
-          type:
-          - integer
-          - 'null'
-        sharing_scheme:
-          type: string
-          default: MANAGERS
-        shared_with:
-          type: array
-          items:
-            type:
-            - string
-            - 'null'
-        created_by:
-          type: integer
-          readOnly: true
-        company_id:
-          type: string
-          format: uuid
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-    A1CubeValueRange:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        headers:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        data:
-          writeOnly: true
-        filters: {}
-        range_type:
-          $ref: '#/components/schemas/RangeTypeEnum'
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        fetch_enabled:
-          type: boolean
-        publish_enabled:
-          type: boolean
-        row_discovery_enabled:
-          type: boolean
-        currency:
-          $ref: '#/components/schemas/CurrencyNested'
-        exclude_zeros:
-          type: boolean
-        suppressed_row_dimensions: {}
-        created_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        collapse_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_all_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        tags: {}
-        discovered_row_headers:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        delete:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        insert:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              additionalProperties: {}
-          readOnly: true
       required:
-      - created_by_id
-      - delete
-      - discovered_row_headers
-      - filters
-      - headers
+      - address
+      - content
+      - created_at
+      - created_by
       - id
-      - insert
-    FolderUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
+      - last_opened_at
+      - modified_at
       - name
     Folder:
       type: object
@@ -5225,98 +5317,6 @@ components:
       - id
       - item_count
       - modified_at
-      - name
-    LibraryItem:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        url:
-          type:
-          - string
-          - 'null'
-          format: uri
-          maxLength: 255
-        file:
-          type:
-          - string
-          - 'null'
-          format: uri
-        folder_id:
-          type:
-          - integer
-          - 'null'
-        sharing_scheme:
-          type: string
-          default: MANAGERS
-        shared_with:
-          type: array
-          items:
-            type:
-            - string
-            - 'null'
-        created_by:
-          type: integer
-          readOnly: true
-        company_id:
-          type: string
-          format: uuid
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - company_id
-      - created_at
-      - created_by
-      - id
-      - name
-    FoldersGetResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        created_by:
-          $ref: '#/components/schemas/User'
-        modified_at:
-          type: string
-          format: date-time
-        template_count:
-          type: integer
-      required:
-      - created_at
-      - created_by
-      - id
-      - modified_at
-      - name
-      - template_count
-    CurrencyNested:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        code:
-          type: string
-          maxLength: 10
-      required:
-      - code
-      - id
       - name
   securitySchemes:
     OAuth2:

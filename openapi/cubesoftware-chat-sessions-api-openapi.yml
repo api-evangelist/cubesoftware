@@ -107,31 +107,6 @@ paths:
           description: ''
 components:
   schemas:
-    SessionTypeEnum:
-      enum:
-      - CHAT
-      - WIDGET_BUILDER
-      - PLANNER
-      - DATA_TABLE_MANAGEMENT
-      type: string
-      description: '* `CHAT` - Chat
-
-        * `WIDGET_BUILDER` - Widget Builder
-
-        * `PLANNER` - Planner
-
-        * `DATA_TABLE_MANAGEMENT` - Data Table Management'
-    AppTypeEnum:
-      enum:
-      - SLACK
-      - MS_TEAMS
-      - CUBE_API
-      type: string
-      description: '* `SLACK` - Slack
-
-        * `MS_TEAMS` - Microsoft Teams
-
-        * `CUBE_API` - Cube API'
     ChatSession:
       type: object
       properties:
@@ -169,6 +144,31 @@ components:
       - id
       - last_active_at
       - resources
+    AppTypeEnum:
+      enum:
+      - SLACK
+      - MS_TEAMS
+      - CUBE_API
+      type: string
+      description: '* `SLACK` - Slack
+
+        * `MS_TEAMS` - Microsoft Teams
+
+        * `CUBE_API` - Cube API'
+    SessionTypeEnum:
+      enum:
+      - CHAT
+      - WIDGET_BUILDER
+      - PLANNER
+      - DATA_TABLE_MANAGEMENT
+      type: string
+      description: '* `CHAT` - Chat
+
+        * `WIDGET_BUILDER` - Widget Builder
+
+        * `PLANNER` - Planner
+
+        * `DATA_TABLE_MANAGEMENT` - Data Table Management'
   securitySchemes:
     OAuth2:
       type: oauth2

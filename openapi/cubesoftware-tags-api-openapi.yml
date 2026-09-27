@@ -205,26 +205,26 @@ paths:
           description: ''
 components:
   schemas:
-    TagRecalculateResponse:
+    TagCreateResponse:
       type: object
       properties:
-        message:
-          type: string
-      required:
-      - message
-    TagCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        member_ids:
+        id:
+          type: integer
+        is_recalculating:
+          type: boolean
+        members:
           type: array
           items:
-            type: integer
+            type: object
+            additionalProperties: {}
+        name:
+          type: string
         top_level_dimension_name:
           type: string
       required:
-      - member_ids
+      - id
+      - is_recalculating
+      - members
       - name
       - top_level_dimension_name
     TagResponse:
@@ -249,26 +249,26 @@ components:
       - members
       - name
       - top_level_dimension_name
-    TagCreateResponse:
+    TagRecalculateResponse:
       type: object
       properties:
-        id:
-          type: integer
-        is_recalculating:
-          type: boolean
-        members:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
+        message:
+          type: string
+      required:
+      - message
+    TagCreateRequest:
+      type: object
+      properties:
         name:
           type: string
+        member_ids:
+          type: array
+          items:
+            type: integer
         top_level_dimension_name:
           type: string
       required:
-      - id
-      - is_recalculating
-      - members
+      - member_ids
       - name
       - top_level_dimension_name
     TagsResponse:

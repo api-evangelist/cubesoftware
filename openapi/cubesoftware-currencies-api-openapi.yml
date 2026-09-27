@@ -1053,36 +1053,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PatchedCurrency:
+    RateTypeEnum:
+      enum:
+      - CURRENT
+      - AVERAGE
+      - HISTORICAL
+      - CONSTANT
+      - CUSTOM
+      type: string
+      description: '* `CURRENT` - Current
+
+        * `AVERAGE` - Average
+
+        * `HISTORICAL` - Historical
+
+        * `CONSTANT` - Constant
+
+        * `CUSTOM` - Custom'
+    Currency:
       type: object
       description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
       properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
         code:
           type: string
           maxLength: 10
-        symbol:
-          type: string
-          maxLength: 10
-        description:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        exclusive_to_company_id:
-          type: string
-          format: uuid
-        created_by_id:
+      required:
+      - code
+    Inline:
+      type: object
+      properties:
+        default:
+          type: boolean
+        currency_id:
           type: integer
-          writeOnly: true
+      required:
+      - currency_id
+      - default
     DimensionExchangeRateTypeMapping:
       type: object
       properties:
@@ -1132,41 +1138,6 @@ components:
       - id
       - modified_at
       - rate_type
-    CompanyCurrency:
-      type: object
-      properties:
-        default:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        currency:
-          $ref: '#/components/schemas/Currency'
-      required:
-      - created_at
-      - currency
-    Currency:
-      type: object
-      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
-      properties:
-        code:
-          type: string
-          maxLength: 10
-      required:
-      - code
-    Dict:
-      type: object
-      properties:
-        rate:
-          type: number
-          format: double
-        date:
-          type: string
-          format: date
-      required:
-      - date
-      - rate
     ConversionRate:
       type: object
       properties:
@@ -1221,6 +1192,50 @@ components:
       - modified_at
       - rate
       - to_currency
+    CompanyCurrency:
+      type: object
+      properties:
+        default:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        currency:
+          $ref: '#/components/schemas/Currency'
+      required:
+      - created_at
+      - currency
+    PatchedCurrency:
+      type: object
+      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        code:
+          type: string
+          maxLength: 10
+        symbol:
+          type: string
+          maxLength: 10
+        description:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        exclusive_to_company_id:
+          type: string
+          format: uuid
+        created_by_id:
+          type: integer
+          writeOnly: true
     InlineForm:
       type: object
       properties:
@@ -1246,16 +1261,49 @@ components:
       - rateable_id
       - rateable_type
       - to_currency
-    Inline:
+    ExchangeRateType:
       type: object
       properties:
-        default:
-          type: boolean
-        currency_id:
+        id:
           type: integer
+          readOnly: true
+        rate_type:
+          $ref: '#/components/schemas/RateTypeEnum'
+        name:
+          type: string
+          maxLength: 255
+        weighted_average_of_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
       required:
-      - currency_id
-      - default
+      - created_at
+      - id
+      - modified_at
+      - name
+      - rate_type
+      - weighted_average_of_id
+    Dict:
+      type: object
+      properties:
+        rate:
+          type: number
+          format: double
+        date:
+          type: string
+          format: date
+      required:
+      - date
+      - rate
     PatchedConversionRate:
       type: object
       properties:
@@ -1301,54 +1349,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-    ExchangeRateType:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        rate_type:
-          $ref: '#/components/schemas/RateTypeEnum'
-        name:
-          type: string
-          maxLength: 255
-        weighted_average_of_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - id
-      - modified_at
-      - name
-      - rate_type
-      - weighted_average_of_id
-    RateTypeEnum:
-      enum:
-      - CURRENT
-      - AVERAGE
-      - HISTORICAL
-      - CONSTANT
-      - CUSTOM
-      type: string
-      description: '* `CURRENT` - Current
-
-        * `AVERAGE` - Average
-
-        * `HISTORICAL` - Historical
-
-        * `CONSTANT` - Constant
-
-        * `CUSTOM` - Custom'
   securitySchemes:
     OAuth2:
       type: oauth2

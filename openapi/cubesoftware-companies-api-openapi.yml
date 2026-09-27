@@ -171,6 +171,58 @@ paths:
           description: ''
 components:
   schemas:
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    SimpleUserCompany:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        permission_group:
+          $ref: '#/components/schemas/AuthGroupPermissions'
+      required:
+      - permission_group
+      - user
     NullEnum:
       enum:
       - null
@@ -186,6 +238,30 @@ components:
       required:
       - id
       - name
+    CompanySettings:
+      type: object
+      description: A serializer for company settings
+      properties:
+        cube_access_until:
+          type: integer
+        addons_years_per_fetch:
+          type: integer
+        mc_entity_tld_id:
+          type: integer
+        metabase_enabled:
+          type: boolean
+        allow_email_login:
+          type: boolean
+        canvas_colors:
+          type: array
+          items: {}
+      required:
+      - addons_years_per_fetch
+      - allow_email_login
+      - canvas_colors
+      - cube_access_until
+      - mc_entity_tld_id
+      - metabase_enabled
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -1979,40 +2055,6 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    SimpleUserCompany:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        permission_group:
-          $ref: '#/components/schemas/AuthGroupPermissions'
-      required:
-      - permission_group
-      - user
-    CompanySettings:
-      type: object
-      description: A serializer for company settings
-      properties:
-        cube_access_until:
-          type: integer
-        addons_years_per_fetch:
-          type: integer
-        mc_entity_tld_id:
-          type: integer
-        metabase_enabled:
-          type: boolean
-        allow_email_login:
-          type: boolean
-        canvas_colors:
-          type: array
-          items: {}
-      required:
-      - addons_years_per_fetch
-      - allow_email_login
-      - canvas_colors
-      - cube_access_until
-      - mc_entity_tld_id
-      - metabase_enabled
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2024,48 +2066,6 @@ components:
     BlankEnum:
       enum:
       - ''
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
   securitySchemes:
     OAuth2:
       type: oauth2

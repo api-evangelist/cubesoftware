@@ -389,37 +389,7 @@ paths:
           description: No response body
 components:
   schemas:
-    CompanyGroupOpenApiDoc_1:
-      type: object
-      properties:
-        user_invitations:
-          type: string
-        user_companies:
-          type: string
-        permissions:
-          type: string
-        permissionsets:
-          type: string
-        subcube_access_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubcubeAccessRule'
-        name:
-          type: string
-          maxLength: 100
-        active:
-          type: boolean
-      required:
-      - name
-    CompanyGroupTypeEnum:
-      enum:
-      - feature
-      - dimension
-      type: string
-      description: '* `feature` - Feature
-
-        * `dimension` - Data'
-    PatchedSubcubeAccessRule:
+    SubcubeAccessRule:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
 
@@ -453,6 +423,43 @@ components:
           type: string
           format: date-time
           readOnly: true
+      required:
+      - company
+      - company_group
+      - created_at
+      - created_by
+      - id
+      - modified_at
+    CompanyGroupTypeEnum:
+      enum:
+      - feature
+      - dimension
+      type: string
+      description: '* `feature` - Feature
+
+        * `dimension` - Data'
+    CompanyGroupOpenApiDoc_1:
+      type: object
+      properties:
+        user_invitations:
+          type: string
+        user_companies:
+          type: string
+        permissions:
+          type: string
+        permissionsets:
+          type: string
+        subcube_access_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubcubeAccessRule'
+        name:
+          type: string
+          maxLength: 100
+        active:
+          type: boolean
+      required:
+      - name
     CompanyGroup:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -517,7 +524,7 @@ components:
       - name
       - resolved_permissions
       - resolved_permissionsets
-    SubcubeAccessRule:
+    PatchedSubcubeAccessRule:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
 
@@ -551,13 +558,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-      required:
-      - company
-      - company_group
-      - created_at
-      - created_by
-      - id
-      - modified_at
     PatchedCompanyGroupOpenApiDoc_2:
       type: object
       properties:

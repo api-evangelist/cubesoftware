@@ -266,6 +266,34 @@ paths:
           description: ''
 components:
   schemas:
+    SourceDataTableUploadUploadTypeEnum:
+      enum:
+      - REPLACE
+      - TIME_BASED_REPLACE
+      - APPEND
+      - DELETE
+      type: string
+      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
+
+        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
+
+        * `APPEND` - Update existing records and add new records
+
+        * `DELETE` - Remove all existing records'
+    SourceDataTableUploadSourceEnum:
+      enum:
+      - USER_UPLOAD
+      - EMAIL
+      - API
+      - THIRD_PARTY_API
+      type: string
+      description: '* `USER_UPLOAD` - User Upload
+
+        * `EMAIL` - Email
+
+        * `API` - API
+
+        * `THIRD_PARTY_API` - Third Party API'
     SourceDataTableUpload:
       type: object
       properties:
@@ -353,34 +381,6 @@ components:
       - created_at
       - data_table_upload
       - id
-    SourceDataTableUploadUploadTypeEnum:
-      enum:
-      - REPLACE
-      - TIME_BASED_REPLACE
-      - APPEND
-      - DELETE
-      type: string
-      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
-
-        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
-
-        * `APPEND` - Update existing records and add new records
-
-        * `DELETE` - Remove all existing records'
-    SourceDataTableUploadSourceEnum:
-      enum:
-      - USER_UPLOAD
-      - EMAIL
-      - API
-      - THIRD_PARTY_API
-      type: string
-      description: '* `USER_UPLOAD` - User Upload
-
-        * `EMAIL` - Email
-
-        * `API` - API
-
-        * `THIRD_PARTY_API` - Third Party API'
   securitySchemes:
     OAuth2:
       type: oauth2

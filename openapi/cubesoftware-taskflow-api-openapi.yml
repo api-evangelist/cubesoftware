@@ -1470,45 +1470,38 @@ paths:
           description: Forbidden - User is not a Workflow Manager
 components:
   schemas:
-    Status32bEnum:
-      enum:
-      - DRAFT
-      - TODO
-      - DONE
-      type: string
-      description: '* `DRAFT` - Draft
-
-        * `TODO` - To Do
-
-        * `DONE` - Done'
-    PatchedActionItem:
+    PatchedTask:
       type: object
-      description: "Mixin for serializers that automatically validates position field values.\n\nAttributes:\n    position_field_name (str): The name of the position field to validate.\n                               Defaults to 'position'.\n\nThis mixin provides:\n- Automatic validation via validate_<field_name> method\n- Non-negative position validation\n- Max position validation based on existing items\n\nRequires 'position_queryset' in serializer context (provided by PositionReorderViewSetMixin)."
       properties:
         id:
           type: integer
           readOnly: true
+        process_id:
+          type: integer
         name:
           type: string
           maxLength: 255
-        company_id:
+        description:
           type: string
-          format: uuid
-          readOnly: true
-        created_by_id:
-          type: integer
-          readOnly: true
-        position:
-          type: integer
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
+        status:
+          $ref: '#/components/schemas/Status32bEnum'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        assignee_id:
+          type:
+          - string
+          - 'null'
+        due_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        deleted_at:
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
         completed_at:
@@ -1517,56 +1510,29 @@ components:
           - 'null'
           format: date-time
           readOnly: true
-        completed:
-          type: boolean
-          writeOnly: true
-    ActionItem:
-      type: object
-      description: "Mixin for serializers that automatically validates position field values.\n\nAttributes:\n    position_field_name (str): The name of the position field to validate.\n                               Defaults to 'position'.\n\nThis mixin provides:\n- Automatic validation via validate_<field_name> method\n- Non-negative position validation\n- Max position validation based on existing items\n\nRequires 'position_queryset' in serializer context (provided by PositionReorderViewSetMixin)."
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        company_id:
-          type: string
-          format: uuid
-          readOnly: true
-        created_by_id:
-          type: integer
-          readOnly: true
-        position:
-          type: integer
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        created_at:
-          type: string
+        assigned_at:
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
         modified_at:
           type: string
           format: date-time
           readOnly: true
-        completed_at:
+        completed_by_id:
           type:
-          - string
+          - integer
           - 'null'
-          format: date-time
           readOnly: true
-        completed:
-          type: boolean
-          writeOnly: true
-      required:
-      - company_id
-      - completed_at
-      - created_at
-      - created_by_id
-      - id
-      - modified_at
-      - name
+        created_by_id:
+          type: integer
+          readOnly: true
+        modified_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
     Process:
       type: object
       properties:
@@ -1608,6 +1574,188 @@ components:
       - id
       - modified_by
       - name
+    BulkTaskError:
+      type: object
+      description: Single error object for bulk task operations.
+      properties:
+        code:
+          type: string
+          description: Error code (DRF codes like "null", "invalid" or custom codes like "INVALID_DATE_PAST_DUE")
+        detail:
+          type: string
+          description: Human-readable error message
+        source:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+          description: 'Source of the error. Contains {"field": "field_name"} for validation errors, null for business errors.'
+      required:
+      - code
+      - detail
+      - source
+    PatchedProcess:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProcessStatusEnum'
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        completed_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        created_by:
+          type: integer
+          readOnly: true
+        modified_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        owner:
+          type: integer
+    BulkTaskRequest:
+      type: object
+      properties:
+        process_id:
+          type: integer
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkTaskItem'
+      required:
+      - process_id
+      - tasks
+    BulkTaskItem:
+      type: object
+      description: Schema for OpenAPI docs - validation deferred to TaskSerializer in service layer.
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status32bEnum'
+        due_date:
+          type: string
+          format: date
+        assignee_id:
+          type: integer
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+    PatchedActionItem:
+      type: object
+      description: "Mixin for serializers that automatically validates position field values.\n\nAttributes:\n    position_field_name (str): The name of the position field to validate.\n                               Defaults to 'position'.\n\nThis mixin provides:\n- Automatic validation via validate_<field_name> method\n- Non-negative position validation\n- Max position validation based on existing items\n\nRequires 'position_queryset' in serializer context (provided by PositionReorderViewSetMixin)."
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        company_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by_id:
+          type: integer
+          readOnly: true
+        position:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        completed:
+          type: boolean
+          writeOnly: true
+    Status32bEnum:
+      enum:
+      - DRAFT
+      - TODO
+      - DONE
+      type: string
+      description: '* `DRAFT` - Draft
+
+        * `TODO` - To Do
+
+        * `DONE` - Done'
+    ProcessStatusEnum:
+      enum:
+      - NOT_STARTED
+      - IN_PROGRESS
+      - COMPLETED
+      type: string
+      description: '* `NOT_STARTED` - Not Started
+
+        * `IN_PROGRESS` - In Progress
+
+        * `COMPLETED` - Completed'
+    BulkTaskResult:
+      type: object
+      properties:
+        task:
+          allOf:
+          - $ref: '#/components/schemas/Task'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BulkTaskError'
+      required:
+      - errors
+      - task
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        permission_denied:
+          type: boolean
+          readOnly: true
+        content_type:
+          type: string
+        content:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+      required:
+      - content
+      - content_type
+      - id
+      - permission_denied
     Task:
       type: object
       properties:
@@ -1681,56 +1829,9 @@ components:
       - modified_at
       - modified_by_id
       - name
-    BulkTaskItem:
+    ActionItem:
       type: object
-      description: Schema for OpenAPI docs - validation deferred to TaskSerializer in service layer.
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status32bEnum'
-        due_date:
-          type: string
-          format: date
-        assignee_id:
-          type: integer
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resource'
-    BulkTaskRequest:
-      type: object
-      properties:
-        process_id:
-          type: integer
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/BulkTaskItem'
-      required:
-      - process_id
-      - tasks
-    BulkTaskResult:
-      type: object
-      properties:
-        task:
-          allOf:
-          - $ref: '#/components/schemas/Task'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/BulkTaskError'
-      required:
-      - errors
-      - task
-    PatchedProcess:
-      type: object
+      description: "Mixin for serializers that automatically validates position field values.\n\nAttributes:\n    position_field_name (str): The name of the position field to validate.\n                               Defaults to 'position'.\n\nThis mixin provides:\n- Automatic validation via validate_<field_name> method\n- Non-negative position validation\n- Max position validation based on existing items\n\nRequires 'position_queryset' in serializer context (provided by PositionReorderViewSetMixin)."
       properties:
         id:
           type: integer
@@ -1738,144 +1839,43 @@ components:
         name:
           type: string
           maxLength: 255
-        description:
+        company_id:
           type: string
-        status:
-          $ref: '#/components/schemas/ProcessStatusEnum'
-        completed_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
+          format: uuid
           readOnly: true
-        completed_by:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        created_by:
+        created_by_id:
           type: integer
           readOnly: true
-        modified_by:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        owner:
+        position:
           type: integer
-    Resource:
-      type: object
-      properties:
-        id:
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        created_at:
           type: string
-        permission_denied:
-          type: boolean
-          readOnly: true
-        content_type:
-          type: string
-        content:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-      required:
-      - content
-      - content_type
-      - id
-      - permission_denied
-    PatchedTask:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        process_id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-        description:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status32bEnum'
-        resources:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resource'
-        assignee_id:
-          type:
-          - string
-          - 'null'
-        due_date:
-          type:
-          - string
-          - 'null'
-          format: date
-        deleted_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        completed_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        assigned_at:
-          type:
-          - string
-          - 'null'
           format: date-time
           readOnly: true
         modified_at:
           type: string
           format: date-time
           readOnly: true
-        completed_by_id:
+        completed_at:
           type:
-          - integer
+          - string
           - 'null'
+          format: date-time
           readOnly: true
-        created_by_id:
-          type: integer
-          readOnly: true
-        modified_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-    BulkTaskError:
-      type: object
-      description: Single error object for bulk task operations.
-      properties:
-        code:
-          type: string
-          description: Error code (DRF codes like "null", "invalid" or custom codes like "INVALID_DATE_PAST_DUE")
-        detail:
-          type: string
-          description: Human-readable error message
-        source:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-          description: 'Source of the error. Contains {"field": "field_name"} for validation errors, null for business errors.'
+        completed:
+          type: boolean
+          writeOnly: true
       required:
-      - code
-      - detail
-      - source
-    ProcessStatusEnum:
-      enum:
-      - NOT_STARTED
-      - IN_PROGRESS
-      - COMPLETED
-      type: string
-      description: '* `NOT_STARTED` - Not Started
-
-        * `IN_PROGRESS` - In Progress
-
-        * `COMPLETED` - Completed'
+      - company_id
+      - completed_at
+      - created_at
+      - created_by_id
+      - id
+      - modified_at
+      - name
   securitySchemes:
     OAuth2:
       type: oauth2

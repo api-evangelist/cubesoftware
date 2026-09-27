@@ -42,17 +42,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InternalTypeEnum:
-      enum:
-      - CHURNED
-      - ONBOARD
-      - CLEANUP
-      type: string
-      description: '* `CHURNED` - churned
-
-        * `ONBOARD` - onboard
-
-        * `CLEANUP` - cleanup'
     CustomerEvent:
       type: object
       properties:
@@ -85,6 +74,17 @@ components:
       - id
       - internal_type
       - timestamp
+    InternalTypeEnum:
+      enum:
+      - CHURNED
+      - ONBOARD
+      - CLEANUP
+      type: string
+      description: '* `CHURNED` - churned
+
+        * `ONBOARD` - onboard
+
+        * `CLEANUP` - cleanup'
   securitySchemes:
     OAuth2:
       type: oauth2

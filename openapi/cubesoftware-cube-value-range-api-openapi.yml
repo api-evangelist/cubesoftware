@@ -742,14 +742,17 @@ paths:
           description: ''
 components:
   schemas:
-    RangeTypeEnum:
-      enum:
-      - PIVOT
-      - DRILLDOWN
-      type: string
-      description: '* `PIVOT` - Pivot
-
-        * `DRILLDOWN` - Drilldown'
+    error_response_serializer:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          $ref: '#/components/schemas/metadata_serializer'
+      required:
+      - data
+      - metadata
     CubeValueRangeListSchema:
       type: object
       properties:
@@ -780,6 +783,30 @@ components:
       required:
       - created_by_id
       - id
+    RangeTypeEnum:
+      enum:
+      - PIVOT
+      - DRILLDOWN
+      type: string
+      description: '* `PIVOT` - Pivot
+
+        * `DRILLDOWN` - Drilldown'
+    CurrencyNested:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        code:
+          type: string
+          maxLength: 10
+      required:
+      - code
+      - id
+      - name
     A1CubeValueRange:
       type: object
       description: Mixin to delegate create and update operations to a service class.
@@ -870,121 +897,6 @@ components:
       - headers
       - id
       - insert
-    RowColumnCubeValueRange:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        headers:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties: {}
-          readOnly: true
-        data:
-          writeOnly: true
-        filters: {}
-        range_type:
-          $ref: '#/components/schemas/RangeTypeEnum'
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        fetch_enabled:
-          type: boolean
-        publish_enabled:
-          type: boolean
-        row_discovery_enabled:
-          type: boolean
-        currency:
-          $ref: '#/components/schemas/CurrencyNested'
-        exclude_zeros:
-          type: boolean
-        suppressed_row_dimensions: {}
-        created_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        collapse_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_all_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        tags: {}
-      required:
-      - created_by_id
-      - filters
-      - headers
-      - id
-    error_response_serializer:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          $ref: '#/components/schemas/metadata_serializer'
-      required:
-      - data
-      - metadata
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
-    CurrencyNested:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        code:
-          type: string
-          maxLength: 10
-      required:
-      - code
-      - id
-      - name
     PatchedA1CubeValueRange:
       type: object
       description: Mixin to delegate create and update operations to a service class.
@@ -1067,6 +979,94 @@ components:
               type: object
               additionalProperties: {}
           readOnly: true
+    RowColumnCubeValueRange:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        headers:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+        data:
+          writeOnly: true
+        filters: {}
+        range_type:
+          $ref: '#/components/schemas/RangeTypeEnum'
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        fetch_enabled:
+          type: boolean
+        publish_enabled:
+          type: boolean
+        row_discovery_enabled:
+          type: boolean
+        currency:
+          $ref: '#/components/schemas/CurrencyNested'
+        exclude_zeros:
+          type: boolean
+        suppressed_row_dimensions: {}
+        created_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        collapse_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_all_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        tags: {}
+      required:
+      - created_by_id
+      - filters
+      - headers
+      - id
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
   securitySchemes:
     OAuth2:
       type: oauth2

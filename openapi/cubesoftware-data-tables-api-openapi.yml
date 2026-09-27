@@ -723,53 +723,71 @@ paths:
           description: ''
 components:
   schemas:
-    Integration:
+    User:
       type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
       properties:
         id:
           type: integer
           readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
+        first_name:
           type: string
           maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
           readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
       required:
-      - category
+      - created_at
+      - email
       - id
-      - logo_url
-      - name
-      - source
-    ScheduleDataTableImportRequest:
-      type: object
-      properties:
-        day_of_week:
-          type: string
-        hour_of_day:
-          type: integer
-        schedule_cadence:
-          type: string
-        start_time_dimension_id:
-          type: integer
-        end_time_dimension_id:
-          type: integer
-        tld_default_dimensions:
-          type: object
-          additionalProperties: {}
-      required:
-      - day_of_week
-      - end_time_dimension_id
-      - hour_of_day
-      - schedule_cadence
-      - start_time_dimension_id
-      - tld_default_dimensions
+      - is_cube_staff
+      - is_staff
+    DayOfWeekEnum:
+      enum:
+      - SUNDAY
+      - MONDAY
+      - TUESDAY
+      - WEDNESDAY
+      - THURSDAY
+      - FRIDAY
+      - SATURDAY
+      type: string
+      description: '* `SUNDAY` - Sun
+
+        * `MONDAY` - Mon
+
+        * `TUESDAY` - Tue
+
+        * `WEDNESDAY` - Wed
+
+        * `THURSDAY` - Thu
+
+        * `FRIDAY` - Fri
+
+        * `SATURDAY` - Sat'
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -820,180 +838,197 @@ components:
         * `NETSUITE_RATES` - NetSuite Saved Search
 
         * `MERGE` - Cube Universal Connect'
-    RollupTypeEnum:
+    RuleEnum:
       enum:
-      - SUM
-      - AVERAGE
-      - BALANCE
-      - BEGINNING_BALANCE
+      - IGNORE
+      - ONE_TO_ONE
+      - MANY_TO_ONE
       type: string
-      description: '* `SUM` - Sum
+      description: '* `IGNORE` - Ignore
 
-        * `AVERAGE` - Average
+        * `ONE_TO_ONE` - One-to-one
 
-        * `BALANCE` - Ending Balance
-
-        * `BEGINNING_BALANCE` - Beginning Balance'
-    SourceDimensionTree:
+        * `MANY_TO_ONE` - Many-to-one'
+    AutoMappingDoc:
+      type: object
+      properties:
+        tld_id:
+          type: integer
+          minimum: 1
+        rule:
+          $ref: '#/components/schemas/RuleEnum'
+        dimension_id:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+      required:
+      - rule
+      - tld_id
+    AutoMappingRule:
       type: object
       properties:
         id:
           type: integer
-          readOnly: true
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        currency_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/Status2c8Enum'
-        type:
-          $ref: '#/components/schemas/Type95aEnum'
-        rollup_type:
-          oneOf:
-          - $ref: '#/components/schemas/RollupTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        formula:
-          type: string
-          readOnly: true
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-        position:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        special_case_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        date:
-          type:
-          - string
-          - 'null'
-          format: date
-        has_children:
-          type: boolean
-        write_block_reason:
-          type: string
-          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
-          readOnly: true
-        number:
-          type:
-          - string
-          - 'null'
-          maxLength: 150
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        children:
           readOnly: true
         data_table_id:
           type: string
           format: uuid
-        description:
+        tld_id:
+          type: integer
+          minimum: 1
+        rule:
+          $ref: '#/components/schemas/RuleEnum'
+        dimension_id:
           type:
-          - string
+          - integer
           - 'null'
-        requires_mapping:
-          type: boolean
+          minimum: 1
+      required:
+      - data_table_id
+      - id
+      - rule
+      - tld_id
+    DimensionMapping:
+      type: object
+      properties:
+        dimension_id:
+          type:
+          - integer
+          - 'null'
           readOnly: true
-        can_be_sign_flipped:
+        source_dimension_id:
+          type: integer
+          readOnly: true
+        automapped:
           type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
           readOnly: true
       required:
-      - active
-      - can_be_sign_flipped
-      - children
       - created_at
-      - currency_id
-      - data_table_id
-      - formula
-      - id
-      - name
-      - parent_id
-      - requires_mapping
-      - write_block_reason
-    DimensionWithTld:
+      - dimension_id
+      - modified_at
+      - source_dimension_id
+    NullEnum:
+      enum:
+      - null
+    Integration:
       type: object
       properties:
         id:
           type: integer
           readOnly: true
-        parent_id:
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
+    ScheduledSourceDataTableImports:
+      type: object
+      properties:
+        schedule_cadence:
+          $ref: '#/components/schemas/ScheduleCadenceEnum'
+        day_of_week:
+          oneOf:
+          - $ref: '#/components/schemas/DayOfWeekEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hour_of_day:
+          type: integer
+          maximum: 23
+          minimum: 0
+        source_data_table:
+          allOf:
+          - $ref: '#/components/schemas/SourceDataTable'
+          readOnly: true
+        start_time_dimension:
           type:
           - integer
           - 'null'
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/Status2c8Enum'
-        type:
-          $ref: '#/components/schemas/Type95aEnum'
-        rollup_type:
+        end_time_dimension:
+          type:
+          - integer
+          - 'null'
+        num_prior_time:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        prior_time_unit:
           oneOf:
-          - $ref: '#/components/schemas/RollupTypeEnum'
+          - $ref: '#/components/schemas/PriorTimeUnitEnum'
           - $ref: '#/components/schemas/BlankEnum'
           - $ref: '#/components/schemas/NullEnum'
-        formula:
-          type: string
+        tld_default_dimensions:
+          type: object
+          additionalProperties:
+            type: integer
           readOnly: true
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-        position:
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
           type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        special_case_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        date:
-          type:
-          - string
-          - 'null'
-          format: date
-        has_children:
-          type: boolean
-        write_block_reason:
+        modified_at:
           type: string
-          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
+          format: date-time
           readOnly: true
-        metadata:
+        modified_by:
           type:
-          - string
+          - integer
           - 'null'
-        tld:
-          $ref: '#/components/schemas/Dimension'
       required:
-      - active
-      - formula
-      - id
-      - name
-      - parent_id
-      - tld
-      - write_block_reason
+      - created_at
+      - created_by
+      - hour_of_day
+      - modified_at
+      - source_data_table
+      - tld_default_dimensions
+    Type95aEnum:
+      enum:
+      - BASIC
+      - FORMULA
+      - TAG
+      type: string
+      description: '* `BASIC` - Basic
+
+        * `FORMULA` - Formula
+
+        * `TAG` - Tag'
     Connection:
       type: object
       properties:
@@ -1032,77 +1067,28 @@ components:
       - metadata
       - settings
       - type
-    DayOfWeekEnum:
+    RollupTypeEnum:
       enum:
-      - SUNDAY
-      - MONDAY
-      - TUESDAY
-      - WEDNESDAY
-      - THURSDAY
-      - FRIDAY
-      - SATURDAY
+      - SUM
+      - AVERAGE
+      - BALANCE
+      - BEGINNING_BALANCE
       type: string
-      description: '* `SUNDAY` - Sun
+      description: '* `SUM` - Sum
 
-        * `MONDAY` - Mon
+        * `AVERAGE` - Average
 
-        * `TUESDAY` - Tue
+        * `BALANCE` - Ending Balance
 
-        * `WEDNESDAY` - Wed
-
-        * `THURSDAY` - Thu
-
-        * `FRIDAY` - Fri
-
-        * `SATURDAY` - Sat'
-    BlankEnum:
+        * `BEGINNING_BALANCE` - Beginning Balance'
+    ScheduleCadenceEnum:
       enum:
-      - ''
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+      - WEEKLY
+      - DAILY
+      type: string
+      description: '* `WEEKLY` - Weekly
 
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    NullEnum:
-      enum:
-      - null
+        * `DAILY` - Daily'
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2896,68 +2882,6 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    ScheduledSourceDataTableImports:
-      type: object
-      properties:
-        schedule_cadence:
-          $ref: '#/components/schemas/ScheduleCadenceEnum'
-        day_of_week:
-          oneOf:
-          - $ref: '#/components/schemas/DayOfWeekEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        hour_of_day:
-          type: integer
-          maximum: 23
-          minimum: 0
-        source_data_table:
-          allOf:
-          - $ref: '#/components/schemas/SourceDataTable'
-          readOnly: true
-        start_time_dimension:
-          type:
-          - integer
-          - 'null'
-        end_time_dimension:
-          type:
-          - integer
-          - 'null'
-        num_prior_time:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-        prior_time_unit:
-          oneOf:
-          - $ref: '#/components/schemas/PriorTimeUnitEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        tld_default_dimensions:
-          type: object
-          additionalProperties:
-            type: integer
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        created_by:
-          type: integer
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_by:
-          type:
-          - integer
-          - 'null'
-      required:
-      - created_at
-      - created_by
-      - hour_of_day
-      - modified_at
-      - source_data_table
-      - tld_default_dimensions
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2966,6 +2890,98 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
+    ScheduleDataTableImportRequest:
+      type: object
+      properties:
+        day_of_week:
+          type: string
+        hour_of_day:
+          type: integer
+        schedule_cadence:
+          type: string
+        start_time_dimension_id:
+          type: integer
+        end_time_dimension_id:
+          type: integer
+        tld_default_dimensions:
+          type: object
+          additionalProperties: {}
+      required:
+      - day_of_week
+      - end_time_dimension_id
+      - hour_of_day
+      - schedule_cadence
+      - start_time_dimension_id
+      - tld_default_dimensions
+    BlankEnum:
+      enum:
+      - ''
+    PriorTimeUnitEnum:
+      enum:
+      - DAY
+      - MONTH
+      - WEEK
+      - QUARTER
+      - YEAR
+      type: string
+      description: '* `DAY` - Day
+
+        * `MONTH` - Month
+
+        * `WEEK` - Week
+
+        * `QUARTER` - Quarter
+
+        * `YEAR` - Year'
+    DimensionMappingNested:
+      type: object
+      properties:
+        dimension:
+          $ref: '#/components/schemas/DimensionWithTld'
+        source_dimension:
+          $ref: '#/components/schemas/DimensionWithTld'
+        automapped:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_by:
+          $ref: '#/components/schemas/User'
+        sign_flip:
+          type: boolean
+      required:
+      - created_at
+      - modified_at
+      - modified_by
+      - source_dimension
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
+
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
     Status2c8Enum:
       enum:
       - ENABLED
@@ -2983,14 +2999,179 @@ components:
         * `VALUES_CLEARED` - Values Cleared
 
         * `DISABLED` - Disabled'
-    ScheduleCadenceEnum:
+    SourceDataTableTypeEnum:
       enum:
-      - WEEKLY
-      - DAILY
+      - AD_HOC
+      - ERP_CONNECTION
+      - GENERIC
+      - EMPLOYEE_ROSTER
+      - HRIS
       type: string
-      description: '* `WEEKLY` - Weekly
+      description: '* `AD_HOC` - Ad Hoc
 
-        * `DAILY` - Daily'
+        * `ERP_CONNECTION` - ERP Connection
+
+        * `GENERIC` - Generic
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `HRIS` - HRIS Connection'
+    SourceDimensionTree:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        currency_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/Status2c8Enum'
+        type:
+          $ref: '#/components/schemas/Type95aEnum'
+        rollup_type:
+          oneOf:
+          - $ref: '#/components/schemas/RollupTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        formula:
+          type: string
+          readOnly: true
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+        position:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        special_case_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        date:
+          type:
+          - string
+          - 'null'
+          format: date
+        has_children:
+          type: boolean
+        write_block_reason:
+          type: string
+          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
+          readOnly: true
+        number:
+          type:
+          - string
+          - 'null'
+          maxLength: 150
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        children:
+          readOnly: true
+        data_table_id:
+          type: string
+          format: uuid
+        description:
+          type:
+          - string
+          - 'null'
+        requires_mapping:
+          type: boolean
+          readOnly: true
+        can_be_sign_flipped:
+          type: boolean
+          readOnly: true
+      required:
+      - active
+      - can_be_sign_flipped
+      - children
+      - created_at
+      - currency_id
+      - data_table_id
+      - formula
+      - id
+      - name
+      - parent_id
+      - requires_mapping
+      - write_block_reason
+    SourceDataTable:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+        settings:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        connection:
+          allOf:
+          - $ref: '#/components/schemas/Connection'
+          readOnly: true
+        type:
+          allOf:
+          - $ref: '#/components/schemas/SourceDataTableTypeEnum'
+          readOnly: true
+        type_friendly:
+          type: string
+          readOnly: true
+        last_import:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        last_successful_import:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        source_type:
+          type: string
+          description: "Returns the human-friendly category of the connection's Integration, if the table has\na connection. Otherwise, returns 'Data Table'.\n\nReturns:\n    The human-friendly source category"
+          readOnly: true
+        mapping_data:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        description:
+          type: string
+      required:
+      - active
+      - connection
+      - created_at
+      - id
+      - last_import
+      - last_successful_import
+      - mapping_data
+      - name
+      - settings
+      - source_type
+      - type
+      - type_friendly
     Dimension:
       type: object
       properties:
@@ -3054,141 +3235,16 @@ components:
       - name
       - parent_id
       - write_block_reason
-    DimensionMapping:
-      type: object
-      properties:
-        dimension_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        source_dimension_id:
-          type: integer
-          readOnly: true
-        automapped:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - dimension_id
-      - modified_at
-      - source_dimension_id
-    Type95aEnum:
-      enum:
-      - BASIC
-      - FORMULA
-      - TAG
-      type: string
-      description: '* `BASIC` - Basic
-
-        * `FORMULA` - Formula
-
-        * `TAG` - Tag'
-    PriorTimeUnitEnum:
-      enum:
-      - DAY
-      - MONTH
-      - WEEK
-      - QUARTER
-      - YEAR
-      type: string
-      description: '* `DAY` - Day
-
-        * `MONTH` - Month
-
-        * `WEEK` - Week
-
-        * `QUARTER` - Quarter
-
-        * `YEAR` - Year'
-    CategoryEnum:
-      enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
-      type: string
-      description: '* `BI` - Business Intelligence
-
-        * `GL` - General Ledger
-
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
-    RuleEnum:
-      enum:
-      - IGNORE
-      - ONE_TO_ONE
-      - MANY_TO_ONE
-      type: string
-      description: '* `IGNORE` - Ignore
-
-        * `ONE_TO_ONE` - One-to-one
-
-        * `MANY_TO_ONE` - Many-to-one'
-    AutoMappingRule:
+    DimensionWithTld:
       type: object
       properties:
         id:
           type: integer
           readOnly: true
-        data_table_id:
-          type: string
-          format: uuid
-        tld_id:
-          type: integer
-          minimum: 1
-        rule:
-          $ref: '#/components/schemas/RuleEnum'
-        dimension_id:
+        parent_id:
           type:
           - integer
           - 'null'
-          minimum: 1
-      required:
-      - data_table_id
-      - id
-      - rule
-      - tld_id
-    SourceDataTableTypeEnum:
-      enum:
-      - AD_HOC
-      - ERP_CONNECTION
-      - GENERIC
-      - EMPLOYEE_ROSTER
-      - HRIS
-      type: string
-      description: '* `AD_HOC` - Ad Hoc
-
-        * `ERP_CONNECTION` - ERP Connection
-
-        * `GENERIC` - Generic
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `HRIS` - HRIS Connection'
-    SourceDataTable:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
           readOnly: true
         name:
           type: string
@@ -3196,111 +3252,55 @@ components:
         active:
           type: boolean
           readOnly: true
-        settings:
-          type: object
-          additionalProperties: {}
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        connection:
-          allOf:
-          - $ref: '#/components/schemas/Connection'
-          readOnly: true
+        status:
+          $ref: '#/components/schemas/Status2c8Enum'
         type:
-          allOf:
-          - $ref: '#/components/schemas/SourceDataTableTypeEnum'
-          readOnly: true
-        type_friendly:
+          $ref: '#/components/schemas/Type95aEnum'
+        rollup_type:
+          oneOf:
+          - $ref: '#/components/schemas/RollupTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        formula:
           type: string
           readOnly: true
-        last_import:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        last_successful_import:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        source_type:
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+        position:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        special_case_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        date:
+          type:
+          - string
+          - 'null'
+          format: date
+        has_children:
+          type: boolean
+        write_block_reason:
           type: string
-          description: "Returns the human-friendly category of the connection's Integration, if the table has\na connection. Otherwise, returns 'Data Table'.\n\nReturns:\n    The human-friendly source category"
+          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
           readOnly: true
-        mapping_data:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        description:
-          type: string
+        metadata:
+          type:
+          - string
+          - 'null'
+        tld:
+          $ref: '#/components/schemas/Dimension'
       required:
       - active
-      - connection
-      - created_at
+      - formula
       - id
-      - last_import
-      - last_successful_import
-      - mapping_data
       - name
-      - settings
-      - source_type
-      - type
-      - type_friendly
-    AutoMappingDoc:
-      type: object
-      properties:
-        tld_id:
-          type: integer
-          minimum: 1
-        rule:
-          $ref: '#/components/schemas/RuleEnum'
-        dimension_id:
-          type:
-          - integer
-          - 'null'
-          minimum: 1
-      required:
-      - rule
-      - tld_id
-    DimensionMappingNested:
-      type: object
-      properties:
-        dimension:
-          $ref: '#/components/schemas/DimensionWithTld'
-        source_dimension:
-          $ref: '#/components/schemas/DimensionWithTld'
-        automapped:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_by:
-          $ref: '#/components/schemas/User'
-        sign_flip:
-          type: boolean
-      required:
-      - created_at
-      - modified_at
-      - modified_by
-      - source_dimension
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
+      - parent_id
+      - tld
+      - write_block_reason
     PatchedSourceDataTable:
       type: object
       properties:

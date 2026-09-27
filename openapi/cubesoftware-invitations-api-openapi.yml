@@ -229,43 +229,6 @@ paths:
           description: ''
 components:
   schemas:
-    UserInvitationUpdateOpenApiDocAttributes_1:
-      type: object
-      properties:
-        company_groups:
-          type: array
-          items:
-            type: integer
-        metadata: {}
-        permission_group:
-          type: integer
-        can_publish_data:
-          type: boolean
-        accepted_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      required:
-      - company_groups
-      - permission_group
-    PatchedUserInvitationUpdateOpenApiDocAttributes_1:
-      type: object
-      properties:
-        company_groups:
-          type: array
-          items:
-            type: integer
-        metadata: {}
-        permission_group:
-          type: integer
-        can_publish_data:
-          type: boolean
-        accepted_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
     UserInvitation:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -322,6 +285,43 @@ components:
       - id
       - last_sent
       - permission_group
+    UserInvitationUpdateOpenApiDocAttributes_1:
+      type: object
+      properties:
+        company_groups:
+          type: array
+          items:
+            type: integer
+        metadata: {}
+        permission_group:
+          type: integer
+        can_publish_data:
+          type: boolean
+        accepted_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - company_groups
+      - permission_group
+    PatchedUserInvitationUpdateOpenApiDocAttributes_1:
+      type: object
+      properties:
+        company_groups:
+          type: array
+          items:
+            type: integer
+        metadata: {}
+        permission_group:
+          type: integer
+        can_publish_data:
+          type: boolean
+        accepted_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
   securitySchemes:
     OAuth2:
       type: oauth2

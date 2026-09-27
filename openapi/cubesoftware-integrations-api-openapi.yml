@@ -287,30 +287,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Integration:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
-          type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - category
-      - id
-      - logo_url
-      - name
-      - source
     Company:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -345,40 +321,56 @@ components:
       - id
       - name
       - slug
-    TimeTypeEnum:
-      enum:
-      - STANDARD
-      - HALF_YEAR
-      - CUSTOM
-      type: string
-      description: '* `STANDARD` - Standard
+    Integration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    PatchedCompanyIntegration:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
 
-        * `HALF_YEAR` - Half Year
-
-        * `CUSTOM` - Custom'
-    CategoryEnum:
-      enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
-      type: string
-      description: '* `BI` - Business Intelligence
-
-        * `GL` - General Ledger
-
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        integration:
+          allOf:
+          - $ref: '#/components/schemas/Integration'
+          readOnly: true
+        company:
+          allOf:
+          - $ref: '#/components/schemas/Company'
+          readOnly: true
+        integration_id:
+          type: integer
+          writeOnly: true
+        company_id:
+          type: string
+          format: uuid
+          writeOnly: true
+        settings: {}
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -429,6 +421,17 @@ components:
         * `NETSUITE_RATES` - NetSuite Saved Search
 
         * `MERGE` - Cube Universal Connect'
+    TimeTypeEnum:
+      enum:
+      - STANDARD
+      - HALF_YEAR
+      - CUSTOM
+      type: string
+      description: '* `STANDARD` - Standard
+
+        * `HALF_YEAR` - Half Year
+
+        * `CUSTOM` - Custom'
     CompanyIntegration:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -459,32 +462,29 @@ components:
       - company
       - id
       - integration
-    PatchedCompanyIntegration:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
 
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        integration:
-          allOf:
-          - $ref: '#/components/schemas/Integration'
-          readOnly: true
-        company:
-          allOf:
-          - $ref: '#/components/schemas/Company'
-          readOnly: true
-        integration_id:
-          type: integer
-          writeOnly: true
-        company_id:
-          type: string
-          format: uuid
-          writeOnly: true
-        settings: {}
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
   securitySchemes:
     OAuth2:
       type: oauth2

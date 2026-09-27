@@ -76,16 +76,6 @@ paths:
           description: ''
 components:
   schemas:
-    AuthTokenView:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-      required:
-      - email
-      - password
     AuthGroupPermissions:
       type: object
       properties:
@@ -98,6 +88,16 @@ components:
       required:
       - id
       - name
+    AuthTokenView:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -203,76 +203,20 @@ paths:
           description: Permission denied
 components:
   schemas:
-    SourceDataTableUpload:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        source_data_table:
-          type: string
-          format: uuid
-        source:
-          $ref: '#/components/schemas/SourceDataTableUploadSourceEnum'
-        message:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        status:
-          $ref: '#/components/schemas/SourceDataTableUploadStatusEnum'
-        data_import:
-          type:
-          - integer
-          - 'null'
-        upload_type:
-          $ref: '#/components/schemas/SourceDataTableUploadUploadTypeEnum'
-        status_message:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        currency:
-          type:
-          - integer
-          - 'null'
-        data_can_be_downloaded:
-          type: boolean
-          readOnly: true
-      required:
-      - created_at
-      - data_can_be_downloaded
-      - id
-      - source_data_table
-    CompleteUpload:
-      type: object
-      properties:
-        file_path:
-          type: string
-        upload_type:
-          allOf:
-          - $ref: '#/components/schemas/CompleteUploadUploadTypeEnum'
-          default: APPEND
-      required:
-      - file_path
-    SourceDataTableUploadStatusEnum:
+    SourceDataTableUploadUploadTypeEnum:
       enum:
-      - PROCESSING
-      - IMPORTED
-      - ERROR
-      - PENDING
+      - REPLACE
+      - TIME_BASED_REPLACE
+      - APPEND
+      - DELETE
       type: string
-      description: '* `PROCESSING` - Processing
+      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
 
-        * `IMPORTED` - Imported
+        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
 
-        * `ERROR` - Error
+        * `APPEND` - Update existing records and add new records
 
-        * `PENDING` - Pending'
+        * `DELETE` - Remove all existing records'
     SourceDataTableUploadSourceEnum:
       enum:
       - USER_UPLOAD
@@ -287,20 +231,6 @@ components:
         * `API` - API
 
         * `THIRD_PARTY_API` - Third Party API'
-    CompleteUploadUploadTypeEnum:
-      enum:
-      - REPLACE
-      - TIME_BASED_REPLACE
-      - APPEND
-      - DELETE
-      type: string
-      description: '* `REPLACE` - Replace
-
-        * `TIME_BASED_REPLACE` - Time-based replace
-
-        * `APPEND` - Append
-
-        * `DELETE` - Delete'
     TransactionEvent:
       type: object
       properties:
@@ -354,20 +284,90 @@ components:
       - num_modified
       - total
       - upload_id
-    SourceDataTableUploadUploadTypeEnum:
+    CompleteUpload:
+      type: object
+      properties:
+        file_path:
+          type: string
+        upload_type:
+          allOf:
+          - $ref: '#/components/schemas/CompleteUploadUploadTypeEnum'
+          default: APPEND
+      required:
+      - file_path
+    SourceDataTableUpload:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        source_data_table:
+          type: string
+          format: uuid
+        source:
+          $ref: '#/components/schemas/SourceDataTableUploadSourceEnum'
+        message:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        status:
+          $ref: '#/components/schemas/SourceDataTableUploadStatusEnum'
+        data_import:
+          type:
+          - integer
+          - 'null'
+        upload_type:
+          $ref: '#/components/schemas/SourceDataTableUploadUploadTypeEnum'
+        status_message:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        currency:
+          type:
+          - integer
+          - 'null'
+        data_can_be_downloaded:
+          type: boolean
+          readOnly: true
+      required:
+      - created_at
+      - data_can_be_downloaded
+      - id
+      - source_data_table
+    SourceDataTableUploadStatusEnum:
+      enum:
+      - PROCESSING
+      - IMPORTED
+      - ERROR
+      - PENDING
+      type: string
+      description: '* `PROCESSING` - Processing
+
+        * `IMPORTED` - Imported
+
+        * `ERROR` - Error
+
+        * `PENDING` - Pending'
+    CompleteUploadUploadTypeEnum:
       enum:
       - REPLACE
       - TIME_BASED_REPLACE
       - APPEND
       - DELETE
       type: string
-      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
+      description: '* `REPLACE` - Replace
 
-        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
+        * `TIME_BASED_REPLACE` - Time-based replace
 
-        * `APPEND` - Update existing records and add new records
+        * `APPEND` - Append
 
-        * `DELETE` - Remove all existing records'
+        * `DELETE` - Delete'
     PresignUpload:
       type: object
       properties:
