@@ -266,34 +266,48 @@ paths:
           description: ''
 components:
   schemas:
-    SourceDataTableUploadUploadTypeEnum:
+    SourceDataTableUploadStatusEnum:
       enum:
-      - REPLACE
-      - TIME_BASED_REPLACE
-      - APPEND
-      - DELETE
+      - PROCESSING
+      - IMPORTED
+      - ERROR
+      - PENDING
       type: string
-      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
+      description: '* `PROCESSING` - Processing
 
-        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
+        * `IMPORTED` - Imported
 
-        * `APPEND` - Update existing records and add new records
+        * `ERROR` - Error
 
-        * `DELETE` - Remove all existing records'
-    SourceDataTableUploadSourceEnum:
-      enum:
-      - USER_UPLOAD
-      - EMAIL
-      - API
-      - THIRD_PARTY_API
-      type: string
-      description: '* `USER_UPLOAD` - User Upload
-
-        * `EMAIL` - Email
-
-        * `API` - API
-
-        * `THIRD_PARTY_API` - Third Party API'
+        * `PENDING` - Pending'
+    UploadPart:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        data_table_upload:
+          type: string
+          format: uuid
+        external_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        file:
+          type:
+          - string
+          - 'null'
+          format: uri
+          writeOnly: true
+      required:
+      - created_at
+      - data_table_upload
+      - id
     SourceDataTableUpload:
       type: object
       properties:
@@ -339,48 +353,34 @@ components:
       - data_can_be_downloaded
       - id
       - source_data_table
-    SourceDataTableUploadStatusEnum:
+    SourceDataTableUploadUploadTypeEnum:
       enum:
-      - PROCESSING
-      - IMPORTED
-      - ERROR
-      - PENDING
+      - REPLACE
+      - TIME_BASED_REPLACE
+      - APPEND
+      - DELETE
       type: string
-      description: '* `PROCESSING` - Processing
+      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
 
-        * `IMPORTED` - Imported
+        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
 
-        * `ERROR` - Error
+        * `APPEND` - Update existing records and add new records
 
-        * `PENDING` - Pending'
-    UploadPart:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        data_table_upload:
-          type: string
-          format: uuid
-        external_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        file:
-          type:
-          - string
-          - 'null'
-          format: uri
-          writeOnly: true
-      required:
-      - created_at
-      - data_table_upload
-      - id
+        * `DELETE` - Remove all existing records'
+    SourceDataTableUploadSourceEnum:
+      enum:
+      - USER_UPLOAD
+      - EMAIL
+      - API
+      - THIRD_PARTY_API
+      type: string
+      description: '* `USER_UPLOAD` - User Upload
+
+        * `EMAIL` - Email
+
+        * `API` - API
+
+        * `THIRD_PARTY_API` - Third Party API'
   securitySchemes:
     OAuth2:
       type: oauth2

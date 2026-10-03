@@ -389,6 +389,68 @@ paths:
           description: No response body
 components:
   schemas:
+    PatchedSubcubeAccessRule:
+      type: object
+      description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
+
+        for use in updating either the model being worked with OR any through tables that are used to join the model with
+
+        a related model when the through table holds useful information.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        company:
+          type: string
+          format: uuid
+        company_group:
+          type: integer
+        dimensions:
+          type: string
+        write_access:
+          type: boolean
+        created_by:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_by:
+          type:
+          - integer
+          - 'null'
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+    CompanyGroupTypeEnum:
+      enum:
+      - feature
+      - dimension
+      type: string
+      description: '* `feature` - Feature
+
+        * `dimension` - Data'
+    PatchedCompanyGroupOpenApiDoc_2:
+      type: object
+      properties:
+        user_invitations:
+          type: string
+        user_companies:
+          type: string
+        permissions:
+          type: string
+        permissionsets:
+          type: string
+        subcube_access_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubcubeAccessRule'
+        name:
+          type: string
+          maxLength: 100
+        active:
+          type: boolean
     SubcubeAccessRule:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -430,36 +492,6 @@ components:
       - created_by
       - id
       - modified_at
-    CompanyGroupTypeEnum:
-      enum:
-      - feature
-      - dimension
-      type: string
-      description: '* `feature` - Feature
-
-        * `dimension` - Data'
-    CompanyGroupOpenApiDoc_1:
-      type: object
-      properties:
-        user_invitations:
-          type: string
-        user_companies:
-          type: string
-        permissions:
-          type: string
-        permissionsets:
-          type: string
-        subcube_access_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubcubeAccessRule'
-        name:
-          type: string
-          maxLength: 100
-        active:
-          type: boolean
-      required:
-      - name
     CompanyGroup:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -524,41 +556,7 @@ components:
       - name
       - resolved_permissions
       - resolved_permissionsets
-    PatchedSubcubeAccessRule:
-      type: object
-      description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
-
-        for use in updating either the model being worked with OR any through tables that are used to join the model with
-
-        a related model when the through table holds useful information.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        company:
-          type: string
-          format: uuid
-        company_group:
-          type: integer
-        dimensions:
-          type: string
-        write_access:
-          type: boolean
-        created_by:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_by:
-          type:
-          - integer
-          - 'null'
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-    PatchedCompanyGroupOpenApiDoc_2:
+    CompanyGroupOpenApiDoc_1:
       type: object
       properties:
         user_invitations:
@@ -578,6 +576,8 @@ components:
           maxLength: 100
         active:
           type: boolean
+      required:
+      - name
   securitySchemes:
     OAuth2:
       type: oauth2

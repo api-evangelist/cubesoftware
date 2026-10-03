@@ -153,51 +153,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    NullEnum:
-      enum:
-      - null
     PatchedUserCompany:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -242,30 +197,6 @@ components:
         resolved_permissions:
           type: string
           readOnly: true
-    UserCompany:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        permission_group:
-          type: integer
-        last_active_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - id
-      - last_active_at
-      - permission_group
-      - user
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2059,6 +1990,48 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2067,9 +2040,36 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
+    UserCompany:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        permission_group:
+          type: integer
+        last_active_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - last_active_at
+      - permission_group
+      - user
     BlankEnum:
       enum:
       - ''
+    NullEnum:
+      enum:
+      - null
   securitySchemes:
     OAuth2:
       type: oauth2

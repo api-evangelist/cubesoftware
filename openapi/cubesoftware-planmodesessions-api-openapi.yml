@@ -39,54 +39,6 @@ paths:
           description: Plan mode sessions for the current user company
 components:
   schemas:
-    PlanModeRecommendation:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        recommendation_type:
-          allOf:
-          - $ref: '#/components/schemas/RecommendationTypeEnum'
-          readOnly: true
-        description:
-          type: string
-          readOnly: true
-        action_label:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - action_label
-      - created_at
-      - description
-      - id
-      - recommendation_type
-    RecommendationTypeEnum:
-      enum:
-      - RISK
-      - OPPORTUNITY
-      - DATA_GAP
-      - INFO
-      type: string
-      description: '* `RISK` - Risk
-
-        * `OPPORTUNITY` - Opportunity
-
-        * `DATA_GAP` - Data gap
-
-        * `INFO` - Info'
-    PlanModeKeyAssumptionSourceEnum:
-      enum:
-      - USER
-      - AI
-      type: string
-      description: '* `USER` - User
-
-        * `AI` - AI'
     PlanModeSessionList:
       type: object
       properties:
@@ -135,6 +87,20 @@ components:
       - parent_scenario
       - recommendations
       - updates_canvas
+    RecommendationTypeEnum:
+      enum:
+      - RISK
+      - OPPORTUNITY
+      - DATA_GAP
+      - INFO
+      type: string
+      description: '* `RISK` - Risk
+
+        * `OPPORTUNITY` - Opportunity
+
+        * `DATA_GAP` - Data gap
+
+        * `INFO` - Info'
     PlanModeKeyAssumption:
       type: object
       properties:
@@ -165,6 +131,40 @@ components:
       - name
       - source
       - value
+    PlanModeRecommendation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        recommendation_type:
+          allOf:
+          - $ref: '#/components/schemas/RecommendationTypeEnum'
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        action_label:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - action_label
+      - created_at
+      - description
+      - id
+      - recommendation_type
+    PlanModeKeyAssumptionSourceEnum:
+      enum:
+      - USER
+      - AI
+      type: string
+      description: '* `USER` - User
+
+        * `AI` - AI'
   securitySchemes:
     OAuth2:
       type: oauth2

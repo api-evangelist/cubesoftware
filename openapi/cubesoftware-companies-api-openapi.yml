@@ -171,73 +171,6 @@ paths:
           description: ''
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    SimpleUserCompany:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        permission_group:
-          $ref: '#/components/schemas/AuthGroupPermissions'
-      required:
-      - permission_group
-      - user
-    NullEnum:
-      enum:
-      - null
-    AuthGroupPermissions:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 150
-      required:
-      - id
-      - name
     CompanySettings:
       type: object
       description: A serializer for company settings
@@ -262,6 +195,16 @@ components:
       - cube_access_until
       - mc_entity_tld_id
       - metabase_enabled
+    SimpleUserCompany:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        permission_group:
+          $ref: '#/components/schemas/AuthGroupPermissions'
+      required:
+      - permission_group
+      - user
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2055,6 +1998,60 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    AuthGroupPermissions:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - id
+      - name
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2066,6 +2063,9 @@ components:
     BlankEnum:
       enum:
       - ''
+    NullEnum:
+      enum:
+      - null
   securitySchemes:
     OAuth2:
       type: oauth2

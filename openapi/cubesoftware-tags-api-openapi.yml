@@ -205,20 +205,20 @@ paths:
           description: ''
 components:
   schemas:
-    TagCreateResponse:
+    TagsResponse:
       type: object
       properties:
         id:
           type: integer
         is_recalculating:
           type: boolean
+        name:
+          type: string
         members:
           type: array
           items:
             type: object
             additionalProperties: {}
-        name:
-          type: string
         top_level_dimension_name:
           type: string
       required:
@@ -256,43 +256,6 @@ components:
           type: string
       required:
       - message
-    TagCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        member_ids:
-          type: array
-          items:
-            type: integer
-        top_level_dimension_name:
-          type: string
-      required:
-      - member_ids
-      - name
-      - top_level_dimension_name
-    TagsResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_recalculating:
-          type: boolean
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-        top_level_dimension_name:
-          type: string
-      required:
-      - id
-      - is_recalculating
-      - members
-      - name
-      - top_level_dimension_name
     TagUpdateResponse:
       type: object
       properties:
@@ -313,6 +276,43 @@ components:
       - id
       - is_recalculating
       - members
+      - name
+      - top_level_dimension_name
+    TagCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_recalculating:
+          type: boolean
+        members:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        name:
+          type: string
+        top_level_dimension_name:
+          type: string
+      required:
+      - id
+      - is_recalculating
+      - members
+      - name
+      - top_level_dimension_name
+    TagCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        member_ids:
+          type: array
+          items:
+            type: integer
+        top_level_dimension_name:
+          type: string
+      required:
+      - member_ids
       - name
       - top_level_dimension_name
     TagUpdateRequest:

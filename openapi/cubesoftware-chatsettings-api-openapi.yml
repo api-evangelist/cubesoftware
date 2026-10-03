@@ -85,22 +85,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PatchedChatSettings:
-      type: object
-      properties:
-        custom_context:
-          type:
-          - string
-          - 'null'
-          maxLength: 5000
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
     ChatSettings:
       type: object
       properties:
@@ -120,6 +104,22 @@ components:
       required:
       - created_at
       - modified_at
+    PatchedChatSettings:
+      type: object
+      properties:
+        custom_context:
+          type:
+          - string
+          - 'null'
+          maxLength: 5000
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
   securitySchemes:
     OAuth2:
       type: oauth2

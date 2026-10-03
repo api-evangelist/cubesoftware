@@ -50,83 +50,6 @@ paths:
           description: ''
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    TeamMemberDevices:
-      type: object
-      properties:
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/MfaDevice'
-          readOnly: true
-      required:
-      - devices
-      - user
-    NullEnum:
-      enum:
-      - null
-    MfaDevice:
-      type: object
-      properties:
-        persistent_id:
-          type: string
-        name:
-          type: string
-        device_type:
-          type: string
-          readOnly: true
-        confirmed:
-          type: boolean
-      required:
-      - confirmed
-      - device_type
-      - name
-      - persistent_id
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -1920,6 +1843,80 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    TeamMemberDevices:
+      type: object
+      properties:
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MfaDevice'
+          readOnly: true
+      required:
+      - devices
+      - user
+    MfaDevice:
+      type: object
+      properties:
+        persistent_id:
+          type: string
+        name:
+          type: string
+        device_type:
+          type: string
+          readOnly: true
+        confirmed:
+          type: boolean
+      required:
+      - confirmed
+      - device_type
+      - name
+      - persistent_id
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -1928,6 +1925,9 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
+    NullEnum:
+      enum:
+      - null
     BlankEnum:
       enum:
       - ''

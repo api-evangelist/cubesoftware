@@ -864,114 +864,6 @@ paths:
           description: ''
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    NullEnum:
-      enum:
-      - null
-    Comment:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        content:
-          type:
-          - string
-          - 'null'
-          maxLength: 1000
-        content_structured: {}
-        created_by_id:
-          type: integer
-          readOnly: true
-        created_by_user_company:
-          allOf:
-          - $ref: '#/components/schemas/UserCompany'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        deleted_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        deleted_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        deleted_by_user_company:
-          allOf:
-          - $ref: '#/components/schemas/UserCompany'
-          readOnly: true
-        modified_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        target_id:
-          type: string
-          writeOnly: true
-          maxLength: 36
-        target:
-          allOf:
-          - $ref: '#/components/schemas/Target'
-          readOnly: true
-      required:
-      - created_at
-      - created_by_id
-      - created_by_user_company
-      - deleted_at
-      - deleted_by_id
-      - deleted_by_user_company
-      - id
-      - modified_at
-      - target
-      - target_id
     PatchedComment:
       type: object
       properties:
@@ -1025,30 +917,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Target'
           readOnly: true
-    UserCompany:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        permission_group:
-          type: integer
-        last_active_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - id
-      - last_active_at
-      - permission_group
-      - user
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2842,6 +2710,48 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2850,9 +2760,6 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
-    BlankEnum:
-      enum:
-      - ''
     Target:
       type: object
       properties:
@@ -2869,6 +2776,99 @@ components:
       - content_type_id
       - id
       - model
+    UserCompany:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        permission_group:
+          type: integer
+        last_active_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - last_active_at
+      - permission_group
+      - user
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        content:
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+        content_structured: {}
+        created_by_id:
+          type: integer
+          readOnly: true
+        created_by_user_company:
+          allOf:
+          - $ref: '#/components/schemas/UserCompany'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        deleted_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        deleted_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        deleted_by_user_company:
+          allOf:
+          - $ref: '#/components/schemas/UserCompany'
+          readOnly: true
+        modified_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        target_id:
+          type: string
+          writeOnly: true
+          maxLength: 36
+        target:
+          allOf:
+          - $ref: '#/components/schemas/Target'
+          readOnly: true
+      required:
+      - created_at
+      - created_by_id
+      - created_by_user_company
+      - deleted_at
+      - deleted_by_id
+      - deleted_by_user_company
+      - id
+      - modified_at
+      - target
+      - target_id
+    NullEnum:
+      enum:
+      - null
+    BlankEnum:
+      enum:
+      - ''
   securitySchemes:
     OAuth2:
       type: oauth2

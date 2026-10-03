@@ -289,21 +289,139 @@ paths:
           description: ''
 components:
   schemas:
-    WorkflowStage:
+    WorkflowTypeDetail:
+      type: object
+      properties:
+        type_id:
+          type: string
+        registry_id:
+          type: string
+        workflow_class_path:
+          type: string
+        shape:
+          $ref: '#/components/schemas/WorkflowShape'
+      required:
+      - registry_id
+      - shape
+      - type_id
+      - workflow_class_path
+    StatusLabels:
+      type: object
+      properties:
+        before:
+          type: string
+        active:
+          type: string
+        after:
+          type: string
+      required:
+      - active
+      - after
+      - before
+    WorkflowShape:
+      type: object
+      properties:
+        catalog_version:
+          type: integer
+        name:
+          type: string
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStage'
+      required:
+      - catalog_version
+      - name
+      - stages
+    WorkflowExecutionV2:
       type: object
       properties:
         id:
+          type: integer
+        status:
           type: string
-        labels:
-          $ref: '#/components/schemas/StatusLabels'
-        task_fqns:
+          readOnly: true
+        name:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        metadata:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        started_by:
+          type: string
+        started_at:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        can_retry:
+          type: boolean
+          readOnly: true
+        retried_by:
+          type: string
+        can_cancel:
+          type: boolean
+          readOnly: true
+        canceled_by:
+          type: string
+        canceled_at:
+          type: string
+          format: date-time
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_status_change_at:
+          type: string
+          format: date-time
+          readOnly: true
+        tasks:
           type: array
-          items:
-            type: string
+          items: {}
+          readOnly: true
+        type_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        catalog_version:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+        current_stage_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
       required:
+      - can_cancel
+      - can_retry
+      - canceled_at
+      - canceled_by
+      - catalog_version
+      - completed_at
+      - created_at
+      - current_stage_id
       - id
-      - labels
-      - task_fqns
+      - last_status_change_at
+      - metadata
+      - name
+      - retried_by
+      - started_at
+      - started_by
+      - status
+      - tasks
+      - type
+      - type_id
     WorkflowTypeListRow:
       type: object
       properties:
@@ -400,139 +518,21 @@ components:
       - tasks
       - type
       - type_id
-    WorkflowExecutionV2:
+    WorkflowStage:
       type: object
       properties:
         id:
-          type: integer
-        status:
           type: string
-          readOnly: true
-        name:
-          type: string
-        type:
-          type: string
-          readOnly: true
-        metadata:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        started_by:
-          type: string
-        started_at:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        can_retry:
-          type: boolean
-          readOnly: true
-        retried_by:
-          type: string
-        can_cancel:
-          type: boolean
-          readOnly: true
-        canceled_by:
-          type: string
-        canceled_at:
-          type: string
-          format: date-time
-        completed_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_status_change_at:
-          type: string
-          format: date-time
-          readOnly: true
-        tasks:
-          type: array
-          items: {}
-          readOnly: true
-        type_id:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        catalog_version:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-        current_stage_id:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - can_cancel
-      - can_retry
-      - canceled_at
-      - canceled_by
-      - catalog_version
-      - completed_at
-      - created_at
-      - current_stage_id
-      - id
-      - last_status_change_at
-      - metadata
-      - name
-      - retried_by
-      - started_at
-      - started_by
-      - status
-      - tasks
-      - type
-      - type_id
-    WorkflowShape:
-      type: object
-      properties:
-        catalog_version:
-          type: integer
-        name:
-          type: string
-        stages:
+        labels:
+          $ref: '#/components/schemas/StatusLabels'
+        task_fqns:
           type: array
           items:
-            $ref: '#/components/schemas/WorkflowStage'
+            type: string
       required:
-      - catalog_version
-      - name
-      - stages
-    WorkflowTypeDetail:
-      type: object
-      properties:
-        type_id:
-          type: string
-        registry_id:
-          type: string
-        workflow_class_path:
-          type: string
-        shape:
-          $ref: '#/components/schemas/WorkflowShape'
-      required:
-      - registry_id
-      - shape
-      - type_id
-      - workflow_class_path
-    StatusLabels:
-      type: object
-      properties:
-        before:
-          type: string
-        active:
-          type: string
-        after:
-          type: string
-      required:
-      - active
-      - after
-      - before
+      - id
+      - labels
+      - task_fqns
   securitySchemes:
     OAuth2:
       type: oauth2

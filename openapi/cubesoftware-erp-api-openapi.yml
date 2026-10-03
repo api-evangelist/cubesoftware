@@ -203,87 +203,20 @@ paths:
           description: Permission denied
 components:
   schemas:
-    SourceDataTableUploadUploadTypeEnum:
+    SourceDataTableUploadStatusEnum:
       enum:
-      - REPLACE
-      - TIME_BASED_REPLACE
-      - APPEND
-      - DELETE
+      - PROCESSING
+      - IMPORTED
+      - ERROR
+      - PENDING
       type: string
-      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
+      description: '* `PROCESSING` - Processing
 
-        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
+        * `IMPORTED` - Imported
 
-        * `APPEND` - Update existing records and add new records
+        * `ERROR` - Error
 
-        * `DELETE` - Remove all existing records'
-    SourceDataTableUploadSourceEnum:
-      enum:
-      - USER_UPLOAD
-      - EMAIL
-      - API
-      - THIRD_PARTY_API
-      type: string
-      description: '* `USER_UPLOAD` - User Upload
-
-        * `EMAIL` - Email
-
-        * `API` - API
-
-        * `THIRD_PARTY_API` - Third Party API'
-    TransactionEvent:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        deletion_start_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          readOnly: true
-        deletion_end_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          readOnly: true
-        num_created:
-          type: integer
-          readOnly: true
-        num_modified:
-          type: integer
-          readOnly: true
-        num_deleted:
-          type: integer
-          readOnly: true
-        total:
-          type: integer
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-        upload_id:
-          type: string
-          format: uuid
-          readOnly: true
-      required:
-      - created_at
-      - deletion_end_date
-      - deletion_start_date
-      - id
-      - modified_at
-      - num_created
-      - num_deleted
-      - num_modified
-      - total
-      - upload_id
+        * `PENDING` - Pending'
     CompleteUpload:
       type: object
       properties:
@@ -340,20 +273,6 @@ components:
       - data_can_be_downloaded
       - id
       - source_data_table
-    SourceDataTableUploadStatusEnum:
-      enum:
-      - PROCESSING
-      - IMPORTED
-      - ERROR
-      - PENDING
-      type: string
-      description: '* `PROCESSING` - Processing
-
-        * `IMPORTED` - Imported
-
-        * `ERROR` - Error
-
-        * `PENDING` - Pending'
     CompleteUploadUploadTypeEnum:
       enum:
       - REPLACE
@@ -368,6 +287,87 @@ components:
         * `APPEND` - Append
 
         * `DELETE` - Delete'
+    TransactionEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        deletion_start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          readOnly: true
+        deletion_end_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          readOnly: true
+        num_created:
+          type: integer
+          readOnly: true
+        num_modified:
+          type: integer
+          readOnly: true
+        num_deleted:
+          type: integer
+          readOnly: true
+        total:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        upload_id:
+          type: string
+          format: uuid
+          readOnly: true
+      required:
+      - created_at
+      - deletion_end_date
+      - deletion_start_date
+      - id
+      - modified_at
+      - num_created
+      - num_deleted
+      - num_modified
+      - total
+      - upload_id
+    SourceDataTableUploadUploadTypeEnum:
+      enum:
+      - REPLACE
+      - TIME_BASED_REPLACE
+      - APPEND
+      - DELETE
+      type: string
+      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
+
+        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
+
+        * `APPEND` - Update existing records and add new records
+
+        * `DELETE` - Remove all existing records'
+    SourceDataTableUploadSourceEnum:
+      enum:
+      - USER_UPLOAD
+      - EMAIL
+      - API
+      - THIRD_PARTY_API
+      type: string
+      description: '* `USER_UPLOAD` - User Upload
+
+        * `EMAIL` - Email
+
+        * `API` - API
+
+        * `THIRD_PARTY_API` - Third Party API'
     PresignUpload:
       type: object
       properties:

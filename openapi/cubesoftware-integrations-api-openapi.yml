@@ -287,7 +287,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Company:
+    CompanyIntegration:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
 
@@ -297,54 +297,26 @@ components:
           type: string
           format: uuid
           readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        slug:
-          type:
-          - string
-          - 'null'
+        integration:
+          allOf:
+          - $ref: '#/components/schemas/Integration'
           readOnly: true
-        salesforce_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 32
-        time_type:
-          $ref: '#/components/schemas/TimeTypeEnum'
-        created_at:
-          type: string
-          format: date-time
+        company:
+          allOf:
+          - $ref: '#/components/schemas/Company'
           readOnly: true
-      required:
-      - created_at
-      - id
-      - name
-      - slug
-    Integration:
-      type: object
-      properties:
-        id:
+        integration_id:
           type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
+          writeOnly: true
+        company_id:
           type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
+          format: uuid
+          writeOnly: true
+        settings: {}
       required:
-      - category
+      - company
       - id
-      - logo_url
-      - name
-      - source
+      - integration
     PatchedCompanyIntegration:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -371,6 +343,41 @@ components:
           format: uuid
           writeOnly: true
         settings: {}
+    TimeTypeEnum:
+      enum:
+      - STANDARD
+      - HALF_YEAR
+      - CUSTOM
+      type: string
+      description: '* `STANDARD` - Standard
+
+        * `HALF_YEAR` - Half Year
+
+        * `CUSTOM` - Custom'
+    Integration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -421,18 +428,7 @@ components:
         * `NETSUITE_RATES` - NetSuite Saved Search
 
         * `MERGE` - Cube Universal Connect'
-    TimeTypeEnum:
-      enum:
-      - STANDARD
-      - HALF_YEAR
-      - CUSTOM
-      type: string
-      description: '* `STANDARD` - Standard
-
-        * `HALF_YEAR` - Half Year
-
-        * `CUSTOM` - Custom'
-    CompanyIntegration:
+    Company:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
 
@@ -442,26 +438,30 @@ components:
           type: string
           format: uuid
           readOnly: true
-        integration:
-          allOf:
-          - $ref: '#/components/schemas/Integration'
-          readOnly: true
-        company:
-          allOf:
-          - $ref: '#/components/schemas/Company'
-          readOnly: true
-        integration_id:
-          type: integer
-          writeOnly: true
-        company_id:
+        name:
           type: string
-          format: uuid
-          writeOnly: true
-        settings: {}
+          maxLength: 255
+        slug:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        salesforce_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 32
+        time_type:
+          $ref: '#/components/schemas/TimeTypeEnum'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
       required:
-      - company
+      - created_at
       - id
-      - integration
+      - name
+      - slug
     CategoryEnum:
       enum:
       - BI

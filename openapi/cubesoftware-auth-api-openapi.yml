@@ -97,20 +97,6 @@ paths:
           description: Invalid or expired embed token
 components:
   schemas:
-    EmbedTokenExchangeRequest:
-      type: object
-      properties:
-        embed_token:
-          type: string
-      required:
-      - embed_token
-    EmbedTokenCreateResponse:
-      type: object
-      properties:
-        embed_token:
-          type: string
-      required:
-      - embed_token
     MfaDevice:
       type: object
       properties:
@@ -128,6 +114,20 @@ components:
       - device_type
       - name
       - persistent_id
+    EmbedTokenExchangeRequest:
+      type: object
+      properties:
+        embed_token:
+          type: string
+      required:
+      - embed_token
+    EmbedTokenCreateResponse:
+      type: object
+      properties:
+        embed_token:
+          type: string
+      required:
+      - embed_token
   securitySchemes:
     OAuth2:
       type: oauth2

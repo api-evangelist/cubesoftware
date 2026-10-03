@@ -192,216 +192,43 @@ paths:
           description: Forbidden - Chat session does not belong to user
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    PaginatedCreditUsageByUserList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditUsageByUser'
-    NullEnum:
-      enum:
-      - null
-    CreditUsageByTier:
+    CreditUsageByUser:
       type: object
       properties:
+        user_company:
+          allOf:
+          - $ref: '#/components/schemas/UserCompany'
+          readOnly: true
         ask:
           type: integer
         build:
           type: integer
         mcp:
           type: integer
+        total:
+          type: integer
       required:
       - ask
       - build
       - mcp
-    AgentCategory:
+      - total
+      - user_company
+    WidgetBuilderRequest:
       type: object
+      description: Mixin to delegate create and update operations to a service class.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        slug:
-          type: string
-          maxLength: 64
-        name:
-          type: string
-          maxLength: 128
-        sort_order:
-          type: integer
-          maximum: 65535
-          minimum: 0
-        prompts:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgentPrompt'
-          readOnly: true
-      required:
-      - id
-      - name
-      - prompts
-      - slug
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
-    AgentPrompt:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        slug:
-          type: string
-          maxLength: 80
-        name:
-          type: string
-          maxLength: 128
-        sort_order:
-          type: integer
-          maximum: 65535
-          minimum: 0
         prompt:
           type: string
-      required:
-      - id
-      - name
-      - slug
-    UserCompany:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        permission_group:
-          type: integer
-        last_active_at:
+          description: The user prompt describing the widget to build
+        chat_session_id:
           type: string
-          format: date-time
-          readOnly: true
+          description: The chat session ID to use for conversation context
       required:
-      - id
-      - last_active_at
-      - permission_group
-      - user
-    CreditUsageSummaryData:
-      type: object
-      properties:
-        total_used:
-          type: integer
-        remaining:
-          type: integer
-        by_tier:
-          $ref: '#/components/schemas/CreditUsageByTier'
-      required:
-      - by_tier
-      - remaining
-      - total_used
-    CreditAllocationSummary:
-      type: object
-      properties:
-        annual_credits:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        purchased_credits:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        total_credits:
-          type: integer
-          readOnly: true
-        period_start:
-          type: string
-          format: date
-        period_end:
-          type: string
-          format: date
-      required:
-      - period_end
-      - period_start
-      - total_credits
-    CreditUsageSummary:
-      type: object
-      properties:
-        allocation:
-          $ref: '#/components/schemas/CreditAllocationSummary'
-        usage:
-          $ref: '#/components/schemas/CreditUsageSummaryData'
-      required:
-      - allocation
-      - usage
+      - chat_session_id
+      - prompt
+    BlankEnum:
+      enum:
+      - ''
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2195,43 +2022,216 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    CreditUsageByUser:
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    CreditUsageSummary:
       type: object
       properties:
-        user_company:
-          allOf:
-          - $ref: '#/components/schemas/UserCompany'
+        allocation:
+          $ref: '#/components/schemas/CreditAllocationSummary'
+        usage:
+          $ref: '#/components/schemas/CreditUsageSummaryData'
+      required:
+      - allocation
+      - usage
+    CreditAllocationSummary:
+      type: object
+      properties:
+        annual_credits:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        purchased_credits:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        total_credits:
+          type: integer
           readOnly: true
+        period_start:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
+      required:
+      - period_end
+      - period_start
+      - total_credits
+    CreditUsageSummaryData:
+      type: object
+      properties:
+        total_used:
+          type: integer
+        remaining:
+          type: integer
+        by_tier:
+          $ref: '#/components/schemas/CreditUsageByTier'
+      required:
+      - by_tier
+      - remaining
+      - total_used
+    UserCompany:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        permission_group:
+          type: integer
+        last_active_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - last_active_at
+      - permission_group
+      - user
+    AgentCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 128
+        sort_order:
+          type: integer
+          maximum: 65535
+          minimum: 0
+        prompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentPrompt'
+          readOnly: true
+      required:
+      - id
+      - name
+      - prompts
+      - slug
+    AgentPrompt:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 80
+        name:
+          type: string
+          maxLength: 128
+        sort_order:
+          type: integer
+          maximum: 65535
+          minimum: 0
+        prompt:
+          type: string
+      required:
+      - id
+      - name
+      - slug
+    CreditUsageByTier:
+      type: object
+      properties:
         ask:
           type: integer
         build:
           type: integer
         mcp:
           type: integer
-        total:
-          type: integer
       required:
       - ask
       - build
       - mcp
-      - total
-      - user_company
-    BlankEnum:
+    NullEnum:
       enum:
-      - ''
-    WidgetBuilderRequest:
+      - null
+    PaginatedCreditUsageByUserList:
       type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        prompt:
-          type: string
-          description: The user prompt describing the widget to build
-        chat_session_id:
-          type: string
-          description: The chat session ID to use for conversation context
       required:
-      - chat_session_id
-      - prompt
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditUsageByUser'
   securitySchemes:
     OAuth2:
       type: oauth2

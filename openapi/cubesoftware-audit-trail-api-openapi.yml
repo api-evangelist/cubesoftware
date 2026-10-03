@@ -313,48 +313,6 @@ paths:
           description: The change log information
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
     PaginatedAuditTrailGroupList:
       type: object
       required:
@@ -380,209 +338,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AuditTrailGroup'
-    NullEnum:
-      enum:
-      - null
-    AuditTrailListUser:
-      type: object
-      description: Same shape as legacy marshmallow `UserSchema` with `exclude={'email'}` on audit trail rows.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          readOnly: true
-        last_name:
-          type: string
-          readOnly: true
-        is_staff:
-          type: boolean
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - first_name
-      - id
-      - is_staff
-      - last_name
-    OlapCubeChangeTypeEnum:
-      enum:
-      - USER
-      - AI
-      - USER_REVERT
-      - TBI
-      - EXTERNAL_SOURCE
-      - EMPLOYEE_ROSTER
-      - DATA_IMPORT
-      - FORMULA
-      - DISABLED
-      - MERGE
-      - DUPLICATION
-      type: string
-      description: '* `USER` - User
-
-        * `AI` - AI
-
-        * `USER_REVERT` - Revert
-
-        * `TBI` - Trial Balance
-
-        * `EXTERNAL_SOURCE` - External Source
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `DATA_IMPORT` - Data
-
-        * `FORMULA` - Formula
-
-        * `DISABLED` - Disabled
-
-        * `MERGE` - Merge
-
-        * `DUPLICATION` - Duplication'
-    AuditTrailChange:
-      type: object
-      properties:
-        id:
-          type: integer
-        message:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        metadata:
-          type: object
-          additionalProperties: {}
-        type:
-          type: string
-        friendly_type:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        num_changes:
-          type: integer
-        url:
-          type: string
-      required:
-      - created_at
-      - friendly_type
-      - id
-      - message
-      - metadata
-      - num_changes
-      - type
-      - url
-      - user
-    AuditTrailRelatedChange:
-      type: object
-      properties:
-        id:
-          type: integer
-        relation:
-          type: string
-      required:
-      - id
-      - relation
-    OlapCubeChange:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        message:
-          type:
-          - string
-          - 'null'
-          maxLength: 1024
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        metadata: {}
-        type:
-          $ref: '#/components/schemas/OlapCubeChangeTypeEnum'
-        friendly_type:
-          type: string
-          readOnly: true
-        created_by:
-          $ref: '#/components/schemas/User'
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        num_changes:
-          type:
-          - integer
-          - 'null'
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        url:
-          type: string
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/OlapCubeChangeStatusEnum'
-        batch_id:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - batch_id
-      - created_at
-      - created_by
-      - friendly_type
-      - id
-      - url
-      - user
-    OlapCubeChangeStatusEnum:
-      enum:
-      - PENDING
-      - COMPLETED
-      - FAILED
-      type: string
-      description: '* `PENDING` - Pending
-
-        * `COMPLETED` - Completed
-
-        * `FAILED` - Failed'
-    NameEnum:
-      enum:
-      - CubeChangeEvent
-      - ConnectionSyncEvent
-      type: string
-      description: '* `CubeChangeEvent` - Data Change
-
-        * `ConnectionSyncEvent` - Source Sync'
-    PaginatedAuditTrailListItemList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditTrailListItem'
     AuditTrailGroup:
       type: object
       properties:
@@ -2397,31 +2152,6 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    AuditLogEventType:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          $ref: '#/components/schemas/NameEnum'
-        friendly_name:
-          type: string
-          readOnly: true
-      required:
-      - friendly_name
-      - id
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
-    BlankEnum:
-      enum:
-      - ''
     AuditTrailListItem:
       type: object
       description: "A serializer that conditionally includes optional fields based on context.\n\nOptional fields should be listed in `Meta.read_optional_fields`. To include them\nin the output, pass a list via `context['include_fields']` (for top-level serializers)\nor `context[<nested_path>]['include_fields']` (for nested serializers).\n\nExamples:\n    class ChildSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        extra = serializers.CharField()\n        class Meta:\n            model = Child\n            fields = ['id', 'extra']\n            read_optional_fields = ['extra']\n\n    class ParentSerializer(IncludeOptionalFieldsSerializerMixin, serializers.ModelSerializer):\n        child = ChildSerializer()\n        expensive = serializers.CharField()\n        class Meta:\n            model = Parent\n            fields = ['id', 'child', 'expensive']\n            read_optional_fields = ['expensive']\n\n    # Top-level usage (includes 'expensive' field)\n    ParentSerializer(instance, context={'include_fields': ['expensive']}).data\n\n    # Nested usage (includes 'extra' field inside child)\n    ParentSerializer(\n        instance,\n        context={'child': {'include_fields': ['extra']}}\n    ).data"
@@ -2492,6 +2222,276 @@ components:
       - status
       - type
       - user
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    OlapCubeChange:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        message:
+          type:
+          - string
+          - 'null'
+          maxLength: 1024
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata: {}
+        type:
+          $ref: '#/components/schemas/OlapCubeChangeTypeEnum'
+        friendly_type:
+          type: string
+          readOnly: true
+        created_by:
+          $ref: '#/components/schemas/User'
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        num_changes:
+          type:
+          - integer
+          - 'null'
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        url:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/OlapCubeChangeStatusEnum'
+        batch_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - batch_id
+      - created_at
+      - created_by
+      - friendly_type
+      - id
+      - url
+      - user
+    OlapCubeChangeTypeEnum:
+      enum:
+      - USER
+      - AI
+      - USER_REVERT
+      - TBI
+      - EXTERNAL_SOURCE
+      - EMPLOYEE_ROSTER
+      - DATA_IMPORT
+      - FORMULA
+      - DISABLED
+      - MERGE
+      - DUPLICATION
+      type: string
+      description: '* `USER` - User
+
+        * `AI` - AI
+
+        * `USER_REVERT` - Revert
+
+        * `TBI` - Trial Balance
+
+        * `EXTERNAL_SOURCE` - External Source
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `DATA_IMPORT` - Data
+
+        * `FORMULA` - Formula
+
+        * `DISABLED` - Disabled
+
+        * `MERGE` - Merge
+
+        * `DUPLICATION` - Duplication'
+    AuditTrailListUser:
+      type: object
+      description: Same shape as legacy marshmallow `UserSchema` with `exclude={'email'}` on audit trail rows.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        is_staff:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - first_name
+      - id
+      - is_staff
+      - last_name
+    OlapCubeChangeStatusEnum:
+      enum:
+      - PENDING
+      - COMPLETED
+      - FAILED
+      type: string
+      description: '* `PENDING` - Pending
+
+        * `COMPLETED` - Completed
+
+        * `FAILED` - Failed'
+    NameEnum:
+      enum:
+      - CubeChangeEvent
+      - ConnectionSyncEvent
+      type: string
+      description: '* `CubeChangeEvent` - Data Change
+
+        * `ConnectionSyncEvent` - Source Sync'
+    PaginatedAuditTrailListItemList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditTrailListItem'
+    AuditLogEventType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/NameEnum'
+        friendly_name:
+          type: string
+          readOnly: true
+      required:
+      - friendly_name
+      - id
+    AuditTrailRelatedChange:
+      type: object
+      properties:
+        id:
+          type: integer
+        relation:
+          type: string
+      required:
+      - id
+      - relation
+    BlankEnum:
+      enum:
+      - ''
+    AuditTrailChange:
+      type: object
+      properties:
+        id:
+          type: integer
+        message:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties: {}
+        type:
+          type: string
+        friendly_type:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        num_changes:
+          type: integer
+        url:
+          type: string
+      required:
+      - created_at
+      - friendly_type
+      - id
+      - message
+      - metadata
+      - num_changes
+      - type
+      - url
+      - user
+    NullEnum:
+      enum:
+      - null
   securitySchemes:
     OAuth2:
       type: oauth2

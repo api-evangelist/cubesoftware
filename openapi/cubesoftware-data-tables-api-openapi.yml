@@ -723,312 +723,6 @@ paths:
           description: ''
 components:
   schemas:
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    DayOfWeekEnum:
-      enum:
-      - SUNDAY
-      - MONDAY
-      - TUESDAY
-      - WEDNESDAY
-      - THURSDAY
-      - FRIDAY
-      - SATURDAY
-      type: string
-      description: '* `SUNDAY` - Sun
-
-        * `MONDAY` - Mon
-
-        * `TUESDAY` - Tue
-
-        * `WEDNESDAY` - Wed
-
-        * `THURSDAY` - Thu
-
-        * `FRIDAY` - Fri
-
-        * `SATURDAY` - Sat'
-    IntegrationSourceEnum:
-      enum:
-      - METABASE
-      - QUICKBOOKS
-      - XERO
-      - NETSUITE
-      - SALESFORCE
-      - SAGE_INTACCT
-      - RILLET
-      - CAMPFIRE
-      - CHARTHOP
-      - GOOGLE
-      - OKTA
-      - BOOMI
-      - SAML
-      - OPEN_EXCHANGE_RATES
-      - NETSUITE_RATES
-      - MERGE
-      type: string
-      description: '* `METABASE` - Metabase
-
-        * `QUICKBOOKS` - QuickBooks
-
-        * `XERO` - Xero
-
-        * `NETSUITE` - NetSuite
-
-        * `SALESFORCE` - Salesforce
-
-        * `SAGE_INTACCT` - Sage Intacct
-
-        * `RILLET` - Rillet
-
-        * `CAMPFIRE` - Campfire
-
-        * `CHARTHOP` - ChartHop
-
-        * `GOOGLE` - Google SSO
-
-        * `OKTA` - Okta (OIDC)
-
-        * `BOOMI` - Boomi
-
-        * `SAML` - SAML
-
-        * `OPEN_EXCHANGE_RATES` - Open Exchange Rates
-
-        * `NETSUITE_RATES` - NetSuite Saved Search
-
-        * `MERGE` - Cube Universal Connect'
-    RuleEnum:
-      enum:
-      - IGNORE
-      - ONE_TO_ONE
-      - MANY_TO_ONE
-      type: string
-      description: '* `IGNORE` - Ignore
-
-        * `ONE_TO_ONE` - One-to-one
-
-        * `MANY_TO_ONE` - Many-to-one'
-    AutoMappingDoc:
-      type: object
-      properties:
-        tld_id:
-          type: integer
-          minimum: 1
-        rule:
-          $ref: '#/components/schemas/RuleEnum'
-        dimension_id:
-          type:
-          - integer
-          - 'null'
-          minimum: 1
-      required:
-      - rule
-      - tld_id
-    AutoMappingRule:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        data_table_id:
-          type: string
-          format: uuid
-        tld_id:
-          type: integer
-          minimum: 1
-        rule:
-          $ref: '#/components/schemas/RuleEnum'
-        dimension_id:
-          type:
-          - integer
-          - 'null'
-          minimum: 1
-      required:
-      - data_table_id
-      - id
-      - rule
-      - tld_id
-    DimensionMapping:
-      type: object
-      properties:
-        dimension_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        source_dimension_id:
-          type: integer
-          readOnly: true
-        automapped:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - dimension_id
-      - modified_at
-      - source_dimension_id
-    NullEnum:
-      enum:
-      - null
-    Integration:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
-          type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - category
-      - id
-      - logo_url
-      - name
-      - source
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
-    ScheduledSourceDataTableImports:
-      type: object
-      properties:
-        schedule_cadence:
-          $ref: '#/components/schemas/ScheduleCadenceEnum'
-        day_of_week:
-          oneOf:
-          - $ref: '#/components/schemas/DayOfWeekEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        hour_of_day:
-          type: integer
-          maximum: 23
-          minimum: 0
-        source_data_table:
-          allOf:
-          - $ref: '#/components/schemas/SourceDataTable'
-          readOnly: true
-        start_time_dimension:
-          type:
-          - integer
-          - 'null'
-        end_time_dimension:
-          type:
-          - integer
-          - 'null'
-        num_prior_time:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-        prior_time_unit:
-          oneOf:
-          - $ref: '#/components/schemas/PriorTimeUnitEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        tld_default_dimensions:
-          type: object
-          additionalProperties:
-            type: integer
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        created_by:
-          type: integer
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_by:
-          type:
-          - integer
-          - 'null'
-      required:
-      - created_at
-      - created_by
-      - hour_of_day
-      - modified_at
-      - source_data_table
-      - tld_default_dimensions
-    Type95aEnum:
-      enum:
-      - BASIC
-      - FORMULA
-      - TAG
-      type: string
-      description: '* `BASIC` - Basic
-
-        * `FORMULA` - Formula
-
-        * `TAG` - Tag'
     Connection:
       type: object
       properties:
@@ -1067,28 +761,55 @@ components:
       - metadata
       - settings
       - type
-    RollupTypeEnum:
-      enum:
-      - SUM
-      - AVERAGE
-      - BALANCE
-      - BEGINNING_BALANCE
-      type: string
-      description: '* `SUM` - Sum
-
-        * `AVERAGE` - Average
-
-        * `BALANCE` - Ending Balance
-
-        * `BEGINNING_BALANCE` - Beginning Balance'
-    ScheduleCadenceEnum:
-      enum:
-      - WEEKLY
-      - DAILY
-      type: string
-      description: '* `WEEKLY` - Weekly
-
-        * `DAILY` - Daily'
+    ScheduleDataTableImportRequest:
+      type: object
+      properties:
+        day_of_week:
+          type: string
+        hour_of_day:
+          type: integer
+        schedule_cadence:
+          type: string
+        start_time_dimension_id:
+          type: integer
+        end_time_dimension_id:
+          type: integer
+        tld_default_dimensions:
+          type: object
+          additionalProperties: {}
+      required:
+      - day_of_week
+      - end_time_dimension_id
+      - hour_of_day
+      - schedule_cadence
+      - start_time_dimension_id
+      - tld_default_dimensions
+    DimensionMapping:
+      type: object
+      properties:
+        dimension_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        source_dimension_id:
+          type: integer
+          readOnly: true
+        automapped:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - dimension_id
+      - modified_at
+      - source_dimension_id
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2882,6 +2603,64 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
+    AutoMappingDoc:
+      type: object
+      properties:
+        tld_id:
+          type: integer
+          minimum: 1
+        rule:
+          $ref: '#/components/schemas/RuleEnum'
+        dimension_id:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+      required:
+      - rule
+      - tld_id
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
     RelationshipTypeEnum:
       enum:
       - EMPLOYEE
@@ -2890,49 +2669,6 @@ components:
       description: '* `EMPLOYEE` - Employee
 
         * `PARTNER` - Partner'
-    ScheduleDataTableImportRequest:
-      type: object
-      properties:
-        day_of_week:
-          type: string
-        hour_of_day:
-          type: integer
-        schedule_cadence:
-          type: string
-        start_time_dimension_id:
-          type: integer
-        end_time_dimension_id:
-          type: integer
-        tld_default_dimensions:
-          type: object
-          additionalProperties: {}
-      required:
-      - day_of_week
-      - end_time_dimension_id
-      - hour_of_day
-      - schedule_cadence
-      - start_time_dimension_id
-      - tld_default_dimensions
-    BlankEnum:
-      enum:
-      - ''
-    PriorTimeUnitEnum:
-      enum:
-      - DAY
-      - MONTH
-      - WEEK
-      - QUARTER
-      - YEAR
-      type: string
-      description: '* `DAY` - Day
-
-        * `MONTH` - Month
-
-        * `WEEK` - Week
-
-        * `QUARTER` - Quarter
-
-        * `YEAR` - Year'
     DimensionMappingNested:
       type: object
       properties:
@@ -2959,46 +2695,6 @@ components:
       - modified_at
       - modified_by
       - source_dimension
-    CategoryEnum:
-      enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
-      type: string
-      description: '* `BI` - Business Intelligence
-
-        * `GL` - General Ledger
-
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
-    Status2c8Enum:
-      enum:
-      - ENABLED
-      - DISABLING_VALUES
-      - CLEARING_VALUES
-      - VALUES_CLEARED
-      - DISABLED
-      type: string
-      description: '* `ENABLED` - Enabled
-
-        * `DISABLING_VALUES` - Disabling Values
-
-        * `CLEARING_VALUES` - Clearing Values
-
-        * `VALUES_CLEARED` - Values Cleared
-
-        * `DISABLED` - Disabled'
     SourceDataTableTypeEnum:
       enum:
       - AD_HOC
@@ -3110,68 +2806,103 @@ components:
       - parent_id
       - requires_mapping
       - write_block_reason
-    SourceDataTable:
+    BlankEnum:
+      enum:
+      - ''
+    ScheduleCadenceEnum:
+      enum:
+      - WEEKLY
+      - DAILY
+      type: string
+      description: '* `WEEKLY` - Weekly
+
+        * `DAILY` - Daily'
+    ScheduledSourceDataTableImports:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
+        schedule_cadence:
+          $ref: '#/components/schemas/ScheduleCadenceEnum'
+        day_of_week:
+          oneOf:
+          - $ref: '#/components/schemas/DayOfWeekEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hour_of_day:
+          type: integer
+          maximum: 23
+          minimum: 0
+        source_data_table:
+          allOf:
+          - $ref: '#/components/schemas/SourceDataTable'
           readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-        settings:
+        start_time_dimension:
+          type:
+          - integer
+          - 'null'
+        end_time_dimension:
+          type:
+          - integer
+          - 'null'
+        num_prior_time:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        prior_time_unit:
+          oneOf:
+          - $ref: '#/components/schemas/PriorTimeUnitEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        tld_default_dimensions:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: integer
+          readOnly: true
         created_at:
           type: string
           format: date-time
           readOnly: true
-        connection:
-          allOf:
-          - $ref: '#/components/schemas/Connection'
-          readOnly: true
-        type:
-          allOf:
-          - $ref: '#/components/schemas/SourceDataTableTypeEnum'
-          readOnly: true
-        type_friendly:
+        created_by:
+          type: integer
+        modified_at:
           type: string
+          format: date-time
           readOnly: true
-        last_import:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        last_successful_import:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        source_type:
-          type: string
-          description: "Returns the human-friendly category of the connection's Integration, if the table has\na connection. Otherwise, returns 'Data Table'.\n\nReturns:\n    The human-friendly source category"
-          readOnly: true
-        mapping_data:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        description:
-          type: string
+        modified_by:
+          type:
+          - integer
+          - 'null'
       required:
-      - active
-      - connection
       - created_at
+      - created_by
+      - hour_of_day
+      - modified_at
+      - source_data_table
+      - tld_default_dimensions
+    AutoMappingRule:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        data_table_id:
+          type: string
+          format: uuid
+        tld_id:
+          type: integer
+          minimum: 1
+        rule:
+          $ref: '#/components/schemas/RuleEnum'
+        dimension_id:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+      required:
+      - data_table_id
       - id
-      - last_import
-      - last_successful_import
-      - mapping_data
-      - name
-      - settings
-      - source_type
-      - type
-      - type_friendly
+      - rule
+      - tld_id
     Dimension:
       type: object
       properties:
@@ -3235,6 +2966,221 @@ components:
       - name
       - parent_id
       - write_block_reason
+    Integration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    NullEnum:
+      enum:
+      - null
+    RollupTypeEnum:
+      enum:
+      - SUM
+      - AVERAGE
+      - BALANCE
+      - BEGINNING_BALANCE
+      type: string
+      description: '* `SUM` - Sum
+
+        * `AVERAGE` - Average
+
+        * `BALANCE` - Ending Balance
+
+        * `BEGINNING_BALANCE` - Beginning Balance'
+    Status2c8Enum:
+      enum:
+      - ENABLED
+      - DISABLING_VALUES
+      - CLEARING_VALUES
+      - VALUES_CLEARED
+      - DISABLED
+      type: string
+      description: '* `ENABLED` - Enabled
+
+        * `DISABLING_VALUES` - Disabling Values
+
+        * `CLEARING_VALUES` - Clearing Values
+
+        * `VALUES_CLEARED` - Values Cleared
+
+        * `DISABLED` - Disabled'
+    SourceDataTable:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+        settings:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        connection:
+          allOf:
+          - $ref: '#/components/schemas/Connection'
+          readOnly: true
+        type:
+          allOf:
+          - $ref: '#/components/schemas/SourceDataTableTypeEnum'
+          readOnly: true
+        type_friendly:
+          type: string
+          readOnly: true
+        last_import:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        last_successful_import:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        source_type:
+          type: string
+          description: "Returns the human-friendly category of the connection's Integration, if the table has\na connection. Otherwise, returns 'Data Table'.\n\nReturns:\n    The human-friendly source category"
+          readOnly: true
+        mapping_data:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        description:
+          type: string
+      required:
+      - active
+      - connection
+      - created_at
+      - id
+      - last_import
+      - last_successful_import
+      - mapping_data
+      - name
+      - settings
+      - source_type
+      - type
+      - type_friendly
+    RuleEnum:
+      enum:
+      - IGNORE
+      - ONE_TO_ONE
+      - MANY_TO_ONE
+      type: string
+      description: '* `IGNORE` - Ignore
+
+        * `ONE_TO_ONE` - One-to-one
+
+        * `MANY_TO_ONE` - Many-to-one'
+    IntegrationSourceEnum:
+      enum:
+      - METABASE
+      - QUICKBOOKS
+      - XERO
+      - NETSUITE
+      - SALESFORCE
+      - SAGE_INTACCT
+      - RILLET
+      - CAMPFIRE
+      - CHARTHOP
+      - GOOGLE
+      - OKTA
+      - BOOMI
+      - SAML
+      - OPEN_EXCHANGE_RATES
+      - NETSUITE_RATES
+      - MERGE
+      type: string
+      description: '* `METABASE` - Metabase
+
+        * `QUICKBOOKS` - QuickBooks
+
+        * `XERO` - Xero
+
+        * `NETSUITE` - NetSuite
+
+        * `SALESFORCE` - Salesforce
+
+        * `SAGE_INTACCT` - Sage Intacct
+
+        * `RILLET` - Rillet
+
+        * `CAMPFIRE` - Campfire
+
+        * `CHARTHOP` - ChartHop
+
+        * `GOOGLE` - Google SSO
+
+        * `OKTA` - Okta (OIDC)
+
+        * `BOOMI` - Boomi
+
+        * `SAML` - SAML
+
+        * `OPEN_EXCHANGE_RATES` - Open Exchange Rates
+
+        * `NETSUITE_RATES` - NetSuite Saved Search
+
+        * `MERGE` - Cube Universal Connect'
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
+
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
+    Type95aEnum:
+      enum:
+      - BASIC
+      - FORMULA
+      - TAG
+      type: string
+      description: '* `BASIC` - Basic
+
+        * `FORMULA` - Formula
+
+        * `TAG` - Tag'
     DimensionWithTld:
       type: object
       properties:
@@ -3301,6 +3247,60 @@ components:
       - parent_id
       - tld
       - write_block_reason
+    PriorTimeUnitEnum:
+      enum:
+      - DAY
+      - MONTH
+      - WEEK
+      - QUARTER
+      - YEAR
+      type: string
+      description: '* `DAY` - Day
+
+        * `MONTH` - Month
+
+        * `WEEK` - Week
+
+        * `QUARTER` - Quarter
+
+        * `YEAR` - Year'
+    DayOfWeekEnum:
+      enum:
+      - SUNDAY
+      - MONDAY
+      - TUESDAY
+      - WEDNESDAY
+      - THURSDAY
+      - FRIDAY
+      - SATURDAY
+      type: string
+      description: '* `SUNDAY` - Sun
+
+        * `MONDAY` - Mon
+
+        * `TUESDAY` - Tue
+
+        * `WEDNESDAY` - Wed
+
+        * `THURSDAY` - Thu
+
+        * `FRIDAY` - Fri
+
+        * `SATURDAY` - Sat'
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
     PatchedSourceDataTable:
       type: object
       properties:

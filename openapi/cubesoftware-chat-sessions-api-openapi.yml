@@ -107,6 +107,17 @@ paths:
           description: ''
 components:
   schemas:
+    AppTypeEnum:
+      enum:
+      - SLACK
+      - MS_TEAMS
+      - CUBE_API
+      type: string
+      description: '* `SLACK` - Slack
+
+        * `MS_TEAMS` - Microsoft Teams
+
+        * `CUBE_API` - Cube API'
     ChatSession:
       type: object
       properties:
@@ -144,17 +155,6 @@ components:
       - id
       - last_active_at
       - resources
-    AppTypeEnum:
-      enum:
-      - SLACK
-      - MS_TEAMS
-      - CUBE_API
-      type: string
-      description: '* `SLACK` - Slack
-
-        * `MS_TEAMS` - Microsoft Teams
-
-        * `CUBE_API` - Cube API'
     SessionTypeEnum:
       enum:
       - CHAT

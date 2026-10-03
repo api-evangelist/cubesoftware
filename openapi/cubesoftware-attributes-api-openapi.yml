@@ -168,23 +168,20 @@ components:
       - metadata
       - settings
       - type
-    SourceDataTableTypeEnum:
-      enum:
-      - AD_HOC
-      - ERP_CONNECTION
-      - GENERIC
-      - EMPLOYEE_ROSTER
-      - HRIS
-      type: string
-      description: '* `AD_HOC` - Ad Hoc
-
-        * `ERP_CONNECTION` - ERP Connection
-
-        * `GENERIC` - Generic
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `HRIS` - HRIS Connection'
+    AttributeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        table_id:
+          type: string
+          format: uuid
+      required:
+      - description
+      - name
+      - table_id
     Integration:
       type: object
       properties:
@@ -209,70 +206,6 @@ components:
       - logo_url
       - name
       - source
-    IntegrationSourceEnum:
-      enum:
-      - METABASE
-      - QUICKBOOKS
-      - XERO
-      - NETSUITE
-      - SALESFORCE
-      - SAGE_INTACCT
-      - RILLET
-      - CAMPFIRE
-      - CHARTHOP
-      - GOOGLE
-      - OKTA
-      - BOOMI
-      - SAML
-      - OPEN_EXCHANGE_RATES
-      - NETSUITE_RATES
-      - MERGE
-      type: string
-      description: '* `METABASE` - Metabase
-
-        * `QUICKBOOKS` - QuickBooks
-
-        * `XERO` - Xero
-
-        * `NETSUITE` - NetSuite
-
-        * `SALESFORCE` - Salesforce
-
-        * `SAGE_INTACCT` - Sage Intacct
-
-        * `RILLET` - Rillet
-
-        * `CAMPFIRE` - Campfire
-
-        * `CHARTHOP` - ChartHop
-
-        * `GOOGLE` - Google SSO
-
-        * `OKTA` - Okta (OIDC)
-
-        * `BOOMI` - Boomi
-
-        * `SAML` - SAML
-
-        * `OPEN_EXCHANGE_RATES` - Open Exchange Rates
-
-        * `NETSUITE_RATES` - NetSuite Saved Search
-
-        * `MERGE` - Cube Universal Connect'
-    AttributeRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        table_id:
-          type: string
-          format: uuid
-      required:
-      - description
-      - name
-      - table_id
     SourceDataTable:
       type: object
       properties:
@@ -335,29 +268,6 @@ components:
       - source_type
       - type
       - type_friendly
-    CategoryEnum:
-      enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
-      type: string
-      description: '* `BI` - Business Intelligence
-
-        * `GL` - General Ledger
-
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
     AttributeResponse:
       type: object
       properties:
@@ -382,6 +292,96 @@ components:
       - name
       - table
       - table_id
+    SourceDataTableTypeEnum:
+      enum:
+      - AD_HOC
+      - ERP_CONNECTION
+      - GENERIC
+      - EMPLOYEE_ROSTER
+      - HRIS
+      type: string
+      description: '* `AD_HOC` - Ad Hoc
+
+        * `ERP_CONNECTION` - ERP Connection
+
+        * `GENERIC` - Generic
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `HRIS` - HRIS Connection'
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
+
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
+    IntegrationSourceEnum:
+      enum:
+      - METABASE
+      - QUICKBOOKS
+      - XERO
+      - NETSUITE
+      - SALESFORCE
+      - SAGE_INTACCT
+      - RILLET
+      - CAMPFIRE
+      - CHARTHOP
+      - GOOGLE
+      - OKTA
+      - BOOMI
+      - SAML
+      - OPEN_EXCHANGE_RATES
+      - NETSUITE_RATES
+      - MERGE
+      type: string
+      description: '* `METABASE` - Metabase
+
+        * `QUICKBOOKS` - QuickBooks
+
+        * `XERO` - Xero
+
+        * `NETSUITE` - NetSuite
+
+        * `SALESFORCE` - Salesforce
+
+        * `SAGE_INTACCT` - Sage Intacct
+
+        * `RILLET` - Rillet
+
+        * `CAMPFIRE` - Campfire
+
+        * `CHARTHOP` - ChartHop
+
+        * `GOOGLE` - Google SSO
+
+        * `OKTA` - Okta (OIDC)
+
+        * `BOOMI` - Boomi
+
+        * `SAML` - SAML
+
+        * `OPEN_EXCHANGE_RATES` - Open Exchange Rates
+
+        * `NETSUITE_RATES` - NetSuite Saved Search
+
+        * `MERGE` - Cube Universal Connect'
   securitySchemes:
     OAuth2:
       type: oauth2

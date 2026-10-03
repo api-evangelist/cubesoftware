@@ -742,6 +742,176 @@ paths:
           description: ''
 components:
   schemas:
+    PatchedA1CubeValueRange:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        headers:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        data:
+          writeOnly: true
+        filters: {}
+        range_type:
+          $ref: '#/components/schemas/RangeTypeEnum'
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        fetch_enabled:
+          type: boolean
+        publish_enabled:
+          type: boolean
+        row_discovery_enabled:
+          type: boolean
+        currency:
+          $ref: '#/components/schemas/CurrencyNested'
+        exclude_zeros:
+          type: boolean
+        suppressed_row_dimensions: {}
+        created_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        collapse_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_all_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        tags: {}
+        discovered_row_headers:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        delete:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        insert:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              additionalProperties: {}
+          readOnly: true
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
+    RowColumnCubeValueRange:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        headers:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+        data:
+          writeOnly: true
+        filters: {}
+        range_type:
+          $ref: '#/components/schemas/RangeTypeEnum'
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        fetch_enabled:
+          type: boolean
+        publish_enabled:
+          type: boolean
+        row_discovery_enabled:
+          type: boolean
+        currency:
+          $ref: '#/components/schemas/CurrencyNested'
+        exclude_zeros:
+          type: boolean
+        suppressed_row_dimensions: {}
+        created_by_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        collapse_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_all_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        expand_coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            maxItems: 2
+            minItems: 2
+          writeOnly: true
+        tags: {}
+      required:
+      - created_by_id
+      - filters
+      - headers
+      - id
     error_response_serializer:
       type: object
       properties:
@@ -897,176 +1067,6 @@ components:
       - headers
       - id
       - insert
-    PatchedA1CubeValueRange:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        headers:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        data:
-          writeOnly: true
-        filters: {}
-        range_type:
-          $ref: '#/components/schemas/RangeTypeEnum'
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        fetch_enabled:
-          type: boolean
-        publish_enabled:
-          type: boolean
-        row_discovery_enabled:
-          type: boolean
-        currency:
-          $ref: '#/components/schemas/CurrencyNested'
-        exclude_zeros:
-          type: boolean
-        suppressed_row_dimensions: {}
-        created_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        collapse_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_all_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        tags: {}
-        discovered_row_headers:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        delete:
-          type: array
-          items:
-            type: string
-          readOnly: true
-        insert:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              additionalProperties: {}
-          readOnly: true
-    RowColumnCubeValueRange:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        headers:
-          type: object
-          additionalProperties:
-            type: object
-            additionalProperties: {}
-          readOnly: true
-        data:
-          writeOnly: true
-        filters: {}
-        range_type:
-          $ref: '#/components/schemas/RangeTypeEnum'
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        fetch_enabled:
-          type: boolean
-        publish_enabled:
-          type: boolean
-        row_discovery_enabled:
-          type: boolean
-        currency:
-          $ref: '#/components/schemas/CurrencyNested'
-        exclude_zeros:
-          type: boolean
-        suppressed_row_dimensions: {}
-        created_by_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        collapse_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_all_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        expand_coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-            maxItems: 2
-            minItems: 2
-          writeOnly: true
-        tags: {}
-      required:
-      - created_by_id
-      - filters
-      - headers
-      - id
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
   securitySchemes:
     OAuth2:
       type: oauth2
