@@ -205,80 +205,7 @@ paths:
           description: ''
 components:
   schemas:
-    TagsResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_recalculating:
-          type: boolean
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-        top_level_dimension_name:
-          type: string
-      required:
-      - id
-      - is_recalculating
-      - members
-      - name
-      - top_level_dimension_name
-    TagResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_recalculating:
-          type: boolean
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-        top_level_dimension_name:
-          type: string
-      required:
-      - id
-      - is_recalculating
-      - members
-      - name
-      - top_level_dimension_name
-    TagRecalculateResponse:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
     TagUpdateResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        is_recalculating:
-          type: boolean
-        members:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-        name:
-          type: string
-        top_level_dimension_name:
-          type: string
-      required:
-      - id
-      - is_recalculating
-      - members
-      - name
-      - top_level_dimension_name
-    TagCreateResponse:
       type: object
       properties:
         id:
@@ -315,6 +242,57 @@ components:
       - member_ids
       - name
       - top_level_dimension_name
+    TagCreateResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_recalculating:
+          type: boolean
+        members:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        name:
+          type: string
+        top_level_dimension_name:
+          type: string
+      required:
+      - id
+      - is_recalculating
+      - members
+      - name
+      - top_level_dimension_name
+    TagsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_recalculating:
+          type: boolean
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        top_level_dimension_name:
+          type: string
+      required:
+      - id
+      - is_recalculating
+      - members
+      - name
+      - top_level_dimension_name
+    TagRecalculateResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
     TagUpdateRequest:
       type: object
       properties:
@@ -327,6 +305,28 @@ components:
       required:
       - member_ids
       - name
+    TagResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        is_recalculating:
+          type: boolean
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        top_level_dimension_name:
+          type: string
+      required:
+      - id
+      - is_recalculating
+      - members
+      - name
+      - top_level_dimension_name
   securitySchemes:
     OAuth2:
       type: oauth2

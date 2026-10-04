@@ -107,17 +107,6 @@ paths:
           description: ''
 components:
   schemas:
-    AppTypeEnum:
-      enum:
-      - SLACK
-      - MS_TEAMS
-      - CUBE_API
-      type: string
-      description: '* `SLACK` - Slack
-
-        * `MS_TEAMS` - Microsoft Teams
-
-        * `CUBE_API` - Cube API'
     ChatSession:
       type: object
       properties:
@@ -169,6 +158,17 @@ components:
         * `PLANNER` - Planner
 
         * `DATA_TABLE_MANAGEMENT` - Data Table Management'
+    AppTypeEnum:
+      enum:
+      - SLACK
+      - MS_TEAMS
+      - CUBE_API
+      type: string
+      description: '* `SLACK` - Slack
+
+        * `MS_TEAMS` - Microsoft Teams
+
+        * `CUBE_API` - Cube API'
   securitySchemes:
     OAuth2:
       type: oauth2

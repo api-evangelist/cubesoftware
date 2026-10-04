@@ -130,44 +130,6 @@ paths:
         source: "import requests\n\nheaders = {\n    \"Accept\": \"application/json; version=1.0\",\n    \"Content-Type\": \"application/json\",\n    \"X-Company-ID\": \"<your-company-id>\"\n}\n\nurl = 'https://api.cubesoftware.com/attributes'\n\npayload = {\n    \"name\": \"New Attribute\",\n    \"description\": \"My new attribute\",\n    \"table_id\": \"156f1d7f-3364-42b4-bed5-d0d1e87327a1\"\n}\n\nresponse = requests.post(url, headers=headers, json=payload)\n\nprint(response.json())"
 components:
   schemas:
-    Connection:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        active:
-          type: boolean
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-          description: "Return the category of the associated Integration model for backwards compatibility\n\nReturns:\n    The integration category (See Integration.CATEGORIES)"
-          readOnly: true
-        friendly_source:
-          type: string
-          readOnly: true
-        integration:
-          allOf:
-          - $ref: '#/components/schemas/Integration'
-          readOnly: true
-        settings:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-      required:
-      - active
-      - friendly_source
-      - id
-      - integration
-      - metadata
-      - settings
-      - type
     AttributeRequest:
       type: object
       properties:
@@ -182,30 +144,6 @@ components:
       - description
       - name
       - table_id
-    Integration:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
-          type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - category
-      - id
-      - logo_url
-      - name
-      - source
     SourceDataTable:
       type: object
       properties:
@@ -268,47 +206,6 @@ components:
       - source_type
       - type
       - type_friendly
-    AttributeResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        table:
-          $ref: '#/components/schemas/SourceDataTable'
-        table_id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-      required:
-      - created_at
-      - description
-      - id
-      - name
-      - table
-      - table_id
-    SourceDataTableTypeEnum:
-      enum:
-      - AD_HOC
-      - ERP_CONNECTION
-      - GENERIC
-      - EMPLOYEE_ROSTER
-      - HRIS
-      type: string
-      description: '* `AD_HOC` - Ad Hoc
-
-        * `ERP_CONNECTION` - ERP Connection
-
-        * `GENERIC` - Generic
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `HRIS` - HRIS Connection'
     CategoryEnum:
       enum:
       - BI
@@ -332,6 +229,44 @@ components:
         * `OTHER` - Other
 
         * `UAP` - Unified API Platform'
+    Connection:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        active:
+          type: boolean
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+          description: "Return the category of the associated Integration model for backwards compatibility\n\nReturns:\n    The integration category (See Integration.CATEGORIES)"
+          readOnly: true
+        friendly_source:
+          type: string
+          readOnly: true
+        integration:
+          allOf:
+          - $ref: '#/components/schemas/Integration'
+          readOnly: true
+        settings:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+      required:
+      - active
+      - friendly_source
+      - id
+      - integration
+      - metadata
+      - settings
+      - type
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -382,6 +317,71 @@ components:
         * `NETSUITE_RATES` - NetSuite Saved Search
 
         * `MERGE` - Cube Universal Connect'
+    SourceDataTableTypeEnum:
+      enum:
+      - AD_HOC
+      - ERP_CONNECTION
+      - GENERIC
+      - EMPLOYEE_ROSTER
+      - HRIS
+      type: string
+      description: '* `AD_HOC` - Ad Hoc
+
+        * `ERP_CONNECTION` - ERP Connection
+
+        * `GENERIC` - Generic
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `HRIS` - HRIS Connection'
+    Integration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    AttributeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        table:
+          $ref: '#/components/schemas/SourceDataTable'
+        table_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+      required:
+      - created_at
+      - description
+      - id
+      - name
+      - table
+      - table_id
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -229,23 +229,6 @@ paths:
           description: ''
 components:
   schemas:
-    PatchedUserInvitationUpdateOpenApiDocAttributes_1:
-      type: object
-      properties:
-        company_groups:
-          type: array
-          items:
-            type: integer
-        metadata: {}
-        permission_group:
-          type: integer
-        can_publish_data:
-          type: boolean
-        accepted_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
     UserInvitationUpdateOpenApiDocAttributes_1:
       type: object
       properties:
@@ -322,6 +305,23 @@ components:
       - id
       - last_sent
       - permission_group
+    PatchedUserInvitationUpdateOpenApiDocAttributes_1:
+      type: object
+      properties:
+        company_groups:
+          type: array
+          items:
+            type: integer
+        metadata: {}
+        permission_group:
+          type: integer
+        can_publish_data:
+          type: boolean
+        accepted_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -280,6 +280,14 @@ components:
       required:
       - company
       - permission_group
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
     ForgotPasswordOpenApiDocAttributes_1:
       type: object
       properties:
@@ -288,6 +296,138 @@ components:
           format: email
       required:
       - email
+    Message_Response:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    UserSpreadsheetSettingsResponse:
+      type: object
+      properties:
+        dimensions:
+          type: object
+          additionalProperties: {}
+        user:
+          type: object
+          additionalProperties: {}
+      required:
+      - dimensions
+      - user
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    UserCompanySettingsRequest:
+      type: object
+      properties:
+        add_on_data_status_last_viewed_at:
+          type: string
+          format: date-time
+      required:
+      - add_on_data_status_last_viewed_at
+    BlankEnum:
+      enum:
+      - ''
+    AuthGroupPermissions:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - id
+      - name
+    Company:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        slug:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        salesforce_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 32
+        time_type:
+          $ref: '#/components/schemas/TimeTypeEnum'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - name
+      - slug
+    UserCompanySettingsResponse:
+      type: object
+      properties:
+        add_on_data_status_last_viewed_at:
+          type: string
+          format: date-time
+        drilldown_suppress_zeros:
+          type: boolean
+      required:
+      - add_on_data_status_last_viewed_at
+      - drilldown_suppress_zeros
+    NullEnum:
+      enum:
+      - null
     TimeTypeEnum:
       enum:
       - STANDARD
@@ -299,6 +439,20 @@ components:
         * `HALF_YEAR` - Half Year
 
         * `CUSTOM` - Custom'
+    UserSpreadsheetUpdateRequest:
+      type: object
+      properties:
+        show_excel_warning:
+          type: boolean
+      required:
+      - show_excel_warning
+    forgot_password_message_serializer_message_serializer:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2092,160 +2246,6 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    UserCompanySettingsRequest:
-      type: object
-      properties:
-        add_on_data_status_last_viewed_at:
-          type: string
-          format: date-time
-      required:
-      - add_on_data_status_last_viewed_at
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
-    UserSpreadsheetUpdateRequest:
-      type: object
-      properties:
-        show_excel_warning:
-          type: boolean
-      required:
-      - show_excel_warning
-    AuthGroupPermissions:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 150
-      required:
-      - id
-      - name
-    Message_Response:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    UserCompanySettingsResponse:
-      type: object
-      properties:
-        add_on_data_status_last_viewed_at:
-          type: string
-          format: date-time
-        drilldown_suppress_zeros:
-          type: boolean
-      required:
-      - add_on_data_status_last_viewed_at
-      - drilldown_suppress_zeros
-    forgot_password_message_serializer_message_serializer:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    Company:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        slug:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        salesforce_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 32
-        time_type:
-          $ref: '#/components/schemas/TimeTypeEnum'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - id
-      - name
-      - slug
-    UserSpreadsheetSettingsResponse:
-      type: object
-      properties:
-        dimensions:
-          type: object
-          additionalProperties: {}
-        user:
-          type: object
-          additionalProperties: {}
-      required:
-      - dimensions
-      - user
-    BlankEnum:
-      enum:
-      - ''
-    NullEnum:
-      enum:
-      - null
   securitySchemes:
     OAuth2:
       type: oauth2

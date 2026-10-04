@@ -671,44 +671,304 @@ paths:
           description: The import history list
 components:
   schemas:
-    Connection:
+    ResyncRequest:
+      type: object
+      properties:
+        start_time_dimension_id:
+          type: integer
+          minimum: 1
+          description: The time dimension ID for the beginning of the date range to sync (for supported Integrations).
+        end_time_dimension_id:
+          type: integer
+          minimum: 1
+          description: The time dimension ID for the end of the date range to sync (for supported Integrations).
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    OlapCubeChange:
       type: object
       properties:
         id:
-          type: string
-          format: uuid
+          type: integer
           readOnly: true
-        active:
-          type: boolean
-          readOnly: true
-        type:
+        message:
           type:
           - string
           - 'null'
-          description: "Return the category of the associated Integration model for backwards compatibility\n\nReturns:\n    The integration category (See Integration.CATEGORIES)"
+          maxLength: 1024
+        created_at:
+          type: string
+          format: date-time
           readOnly: true
-        friendly_source:
+        metadata: {}
+        type:
+          $ref: '#/components/schemas/OlapCubeChangeTypeEnum'
+        friendly_type:
           type: string
           readOnly: true
-        integration:
+        created_by:
+          $ref: '#/components/schemas/User'
+        user:
           allOf:
-          - $ref: '#/components/schemas/Integration'
+          - $ref: '#/components/schemas/User'
           readOnly: true
-        settings:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
+        num_changes:
+          type:
+          - integer
+          - 'null'
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        url:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/OlapCubeChangeStatusEnum'
+        batch_id:
+          type:
+          - string
+          - 'null'
           readOnly: true
       required:
-      - active
-      - friendly_source
+      - batch_id
+      - created_at
+      - created_by
+      - friendly_type
       - id
-      - integration
-      - metadata
-      - settings
-      - type
+      - url
+      - user
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    SourceFileDownload:
+      type: object
+      properties:
+        download_url:
+          type: string
+          format: uri
+      required:
+      - download_url
+    ImportUpdateApiDocAttributes_1:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status6a6Enum'
+        status_message:
+          type: string
+      required:
+      - status
+    PatchedEditFile:
+      type: object
+      properties:
+        current_relative_path:
+          type: string
+        new_relative_path:
+          type: string
+    DownloadFile:
+      type: object
+      properties:
+        relative_path:
+          type: string
+      required:
+      - relative_path
+    Status2c8Enum:
+      enum:
+      - ENABLED
+      - DISABLING_VALUES
+      - CLEARING_VALUES
+      - VALUES_CLEARED
+      - DISABLED
+      type: string
+      description: '* `ENABLED` - Enabled
+
+        * `DISABLING_VALUES` - Disabling Values
+
+        * `CLEARING_VALUES` - Clearing Values
+
+        * `VALUES_CLEARED` - Values Cleared
+
+        * `DISABLED` - Disabled'
+    FileUploadRequest:
+      type: object
+      properties:
+        relative_path:
+          type: string
+        content_type:
+          type: string
+      required:
+      - content_type
+      - relative_path
+    ImportDataRequest:
+      type: object
+      properties:
+        dimensions:
+          type: object
+          additionalProperties: {}
+        other:
+          type: array
+          items:
+            type: integer
+        time:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/time_child'
+        scenario:
+          type: integer
+      required:
+      - dimensions
+      - other
+      - scenario
+      - time
+    FileImports:
+      type: object
+      properties:
+        last_updated:
+          type: string
+          format: date-time
+        last_deleted:
+          type: string
+          format: date-time
+      required:
+      - last_deleted
+      - last_updated
+    OlapCubeChangeTypeEnum:
+      enum:
+      - USER
+      - AI
+      - USER_REVERT
+      - TBI
+      - EXTERNAL_SOURCE
+      - EMPLOYEE_ROSTER
+      - DATA_IMPORT
+      - FORMULA
+      - DISABLED
+      - MERGE
+      - DUPLICATION
+      type: string
+      description: '* `USER` - User
+
+        * `AI` - AI
+
+        * `USER_REVERT` - Revert
+
+        * `TBI` - Trial Balance
+
+        * `EXTERNAL_SOURCE` - External Source
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `DATA_IMPORT` - Data
+
+        * `FORMULA` - Formula
+
+        * `DISABLED` - Disabled
+
+        * `MERGE` - Merge
+
+        * `DUPLICATION` - Duplication'
+    BlankEnum:
+      enum:
+      - ''
+    time_child:
+      type: object
+      properties:
+        start:
+          type: integer
+        end:
+          type: integer
+      required:
+      - end
+      - start
+    NullEnum:
+      enum:
+      - null
+    Type95aEnum:
+      enum:
+      - BASIC
+      - FORMULA
+      - TAG
+      type: string
+      description: '* `BASIC` - Basic
+
+        * `FORMULA` - Formula
+
+        * `TAG` - Tag'
+    SourceDataTableTypeEnum:
+      enum:
+      - AD_HOC
+      - ERP_CONNECTION
+      - GENERIC
+      - EMPLOYEE_ROSTER
+      - HRIS
+      type: string
+      description: '* `AD_HOC` - Ad Hoc
+
+        * `ERP_CONNECTION` - ERP Connection
+
+        * `GENERIC` - Generic
+
+        * `EMPLOYEE_ROSTER` - Employee Roster
+
+        * `HRIS` - HRIS Connection'
+    ResyncResponse:
+      type: object
+      properties:
+        num_unmapped:
+          type: integer
+        audit_log_event_id:
+          type: string
+          format: uuid
+        auth_redirect_url:
+          type: string
+          format: uri
+      required:
+      - audit_log_event_id
+      - auth_redirect_url
+      - num_unmapped
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -2502,198 +2762,114 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    FileImports:
-      type: object
-      properties:
-        last_updated:
-          type: string
-          format: date-time
-        last_deleted:
-          type: string
-          format: date-time
-      required:
-      - last_deleted
-      - last_updated
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    RelationshipTypeEnum:
+    RollupTypeEnum:
       enum:
-      - EMPLOYEE
-      - PARTNER
+      - SUM
+      - AVERAGE
+      - BALANCE
+      - BEGINNING_BALANCE
       type: string
-      description: '* `EMPLOYEE` - Employee
+      description: '* `SUM` - Sum
 
-        * `PARTNER` - Partner'
-    SourceFileUpload:
+        * `AVERAGE` - Average
+
+        * `BALANCE` - Ending Balance
+
+        * `BEGINNING_BALANCE` - Beginning Balance'
+    ConnectionImportSettingsResponse:
       type: object
       properties:
-        upload_urls:
-          type: array
-          items:
-            type: string
-            format: uri
-      required:
-      - upload_urls
-    FileUploadRequest:
-      type: object
-      properties:
-        relative_path:
+        block_reason:
           type: string
-        content_type:
-          type: string
-      required:
-      - content_type
-      - relative_path
-    ImportUpdateApiDocAttributes_1:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status6a6Enum'
-        status_message:
-          type: string
-      required:
-      - status
-    time_child:
-      type: object
-      properties:
-        start:
+        tlds_needed:
+          type: object
+          additionalProperties: {}
+        scenarios:
+          type: object
+          additionalProperties: {}
+        num_unmapped:
           type: integer
-        end:
-          type: integer
-      required:
-      - end
-      - start
-    SalesforceSoQLResponse:
-      type: object
-      properties:
-        response:
+        defaults:
           type: array
           items: {}
-        option_response:
-          type: array
-          items: {}
+        transactions:
+          $ref: '#/components/schemas/Transaction'
       required:
-      - option_response
-      - response
-    SourceDataTableTypeEnum:
-      enum:
-      - AD_HOC
-      - ERP_CONNECTION
-      - GENERIC
-      - EMPLOYEE_ROSTER
-      - HRIS
-      type: string
-      description: '* `AD_HOC` - Ad Hoc
-
-        * `ERP_CONNECTION` - ERP Connection
-
-        * `GENERIC` - Generic
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `HRIS` - HRIS Connection'
-    PatchedEditFile:
-      type: object
-      properties:
-        current_relative_path:
-          type: string
-        new_relative_path:
-          type: string
-    BlankEnum:
-      enum:
-      - ''
-    OlapCubeChange:
+      - block_reason
+      - defaults
+      - num_unmapped
+      - scenarios
+      - tlds_needed
+      - transactions
+    FileNode:
       type: object
       properties:
         id:
-          type: integer
-          readOnly: true
-        message:
-          type:
-          - string
-          - 'null'
-          maxLength: 1024
-        created_at:
           type: string
-          format: date-time
-          readOnly: true
-        metadata: {}
+        name:
+          type: string
         type:
-          $ref: '#/components/schemas/OlapCubeChangeTypeEnum'
-        friendly_type:
           type: string
-          readOnly: true
-        created_by:
-          $ref: '#/components/schemas/User'
-        user:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        num_changes:
-          type:
-          - integer
-          - 'null'
-          maximum: 4294967295
-          minimum: 0
-          format: int64
-        url:
-          type: string
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/OlapCubeChangeStatusEnum'
-        batch_id:
+        size:
+          type: integer
+        modified_at:
           type:
           - string
           - 'null'
-          readOnly: true
+          format: date-time
+        relative_path:
+          type:
+          - string
+          - 'null'
+        parent_id:
+          type:
+          - string
+          - 'null'
       required:
-      - batch_id
-      - created_at
-      - created_by
-      - friendly_type
       - id
-      - url
-      - user
+      - modified_at
+      - name
+      - parent_id
+      - relative_path
+      - size
+      - type
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
+
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
     Dimension:
       type: object
       properties:
@@ -2757,30 +2933,27 @@ components:
       - name
       - parent_id
       - write_block_reason
-    Integration:
+    Transaction:
       type: object
       properties:
-        id:
+        num_transactions:
           type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
-          type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
+        file_imports:
+          $ref: '#/components/schemas/FileImports'
       required:
-      - category
-      - id
-      - logo_url
-      - name
-      - source
+      - file_imports
+      - num_transactions
+    OlapCubeChangeStatusEnum:
+      enum:
+      - PENDING
+      - COMPLETED
+      - FAILED
+      type: string
+      description: '* `PENDING` - Pending
+
+        * `COMPLETED` - Completed
+
+        * `FAILED` - Failed'
     Import:
       type: object
       properties:
@@ -2829,120 +3002,6 @@ components:
       - start_time_dimension
       - status
       - user
-    FileNode:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        size:
-          type: integer
-        modified_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        relative_path:
-          type:
-          - string
-          - 'null'
-        parent_id:
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - modified_at
-      - name
-      - parent_id
-      - relative_path
-      - size
-      - type
-    SourceImportTypeEnum:
-      enum:
-      - USER
-      - SCHEDULED
-      type: string
-      description: '* `USER` - User
-
-        * `SCHEDULED` - Scheduled'
-    ImportDataRequest:
-      type: object
-      properties:
-        dimensions:
-          type: object
-          additionalProperties: {}
-        other:
-          type: array
-          items:
-            type: integer
-        time:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/time_child'
-        scenario:
-          type: integer
-      required:
-      - dimensions
-      - other
-      - scenario
-      - time
-    Transaction:
-      type: object
-      properties:
-        num_transactions:
-          type: integer
-        file_imports:
-          $ref: '#/components/schemas/FileImports'
-      required:
-      - file_imports
-      - num_transactions
-    NullEnum:
-      enum:
-      - null
-    RollupTypeEnum:
-      enum:
-      - SUM
-      - AVERAGE
-      - BALANCE
-      - BEGINNING_BALANCE
-      type: string
-      description: '* `SUM` - Sum
-
-        * `AVERAGE` - Average
-
-        * `BALANCE` - Ending Balance
-
-        * `BEGINNING_BALANCE` - Beginning Balance'
-    Status2c8Enum:
-      enum:
-      - ENABLED
-      - DISABLING_VALUES
-      - CLEARING_VALUES
-      - VALUES_CLEARED
-      - DISABLED
-      type: string
-      description: '* `ENABLED` - Enabled
-
-        * `DISABLING_VALUES` - Disabling Values
-
-        * `CLEARING_VALUES` - Clearing Values
-
-        * `VALUES_CLEARED` - Values Cleared
-
-        * `DISABLED` - Disabled'
-    DeleteBatch:
-      type: object
-      properties:
-        relative_paths:
-          type: array
-          items:
-            type: string
-      required:
-      - relative_paths
     Status6a6Enum:
       enum:
       - CANCELLED
@@ -3010,6 +3069,64 @@ components:
       - source_type
       - type
       - type_friendly
+    SalesforceSoQLResponse:
+      type: object
+      properties:
+        response:
+          type: array
+          items: {}
+        option_response:
+          type: array
+          items: {}
+      required:
+      - option_response
+      - response
+    SourceImportTypeEnum:
+      enum:
+      - USER
+      - SCHEDULED
+      type: string
+      description: '* `USER` - User
+
+        * `SCHEDULED` - Scheduled'
+    Connection:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        active:
+          type: boolean
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+          description: "Return the category of the associated Integration model for backwards compatibility\n\nReturns:\n    The integration category (See Integration.CATEGORIES)"
+          readOnly: true
+        friendly_source:
+          type: string
+          readOnly: true
+        integration:
+          allOf:
+          - $ref: '#/components/schemas/Integration'
+          readOnly: true
+        settings:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+      required:
+      - active
+      - friendly_source
+      - id
+      - integration
+      - metadata
+      - settings
+      - type
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -3060,166 +3177,49 @@ components:
         * `NETSUITE_RATES` - NetSuite Saved Search
 
         * `MERGE` - Cube Universal Connect'
-    SourceFileDownload:
+    DeleteBatch:
       type: object
       properties:
-        download_url:
-          type: string
-          format: uri
-      required:
-      - download_url
-    CategoryEnum:
-      enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
-      type: string
-      description: '* `BI` - Business Intelligence
-
-        * `GL` - General Ledger
-
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
-    Type95aEnum:
-      enum:
-      - BASIC
-      - FORMULA
-      - TAG
-      type: string
-      description: '* `BASIC` - Basic
-
-        * `FORMULA` - Formula
-
-        * `TAG` - Tag'
-    ConnectionImportSettingsResponse:
-      type: object
-      properties:
-        block_reason:
-          type: string
-        tlds_needed:
-          type: object
-          additionalProperties: {}
-        scenarios:
-          type: object
-          additionalProperties: {}
-        num_unmapped:
-          type: integer
-        defaults:
+        relative_paths:
           type: array
-          items: {}
-        transactions:
-          $ref: '#/components/schemas/Transaction'
+          items:
+            type: string
       required:
-      - block_reason
-      - defaults
-      - num_unmapped
-      - scenarios
-      - tlds_needed
-      - transactions
-    OlapCubeChangeTypeEnum:
-      enum:
-      - USER
-      - AI
-      - USER_REVERT
-      - TBI
-      - EXTERNAL_SOURCE
-      - EMPLOYEE_ROSTER
-      - DATA_IMPORT
-      - FORMULA
-      - DISABLED
-      - MERGE
-      - DUPLICATION
-      type: string
-      description: '* `USER` - User
-
-        * `AI` - AI
-
-        * `USER_REVERT` - Revert
-
-        * `TBI` - Trial Balance
-
-        * `EXTERNAL_SOURCE` - External Source
-
-        * `EMPLOYEE_ROSTER` - Employee Roster
-
-        * `DATA_IMPORT` - Data
-
-        * `FORMULA` - Formula
-
-        * `DISABLED` - Disabled
-
-        * `MERGE` - Merge
-
-        * `DUPLICATION` - Duplication'
-    ResyncResponse:
+      - relative_paths
+    Integration:
       type: object
       properties:
-        num_unmapped:
+        id:
           type: integer
-        audit_log_event_id:
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
           type: string
-          format: uuid
-        auth_redirect_url:
-          type: string
-          format: uri
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
       required:
-      - audit_log_event_id
-      - auth_redirect_url
-      - num_unmapped
-    DownloadFile:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    SourceFileUpload:
       type: object
       properties:
-        relative_path:
-          type: string
+        upload_urls:
+          type: array
+          items:
+            type: string
+            format: uri
       required:
-      - relative_path
-    ResyncRequest:
-      type: object
-      properties:
-        start_time_dimension_id:
-          type: integer
-          minimum: 1
-          description: The time dimension ID for the beginning of the date range to sync (for supported Integrations).
-        end_time_dimension_id:
-          type: integer
-          minimum: 1
-          description: The time dimension ID for the end of the date range to sync (for supported Integrations).
-    OlapCubeChangeStatusEnum:
-      enum:
-      - PENDING
-      - COMPLETED
-      - FAILED
-      type: string
-      description: '* `PENDING` - Pending
-
-        * `COMPLETED` - Completed
-
-        * `FAILED` - Failed'
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
+      - upload_urls
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -287,36 +287,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CompanyIntegration:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+    CategoryEnum:
+      enum:
+      - BI
+      - GL
+      - HRIS
+      - SSO
+      - CRM
+      - OTHER
+      - UAP
+      type: string
+      description: '* `BI` - Business Intelligence
 
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        integration:
-          allOf:
-          - $ref: '#/components/schemas/Integration'
-          readOnly: true
-        company:
-          allOf:
-          - $ref: '#/components/schemas/Company'
-          readOnly: true
-        integration_id:
-          type: integer
-          writeOnly: true
-        company_id:
-          type: string
-          format: uuid
-          writeOnly: true
-        settings: {}
-      required:
-      - company
-      - id
-      - integration
+        * `GL` - General Ledger
+
+        * `HRIS` - Human Resource Information Service
+
+        * `SSO` - Single Sign On
+
+        * `CRM` - Customer Relationship Management
+
+        * `OTHER` - Other
+
+        * `UAP` - Unified API Platform'
     PatchedCompanyIntegration:
       type: object
       description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
@@ -343,41 +336,6 @@ components:
           format: uuid
           writeOnly: true
         settings: {}
-    TimeTypeEnum:
-      enum:
-      - STANDARD
-      - HALF_YEAR
-      - CUSTOM
-      type: string
-      description: '* `STANDARD` - Standard
-
-        * `HALF_YEAR` - Half Year
-
-        * `CUSTOM` - Custom'
-    Integration:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        source:
-          $ref: '#/components/schemas/IntegrationSourceEnum'
-        category:
-          $ref: '#/components/schemas/CategoryEnum'
-        name:
-          type: string
-          maxLength: 100
-        logo_url:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      required:
-      - category
-      - id
-      - logo_url
-      - name
-      - source
     IntegrationSourceEnum:
       enum:
       - METABASE
@@ -462,29 +420,71 @@ components:
       - id
       - name
       - slug
-    CategoryEnum:
+    Integration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        source:
+          $ref: '#/components/schemas/IntegrationSourceEnum'
+        category:
+          $ref: '#/components/schemas/CategoryEnum'
+        name:
+          type: string
+          maxLength: 100
+        logo_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - category
+      - id
+      - logo_url
+      - name
+      - source
+    CompanyIntegration:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        integration:
+          allOf:
+          - $ref: '#/components/schemas/Integration'
+          readOnly: true
+        company:
+          allOf:
+          - $ref: '#/components/schemas/Company'
+          readOnly: true
+        integration_id:
+          type: integer
+          writeOnly: true
+        company_id:
+          type: string
+          format: uuid
+          writeOnly: true
+        settings: {}
+      required:
+      - company
+      - id
+      - integration
+    TimeTypeEnum:
       enum:
-      - BI
-      - GL
-      - HRIS
-      - SSO
-      - CRM
-      - OTHER
-      - UAP
+      - STANDARD
+      - HALF_YEAR
+      - CUSTOM
       type: string
-      description: '* `BI` - Business Intelligence
+      description: '* `STANDARD` - Standard
 
-        * `GL` - General Ledger
+        * `HALF_YEAR` - Half Year
 
-        * `HRIS` - Human Resource Information Service
-
-        * `SSO` - Single Sign On
-
-        * `CRM` - Customer Relationship Management
-
-        * `OTHER` - Other
-
-        * `UAP` - Unified API Platform'
+        * `CUSTOM` - Custom'
   securitySchemes:
     OAuth2:
       type: oauth2

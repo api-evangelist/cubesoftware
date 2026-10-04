@@ -220,58 +220,6 @@ paths:
           description: ''
 components:
   schemas:
-    Dashboard:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        external_id:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        source:
-          allOf:
-          - $ref: '#/components/schemas/Source402Enum'
-          readOnly: true
-        edit_url:
-          type:
-          - string
-          - 'null'
-          description: "Returns a url in the third party system for editing the dashboard.\n\nReturns:\n    str url in the external system where one can edit the dashboard."
-          readOnly: true
-        external:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-          description: "Returns an up to date representation of the dashboard provided by the external system.\n\nReturns:\n    A dictionary representation of the dashboard in the external system or None if this dashboard is\n        not a metabase dashboard.\n\nRaises:\n    MBNotFoundError: raised if the dashboard is not found in the external system."
-          readOnly: true
-        default:
-          type: boolean
-        publish_status:
-          $ref: '#/components/schemas/PublishStatusEnum'
-        sharing_scheme:
-          $ref: '#/components/schemas/SharingSchemeF41Enum'
-        sharing_users: {}
-      required:
-      - created_at
-      - edit_url
-      - external
-      - external_id
-      - id
-      - name
-      - sharing_users
-      - source
     data:
       type: object
       properties:
@@ -284,22 +232,6 @@ components:
       required:
       - data
       - metadata
-    Source402Enum:
-      enum:
-      - METABASE
-      type: string
-      description: '* `METABASE` - Metabase'
-    SharingSchemeF41Enum:
-      enum:
-      - ALL
-      - ADMINS
-      - SPECIFIC
-      type: string
-      description: '* `ALL` - All Team Members
-
-        * `ADMINS` - Only Admins
-
-        * `SPECIFIC` - Specific Team Members'
     PatchedDashboard:
       type: object
       properties:
@@ -407,6 +339,74 @@ components:
       - name
       - publish_status
       - sharing_scheme
+      - sharing_users
+      - source
+    Source402Enum:
+      enum:
+      - METABASE
+      type: string
+      description: '* `METABASE` - Metabase'
+    SharingSchemeF41Enum:
+      enum:
+      - ALL
+      - ADMINS
+      - SPECIFIC
+      type: string
+      description: '* `ALL` - All Team Members
+
+        * `ADMINS` - Only Admins
+
+        * `SPECIFIC` - Specific Team Members'
+    Dashboard:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        external_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Source402Enum'
+          readOnly: true
+        edit_url:
+          type:
+          - string
+          - 'null'
+          description: "Returns a url in the third party system for editing the dashboard.\n\nReturns:\n    str url in the external system where one can edit the dashboard."
+          readOnly: true
+        external:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+          description: "Returns an up to date representation of the dashboard provided by the external system.\n\nReturns:\n    A dictionary representation of the dashboard in the external system or None if this dashboard is\n        not a metabase dashboard.\n\nRaises:\n    MBNotFoundError: raised if the dashboard is not found in the external system."
+          readOnly: true
+        default:
+          type: boolean
+        publish_status:
+          $ref: '#/components/schemas/PublishStatusEnum'
+        sharing_scheme:
+          $ref: '#/components/schemas/SharingSchemeF41Enum'
+        sharing_users: {}
+      required:
+      - created_at
+      - edit_url
+      - external
+      - external_id
+      - id
+      - name
       - sharing_users
       - source
     PublishStatusEnum:

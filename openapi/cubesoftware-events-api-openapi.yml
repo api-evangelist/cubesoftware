@@ -57,16 +57,6 @@ paths:
           description: ''
 components:
   schemas:
-    UserEventResponseRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        model_id:
-          type: string
-      required:
-      - model_id
-      - name
     UserEventResponse:
       type: object
       properties:
@@ -79,6 +69,16 @@ components:
           format: date-time
       required:
       - created_at
+      - model_id
+      - name
+    UserEventResponseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        model_id:
+          type: string
+      required:
       - model_id
       - name
   securitySchemes:

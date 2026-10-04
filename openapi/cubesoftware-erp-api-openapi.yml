@@ -203,31 +203,6 @@ paths:
           description: Permission denied
 components:
   schemas:
-    SourceDataTableUploadStatusEnum:
-      enum:
-      - PROCESSING
-      - IMPORTED
-      - ERROR
-      - PENDING
-      type: string
-      description: '* `PROCESSING` - Processing
-
-        * `IMPORTED` - Imported
-
-        * `ERROR` - Error
-
-        * `PENDING` - Pending'
-    CompleteUpload:
-      type: object
-      properties:
-        file_path:
-          type: string
-        upload_type:
-          allOf:
-          - $ref: '#/components/schemas/CompleteUploadUploadTypeEnum'
-          default: APPEND
-      required:
-      - file_path
     SourceDataTableUpload:
       type: object
       properties:
@@ -273,20 +248,20 @@ components:
       - data_can_be_downloaded
       - id
       - source_data_table
-    CompleteUploadUploadTypeEnum:
+    SourceDataTableUploadUploadTypeEnum:
       enum:
       - REPLACE
       - TIME_BASED_REPLACE
       - APPEND
       - DELETE
       type: string
-      description: '* `REPLACE` - Replace
+      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
 
-        * `TIME_BASED_REPLACE` - Time-based replace
+        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
 
-        * `APPEND` - Append
+        * `APPEND` - Update existing records and add new records
 
-        * `DELETE` - Delete'
+        * `DELETE` - Remove all existing records'
     TransactionEvent:
       type: object
       properties:
@@ -340,20 +315,16 @@ components:
       - num_modified
       - total
       - upload_id
-    SourceDataTableUploadUploadTypeEnum:
-      enum:
-      - REPLACE
-      - TIME_BASED_REPLACE
-      - APPEND
-      - DELETE
-      type: string
-      description: '* `REPLACE` - Remove all existing records and replace with this uploaded data
-
-        * `TIME_BASED_REPLACE` - Remove and replace existing records between the time periods specified in this uploaded data
-
-        * `APPEND` - Update existing records and add new records
-
-        * `DELETE` - Remove all existing records'
+    PresignUpload:
+      type: object
+      properties:
+        file_name:
+          type: string
+        content_type:
+          type: string
+      required:
+      - content_type
+      - file_name
     SourceDataTableUploadSourceEnum:
       enum:
       - USER_UPLOAD
@@ -368,16 +339,45 @@ components:
         * `API` - API
 
         * `THIRD_PARTY_API` - Third Party API'
-    PresignUpload:
+    SourceDataTableUploadStatusEnum:
+      enum:
+      - PROCESSING
+      - IMPORTED
+      - ERROR
+      - PENDING
+      type: string
+      description: '* `PROCESSING` - Processing
+
+        * `IMPORTED` - Imported
+
+        * `ERROR` - Error
+
+        * `PENDING` - Pending'
+    CompleteUpload:
       type: object
       properties:
-        file_name:
+        file_path:
           type: string
-        content_type:
-          type: string
+        upload_type:
+          allOf:
+          - $ref: '#/components/schemas/CompleteUploadUploadTypeEnum'
+          default: APPEND
       required:
-      - content_type
-      - file_name
+      - file_path
+    CompleteUploadUploadTypeEnum:
+      enum:
+      - REPLACE
+      - TIME_BASED_REPLACE
+      - APPEND
+      - DELETE
+      type: string
+      description: '* `REPLACE` - Replace
+
+        * `TIME_BASED_REPLACE` - Time-based replace
+
+        * `APPEND` - Append
+
+        * `DELETE` - Delete'
   securitySchemes:
     OAuth2:
       type: oauth2

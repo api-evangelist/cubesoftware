@@ -96,23 +96,6 @@ paths:
           description: ''
 components:
   schemas:
-    ContentType:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        app_label:
-          type: string
-          maxLength: 100
-        model:
-          type: string
-          title: Python model class name
-          maxLength: 100
-      required:
-      - app_label
-      - id
-      - model
     Permission:
       type: object
       properties:
@@ -132,6 +115,23 @@ components:
       - content_type
       - id
       - name
+    ContentType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        app_label:
+          type: string
+          maxLength: 100
+        model:
+          type: string
+          title: Python model class name
+          maxLength: 100
+      required:
+      - app_label
+      - id
+      - model
   securitySchemes:
     OAuth2:
       type: oauth2

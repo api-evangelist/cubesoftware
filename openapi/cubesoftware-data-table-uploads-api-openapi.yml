@@ -266,48 +266,6 @@ paths:
           description: ''
 components:
   schemas:
-    SourceDataTableUploadStatusEnum:
-      enum:
-      - PROCESSING
-      - IMPORTED
-      - ERROR
-      - PENDING
-      type: string
-      description: '* `PROCESSING` - Processing
-
-        * `IMPORTED` - Imported
-
-        * `ERROR` - Error
-
-        * `PENDING` - Pending'
-    UploadPart:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        data_table_upload:
-          type: string
-          format: uuid
-        external_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        file:
-          type:
-          - string
-          - 'null'
-          format: uri
-          writeOnly: true
-      required:
-      - created_at
-      - data_table_upload
-      - id
     SourceDataTableUpload:
       type: object
       properties:
@@ -367,6 +325,34 @@ components:
         * `APPEND` - Update existing records and add new records
 
         * `DELETE` - Remove all existing records'
+    UploadPart:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        data_table_upload:
+          type: string
+          format: uuid
+        external_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        file:
+          type:
+          - string
+          - 'null'
+          format: uri
+          writeOnly: true
+      required:
+      - created_at
+      - data_table_upload
+      - id
     SourceDataTableUploadSourceEnum:
       enum:
       - USER_UPLOAD
@@ -381,6 +367,20 @@ components:
         * `API` - API
 
         * `THIRD_PARTY_API` - Third Party API'
+    SourceDataTableUploadStatusEnum:
+      enum:
+      - PROCESSING
+      - IMPORTED
+      - ERROR
+      - PENDING
+      type: string
+      description: '* `PROCESSING` - Processing
+
+        * `IMPORTED` - Imported
+
+        * `ERROR` - Error
+
+        * `PENDING` - Pending'
   securitySchemes:
     OAuth2:
       type: oauth2

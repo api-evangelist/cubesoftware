@@ -1053,126 +1053,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PatchedCurrency:
-      type: object
-      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        code:
-          type: string
-          maxLength: 10
-        symbol:
-          type: string
-          maxLength: 10
-        description:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        exclusive_to_company_id:
-          type: string
-          format: uuid
-        created_by_id:
-          type: integer
-          writeOnly: true
-    ExchangeRateType:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        rate_type:
-          $ref: '#/components/schemas/RateTypeEnum'
-        name:
-          type: string
-          maxLength: 255
-        weighted_average_of_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - created_at
-      - id
-      - modified_at
-      - name
-      - rate_type
-      - weighted_average_of_id
-    Inline:
-      type: object
-      properties:
-        default:
-          type: boolean
-        currency_id:
-          type: integer
-      required:
-      - currency_id
-      - default
-    DimensionExchangeRateTypeMapping:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        account:
-          type: integer
-        is_default:
-          type: boolean
-        rate_type:
-          type: string
-          readOnly: true
-        exchange_rate_type:
-          type: integer
-        from_currency:
-          type:
-          - integer
-          - 'null'
-        to_currency:
-          type:
-          - integer
-          - 'null'
-        constant_rate:
-          type:
-          - string
-          - 'null'
-          format: decimal
-          pattern: ^-?\d{0,17}(?:\.\d{0,20})?$
-        content_type_id:
-          type: integer
-          description: "A helper property method for grabbing the id of the ContentType of this model.\nThis is used for creating the rateable relationships with ConversionRate instances.\n\nReturns:\n    an integer representing the content type"
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - account
-      - content_type_id
-      - created_at
-      - exchange_rate_type
-      - id
-      - modified_at
-      - rate_type
     CompanyCurrency:
       type: object
       properties:
@@ -1187,6 +1067,15 @@ components:
       required:
       - created_at
       - currency
+    Currency:
+      type: object
+      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
+      properties:
+        code:
+          type: string
+          maxLength: 10
+      required:
+      - code
     RateTypeEnum:
       enum:
       - CURRENT
@@ -1204,15 +1093,31 @@ components:
         * `CONSTANT` - Constant
 
         * `CUSTOM` - Custom'
-    Currency:
+    InlineForm:
       type: object
-      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
       properties:
-        code:
-          type: string
-          maxLength: 10
+        rateable_id:
+          type:
+          - string
+          - 'null'
+        rateable_type:
+          type:
+          - integer
+          - 'null'
+        from_currency:
+          type: integer
+        to_currency:
+          type: integer
+        conversion_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dict'
       required:
-      - code
+      - conversion_rates
+      - from_currency
+      - rateable_id
+      - rateable_type
+      - to_currency
     ConversionRate:
       type: object
       properties:
@@ -1312,31 +1217,126 @@ components:
           type: string
           format: date-time
           readOnly: true
-    InlineForm:
+    PatchedCurrency:
       type: object
+      description: "Allows selectively disabling DRF uniqueness validation for ModelSerializers.\n\nModelSerializer runs unique field validation during `is_valid()`, even when the\nserializer is used only to deserialize or reference existing model data (i.e. with\nno intent to create or update an instance). This mixin enables callers to explicitly\nskip uniqueness checks for specific fields in those cases.\n\nUsage:\n    serializer = MySerializer(\n        data=payload,\n        skip_unique_validation_fields=('code',),\n    )"
       properties:
-        rateable_id:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        code:
+          type: string
+          maxLength: 10
+        symbol:
+          type: string
+          maxLength: 10
+        description:
           type:
           - string
           - 'null'
-        rateable_type:
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        exclusive_to_company_id:
+          type: string
+          format: uuid
+        created_by_id:
+          type: integer
+          writeOnly: true
+    Inline:
+      type: object
+      properties:
+        default:
+          type: boolean
+        currency_id:
+          type: integer
+      required:
+      - currency_id
+      - default
+    ExchangeRateType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        rate_type:
+          $ref: '#/components/schemas/RateTypeEnum'
+        name:
+          type: string
+          maxLength: 255
+        weighted_average_of_id:
           type:
           - integer
           - 'null'
-        from_currency:
-          type: integer
-        to_currency:
-          type: integer
-        conversion_rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dict'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
       required:
-      - conversion_rates
-      - from_currency
-      - rateable_id
-      - rateable_type
-      - to_currency
+      - created_at
+      - id
+      - modified_at
+      - name
+      - rate_type
+      - weighted_average_of_id
+    DimensionExchangeRateTypeMapping:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        account:
+          type: integer
+        is_default:
+          type: boolean
+        rate_type:
+          type: string
+          readOnly: true
+        exchange_rate_type:
+          type: integer
+        from_currency:
+          type:
+          - integer
+          - 'null'
+        to_currency:
+          type:
+          - integer
+          - 'null'
+        constant_rate:
+          type:
+          - string
+          - 'null'
+          format: decimal
+          pattern: ^-?\d{0,17}(?:\.\d{0,20})?$
+        content_type_id:
+          type: integer
+          description: "A helper property method for grabbing the id of the ContentType of this model.\nThis is used for creating the rateable relationships with ConversionRate instances.\n\nReturns:\n    an integer representing the content type"
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - account
+      - content_type_id
+      - created_at
+      - exchange_rate_type
+      - id
+      - modified_at
+      - rate_type
     Dict:
       type: object
       properties:

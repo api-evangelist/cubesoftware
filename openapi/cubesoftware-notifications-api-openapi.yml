@@ -327,61 +327,6 @@ paths:
           description: Target does not exist
 components:
   schemas:
-    OverdueCadenceConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        cadence:
-          $ref: '#/components/schemas/CadenceEnum'
-      required:
-      - cadence
-      - enabled
-    NotificationScheduleRecord:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        config:
-          $ref: '#/components/schemas/NotificationScheduleConfig'
-      required:
-      - config
-      - id
-      - name
-    NotificationSubscriptionReplaceRequest:
-      type: object
-      properties:
-        user_company_ids:
-          type: array
-          items:
-            type: integer
-      required:
-      - user_company_ids
-    NotificationScheduleTarget:
-      type: object
-      properties:
-        app:
-          type: string
-        model:
-          type: string
-        id:
-          type: string
-      required:
-      - app
-      - id
-      - model
-    BeforeDueDateConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        days:
-          type: integer
-      required:
-      - days
-      - enabled
     NotificationSubscriptionUser:
       type: object
       properties:
@@ -409,23 +354,6 @@ components:
       - preferences
       - user_company_id
       - user_id
-    NotificationScheduleReplaceRequest:
-      type: object
-      properties:
-        config:
-          $ref: '#/components/schemas/NotificationScheduleConfig'
-      required:
-      - config
-    NotificationScheduleResponse:
-      type: object
-      properties:
-        target:
-          $ref: '#/components/schemas/NotificationScheduleTarget'
-        schedule:
-          $ref: '#/components/schemas/NotificationScheduleRecord'
-      required:
-      - schedule
-      - target
     NotificationSubscriptionsReplaceResponse:
       type: object
       properties:
@@ -444,18 +372,19 @@ components:
       - target
       - users_added_count
       - users_removed_count
-    NotificationSubscriptionsResponse:
+    NotificationScheduleTarget:
       type: object
       properties:
-        target:
-          $ref: '#/components/schemas/NotificationSubscriptionTarget'
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationSubscriptionUser'
+        app:
+          type: string
+        model:
+          type: string
+        id:
+          type: string
       required:
-      - subscriptions
-      - target
+      - app
+      - id
+      - model
     CadenceEnum:
       enum:
       - DAILY
@@ -467,6 +396,16 @@ components:
         * `EVERY_3_DAYS` - Every 3 Days
 
         * `WEEKLY` - Weekly'
+    OverdueCadenceConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        cadence:
+          $ref: '#/components/schemas/CadenceEnum'
+      required:
+      - cadence
+      - enabled
     NotificationSubscriptionTarget:
       type: object
       properties:
@@ -480,6 +419,23 @@ components:
       - app
       - id
       - model
+    NotificationScheduleReplaceRequest:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/NotificationScheduleConfig'
+      required:
+      - config
+    NotificationScheduleResponse:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/NotificationScheduleTarget'
+        schedule:
+          $ref: '#/components/schemas/NotificationScheduleRecord'
+      required:
+      - schedule
+      - target
     NotificationScheduleConfig:
       type: object
       properties:
@@ -490,6 +446,50 @@ components:
       required:
       - before_due_date
       - overdue_cadence
+    NotificationSubscriptionReplaceRequest:
+      type: object
+      properties:
+        user_company_ids:
+          type: array
+          items:
+            type: integer
+      required:
+      - user_company_ids
+    NotificationSubscriptionsResponse:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/NotificationSubscriptionTarget'
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationSubscriptionUser'
+      required:
+      - subscriptions
+      - target
+    BeforeDueDateConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        days:
+          type: integer
+      required:
+      - days
+      - enabled
+    NotificationScheduleRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        config:
+          $ref: '#/components/schemas/NotificationScheduleConfig'
+      required:
+      - config
+      - id
+      - name
   securitySchemes:
     OAuth2:
       type: oauth2

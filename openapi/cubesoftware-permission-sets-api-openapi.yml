@@ -58,6 +58,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OperationTypesEnum:
+      enum:
+      - view
+      - create
+      - edit
+      - delete
+      - export
+      - import
+      - publish
+      - unpublish
+      - manage
+      type: string
+      description: '* `view` - View
+
+        * `create` - Create
+
+        * `edit` - Edit
+
+        * `delete` - Delete
+
+        * `export` - Export
+
+        * `import` - Import
+
+        * `publish` - Publish
+
+        * `unpublish` - Unpublish
+
+        * `manage` - Manage'
     PermissionSet:
       type: object
       properties:
@@ -112,35 +141,6 @@ components:
       - resolved_permissions
       - selectable
       - visible
-    OperationTypesEnum:
-      enum:
-      - view
-      - create
-      - edit
-      - delete
-      - export
-      - import
-      - publish
-      - unpublish
-      - manage
-      type: string
-      description: '* `view` - View
-
-        * `create` - Create
-
-        * `edit` - Edit
-
-        * `delete` - Delete
-
-        * `export` - Export
-
-        * `import` - Import
-
-        * `publish` - Publish
-
-        * `unpublish` - Unpublish
-
-        * `manage` - Manage'
   securitySchemes:
     OAuth2:
       type: oauth2

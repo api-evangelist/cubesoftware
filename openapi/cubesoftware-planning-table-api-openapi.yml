@@ -377,45 +377,6 @@ paths:
           description: User lacks the view_planningtable permission.
 components:
   schemas:
-    metadata_serializer:
-      type: object
-      properties:
-        status:
-          type: integer
-        error:
-          type: boolean
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      - status
-    error_response_serializer:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          $ref: '#/components/schemas/metadata_serializer'
-      required:
-      - data
-      - metadata
-    data:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: {}
-        metadata:
-          type: object
-          additionalProperties: {}
-      required:
-      - data
-      - metadata
     PlanningTableDataset:
       type: object
       description: Mixin to delegate create and update operations to a service class.
@@ -462,56 +423,29 @@ components:
       - planning_table_schema
       - scenario_id
       - version
-    PatchedPlanningTable:
-      type: object
-      description: Mixin to delegate create and update operations to a service class.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        company_id:
-          type: string
-          format: uuid
-          readOnly: true
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        sharing_scheme:
-          $ref: '#/components/schemas/SharingScheme2f1Enum'
-        schema: {}
-        schema_reviewed:
-          type: boolean
-        created_by_id:
-          type: integer
-          readOnly: true
-        modified_by_id:
-          type: integer
-          readOnly: true
-        has_templates:
-          type: boolean
-          readOnly: true
-        shared_with:
-          type: array
-          items:
-            type:
-            - string
-            - 'null'
-    PlanningTableCompute:
+    error_response_serializer:
       type: object
       properties:
-        schema: {}
-        data: {}
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          $ref: '#/components/schemas/metadata_serializer'
       required:
       - data
-      - schema
+      - metadata
+    data:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: {}
+        metadata:
+          type: object
+          additionalProperties: {}
+      required:
+      - data
+      - metadata
     PlanningTable:
       type: object
       description: Mixin to delegate create and update operations to a service class.
@@ -564,6 +498,72 @@ components:
       - modified_by_id
       - name
       - schema
+    PatchedPlanningTable:
+      type: object
+      description: Mixin to delegate create and update operations to a service class.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        company_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        sharing_scheme:
+          $ref: '#/components/schemas/SharingScheme2f1Enum'
+        schema: {}
+        schema_reviewed:
+          type: boolean
+        created_by_id:
+          type: integer
+          readOnly: true
+        modified_by_id:
+          type: integer
+          readOnly: true
+        has_templates:
+          type: boolean
+          readOnly: true
+        shared_with:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+    PlanningTableCompute:
+      type: object
+      properties:
+        schema: {}
+        data: {}
+      required:
+      - data
+      - schema
+    metadata_serializer:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: boolean
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      - status
     SharingScheme2f1Enum:
       enum:
       - ALL

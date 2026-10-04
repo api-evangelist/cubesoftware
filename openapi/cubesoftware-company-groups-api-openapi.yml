@@ -389,68 +389,6 @@ paths:
           description: No response body
 components:
   schemas:
-    PatchedSubcubeAccessRule:
-      type: object
-      description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
-
-        for use in updating either the model being worked with OR any through tables that are used to join the model with
-
-        a related model when the through table holds useful information.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        company:
-          type: string
-          format: uuid
-        company_group:
-          type: integer
-        dimensions:
-          type: string
-        write_access:
-          type: boolean
-        created_by:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        modified_by:
-          type:
-          - integer
-          - 'null'
-        modified_at:
-          type: string
-          format: date-time
-          readOnly: true
-    CompanyGroupTypeEnum:
-      enum:
-      - feature
-      - dimension
-      type: string
-      description: '* `feature` - Feature
-
-        * `dimension` - Data'
-    PatchedCompanyGroupOpenApiDoc_2:
-      type: object
-      properties:
-        user_invitations:
-          type: string
-        user_companies:
-          type: string
-        permissions:
-          type: string
-        permissionsets:
-          type: string
-        subcube_access_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubcubeAccessRule'
-        name:
-          type: string
-          maxLength: 100
-        active:
-          type: boolean
     SubcubeAccessRule:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -492,6 +430,56 @@ components:
       - created_by
       - id
       - modified_at
+    PatchedCompanyGroupOpenApiDoc_2:
+      type: object
+      properties:
+        user_invitations:
+          type: string
+        user_companies:
+          type: string
+        permissions:
+          type: string
+        permissionsets:
+          type: string
+        subcube_access_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubcubeAccessRule'
+        name:
+          type: string
+          maxLength: 100
+        active:
+          type: boolean
+    CompanyGroupOpenApiDoc_1:
+      type: object
+      properties:
+        user_invitations:
+          type: string
+        user_companies:
+          type: string
+        permissions:
+          type: string
+        permissionsets:
+          type: string
+        subcube_access_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubcubeAccessRule'
+        name:
+          type: string
+          maxLength: 100
+        active:
+          type: boolean
+      required:
+      - name
+    CompanyGroupTypeEnum:
+      enum:
+      - feature
+      - dimension
+      type: string
+      description: '* `feature` - Feature
+
+        * `dimension` - Data'
     CompanyGroup:
       type: object
       description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
@@ -556,28 +544,40 @@ components:
       - name
       - resolved_permissions
       - resolved_permissionsets
-    CompanyGroupOpenApiDoc_1:
+    PatchedSubcubeAccessRule:
       type: object
+      description: 'This mixin is used to supplement the serializer with additional fields that are not provided in the request data
+
+        for use in updating either the model being worked with OR any through tables that are used to join the model with
+
+        a related model when the through table holds useful information.'
       properties:
-        user_invitations:
+        id:
+          type: integer
+          readOnly: true
+        company:
           type: string
-        user_companies:
+          format: uuid
+        company_group:
+          type: integer
+        dimensions:
           type: string
-        permissions:
-          type: string
-        permissionsets:
-          type: string
-        subcube_access_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubcubeAccessRule'
-        name:
-          type: string
-          maxLength: 100
-        active:
+        write_access:
           type: boolean
-      required:
-      - name
+        created_by:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        modified_by:
+          type:
+          - integer
+          - 'null'
+        modified_at:
+          type: string
+          format: date-time
+          readOnly: true
   securitySchemes:
     OAuth2:
       type: oauth2

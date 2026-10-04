@@ -118,6 +118,223 @@ paths:
           description: The response message
 components:
   schemas:
+    RollupTypeEnum:
+      enum:
+      - SUM
+      - AVERAGE
+      - BALANCE
+      - BEGINNING_BALANCE
+      type: string
+      description: '* `SUM` - Sum
+
+        * `AVERAGE` - Average
+
+        * `BALANCE` - Ending Balance
+
+        * `BEGINNING_BALANCE` - Beginning Balance'
+    RelationshipTypeEnum:
+      enum:
+      - EMPLOYEE
+      - PARTNER
+      type: string
+      description: '* `EMPLOYEE` - Employee
+
+        * `PARTNER` - Partner'
+    formula_recalc_message_serializer:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    RollupLogicEnum:
+      enum:
+      - ROLLUP_THEN_APPLY_FORMULA
+      - APPLY_FORMULA_THEN_ROLLUP
+      type: string
+      description: '* `ROLLUP_THEN_APPLY_FORMULA` - Sum leaf values, then calculate
+
+        * `APPLY_FORMULA_THEN_ROLLUP` - Calculate leaf values, then sum'
+    WriteProtectionEnum:
+      enum:
+      - NONE
+      - BLOCK
+      - ACTUALS
+      - AI
+      type: string
+      description: '* `NONE` - None
+
+        * `BLOCK` - Block
+
+        * `ACTUALS` - Actuals
+
+        * `AI` - AI'
+    Dimension:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        parent_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        active:
+          type: boolean
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/Status2c8Enum'
+        type:
+          $ref: '#/components/schemas/Type95aEnum'
+        rollup_type:
+          oneOf:
+          - $ref: '#/components/schemas/RollupTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        formula:
+          type: string
+          readOnly: true
+        write_protection:
+          $ref: '#/components/schemas/WriteProtectionEnum'
+        position:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        special_case_id:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        date:
+          type:
+          - string
+          - 'null'
+          format: date
+        has_children:
+          type: boolean
+        write_block_reason:
+          type: string
+          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
+          readOnly: true
+        metadata:
+          type:
+          - string
+          - 'null'
+      required:
+      - active
+      - formula
+      - id
+      - name
+      - parent_id
+      - write_block_reason
+    DimensionFormula:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        formula:
+          type: string
+        formula_str:
+          type: string
+          readOnly: true
+        scenario_dimension:
+          allOf:
+          - $ref: '#/components/schemas/Dimension'
+          readOnly: true
+        modified_by:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        rollup_logic:
+          $ref: '#/components/schemas/RollupLogicEnum'
+      required:
+      - formula
+      - formula_str
+      - id
+      - modified_by
+      - scenario_dimension
+    User:
+      type: object
+      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
+
+        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_cube_staff:
+          type: boolean
+          readOnly: true
+        relationship_type:
+          oneOf:
+          - $ref: '#/components/schemas/RelationshipTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        timezone:
+          $ref: '#/components/schemas/TimezoneEnum'
+      required:
+      - created_at
+      - email
+      - id
+      - is_cube_staff
+      - is_staff
+    BlankEnum:
+      enum:
+      - ''
+    NullEnum:
+      enum:
+      - null
+    Type95aEnum:
+      enum:
+      - BASIC
+      - FORMULA
+      - TAG
+      type: string
+      description: '* `BASIC` - Basic
+
+        * `FORMULA` - Formula
+
+        * `TAG` - Tag'
+    Status2c8Enum:
+      enum:
+      - ENABLED
+      - DISABLING_VALUES
+      - CLEARING_VALUES
+      - VALUES_CLEARED
+      - DISABLED
+      type: string
+      description: '* `ENABLED` - Enabled
+
+        * `DISABLING_VALUES` - Disabling Values
+
+        * `CLEARING_VALUES` - Clearing Values
+
+        * `VALUES_CLEARED` - Values Cleared
+
+        * `DISABLED` - Disabled'
     TimezoneEnum:
       enum:
       - Africa/Abidjan
@@ -1911,223 +2128,6 @@ components:
         * `WET` - WET
 
         * `Zulu` - Zulu'
-    User:
-      type: object
-      description: 'A serializer mixin that allows dynamic inclusion or exclusion of serializer fields by
-
-        passing `fields=[...]` or `exclude_fields=[...]` when initializing.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        first_name:
-          type: string
-          maxLength: 100
-        last_name:
-          type: string
-          maxLength: 100
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        is_staff:
-          type: boolean
-          readOnly: true
-        is_cube_staff:
-          type: boolean
-          readOnly: true
-        relationship_type:
-          oneOf:
-          - $ref: '#/components/schemas/RelationshipTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        timezone:
-          $ref: '#/components/schemas/TimezoneEnum'
-      required:
-      - created_at
-      - email
-      - id
-      - is_cube_staff
-      - is_staff
-    RelationshipTypeEnum:
-      enum:
-      - EMPLOYEE
-      - PARTNER
-      type: string
-      description: '* `EMPLOYEE` - Employee
-
-        * `PARTNER` - Partner'
-    Dimension:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        parent_id:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        active:
-          type: boolean
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/Status2c8Enum'
-        type:
-          $ref: '#/components/schemas/Type95aEnum'
-        rollup_type:
-          oneOf:
-          - $ref: '#/components/schemas/RollupTypeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-          - $ref: '#/components/schemas/NullEnum'
-        formula:
-          type: string
-          readOnly: true
-        write_protection:
-          $ref: '#/components/schemas/WriteProtectionEnum'
-        position:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        special_case_id:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        date:
-          type:
-          - string
-          - 'null'
-          format: date
-        has_children:
-          type: boolean
-        write_block_reason:
-          type: string
-          description: "If the dimension cannot be written to, return the reason why. Otherwise, return nothing.\n\nArgs:\n    obj: The model object to be checked if can be written to.\n\nReturns:\n    str (Optional): The error blocking the dimension from being written to, if one exists"
-          readOnly: true
-        metadata:
-          type:
-          - string
-          - 'null'
-      required:
-      - active
-      - formula
-      - id
-      - name
-      - parent_id
-      - write_block_reason
-    Status2c8Enum:
-      enum:
-      - ENABLED
-      - DISABLING_VALUES
-      - CLEARING_VALUES
-      - VALUES_CLEARED
-      - DISABLED
-      type: string
-      description: '* `ENABLED` - Enabled
-
-        * `DISABLING_VALUES` - Disabling Values
-
-        * `CLEARING_VALUES` - Clearing Values
-
-        * `VALUES_CLEARED` - Values Cleared
-
-        * `DISABLED` - Disabled'
-    RollupLogicEnum:
-      enum:
-      - ROLLUP_THEN_APPLY_FORMULA
-      - APPLY_FORMULA_THEN_ROLLUP
-      type: string
-      description: '* `ROLLUP_THEN_APPLY_FORMULA` - Sum leaf values, then calculate
-
-        * `APPLY_FORMULA_THEN_ROLLUP` - Calculate leaf values, then sum'
-    DimensionFormula:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        formula:
-          type: string
-        formula_str:
-          type: string
-          readOnly: true
-        scenario_dimension:
-          allOf:
-          - $ref: '#/components/schemas/Dimension'
-          readOnly: true
-        modified_by:
-          allOf:
-          - $ref: '#/components/schemas/User'
-          readOnly: true
-        rollup_logic:
-          $ref: '#/components/schemas/RollupLogicEnum'
-      required:
-      - formula
-      - formula_str
-      - id
-      - modified_by
-      - scenario_dimension
-    formula_recalc_message_serializer:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-    RollupTypeEnum:
-      enum:
-      - SUM
-      - AVERAGE
-      - BALANCE
-      - BEGINNING_BALANCE
-      type: string
-      description: '* `SUM` - Sum
-
-        * `AVERAGE` - Average
-
-        * `BALANCE` - Ending Balance
-
-        * `BEGINNING_BALANCE` - Beginning Balance'
-    WriteProtectionEnum:
-      enum:
-      - NONE
-      - BLOCK
-      - ACTUALS
-      - AI
-      type: string
-      description: '* `NONE` - None
-
-        * `BLOCK` - Block
-
-        * `ACTUALS` - Actuals
-
-        * `AI` - AI'
-    Type95aEnum:
-      enum:
-      - BASIC
-      - FORMULA
-      - TAG
-      type: string
-      description: '* `BASIC` - Basic
-
-        * `FORMULA` - Formula
-
-        * `TAG` - Tag'
-    BlankEnum:
-      enum:
-      - ''
-    NullEnum:
-      enum:
-      - null
   securitySchemes:
     OAuth2:
       type: oauth2
