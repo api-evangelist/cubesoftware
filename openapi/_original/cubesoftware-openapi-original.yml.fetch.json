@@ -1,0 +1,12 @@
+{
+ "url": "https://api.cubesoftware.com/docs/spec",
+ "requested_url": "https://api.cubesoftware.com/docs/spec",
+ "status": 200,
+ "content_type": "application/yaml; charset=utf-8",
+ "bytes": 740757,
+ "sha256": "3a77bdc373c48f8998955b3ea576fbbf00df322b389c6d186b24f5bd65e4e689",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.945), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
