@@ -32,3 +32,30 @@ plans:
   price_text: Get quote
   period: none
   included_quota: Adds Premium Support, All Integrations & Workflows
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Bronze
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Silver
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Gold
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none

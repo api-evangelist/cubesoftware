@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: cubesoftware.com
   final_host: www.cubesoftware.com
-  ownership: inherited
+  ownership: own
   owner: cubesoftware
   shares_host_with: null
-  inherited_from: www.cubesoftware.com
+  inherited_from: null
+  alias_of: www.cubesoftware.com
   verdict: scored
-  score: null
+  score: 54
+  band: 6
+  band_label: dominant
   host_score: 54
-  density: null
+  density: 28.42
   words: 1900
   tiers:
     agentic: 20
