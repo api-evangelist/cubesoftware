@@ -40,7 +40,7 @@
     - connectors/applications/cube-software
     vendor_link: https://www.cubesoftware.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: cubesoftware-slack-own
   label: Slack (own)
