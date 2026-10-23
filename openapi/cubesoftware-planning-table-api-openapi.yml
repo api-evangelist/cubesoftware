@@ -584,3 +584,9 @@ components:
           tokenUrl: https://api.cubesoftware.com/o/token/
           scopes: {}
       description: Standard Cube OAuth 2.0 flow
+x-provenance:
+  method: harvested
+  publisher: Cube
+  source: https://api.cubesoftware.com/docs/spec
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
